@@ -1,0 +1,1493 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript">
+</script>
+<meta http-equiv="imagetoolbar" content="no"/>
+<title>Alloggi in Penacastillo - TripAdvisor</title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache,must-revalidate"/>
+<meta http-equiv="expires" content="0"/>
+<meta property="og:image" content="http://c1.tacdn.com/img2/postimg.jpg" height="150px" width="150px"/>
+<meta name="keywords" content="Penacastillo sistemazioni, Cantabria, alloggio a Penacastillo, Hotel Penacastillo, villaggi in Penacastillo, Bed and breakfasts in Penacastillo, B&amp;B in Penacastillo, Pensioni in Penacastillo, tutti gli alberghi in Penacastillo, tutti i villaggi in Penacastillo, tutte le pensioni in Penacastillo, Alloggi in Penacastillo"/>
+<meta name="description" content="Alloggi in Penacastillo: sfoglia la lista di tutti gli hotel, B&amp;B, villaggi, pensioni, e altre strutture in Penacastillo. "/>
+<script type="text/javascript">
+(function () { /* ensure that console.log is a valid function */
+if (typeof console == "undefined") console = {};
+var funcs = ["log", "error", "warn"];
+for (var i = 0; i < funcs.length; i++) {
+if (console[funcs[i]] == undefined) {
+console[funcs[i]] = function () {};
+}
+}
+})()
+var pageInit = new Date();
+var jsGlobalMonths =   new Array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
+var jsGlobalDaysAbbrev =   new Array("lun","mar","mer","gio","ven","sab","dom");
+var jsGlobalDaysShort =   new Array("L","M","M","G","V","S","D");
+var sInvalidDates = "Le date inserite non sono valide. Reinserire le date corrette ed effettuare una nuova ricerca.";
+var sSelectDeparture = "Please select a departure airport.";
+var DATE_FORMAT_MMM_YYYY = "MMM YYYY";
+var jsGlobalDayOffset = 2 - 1;
+var DATE_FORMAT = { pattern: /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/, month: 2, date: 1, year: 3 };
+var formatDate = function(d, m, y) {return [d,++m,y].join("/");}
+var cal_month_header = function(month, year) {return cal_months[month]+"&nbsp;"+year;}
+var currencyLevel = new Array();
+var currencySymbol = new Array();
+var cur_prefix = false;
+var cur_postfix = true;
+currencySymbol["USD"] = new Array("$", false);
+currencyLevel["USD"] = new Array("Sotto $100","100" ,"Sotto $200","200" ,"Sotto $300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["EUR"] = new Array("€", false);
+currencyLevel["EUR"] = new Array("Sotto €75","75" ,"Sotto €150","150" ,"Sotto €225","225" ,"Qualunque prezzo","9999999" );
+currencySymbol["GBP"] = new Array("£", false);
+currencyLevel["GBP"] = new Array("Sotto £50","50" ,"Sotto £100","100" ,"Sotto £150","150" ,"Qualunque prezzo","9999999" );
+currencySymbol["CAD"] = new Array("CAD", false);
+currencyLevel["CAD"] = new Array("Sotto CAD100","100" ,"Sotto CAD200","200" ,"Sotto CAD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["AUD"] = new Array("AUD", false);
+currencyLevel["AUD"] = new Array("Sotto AUD100","100" ,"Sotto AUD200","200" ,"Sotto AUD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["CHF"] = new Array("CHF", false);
+currencyLevel["CHF"] = new Array("Sotto CHF100","100" ,"Sotto CHF200","200" ,"Sotto CHF300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["JPY"] = new Array("JPY", false);
+currencyLevel["JPY"] = new Array("Sotto JPY10000","10000" ,"Sotto JPY20000","20000" ,"Sotto JPY30000","30000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RMB"] = new Array("CNY ", false);
+currencyLevel["RMB"] = new Array("Sotto CNY 200","200" ,"Sotto CNY 500","500" ,"Sotto CNY 800","800" ,"Qualunque prezzo","9999999" );
+currencySymbol["INR"] = new Array("INR ", false);
+currencyLevel["INR"] = new Array("Sotto INR 4000","4000" ,"Sotto INR 8000","8000" ,"Sotto INR 12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["SEK"] = new Array("SEK", false);
+currencyLevel["SEK"] = new Array("Sotto SEK500","500" ,"Sotto SEK1000","1000" ,"Sotto SEK1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["BRL"] = new Array("R$", false);
+currencyLevel["BRL"] = new Array("Sotto R$200","200" ,"Sotto R$400","400" ,"Sotto R$600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["TRY"] = new Array("TL", false);
+currencyLevel["TRY"] = new Array("Sotto TL200","200" ,"Sotto TL400","400" ,"Sotto TL600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["DKK"] = new Array("kr.", false);
+currencyLevel["DKK"] = new Array("Sotto kr.500","500" ,"Sotto kr.1000","1000" ,"Sotto kr.1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["MXN"] = new Array("MXN", false);
+currencyLevel["MXN"] = new Array("Sotto MXN1000","1000" ,"Sotto MXN2000","2000" ,"Sotto MXN3000","3000" ,"Qualunque prezzo","9999999" );
+currencySymbol["ARS"] = new Array("ARS", false);
+currencyLevel["ARS"] = new Array("Sotto ARS300","300" ,"Sotto ARS600","600" ,"Sotto ARS900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["NOK"] = new Array("NOK", false);
+currencyLevel["NOK"] = new Array("Sotto NOK600","600" ,"Sotto NOK1200","1200" ,"Sotto NOK1800","1800" ,"Qualunque prezzo","9999999" );
+currencySymbol["PLN"] = new Array("PLN", false);
+currencyLevel["PLN"] = new Array("Sotto PLN300","300" ,"Sotto PLN600","600" ,"Sotto PLN900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["SGD"] = new Array("S$", false);
+currencyLevel["SGD"] = new Array("Sotto S$100","100" ,"Sotto S$200","200" ,"Sotto S$300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["THB"] = new Array("THB", false);
+currencyLevel["THB"] = new Array("Sotto THB4000","4000" ,"Sotto THB8000","8000" ,"Sotto THB12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["KRW"] = new Array("KRW", false);
+currencyLevel["KRW"] = new Array("Sotto KRW100000","100000" ,"Sotto KRW200000","200000" ,"Sotto KRW300000","300000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RUB"] = new Array("RUB", false);
+currencyLevel["RUB"] = new Array("Sotto RUB3000","3000" ,"Sotto RUB6000","6000" ,"Sotto RUB9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["IDR"] = new Array("IDR", false);
+currencyLevel["IDR"] = new Array("Sotto IDR1000000","1000000" ,"Sotto IDR2000000","2000000" ,"Sotto IDR3000000","3000000" ,"Qualunque prezzo","9999999" );
+currencySymbol["TWD"] = new Array("TWD", false);
+currencyLevel["TWD"] = new Array("Sotto TWD3000","3000" ,"Sotto TWD6000","6000" ,"Sotto TWD9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["MYR"] = new Array("RM", false);
+currencyLevel["MYR"] = new Array("Sotto RM300","300" ,"Sotto RM600","600" ,"Sotto RM900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["EGP"] = new Array("EGP", false);
+currencyLevel["EGP"] = new Array("Sotto EGP3000","3000" ,"Sotto EGP6000","6000" ,"Sotto EGP9000","9000" ,"Qualunque prezzo","9999999" );
+var groupingSize = 3;
+var groupingSeparator = ".";
+var JS_location_not_found = "Non abbiamo trovato la tua località.";
+var JS_click_to_expand = "Fai clic qui per espandere";
+var JS_choose_valid_city = "Seleziona una città valida dalla lista. ";
+var JS_select_a_cruise_line = "Please select a cruise line.";
+var JS_loading = "Caricamento...";
+var JS_Ajax_failed="Ci scusiamo per il disguido tecnico. Ti preghiamo di riprovare più tardi. Grazie.";
+var JS_maintenance="Al momento il nostro sito \u00e8 in manutenzione.  Ci scusiamo per l\'inconveniente... ritorneremo presto on-line.";
+var JS_Stop_search = "interrompi la ricerca";
+var JS_Resume_search = "Continua la ricerca";
+var JS_Thankyou = "Grazie";
+var JS_DateFormat = "dd/mm/aaaa";
+var JS_review_lost = "La tua recensione non verrà conservata.";
+var JS_coppa_sorry = "Ci dispiace....";
+var JS_coppa_privacy = "Secondo le informazioni inviateci, la tua iscrizione a TripAdvisor non rispetta i requisiti delle nostra <a href='/pages/privacy.html'>normativa sulla privacy</a>.";
+var JS_coppa_deleted = "La tua iscrizione è stata cancellata.";
+var JS_close = "Chiudi";
+var JS_close_image = "http://c1.tacdn.com/img2/langs/it/buttons/closeButton.gif";
+var JS_CHANGES_SAVED = "Modifiche salvate";
+var JS_community_on = "La community è stata attivata.";
+var lang_Close = JS_close;
+var JS_UpdatingYourResults = "Aggiornamento risultati &#8230;";
+var JS_OwnerPhoto_heading = "Grazie per aver inviato la tua richiesta a TripAdvisor. ";
+var JS_OwnerPhoto_subheading = "Elaboriamo la maggior parte degli elenchi e delle modifiche entro 5 giorni lavorativi. ";
+var JS_OwnerPhoto_more = "Aggiungi altre foto al tuo profilo";
+var JS_OwnerPhoto_return = "Ritorna al Centro per i Proprietari";
+var JS_NMN_Timeout_title = "Vuoi fare un altro tentativo?";
+var JS_NMN_Timeout_msg = "Il riconoscimento della località sta durando più a lungo del previsto.";
+var JS_NMN_Error_title = "Errore località";
+var JS_NMN_Error_msg   = "Abbiamo riscontrato un errore nell'identificazione della località";
+var JS_KeepTrying = "Prova ancora";
+var JS_TryAgain   = "Riprova";
+var js_0001 = "Scegli almeno un venditore dalla lista."; var js_0002 = "Scegli le date future."; var js_0003 = "Scegli una data di uscita che sia almeno un giorno dopo quella di entrata."; var js_0004 = "Scegli le date entro 330 giorni da oggi.";   var js_0005 = "Stiamo cercando un\'offerta ... l\'operazione potrebbe richiedere qualche minuto."; var js_0006 = "Ciò che hai scelto non ha subito modifiche."; var js_0010 = "Clicca nuovamente per aprire tutte le finestre o per regolare le impostazioni del browser per disattivare i pop-up blockers."; var js_0011 = "Aggiorna"; var js_0012 = "Prossima offerta"; var js_0013 = "Please click the \"Check Rates!\" button above to open each window."; var js_0014 = 'Verrà aperta una finestra per ogni offerta. Disattiva il sistema di blocco popup';
+var js_0015 = 'Confronta i prezzi';
+var js_invalid_dates_text = "Le date inserite non sono corrette. Modificale e poi effettua una nuova ricerca."; var js_invalid_dates_text_new = "Indica le date e controlla i prezzi"; var js_invalid_dates_text_new2 = "Indica le date per vedere i prezzi";
+var qcErrorImage = '<center><img src="http://c1.tacdn.com/img/langs/it/action_required_blinking.gif" /></center>';
+var selectedHotelName = ""; var cr_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr.gif';
+var cr_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr_check.gif';
+var cr_loc_logo = 'http://c1.tacdn.com/img2/checkrates/logo.gif';
+var cd_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd.png';
+var cd_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd_check.png';
+var JS_Any_Date = "data";
+var JS_Update_List = "Aggiorna la lista";
+var sNexusTitleMissing = "The title must be populated";
+var JS_Challenge="Challenge";
+var JS_TIQ_Level="Level";
+var JS_TIQ="Travel IQ";
+var JS_TIQ_Pts="pts";
+var RATING_STRINGS = [
+"Fai clic per votare",
+"Pessimo",
+"Scarso",
+"Nella media",
+"Molto buono",
+"Eccellente"
+];
+var overlayLightbox = false;
+if("" != "")
+{
+overlayLightbox = true;
+}
+var isTakeOver = false;
+var overlayOptions = "";
+var overlayBackupLoc = "780306";
+var gmapDomain = "maps.google.com";
+var mapChannel = "ta.PRODUCTION";
+var bingMapsLang = "it".toLowerCase();
+var bingMapsCountry = "".toLowerCase();
+var bingMapsBaseUrl = "http://www.bing.com/maps/default.aspx?cc=it&";
+var googleMapsBaseUrl = "http://maps.google.it/?";
+var serverPool = "A";
+var reg_overhaul = true;
+var cssPhotoViewerAsset = "http://c1.tacdn.com/css2/photos_with_inline_review-v3071001267b.css";
+var jsPhotoViewerAsset = 'http://c1.tacdn.com/js3/src/ta/photos/Viewer-v908545329b.js';
+var jsPhotoViewerTALSOAsset = 'http://c1.tacdn.com/js3/src/TALSO-v12862410b.js';
+var jsJWPlayerHelperAsset = 'http://c1.tacdn.com/js3/src/ta/media/jwplayerHelper-v330147509b.js';
+var hideOnLoad = new Array();
+var IS_DEBUG = false;
+var CDNHOST = "http://c1.tacdn.com";
+var VERSION_MAP = {
+"ta-widgets-typeahead.js": "http://c1.tacdn.com/js3/ta-widgets-typeahead-c-v3965823353b.js",
+"ta-media.js": "http://c1.tacdn.com/js3/ta-media-c-v1954280484b.js"
+}
+var cookieDomain = ".tripadvisor.it";
+var modelLocaleCountry = "";
+var ipCountryId = "187768";
+var pageServlet = "AllLocations";
+var crPageServlet = "AllLocations";
+var cdnHost = "http://c1.tacdn.com";
+var userLoggedIn = false;
+var migrationMember = false;
+var savesEnable = false;
+var flagsUrl = '/AllLocations-g776895-c1-Hotels-Penacastillo_Cantabria.html';
+var noPopClass = "no_cpu";
+var flagsSettings = [
+];
+var isIPad = false;
+var lang_Close  = "Chiudi";
+var img_loop    = "http://c1.tacdn.com/img2/generic/site/loop.gif";
+var communityEnabled = true
+var footerFlagFormat = "all_loc_flag_hotel_ffffe1a6";
+var modelLocId = "776895";
+var modelGeoId = "776895";
+var gClient = 'gme-tripadvisorinc';
+var gKey = '';
+var gLang = '';
+var mapsJs = 'http://c1.tacdn.com/js3/ta-maps-bing-c-v2700478145b.js';
+var mapsJsLite = 'http://c1.tacdn.com/js3/lib/TAMap-v2716202300b.js';
+var memoverlayCSS = 'http://c1.tacdn.com/css2/pages/memberoverlay-v503555936b.css';
+var flagsFlyoutCSS = 'http://c1.tacdn.com/css2/overlays/flags/flags_flyout-v2900952896b.css';
+var emailHotelCSS = 'http://c1.tacdn.com/css2/t4b/emailhotel-v2182175311b.css';
+var sameGeoActivityCSS = 'http://c1.tacdn.com/css2/modules/same_geo_activity-v2647240916b.css';
+var passportStampsCSS = 'http://c1.tacdn.com/css2/modules/passport_stamps-v1996473260b.css';
+var wiFriHasMember =  false  ;
+var JS_SECURITY_TOKEN = "AAABOBaDPghIqAxch4i4VVs+HbEJvMQZ6UDLYg==";
+var addOverlayCloseClass = "";
+var isOverlayServlet = "";
+var IS_OVERLAY_DEBUG = "false";
+</script>
+<script type='text/javascript' src='http://c1.tacdn.com/js3/tripadvisor-c-v3957526096b.js'></script>
+<script type="text/javascript">var taSecureToken = "AAABOBaDPghIqAxch4i4VVs+HbEJvMQZ6UDLYg=="</script>
+<script type="text/javascript">
+var geoParam = "&geo=776895";
+</script>
+<link rel='stylesheet' type='text/css' media='screen, print' href='http://c1.tacdn.com/css2/universal_new-it-v2383219892b.css'/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/modules/checkrates_2col-v935430319b.css"/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css/brandCompat.css"/>
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE6-v2472753202b.css" />
+        <![endif]-->
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE7-v2962607074b.css" />
+        <![endif]-->
+<script type="text/javascript" src="http://c1.tacdn.com/js/tripcompat.js"></script>
+<script type="text/javascript">
+function showCascadeSearch(sHotelID, bFromPop, sLinkType, sArea) {
+if(sHotelID == null || sHotelID == '') {return;}
+var tgtUrl = "/HotelDateSearch?d=" + sHotelID + "&returnTo=http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g776895__2D__c1__2D__Hotels__2D__Penacastillo__5F__Cantabria__2E__html&fromPop=" + bFromPop;
+tgtUrl = tgtUrl + "&area=" + sArea;
+var sFromSource = "AllLocations";
+if(sFromSource !="") {
+if(sLinkType && sLinkType != "") {sFromSource += sLinkType;}
+tgtUrl += "&from=" + sFromSource;
+}
+var w = window.open ( tgtUrl, "CascadeSearch", "toolbar=0,resizable=1,menubar=0,location=0,status=0,scrollbars=1,width=245,height=610,screenX=5,screenY=5,left=5,top=5");
+if (w != null) {
+w.opener = self;
+w.focus();
+}
+}
+</script>
+<style type="text/css">
+body{}
+</style>
+<!-- web04b.tripadvisor.com -->
+<!-- PRODUCTION -->
+<!-- PRODUCTION -->
+<script type="text/javascript" src="http://c1.tacdn.com/js3/src/trsupp-v283141723b.js"></script>
+</head>
+<body class="ltr domn_it withFtr globalNav2011_reset">
+<div id="fb-root"></div>
+<div style="width:973px; margin:0 auto 20px; padding:5px; background-color:#ffe5a5; font-size:.75em;">
+<div style="padding:6px 0 8px 79px;background: url(http://c1.tacdn.com/img2/icons/64/bv_alert.gif) 12px 2px no-repeat;line-height:167.5%;">
+<span>
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+</span>
+<span dir="ltr">
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('q5FyiiycV8LnGEiaV')">Google Chrome</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</span>
+</div>
+</div><!--/ BAD_VERSION -->
+<div id="iframediv"></div>
+<div id="PAGE">
+<div id="HEAD" class="sprite-gradient1x32_grn">
+<div class="masthead">
+<div class="container">
+<span class="topLogo">
+<span class="fkLnk hvrIE6 logoWrap" onClick="setPID(5045); ta.util.ASDF.asdf('L')"><img class="sprite-taLogo" src="http://c1.tacdn.com/img2/x.gif" width="362" height="42" alt="Il portale di viaggi più grande del mondo"/></span>
+</span>
+<h1 class="header language_select">Alloggi in Penacastillo </h1>
+</div>
+<div class="navSrch navSrchLang sprite-magGlass_gry" id="SEARCH_LHN">
+<form method="get" action="/Search" onsubmit="return ta.call('ta.common.search.validate',event);">
+<input id="mainSearch" type="text" name="q" class=" text hasLangSelect sL focusClear" autocomplete="off" onfocus="ta.call('ta.widgets.typeahead.factory.global',event,this,'SITEWIDE','ta.widgets.typeahead.events.onSelectGlobalTypeAhead',{maxChoices:16,minLength:3,showOnlyTypedChoices:true,geo:'776895'}); return ta.call('ta.common.search.clearOnFocus',event);" onblur="return ta.call('ta.common.search.defaultOnBlur',event);" value="Città, nome dell'hotel ecc."/>
+<div class="submit_button sprite-gradient1x27_gry"><input id="mainSearchSubmit" onclick="setPID(3825);" onkeydown="var submitPID = function(event) { if(event.key && event.key=='enter') setPID(3826); }; submitPID(e);" type="submit" name="sub-search" class="submit" value="CERCA" title="CERCA"/></div>
+<input name="lang" id="SEARCH_LANG_SELECT_INPUT" type="hidden" value=" it"/> <div id="SEARCH_LANG_SELECT">
+<div id="SEARCH_LANG_SELECTED" class="langSelect sprite-arrow_dropdown_gry" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="SEARCH_LANG_SELECT_POPUP" class="hidden">
+<div id="lang_it" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="lang_all" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Tutte le lingue</div>
+</div> </div>
+<input type="hidden" name="geo" value="776895"/>
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g776895__2D__c1__2D__Hotels__2D__Penacastillo__5F__Cantabria__2E__html"/>
+</form>
+</div>
+<div class="tabsBar">
+<ul class="tabs">
+<li class="tabItem  hvrIE6"><a href="index.html" class="tabLink  pid4921">
+Home
+</a>
+</li>
+<li class="tabItem dropDown hvrIE6">
+<a href="Tourism-g776895-Penacastillo_Cantabria-Vacations.html" class="tabLink arwLink geoLink" onclick="ta.util.cookie.setPIDCookie(4964)">
+<span class="arrow_text">Penacastillo</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5">
+</a>
+<ul class="subNav">
+<li class="subItem">
+<a class="subLink " href="Tourism-g776895-Penacastillo_Cantabria-Vacations.html" onclick="ta.util.cookie.setPIDCookie(4971)">
+Vacanze Penacastillo
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Hotels-g776895-Penacastillo_Cantabria-Hotels.html" onclick="ta.util.cookie.setPIDCookie(4972)">
+Hotel Penacastillo
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Flights-g776895-Penacastillo_Cantabria-Cheap_Discount_Airfares.html" onclick="ta.util.cookie.setPIDCookie(4973)">
+Voli per Penacastillo
+</a>
+</li>
+<li class="subItem">
+<a class="subLink selForums" href="ShowForum-g776895-Penacastillo_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4980)">
+Forum Viaggi Penacastillo
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Restaurants-g776895-Penacastillo_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4974)">
+Ristoranti: Penacastillo
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem  hvrIE6"><a href="Hotels-g776895-Penacastillo_Cantabria-Hotels.html" class="tabLink  pid4965">
+Hotel
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Flights-g776895-Penacastillo_Cantabria-Cheap_Discount_Airfares.html" class="tabLink  pid4966">
+Voli
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Restaurants-g776895-Penacastillo_Cantabria.html" class="tabLink  pid4967">
+Ristoranti
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="TravelersChoice/index.html" class="tabLink  pid5087">
+Il meglio del 2012
+</a>
+</li>
+<li id="FRIENDSTAB" class="tabItem tooltip hvrIE6"><a href="Friends-rnauth/index.html" class="tabLink tooltip pid18784" rel="nofollow" onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">
+I tuoi amici <span id="FBL" class="sprite-facebook15x15"></span>
+</a>
+<div class='overlayContents'><div class='inner2'><div class='help'><div class='hdr'>È meglio viaggiare con gli amici.</div><div class='ttbody'>Lasciati ispirare dagli amici, condividi i tuoi programmi di viaggio. <a href='Friends-rnauth/index.html' alt='Maggiori informazioni' onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">Maggiori informazioni</a></div></div></div></div>
+</li>
+<script>
+var taExtraOverlayJs = 'http://c1.tacdn.com/js3/ta-overlays-c-v1032881204b.js';
+registerOnLoad(function() {
+if (ta.common && ta.common.header) { ta.common.header.checkFriendsToolTip(); } }, 'friendsTooltip');
+</script>
+<li class="tabItem dropDown hvrIE6" onmouseover="ta.call('ta.common.header.hideFriendsToolTip', event, this);">
+<span class="tabLink arwLink"><span class="arrow_text">Più</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5"></span> <ul class="subNav">
+<li class="subItem">
+<a href="ShowForum-g776895-Penacastillo_Cantabria.html" class="subLink ">Forum Viaggi
+</a>
+</li>
+<li class="subItem">
+<a href="apps/index.html" class="subLink pid18876">App
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem altItem warLink sprite-gradient1x32_grn_drk last hvrIE6">
+<span class="writeReview fkLnk hvrIE6 tabLink" onclick="ta.util.cookie.setPIDCookie(1434); ta.util.ASDF.asdf('LqdWVGII26mbqgqguuuxizSxiSIqgbccRinJISiCtqHykk3vAoqHnUqHz1qHwVCJnJtIScciQQoqnQQfJCIJHESJxiGIac')">Scrivi una recensione</span>
+</li>
+</ul> </div>
+<div id="USER_PREFS" class="prfs">
+<ul class="opts">
+<li class="optItem fbConnect">
+<div class="sprite-facebook15x15 fkLnk hvrIE6  no_cpu " onclick=" ta.store('facebook.trackingpid',1882);  ta.call('ta.support.Facebook.loginButton', event, this);">Accedi&nbsp;attraverso&nbsp;Facebook</div>
+</li>
+<li class="optItem login"><span class="fkLnk hvrIE6" onClick="ta.util.cookie.setPIDCookie(429);ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNIN');">Entra</span></li>
+<li id="register" class="optItem register flyoutX" onclick="ta.util.cookie.setPIDCookie(427); ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNUP');"><span class="fkLnk hvrIE6">Iscriviti ora!</span>
+<li class="optItem" id="MOBHDRLNK">
+<span class="fkLnk hvrIE6 optItemLink sprite-mobile_org mobile_org" onClick="ta.util.cookie.setPIDCookie(4109); ta.util.ASDF.asdf('LDiHScVb22t')">Applicazione mobile GRATIS</span>
+</li>
+<li id="INTLPOP" class="optItem intSites last" onclick="ta.call('ta.overlays.Factory.intlPopup', event, this)"><span class="sprite-arrow_dropdown_blu arrowDn"><img class="sprite-flag" src="http://c1.tacdn.com/img2/x.gif" alt="Siti internazionali" title="Siti internazionali"/></span></li> </ul> </div> </div> </div>
+<div id="MAINWRAP">
+<div id="MAIN" class="AllLocations" rel="v:itemreviewed">
+<div id="LEFTNAV" class="col">
+<h2 class="geoHeader">Penacastillo</h2>
+<div class="lhnHigh onShow ">
+<ul>
+<li class="firstItem">
+<a class="k_overview" href="Tourism-g776895-Penacastillo_Cantabria-Vacations.html">
+Vacanze Penacastillo</a>
+</li>
+<li>
+<a class="k_hotels" href="Hotels-g776895-Penacastillo_Cantabria-Hotels.html">
+Hotel Penacastillo</a>
+</li>
+<li>
+<a class="k_flights" href="Flights-g776895-Penacastillo_Cantabria-Cheap_Discount_Airfares.html">
+Voli per Penacastillo</a>
+</li>
+<li class=" selForums">
+<a class="k_forums pid2995" href="ShowForum-g776895-Penacastillo_Cantabria.html">
+Forum Viaggi</a>
+</li>
+<li class=" navTitle">
+Altre info su Penacastillo
+</li>
+<li>
+<a class="k_dining" href="Restaurants-g776895-Penacastillo_Cantabria.html" onclick="setOneTimeCookie('mcreset','true')">
+Ristoranti</a>
+</li>
+<li>
+<a class="js_popup k_maps" href="LocalMaps-g776895-Penacastillo-Area.html">
+Mappa</a>
+</li>
+</ul>
+</div>
+<div class="bx01 deals swirllinks">
+<div class="h2">Esplora il mondo. Recensioni e informazioni su oltre 400.000 località su TripAdvisor</div>
+<div class="swirllinkset"> <div class=" header">Mete di viaggio</div>
+<ul>
+<li><a href="Tourism-g194832-Montegrotto_Terme_Province_of_Padua_Veneto-Vacations.html">Montegrotto Terme</a></li>
+<li><a href="Hotels-g186338-London_England-Hotels.html">Hotel Londra</a></li>
+</ul>
+</div> <div class="swirllinkset"> <div class=" header">Hotel</div>
+<ul>
+<li><a href="Hotel_Review-g187770-d2179525-Reviews-Villa_Paladar_B_B-Pescara_Province_of_Pescara_Abruzzo.html">Villa Paladar B&amp;B a Pescara</a></li>
+<li><a href="Hotel_Review-g635623-d1899292-Reviews-Hotel_Europa-Misano_Adriatico_Province_of_Rimini_Emilia_Romagna.html">Hotel Europa a Misano Adriatico</a></li>
+<li><a href="Hotel_Review-g60763-d93345-Reviews-Skyline_Hotel-New_York_City_New_York.html">Skyline Hotel a New York</a></li>
+<li><a href="Hotel_Review-g189167-d2388658-Reviews-Hotel_Apartamentos_Reno-Funchal_Madeira_Madeira_Islands.html">Hotel Apartamentos Reno a Funchal</a></li>
+<li><a href="Hotel_Review-g952017-d2441505-Reviews-Ao_Pong_Resort-Koh_Mak_Trat_Province.html">Ao Pong Resort</a></li>
+<li><a href="Hotel_Review-g293983-d558167-Reviews-Christmas_Hotel-Jerusalem.html">Christmas Hotel a Gerusalemme</a></li>
+<li><a href="Hotel_Review-g298325-d300676-Reviews-Conrad_Maldives_Rangali_Island-Rangali_Island.html">Conrad Maldives Rangali Island</a></li>
+<li><a href="Hotel_Review-g187849-d204523-Reviews-Zurigo_Hotel-Milan_Lombardy.html">Zurigo Hotel a Milano</a></li>
+</ul>
+</div> </div>
+</div>
+<div id="BODYCON" class=" col poolA" typeof="v:Organization">
+<div class="crumbs ">
+<ul>
+<li>
+<a href="index.html" id="HOME">Home</a>
+<ul>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g4-Europe-Vacations.html">Europa</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187427-Spain-Vacations.html">Spagna</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187483-Cantabria-Vacations.html">Cantabria</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g776895-Penacastillo_Cantabria-Vacations.html">Penacastillo</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="wrpHeader">
+</div>
+<p style="margin-top: 20px;">
+<b>Alloggi in Penacastillo </b>
+| <a href="AllLocations-g776895-c3-Restaurants-Penacastillo_Cantabria.html">Ristoranti a Penacastillo</a>
+</p>
+<p style="font-size: small">
+Sali: <a href="AllLocations-g187483-Places-Cantabria.html">Località in Cantabria </a>
+</p>
+<h1>Alloggi in Penacastillo </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776895-d2409822-Reviews-La_Casita_1973-Penacastillo_Cantabria.html">La Casita 1973</a> <br/>
+Pensione.
+Prezzo*: EUR 30
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776895-d1755781-Reviews-Rivero_Apartamentos-Penacastillo_Cantabria.html">Rivero Apartamentos</a> <br/>
+Appartamento <br/>
+Valutazione: senza valutazione <br/>
+</div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<h1>Alloggi vicino a Penacastillo </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d239011-Reviews-Hotel_San_Millan-Santander_Cantabria.html">Hotel San Millan</a> <br/>
+<b>Santander, Cantabria</b>. 1 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 92
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.36 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1495216-Reviews-Hotel_Antoyana-Santander_Cantabria.html">Hotel Antoyana</a> <br/>
+<b>Santander, Cantabria</b>. 2 km a ovest di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 67
+<br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1149068-Reviews-El_Jardin_de_Angela-Santander_Cantabria.html">El Jardin de Angela</a> <br/>
+<b>Santander, Cantabria</b>. 2 km a nord di Penacastillo
+<br/>
+Pensione <br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.5.gif" alt="2.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.17 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d489101-Reviews-Chateau_La_Roca_Hotel-Santander_Cantabria.html">Chateau La Roca Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 2 km a nord di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 85
+<br/>
+30 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g616247-d1758904-Reviews-Maria_Mercedes_Hostal-Muriedas_Cantabria.html">Maria Mercedes Hostal</a> <br/>
+<b>Muriedas, Cantabria</b>. 2 km a sud est di Penacastillo
+<br/>
+Piccolo hotel <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Muriedas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d233669-Reviews-NH_Santander_Parayas-Santander_Cantabria.html">NH Santander Parayas</a> <br/>
+<b>Santander, Cantabria</b>. 4 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 84
+<br/>
+27 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.18 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1987572-d289536-Reviews-Hotel_Camargo-Igollo_Cantabria.html">Hotel Camargo</a> <br/>
+<b>Igollo, Cantabria</b>. 4 km a ovest di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 70
+<br/>
+14 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Igollo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1146706-d1141502-Reviews-Casa_Rural_La_Blanca-Resconorio_Cantabria.html">Casa Rural La Blanca</a> <br/>
+<b>Resconorio, Cantabria</b>. 4 km a nord est di Penacastillo
+<br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: EUR 50
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064341-d583288-Reviews-Bezana_Lago_Hotel-Santa_Cruz_de_Bezana_Cantabria.html">Bezana Lago Hotel</a> <br/>
+<b>Santa Cruz de Bezana, Cantabria</b>. 4 km a ovest di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 100
+<br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.5.gif" alt="2.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Santa Cruz de Bezana, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2100884-d1795971-Reviews-Hotel_Rural_El_Jardin-Soto_de_la_Marina_Cantabria.html">Hotel Rural El Jardin</a> <br/>
+<b>Soto de la Marina, Cantabria</b>. 4 km a nord ovest di Penacastillo
+<br/>
+Pensione.
+Prezzo*: EUR 97
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Soto de la Marina, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d650017-Reviews-Hostal_Residencia_Mimosa-Santander_Cantabria.html">Hostal Residencia Mimosa</a> <br/>
+<b>Santander, Cantabria</b>. 4 km a nord est di Penacastillo
+<br/>
+Ostello.
+Prezzo*: EUR 42
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2100884-d2229451-Reviews-Posada_La_Morena-Soto_de_la_Marina_Cantabria.html">Posada La Morena</a> <br/>
+<b>Soto de la Marina, Cantabria</b>. 4 km a nord ovest di Penacastillo
+<br/>
+Pensione.
+Prezzo*: US$ 124
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Soto de la Marina, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d280844-Reviews-Parayas-Santander_Cantabria.html">Parayas</a> <br/>
+<b>Santander, Cantabria</b>. 4 km a sud est di Penacastillo
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1080367-d529459-Reviews-Hotel_Hiblanc-Maliano_Cantabria.html">Hotel Hiblanc</a> <br/>
+<b>Maliano, Cantabria</b>. 4 km a sud est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 48
+<br/>
+17 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Maliano, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d207004-Reviews-NH_Ciudad_de_Santander-Santander_Cantabria.html">NH Ciudad de Santander</a> <br/>
+<b>Santander, Cantabria</b>. 4 km a ovest di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 120
+<br/>
+40 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.24 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1592245-d1886145-Reviews-Apartamentos_Playa_Galizano-Galizano_Cantabria.html">Apartamentos Playa Galizano</a> <br/>
+<b>Galizano, Cantabria</b>. 4 km a sud est di Penacastillo
+<br/>
+Appartamento.
+Prezzo*: EUR 76
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Galizano, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d668715-Reviews-Estudios_Aranzazu-Santander_Cantabria.html">Estudios Aranzazu</a> <br/>
+<b>Santander, Cantabria</b>. 4 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 79
+<br/>
+24 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.32 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1498530-Reviews-Hotel_Gomez-Santander_Cantabria.html">Hotel Gomez</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a nord est di Penacastillo
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d590147-Reviews-Hostal_Golf-Santander_Cantabria.html">Hostal Golf</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a sud est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 57
+<br/>
+11 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.5.gif" alt="2.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.35 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1185967-Reviews-Hotel_Escuela_Las_Carolinas-Santander_Cantabria.html">Hotel Escuela Las Carolinas</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 149
+<br/>
+20 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.22 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064377-d640044-Reviews-Hotel_San_Juan-Camargo_Cantabria.html">Hotel San Juan</a> <br/>
+<b>Camargo, Cantabria</b>. 5 km a sud di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 92
+<br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Camargo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d231699-Reviews-Pinamar_Hotel-Santander_Cantabria.html">Pinamar Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 116
+<br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.34 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d536144-Reviews-Picos_De_Europa-Santander_Cantabria.html">Picos De Europa</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 93
+<br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.19 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d578109-Reviews-Complejo_Copacabana-Santander_Cantabria.html">Complejo Copacabana</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a nord ovest di Penacastillo
+<br/>
+Hotel <br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.23 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d229886-Reviews-Hotel_Bedoya-Santander_Cantabria.html">Hotel Bedoya</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 94
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.31 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d594150-Reviews-San_Glorio_Hostal-Santander_Cantabria.html">San Glorio Hostal</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Ostello.
+Prezzo*: US$ 85
+<br/>
+23 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d237106-Reviews-Camping_Virgen_del_Mar-Santander_Cantabria.html">Camping Virgen del Mar</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a nord est di Penacastillo
+<br/>
+Bungalow/Area per campeggiatori <br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.0.gif" alt="2.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064377-d1536082-Reviews-Posada_el_Tocinero-Camargo_Cantabria.html">Posada el Tocinero</a> <br/>
+<b>Camargo, Cantabria</b>. 5 km a sud di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 73
+<br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Camargo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d814651-Reviews-San_Glorio_Hotel-Santander_Cantabria.html">San Glorio Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 121
+<br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.29 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d644673-Reviews-Celuisma_Alisas-Santander_Cantabria.html">Celuisma Alisas</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 119
+<br/>
+40 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.28 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1853961-Reviews-Jardin_Secreto-Santander_Cantabria.html">Jardin Secreto</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 72
+<br/>
+145 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d614990-Reviews-Hospedaje_Magallanes-Santander_Cantabria.html">Hospedaje Magallanes</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 71
+<br/>
+33 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.11 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d642819-Reviews-Pension_Madrid_21-Santander_Cantabria.html">Pension Madrid 21</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Ostello <br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1888833-Reviews-Pension_Angelines-Santander_Cantabria.html">Pension Angelines</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d550228-Reviews-Hostal_Cabo_Mayor-Santander_Cantabria.html">Hostal Cabo Mayor</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Pensione.
+Prezzo*: US$ 80
+<br/>
+56 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064341-d1550449-Reviews-Hosteria_Los_Sauces-Santa_Cruz_de_Bezana_Cantabria.html">Hosteria Los Sauces</a> <br/>
+<b>Santa Cruz de Bezana, Cantabria</b>. 5 km a sud ovest di Penacastillo
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 77
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santa Cruz de Bezana, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d290291-Reviews-Abba_Santander_Hotel-Santander_Cantabria.html">Abba Santander Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 129
+<br/>
+44 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1508958-Reviews-Hostal_Cisneros-Santander_Cantabria.html">Hostal Cisneros</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a nord est di Penacastillo
+<br/>
+Piccolo hotel <br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1508408-Reviews-Pension_Plaza-Santander_Cantabria.html">Pension Plaza</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 70
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.13 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d2016898-Reviews-Apartamentos_Montiel-Santander_Cantabria.html">Apartamentos Montiel</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Appartamento <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d2350540-Reviews-Hostel_B_B_B-Santander_Cantabria.html">Hostel B&B&B</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Ostello.
+Prezzo*: US$ 23
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d799816-Reviews-Hospedaje_Botin-Santander_Cantabria.html">Hospedaje Botin</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Pensione <br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.15 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1498638-Reviews-Hotel_La_Mexicana-Santander_Cantabria.html">Hotel La Mexicana</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Piccolo hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.12 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1497796-Reviews-Hotel_Rex-Santander_Cantabria.html">Hotel Rex</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d275093-Reviews-Silken_Coliseum_Hotel-Santander_Cantabria.html">Silken Coliseum Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 149
+<br/>
+109 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d231693-Reviews-Hotel_Bahia_de_Santander-Santander_Cantabria.html">Hotel Bahia de Santander</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 178
+<br/>
+86 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g666460-d2334605-Reviews-Bahia_de_Boo-El_Astillero_Cantabria.html">Bahia de Boo</a> <br/>
+<b>El Astillero, Cantabria</b>. 5 km a sud est di Penacastillo
+<br/>
+Appartamento.
+Prezzo*: EUR 88
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a El Astillero, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d238645-Reviews-Hotel_Central-Santander_Cantabria.html">Hotel Central</a> <br/>
+<b>Santander, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 151
+<br/>
+30 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.26 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1495350-d1858064-Reviews-Calas_de_Liencres-Liencres_Cantabria.html">Calas de Liencres</a> <br/>
+<b>Liencres, Cantabria</b>. 5 km a nord ovest di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 121
+<br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Liencres, Spagna </div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1592261-d231698-Reviews-Infantado_Hotel-Ojedo_Cantabria.html">Infantado Hotel</a> <br/>
+<b>Ojedo, Cantabria</b>. 5 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 87
+<br/>
+15 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Ojedo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d2096525-Reviews-Hostal_Liebana-Santander_Cantabria.html">Hostal Liebana</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 85
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.14 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d2354670-Reviews-Plaza_Pombo_B_B-Santander_Cantabria.html">Plaza Pombo B&B</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a est di Penacastillo
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 61
+<br/>
+15 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1498358-Reviews-Hostal_Menendez_Pelayo-Santander_Cantabria.html">Hostal Menendez Pelayo</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a est di Penacastillo
+<br/>
+Pensione <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.16 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1644031-Reviews-Hosteria_Vistapark-Santander_Cantabria.html">Hosteria Vistapark</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a sud est di Penacastillo
+<br/>
+Pensione <br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1592257-d1595493-Reviews-Apartamentos_Turisticos_Dunas_de_Liencres-Boo_de_Pielagos_Cantabria.html">Apartamentos Turisticos Dunas de Liencres</a> <br/>
+<b>Boo de Pielagos, Cantabria</b>. 7 km a ovest di Penacastillo
+<br/>
+Appartamento.
+Prezzo*: US$ 126
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Boo de Pielagos, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d288489-Reviews-Albergue_El_Albaicin_Haypo_Hostel-Santander_Cantabria.html">Albergue El Albaicin-Haypo Hostel</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Ostello <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1210751-Reviews-Vincci_Puertochico-Santander_Cantabria.html">Vincci Puertochico</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 165
+<br/>
+127 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g666460-d661381-Reviews-Hotel_las_Anclas-El_Astillero_Cantabria.html">Hotel las Anclas</a> <br/>
+<b>El Astillero, Cantabria</b>. 7 km a sud est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 92
+<br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a El Astillero, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d564421-Reviews-Hostal_La_Torre-Santander_Cantabria.html">Hostal La Torre</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 68
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.21 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d239245-Reviews-Hotel_Palacio_del_Mar-Santander_Cantabria.html">Hotel Palacio del Mar</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 167
+<br/>
+58 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.12 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d237112-Reviews-Hotel_Matalenas-Santander_Cantabria.html">Hotel Matalenas</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 118
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1077986-Reviews-Hotel_Apartamentos_Las_Brisas-Santander_Cantabria.html">Hotel Apartamentos Las Brisas</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Appartamento.
+Prezzo*: EUR 113
+<br/>
+15 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d237113-Reviews-Camping_Cabo_Mayor-Santander_Cantabria.html">Cámping Cabo Mayor</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Bungalow/Area per campeggiatori <br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d231696-Reviews-Hotel_Real-Santander_Cantabria.html">Hotel Real</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 230
+<br/>
+144 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d2453255-Reviews-Le_Petit_Boutique_Hotel-Santander_Cantabria.html">Le Petit Boutique Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 7 km a nord est di Penacastillo
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 98
+<br/>
+15 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d312224-Reviews-Hotel_Boutique_Las_Brisas-Santander_Cantabria.html">Hotel Boutique Las Brisas</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 104
+<br/>
+62 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.13 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1477477-Reviews-Hostal_Paris-Santander_Cantabria.html">Hostal Paris</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.11 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d495783-Reviews-Hotel_Colon-Santander_Cantabria.html">Hotel Colon</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel <br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.33 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1494530-Reviews-Hotel_Coloma-Santander_Cantabria.html">Hotel Coloma</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d228645-Reviews-Santemar_Hotel-Santander_Cantabria.html">Santemar Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 125
+<br/>
+133 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d231701-Reviews-Hotel_Sardinero-Santander_Cantabria.html">Hotel Sardinero</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 104
+<br/>
+15 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.27 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d298598-Reviews-Hotel_Apartamentos_Don_Carlos-Santander_Cantabria.html">Hotel Apartamentos Don Carlos</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 135
+<br/>
+15 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.17 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d231697-Reviews-Hotel_Hoyuela-Santander_Cantabria.html">Hotel Hoyuela</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 219
+<br/>
+29 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.15 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d237103-Reviews-Silken_Rio_Hotel-Santander_Cantabria.html">Silken Rio Hotel</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 155
+<br/>
+69 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.14 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d237105-Reviews-Hotel_Maria_Isabel_Emijesa-Santander_Cantabria.html">Hotel María Isabel Emijesa</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1473577-Reviews-Carlos_III-Santander_Cantabria.html">Carlos III</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a est di Penacastillo
+<br/>
+Villa <br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d298599-Reviews-Hotel_Apartamentos_Rhin_Victoria-Santander_Cantabria.html">Hotel Apartamentos Rhin Victoria</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a est di Penacastillo
+<br/>
+Hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.30 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d231695-Reviews-Hotel_Chiqui-Santander_Cantabria.html">Hotel Chiqui</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a nord est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 214
+<br/>
+86 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d504608-Reviews-Gran_Hotel_Victoria-Santander_Cantabria.html">Gran Hotel Victoria</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 172
+<br/>
+73 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.16 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d1172478-Reviews-Posada_De_Pedrena-Santander_Cantabria.html">Posada De Pedrena</a> <br/>
+<b>Santander, Cantabria</b>. 9 km a est di Penacastillo
+<br/>
+Pensione.
+Prezzo*: EUR 55
+<br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g659589-d573514-Reviews-Milagros_Golf-Mogro_Cantabria.html">Milagros Golf</a> <br/>
+<b>Mogro, Cantabria</b>. 9 km a ovest di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 146
+<br/>
+21 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Mogro, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g659589-d1835728-Reviews-Condado_de_la_Mota-Mogro_Cantabria.html">Condado de la Mota</a> <br/>
+<b>Mogro, Cantabria</b>. 9 km a ovest di Penacastillo
+<br/>
+Pensione.
+Prezzo*: US$ 72
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Mogro, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2140625-d2001965-Reviews-El_Abuelo_de_la_Cachava-Gajano_Cantabria.html">El Abuelo de la Cachava</a> <br/>
+<b>Gajano, Cantabria</b>. 10 km a sud est di Penacastillo
+<br/>
+Pensione.
+Prezzo*: US$ 123
+<br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Gajano, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d677462-Reviews-Casa_del_Surf-Somo_Cantabria.html">Casa del Surf</a> <br/>
+<b>Somo, Cantabria</b>. 10 km a est di Penacastillo
+<br/>
+Hotel <br/>
+11 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d1497926-Reviews-Las_Dunas_Somo-Somo_Cantabria.html">Las Dunas Somo</a> <br/>
+<b>Somo, Cantabria</b>. 10 km a est di Penacastillo
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 117
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d262423-Reviews-Hotel_Bemon_Playa-Somo_Cantabria.html">Hotel Bemon Playa</a> <br/>
+<b>Somo, Cantabria</b>. 10 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 92
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d578181-Reviews-Hotel_Alemar-Somo_Cantabria.html">Hotel Alemar</a> <br/>
+<b>Somo, Cantabria</b>. 10 km a est di Penacastillo
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 80
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d237108-Reviews-Posada_Mies_de_Villa-Santander_Cantabria.html">Posada Mies de Villa</a> <br/>
+<b>Santander, Cantabria</b>. 12 km a est di Penacastillo
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 50
+<br/>
+28 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santander, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187484-d237109-Reviews-Posada_El_Rincon_de_Lavalle-Santander_Cantabria.html">Posada El Rincón de Lavalle</a> <br/>
+<b>Santander, Cantabria</b>. 12 km a est di Penacastillo
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d1013229-Reviews-La_Hosteria_de_Latas-Somo_Cantabria.html">La Hosteria de Latas</a> <br/>
+<b>Somo, Cantabria</b>. 12 km a est di Penacastillo
+<br/>
+Pensione.
+Prezzo*: US$ 64
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d2318972-Reviews-La_posada_de_Somo-Somo_Cantabria.html">La posada de Somo</a> <br/>
+<b>Somo, Cantabria</b>. 12 km a est di Penacastillo
+<br/>
+Ranch/Agriturismo/Chalet <br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d606024-Reviews-Hotel_Torres_de_Somo-Somo_Cantabria.html">Hotel Torres de Somo</a> <br/>
+<b>Somo, Cantabria</b>. 12 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: US$ 113
+<br/>
+32 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d1801957-Reviews-Hacienda_De_Arna-Somo_Cantabria.html">Hacienda De Arna</a> <br/>
+<b>Somo, Cantabria</b>. 12 km a est di Penacastillo
+<br/>
+Appartamento.
+Prezzo*: US$ 149
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644321-d1444122-Reviews-Apartamentos_Dos_Robles-Somo_Cantabria.html">Apartamentos Dos Robles</a> <br/>
+<b>Somo, Cantabria</b>. 12 km a est di Penacastillo
+<br/>
+Appartamento.
+Prezzo*: EUR 62
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Somo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1959535-d1959403-Reviews-Hotel_Rural_Bajo_El_Arce-Sobarzo_Cantabria.html">Hotel Rural Bajo El Arce</a> <br/>
+<b>Sobarzo, Cantabria</b>. 12 km a sud di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 60
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1510766-d1515336-Reviews-Costamar-Loredo_Cantabria.html">Costamar</a> <br/>
+<b>Loredo, Cantabria</b>. 13 km a est di Penacastillo
+<br/>
+Piccolo hotel <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Loredo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1058623-d1501906-Reviews-Palacio_Los_Marqueses_de_Valbuena-Solares_Cantabria.html">Palacio Los Marqueses de Valbuena</a> <br/>
+<b>Solares, Cantabria</b>. 13 km a sud est di Penacastillo
+<br/>
+Hotel <br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Solares, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g664472-d597527-Reviews-La_Casona_de_Suesa-Suesa_Cantabria.html">La Casona de Suesa</a> <br/>
+<b>Suesa, Cantabria</b>. 13 km a est di Penacastillo
+<br/>
+Hotel.
+Prezzo*: EUR 115
+<br/>
+12 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Suesa, Spagna </div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<a href="Resources-g776895-Maps-Penacastillo_Cantabria.html">Local Penacastillo Resources</a>
+</div> </div> </div>
+<div id="FOOT">
+<div class="corporate">
+<div class="col sidebar">
+<div class="block">
+<dl class="about">
+<dt>TripAdvisor chi siamo&#8482;</dt> <dd> TripAdvisor offre suggerimenti su hotel, villaggi turistici, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto ancora!</dd>
+</dl>
+</div> </div>
+<div class="col balance">
+<div class="block">
+<dl class="sep brand">
+<dt>
+<img class="sprite-identityFOOT" src="http://c1.tacdn.com/img2/x.gif" alt="TripAdvisor"/>
+</dt>
+<dd class="meta">
+Consigli su hotel, località turistiche, voli, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto altro ancora!
+</dd>
+</dl>
+<dl class="sep flags">
+<dt>Scegli un sito di TripAdvisor:</dt>
+<dd>
+<ul id="FLAGS">
+<li class="flag_item">
+<span id="flag_us" class="flag_link flag_us"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and vacations" title="Unbiased reviews of hotels, resorts and vacations"></span>
+</li>
+<li class="flag_item">
+<span id="flag_uk" class="flag_link flag_uk"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ca" class="flag_link flag_ca"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<a id="flag_es" class="flag_link flag_es" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Todos los alojamientos en Peñacastillo" href="http://www.tripadvisor.es/AllLocations-g776895-c1-Hotels-Penacastillo_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Peñacastillo"></a>
+</li>
+<li class="flag_item">
+<a id="flag_de" class="flag_link flag_de" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Alle Unterkünfte in Penacastillo" href="http://www.tripadvisor.de/AllLocations-g776895-c1-Hotels-Penacastillo_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle Unterkünfte in Penacastillo"></a>
+</li>
+<li class="flag_item">
+<a id="flag_fr" class="flag_link flag_fr" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Tous les hébergements Penacastillo " href="http://www.tripadvisor.fr/AllLocations-g776895-c1-Hotels-Penacastillo_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tous les hébergements Penacastillo "></a>
+</li>
+<li class="flag_item">
+<span id="flag_ja" class="flag_link flag_ja"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Penacastilloのすべてのホテル" title="Penacastilloのすべてのホテル"></span>
+</li>
+<li class="flag_item">
+<span id="flag_cn" class="flag_link flag_cn"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Penacastillo的所有酒店 " title="Penacastillo的所有酒店 "></span>
+</li>
+<li class="flag_item">
+<span id="flag_in" class="flag_link flag_in"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Penacastillo" title="All accommodation in Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sv" class="flag_link flag_sv"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alla boenden i Penacastillo" title="Alla boenden i Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_nl" class="flag_link flag_nl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle accommodaties in Penacastillo" title="Alle accommodaties in Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pt" class="flag_link flag_pt"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todas as acomodações em Penacastillo" title="Todas as acomodações em Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tr" class="flag_link flag_tr"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tüm Penacastillo bölgesi konaklamaları" title="Tüm Penacastillo bölgesi konaklamaları"></span>
+</li>
+<li class="flag_item">
+<span id="flag_da" class="flag_link flag_da"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle indlogeringsmuligheder i Penacastillo" title="Alle indlogeringsmuligheder i Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_mx" class="flag_link flag_mx"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Peñacastillo" title="Todos los alojamientos en Peñacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ie" class="flag_link flag_ie"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Penacastillo" title="All accommodation in Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_eg" class="flag_link flag_eg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="‫كل أماكن الإقامة في ‫Penacastillo‬‬" title="‫كل أماكن الإقامة في ‫Penacastillo‬‬"></span>
+</li>
+<li class="flag_item">
+<span id="flag_el" class="flag_link flag_el"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Όλες οι διαμονές σε Penacastillo" title="Όλες οι διαμονές σε Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_au" class="flag_link flag_au"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Penacastillo" title="All accommodation in Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_my" class="flag_link flag_my"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Penacastillo" title="All accommodation in Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sg" class="flag_link flag_sg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Penacastillo" title="All accommodation in Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ar" class="flag_link flag_ar"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Peñacastillo" title="Todos los alojamientos en Peñacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_id" class="flag_link flag_id"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Semua akomodasi di Penacastillo" title="Semua akomodasi di Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ko" class="flag_link flag_ko"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Penacastillo의 모든 기타 숙박시설" title="Penacastillo의 모든 기타 숙박시설"></span>
+</li>
+<li class="flag_item">
+<span id="flag_no" class="flag_link flag_no"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle overnattingssteder i Penacastillo" title="Alle overnattingssteder i Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pl" class="flag_link flag_pl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Wszystkie noclegi w: Penacastillo" title="Wszystkie noclegi w: Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ru" class="flag_link flag_ru"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Все варианты проживания в этом месте: Penacastillo" title="Все варианты проживания в этом месте: Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_th" class="flag_link flag_th"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="ที่ัพักทั้งหมดใน Penacastillo" title="ที่ัพักทั้งหมดใน Penacastillo"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tw" class="flag_link flag_tw"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Penacastillo所有住宿地點" title="Penacastillo所有住宿地點"></span>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="sep internal">
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LzFLJHipIQptB')">Chi siamo</span> |
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('Lqd')">Scrivi una recensione</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">Proprietari</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqnVVMHJn9')">Feedback</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('L7ptSCVttRStISCyt')">Profili Aziendali</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">APT/Ufficio Informazioni Turistiche</span>
+</div>
+<div class="sep legal">
+<div class="copyright">
+© 2012 TripAdvisor LLC Tutti i diritti riservati. <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFLIVEatB')"> Condizioni d'uso </span> e <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFL2ESsJngB')"> Normativa sulla privacy</span> di TripAdvisor.</div>
+<div class="vfm_disclaimer">
+</div>
+<div class="disclaimer">
+* TripAdvisor LLC non si occupa di prenotazioni e non applica ai suoi utenti alcuna tariffa per il servizio offerto... (<span id="TERMS" class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdfPopupTerms('LzFL2ESnSCyQIVEatB')">leggi tutto</span>) </div>
+<div class="userAgent">
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</div>
+<div class="disclaimer">TripAdvisor LLC non è responsabile per il contenuto su altri siti web. Tasse e spese non incluse nelle offerte.</div>
+</div>
+</div> </div> </div>
+</div>
+</div>
+<script type="text/javascript">
+var lazyImgs = [
+];
+var lazyHtml = [
+];
+ta.queueForLoad( function() {
+window.setupLazyLoad();
+}, 'lazy load images');
+</script>
+<script type="text/javascript">
+ta.keep('startOffset', '');
+ta.store('page.geo', "776895");
+ta.store('page.location', "776895");
+ta.store('page.urlSafe', "http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g776895__2D__c1__2D__Hotels__2D__Penacastillo__5F__Cantabria__2E__html");
+ta.store('facebook.disableLogin', true);
+ta.store('facebook.apiKey', "f1e687a58f0cdac60b7af2317a5febb3");
+ta.store('facebook.appId', "162729813767876");
+ta.store('facebook.appName', "tripadvisor");
+ta.store('facebook.taServerTime', "1340407496");
+ta.store("facebook.invalidFBCreds", true);
+window.fbAsyncInit = ta.support.Facebook.init;
+ta.queueForLoad(function(){
+new Asset.javascript("http://connect.facebook.net/it_IT/all.js");
+}, 0, 'LoadFBJS');
+ta.keep('facebook.data.request', ['ACTIVITY_COUNT']);
+ta.queueForLoad( function() { Cookie.writeSession('FBH', sniffFacebook() ? 1 : 2); }, 'SniffFB' );
+if(getTAMGFooterViaAjax)
+{
+ta.queueForLoad( function() {
+getTAMGFooterViaAjax('RBF_Mobile_Footer', 776895, false, 'AllLocations');
+}, 'TAMGFooter');
+}
+</script>
+<script type='text/javascript'>
+</script>
+<div id="TAMGFooterHolder"></div>
+<div id="IP_IFRAME_HOLDER"></div>
+</body>
+<!-- st: 390 dc: 0 sc: 2 -->
+<!-- uid: T@T@yMCoUgQAAAWQJXAAAAAH -->
+</html>
+<!-- Localized -->

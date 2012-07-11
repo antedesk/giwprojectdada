@@ -1,0 +1,1518 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript">
+</script>
+<meta http-equiv="imagetoolbar" content="no"/>
+<title>Alloggi in Treceno - TripAdvisor</title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache,must-revalidate"/>
+<meta http-equiv="expires" content="0"/>
+<meta property="og:image" content="http://c1.tacdn.com/img2/postimg.jpg" height="150px" width="150px"/>
+<meta name="keywords" content="Treceno sistemazioni, Cantabria, alloggio a Treceno, Hotel Treceno, villaggi in Treceno, Bed and breakfasts in Treceno, B&amp;B in Treceno, Pensioni in Treceno, tutti gli alberghi in Treceno, tutti i villaggi in Treceno, tutte le pensioni in Treceno, Alloggi in Treceno"/>
+<meta name="description" content="Alloggi in Treceno: sfoglia la lista di tutti gli hotel, B&amp;B, villaggi, pensioni, e altre strutture in Treceno. "/>
+<script type="text/javascript">
+(function () { /* ensure that console.log is a valid function */
+if (typeof console == "undefined") console = {};
+var funcs = ["log", "error", "warn"];
+for (var i = 0; i < funcs.length; i++) {
+if (console[funcs[i]] == undefined) {
+console[funcs[i]] = function () {};
+}
+}
+})()
+var pageInit = new Date();
+var jsGlobalMonths =   new Array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
+var jsGlobalDaysAbbrev =   new Array("lun","mar","mer","gio","ven","sab","dom");
+var jsGlobalDaysShort =   new Array("L","M","M","G","V","S","D");
+var sInvalidDates = "Le date inserite non sono valide. Reinserire le date corrette ed effettuare una nuova ricerca.";
+var sSelectDeparture = "Please select a departure airport.";
+var DATE_FORMAT_MMM_YYYY = "MMM YYYY";
+var jsGlobalDayOffset = 2 - 1;
+var DATE_FORMAT = { pattern: /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/, month: 2, date: 1, year: 3 };
+var formatDate = function(d, m, y) {return [d,++m,y].join("/");}
+var cal_month_header = function(month, year) {return cal_months[month]+"&nbsp;"+year;}
+var currencyLevel = new Array();
+var currencySymbol = new Array();
+var cur_prefix = false;
+var cur_postfix = true;
+currencySymbol["USD"] = new Array("$", false);
+currencyLevel["USD"] = new Array("Sotto $100","100" ,"Sotto $200","200" ,"Sotto $300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["EUR"] = new Array("€", false);
+currencyLevel["EUR"] = new Array("Sotto €75","75" ,"Sotto €150","150" ,"Sotto €225","225" ,"Qualunque prezzo","9999999" );
+currencySymbol["GBP"] = new Array("£", false);
+currencyLevel["GBP"] = new Array("Sotto £50","50" ,"Sotto £100","100" ,"Sotto £150","150" ,"Qualunque prezzo","9999999" );
+currencySymbol["CAD"] = new Array("CAD", false);
+currencyLevel["CAD"] = new Array("Sotto CAD100","100" ,"Sotto CAD200","200" ,"Sotto CAD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["AUD"] = new Array("AUD", false);
+currencyLevel["AUD"] = new Array("Sotto AUD100","100" ,"Sotto AUD200","200" ,"Sotto AUD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["CHF"] = new Array("CHF", false);
+currencyLevel["CHF"] = new Array("Sotto CHF100","100" ,"Sotto CHF200","200" ,"Sotto CHF300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["JPY"] = new Array("JPY", false);
+currencyLevel["JPY"] = new Array("Sotto JPY10000","10000" ,"Sotto JPY20000","20000" ,"Sotto JPY30000","30000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RMB"] = new Array("CNY ", false);
+currencyLevel["RMB"] = new Array("Sotto CNY 200","200" ,"Sotto CNY 500","500" ,"Sotto CNY 800","800" ,"Qualunque prezzo","9999999" );
+currencySymbol["INR"] = new Array("INR ", false);
+currencyLevel["INR"] = new Array("Sotto INR 4000","4000" ,"Sotto INR 8000","8000" ,"Sotto INR 12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["SEK"] = new Array("SEK", false);
+currencyLevel["SEK"] = new Array("Sotto SEK500","500" ,"Sotto SEK1000","1000" ,"Sotto SEK1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["BRL"] = new Array("R$", false);
+currencyLevel["BRL"] = new Array("Sotto R$200","200" ,"Sotto R$400","400" ,"Sotto R$600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["TRY"] = new Array("TL", false);
+currencyLevel["TRY"] = new Array("Sotto TL200","200" ,"Sotto TL400","400" ,"Sotto TL600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["DKK"] = new Array("kr.", false);
+currencyLevel["DKK"] = new Array("Sotto kr.500","500" ,"Sotto kr.1000","1000" ,"Sotto kr.1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["MXN"] = new Array("MXN", false);
+currencyLevel["MXN"] = new Array("Sotto MXN1000","1000" ,"Sotto MXN2000","2000" ,"Sotto MXN3000","3000" ,"Qualunque prezzo","9999999" );
+currencySymbol["ARS"] = new Array("ARS", false);
+currencyLevel["ARS"] = new Array("Sotto ARS300","300" ,"Sotto ARS600","600" ,"Sotto ARS900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["NOK"] = new Array("NOK", false);
+currencyLevel["NOK"] = new Array("Sotto NOK600","600" ,"Sotto NOK1200","1200" ,"Sotto NOK1800","1800" ,"Qualunque prezzo","9999999" );
+currencySymbol["PLN"] = new Array("PLN", false);
+currencyLevel["PLN"] = new Array("Sotto PLN300","300" ,"Sotto PLN600","600" ,"Sotto PLN900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["SGD"] = new Array("S$", false);
+currencyLevel["SGD"] = new Array("Sotto S$100","100" ,"Sotto S$200","200" ,"Sotto S$300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["THB"] = new Array("THB", false);
+currencyLevel["THB"] = new Array("Sotto THB4000","4000" ,"Sotto THB8000","8000" ,"Sotto THB12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["KRW"] = new Array("KRW", false);
+currencyLevel["KRW"] = new Array("Sotto KRW100000","100000" ,"Sotto KRW200000","200000" ,"Sotto KRW300000","300000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RUB"] = new Array("RUB", false);
+currencyLevel["RUB"] = new Array("Sotto RUB3000","3000" ,"Sotto RUB6000","6000" ,"Sotto RUB9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["IDR"] = new Array("IDR", false);
+currencyLevel["IDR"] = new Array("Sotto IDR1000000","1000000" ,"Sotto IDR2000000","2000000" ,"Sotto IDR3000000","3000000" ,"Qualunque prezzo","9999999" );
+currencySymbol["TWD"] = new Array("TWD", false);
+currencyLevel["TWD"] = new Array("Sotto TWD3000","3000" ,"Sotto TWD6000","6000" ,"Sotto TWD9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["MYR"] = new Array("RM", false);
+currencyLevel["MYR"] = new Array("Sotto RM300","300" ,"Sotto RM600","600" ,"Sotto RM900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["EGP"] = new Array("EGP", false);
+currencyLevel["EGP"] = new Array("Sotto EGP3000","3000" ,"Sotto EGP6000","6000" ,"Sotto EGP9000","9000" ,"Qualunque prezzo","9999999" );
+var groupingSize = 3;
+var groupingSeparator = ".";
+var JS_location_not_found = "Non abbiamo trovato la tua località.";
+var JS_click_to_expand = "Fai clic qui per espandere";
+var JS_choose_valid_city = "Seleziona una città valida dalla lista. ";
+var JS_select_a_cruise_line = "Please select a cruise line.";
+var JS_loading = "Caricamento...";
+var JS_Ajax_failed="Ci scusiamo per il disguido tecnico. Ti preghiamo di riprovare più tardi. Grazie.";
+var JS_maintenance="Al momento il nostro sito \u00e8 in manutenzione.  Ci scusiamo per l\'inconveniente... ritorneremo presto on-line.";
+var JS_Stop_search = "interrompi la ricerca";
+var JS_Resume_search = "Continua la ricerca";
+var JS_Thankyou = "Grazie";
+var JS_DateFormat = "dd/mm/aaaa";
+var JS_review_lost = "La tua recensione non verrà conservata.";
+var JS_coppa_sorry = "Ci dispiace....";
+var JS_coppa_privacy = "Secondo le informazioni inviateci, la tua iscrizione a TripAdvisor non rispetta i requisiti delle nostra <a href='/pages/privacy.html'>normativa sulla privacy</a>.";
+var JS_coppa_deleted = "La tua iscrizione è stata cancellata.";
+var JS_close = "Chiudi";
+var JS_close_image = "http://c1.tacdn.com/img2/langs/it/buttons/closeButton.gif";
+var JS_CHANGES_SAVED = "Modifiche salvate";
+var JS_community_on = "La community è stata attivata.";
+var lang_Close = JS_close;
+var JS_UpdatingYourResults = "Aggiornamento risultati &#8230;";
+var JS_OwnerPhoto_heading = "Grazie per aver inviato la tua richiesta a TripAdvisor. ";
+var JS_OwnerPhoto_subheading = "Elaboriamo la maggior parte degli elenchi e delle modifiche entro 5 giorni lavorativi. ";
+var JS_OwnerPhoto_more = "Aggiungi altre foto al tuo profilo";
+var JS_OwnerPhoto_return = "Ritorna al Centro per i Proprietari";
+var JS_NMN_Timeout_title = "Vuoi fare un altro tentativo?";
+var JS_NMN_Timeout_msg = "Il riconoscimento della località sta durando più a lungo del previsto.";
+var JS_NMN_Error_title = "Errore località";
+var JS_NMN_Error_msg   = "Abbiamo riscontrato un errore nell'identificazione della località";
+var JS_KeepTrying = "Prova ancora";
+var JS_TryAgain   = "Riprova";
+var js_0001 = "Scegli almeno un venditore dalla lista."; var js_0002 = "Scegli le date future."; var js_0003 = "Scegli una data di uscita che sia almeno un giorno dopo quella di entrata."; var js_0004 = "Scegli le date entro 330 giorni da oggi.";   var js_0005 = "Stiamo cercando un\'offerta ... l\'operazione potrebbe richiedere qualche minuto."; var js_0006 = "Ciò che hai scelto non ha subito modifiche."; var js_0010 = "Clicca nuovamente per aprire tutte le finestre o per regolare le impostazioni del browser per disattivare i pop-up blockers."; var js_0011 = "Aggiorna"; var js_0012 = "Prossima offerta"; var js_0013 = "Please click the \"Check Rates!\" button above to open each window."; var js_0014 = 'Verrà aperta una finestra per ogni offerta. Disattiva il sistema di blocco popup';
+var js_0015 = 'Confronta i prezzi';
+var js_invalid_dates_text = "Le date inserite non sono corrette. Modificale e poi effettua una nuova ricerca."; var js_invalid_dates_text_new = "Indica le date e controlla i prezzi"; var js_invalid_dates_text_new2 = "Indica le date per vedere i prezzi";
+var qcErrorImage = '<center><img src="http://c1.tacdn.com/img/langs/it/action_required_blinking.gif" /></center>';
+var selectedHotelName = ""; var cr_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr.gif';
+var cr_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr_check.gif';
+var cr_loc_logo = 'http://c1.tacdn.com/img2/checkrates/logo.gif';
+var cd_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd.png';
+var cd_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd_check.png';
+var JS_Any_Date = "data";
+var JS_Update_List = "Aggiorna la lista";
+var sNexusTitleMissing = "The title must be populated";
+var JS_Challenge="Challenge";
+var JS_TIQ_Level="Level";
+var JS_TIQ="Travel IQ";
+var JS_TIQ_Pts="pts";
+var RATING_STRINGS = [
+"Fai clic per votare",
+"Pessimo",
+"Scarso",
+"Nella media",
+"Molto buono",
+"Eccellente"
+];
+var overlayLightbox = false;
+if("" != "")
+{
+overlayLightbox = true;
+}
+var isTakeOver = false;
+var overlayOptions = "";
+var overlayBackupLoc = "780306";
+var gmapDomain = "maps.google.com";
+var mapChannel = "ta.PRODUCTION";
+var bingMapsLang = "it".toLowerCase();
+var bingMapsCountry = "".toLowerCase();
+var bingMapsBaseUrl = "http://www.bing.com/maps/default.aspx?cc=it&";
+var googleMapsBaseUrl = "http://maps.google.it/?";
+var serverPool = "A";
+var reg_overhaul = true;
+var cssPhotoViewerAsset = "http://c1.tacdn.com/css2/photos_with_inline_review-v3071001267b.css";
+var jsPhotoViewerAsset = 'http://c1.tacdn.com/js3/src/ta/photos/Viewer-v908545329b.js';
+var jsPhotoViewerTALSOAsset = 'http://c1.tacdn.com/js3/src/TALSO-v12862410b.js';
+var jsJWPlayerHelperAsset = 'http://c1.tacdn.com/js3/src/ta/media/jwplayerHelper-v330147509b.js';
+var hideOnLoad = new Array();
+var IS_DEBUG = false;
+var CDNHOST = "http://c1.tacdn.com";
+var VERSION_MAP = {
+"ta-widgets-typeahead.js": "http://c1.tacdn.com/js3/ta-widgets-typeahead-c-v3965823353b.js",
+"ta-media.js": "http://c1.tacdn.com/js3/ta-media-c-v1954280484b.js"
+}
+var cookieDomain = ".tripadvisor.it";
+var modelLocaleCountry = "";
+var ipCountryId = "187768";
+var pageServlet = "AllLocations";
+var crPageServlet = "AllLocations";
+var cdnHost = "http://c1.tacdn.com";
+var userLoggedIn = false;
+var migrationMember = false;
+var savesEnable = false;
+var flagsUrl = '/AllLocations-g816970-c1-Hotels-Treceno_Cantabria.html';
+var noPopClass = "no_cpu";
+var flagsSettings = [
+];
+var isIPad = false;
+var lang_Close  = "Chiudi";
+var img_loop    = "http://c1.tacdn.com/img2/generic/site/loop.gif";
+var communityEnabled = true
+var footerFlagFormat = "all_loc_flag_hotel_ffffe1a6";
+var modelLocId = "816970";
+var modelGeoId = "816970";
+var gClient = 'gme-tripadvisorinc';
+var gKey = '';
+var gLang = '';
+var mapsJs = 'http://c1.tacdn.com/js3/ta-maps-bing-c-v2700478145b.js';
+var mapsJsLite = 'http://c1.tacdn.com/js3/lib/TAMap-v2716202300b.js';
+var memoverlayCSS = 'http://c1.tacdn.com/css2/pages/memberoverlay-v503555936b.css';
+var flagsFlyoutCSS = 'http://c1.tacdn.com/css2/overlays/flags/flags_flyout-v2900952896b.css';
+var emailHotelCSS = 'http://c1.tacdn.com/css2/t4b/emailhotel-v2182175311b.css';
+var sameGeoActivityCSS = 'http://c1.tacdn.com/css2/modules/same_geo_activity-v2647240916b.css';
+var passportStampsCSS = 'http://c1.tacdn.com/css2/modules/passport_stamps-v1996473260b.css';
+var wiFriHasMember =  false  ;
+var JS_SECURITY_TOKEN = "AAABOBaDBgwFzsU8gkEc3mJJBaJtBXffuU+lNA==";
+var addOverlayCloseClass = "";
+var isOverlayServlet = "";
+var IS_OVERLAY_DEBUG = "false";
+</script>
+<script type='text/javascript' src='http://c1.tacdn.com/js3/tripadvisor-c-v3957526096b.js'></script>
+<script type="text/javascript">var taSecureToken = "AAABOBaDBgwFzsU8gkEc3mJJBaJtBXffuU+lNA=="</script>
+<script type="text/javascript">
+var geoParam = "&geo=816970";
+</script>
+<link rel='stylesheet' type='text/css' media='screen, print' href='http://c1.tacdn.com/css2/universal_new-it-v2383219892b.css'/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/modules/checkrates_2col-v935430319b.css"/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css/brandCompat.css"/>
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE6-v2472753202b.css" />
+        <![endif]-->
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE7-v2962607074b.css" />
+        <![endif]-->
+<script type="text/javascript" src="http://c1.tacdn.com/js/tripcompat.js"></script>
+<script type="text/javascript">
+function showCascadeSearch(sHotelID, bFromPop, sLinkType, sArea) {
+if(sHotelID == null || sHotelID == '') {return;}
+var tgtUrl = "/HotelDateSearch?d=" + sHotelID + "&returnTo=http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g816970__2D__c1__2D__Hotels__2D__Treceno__5F__Cantabria__2E__html&fromPop=" + bFromPop;
+tgtUrl = tgtUrl + "&area=" + sArea;
+var sFromSource = "AllLocations";
+if(sFromSource !="") {
+if(sLinkType && sLinkType != "") {sFromSource += sLinkType;}
+tgtUrl += "&from=" + sFromSource;
+}
+var w = window.open ( tgtUrl, "CascadeSearch", "toolbar=0,resizable=1,menubar=0,location=0,status=0,scrollbars=1,width=245,height=610,screenX=5,screenY=5,left=5,top=5");
+if (w != null) {
+w.opener = self;
+w.focus();
+}
+}
+</script>
+<style type="text/css">
+body{}
+</style>
+<!-- web07b.tripadvisor.com -->
+<!-- PRODUCTION -->
+<!-- PRODUCTION -->
+<script type="text/javascript" src="http://c1.tacdn.com/js3/src/trsupp-v283141723b.js"></script>
+</head>
+<body class="ltr domn_it withFtr globalNav2011_reset">
+<div id="fb-root"></div>
+<div style="width:973px; margin:0 auto 20px; padding:5px; background-color:#ffe5a5; font-size:.75em;">
+<div style="padding:6px 0 8px 79px;background: url(http://c1.tacdn.com/img2/icons/64/bv_alert.gif) 12px 2px no-repeat;line-height:167.5%;">
+<span>
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+</span>
+<span dir="ltr">
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('q5FyiiycV8LnGEiaV')">Google Chrome</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</span>
+</div>
+</div><!--/ BAD_VERSION -->
+<div id="iframediv"></div>
+<div id="PAGE">
+<div id="HEAD" class="sprite-gradient1x32_grn">
+<div class="masthead">
+<div class="container">
+<span class="topLogo">
+<span class="fkLnk hvrIE6 logoWrap" onClick="setPID(5045); ta.util.ASDF.asdf('L')"><img class="sprite-taLogo" src="http://c1.tacdn.com/img2/x.gif" width="362" height="42" alt="Il portale di viaggi più grande del mondo"/></span>
+</span>
+<h1 class="header language_select">Alloggi in Treceno </h1>
+</div>
+<div class="navSrch navSrchLang sprite-magGlass_gry" id="SEARCH_LHN">
+<form method="get" action="/Search" onsubmit="return ta.call('ta.common.search.validate',event);">
+<input id="mainSearch" type="text" name="q" class=" text hasLangSelect sL focusClear" autocomplete="off" onfocus="ta.call('ta.widgets.typeahead.factory.global',event,this,'SITEWIDE','ta.widgets.typeahead.events.onSelectGlobalTypeAhead',{maxChoices:16,minLength:3,showOnlyTypedChoices:true,geo:'816970'}); return ta.call('ta.common.search.clearOnFocus',event);" onblur="return ta.call('ta.common.search.defaultOnBlur',event);" value="Città, nome dell'hotel ecc."/>
+<div class="submit_button sprite-gradient1x27_gry"><input id="mainSearchSubmit" onclick="setPID(3825);" onkeydown="var submitPID = function(event) { if(event.key && event.key=='enter') setPID(3826); }; submitPID(e);" type="submit" name="sub-search" class="submit" value="CERCA" title="CERCA"/></div>
+<input name="lang" id="SEARCH_LANG_SELECT_INPUT" type="hidden" value=" it"/> <div id="SEARCH_LANG_SELECT">
+<div id="SEARCH_LANG_SELECTED" class="langSelect sprite-arrow_dropdown_gry" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="SEARCH_LANG_SELECT_POPUP" class="hidden">
+<div id="lang_it" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="lang_all" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Tutte le lingue</div>
+</div> </div>
+<input type="hidden" name="geo" value="816970"/>
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g816970__2D__c1__2D__Hotels__2D__Treceno__5F__Cantabria__2E__html"/>
+</form>
+</div>
+<div class="tabsBar">
+<ul class="tabs">
+<li class="tabItem  hvrIE6"><a href="index.html" class="tabLink  pid4921">
+Home
+</a>
+</li>
+<li class="tabItem dropDown hvrIE6">
+<a href="Tourism-g816970-Treceno_Cantabria-Vacations.html" class="tabLink arwLink geoLink" onclick="ta.util.cookie.setPIDCookie(4964)">
+<span class="arrow_text">Treceno</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5">
+</a>
+<ul class="subNav">
+<li class="subItem">
+<a class="subLink " href="Tourism-g816970-Treceno_Cantabria-Vacations.html" onclick="ta.util.cookie.setPIDCookie(4971)">
+Vacanze Treceno
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Hotels-g816970-Treceno_Cantabria-Hotels.html" onclick="ta.util.cookie.setPIDCookie(4972)">
+Hotel Treceno
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Flights-g816970-Treceno_Cantabria-Cheap_Discount_Airfares.html" onclick="ta.util.cookie.setPIDCookie(4973)">
+Voli per Treceno
+</a>
+</li>
+<li class="subItem">
+<a class="subLink selForums" href="ShowForum-g816970-Treceno_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4980)">
+Forum Viaggi Treceno
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Restaurants-g816970-Treceno_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4974)">
+Ristoranti: Treceno
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="LocationPhotos-g816970-Treceno_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4979)">
+Foto di Treceno
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem  hvrIE6"><a href="Hotels-g816970-Treceno_Cantabria-Hotels.html" class="tabLink  pid4965">
+Hotel
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Flights-g816970-Treceno_Cantabria-Cheap_Discount_Airfares.html" class="tabLink  pid4966">
+Voli
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Restaurants-g816970-Treceno_Cantabria.html" class="tabLink  pid4967">
+Ristoranti
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="TravelersChoice/index.html" class="tabLink  pid5087">
+Il meglio del 2012
+</a>
+</li>
+<li id="FRIENDSTAB" class="tabItem tooltip hvrIE6"><a href="Friends-rnauth/index.html" class="tabLink tooltip pid18784" rel="nofollow" onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">
+I tuoi amici <span id="FBL" class="sprite-facebook15x15"></span>
+</a>
+<div class='overlayContents'><div class='inner2'><div class='help'><div class='hdr'>È meglio viaggiare con gli amici.</div><div class='ttbody'>Lasciati ispirare dagli amici, condividi i tuoi programmi di viaggio. <a href='Friends-rnauth/index.html' alt='Maggiori informazioni' onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">Maggiori informazioni</a></div></div></div></div>
+</li>
+<script>
+var taExtraOverlayJs = 'http://c1.tacdn.com/js3/ta-overlays-c-v1032881204b.js';
+registerOnLoad(function() {
+if (ta.common && ta.common.header) { ta.common.header.checkFriendsToolTip(); } }, 'friendsTooltip');
+</script>
+<li class="tabItem dropDown hvrIE6" onmouseover="ta.call('ta.common.header.hideFriendsToolTip', event, this);">
+<span class="tabLink arwLink"><span class="arrow_text">Più</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5"></span> <ul class="subNav">
+<li class="subItem">
+<a href="ShowForum-g816970-Treceno_Cantabria.html" class="subLink ">Forum Viaggi
+</a>
+</li>
+<li class="subItem">
+<a href="apps/index.html" class="subLink pid18876">App
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem altItem warLink sprite-gradient1x32_grn_drk last hvrIE6">
+<span class="writeReview fkLnk hvrIE6 tabLink" onclick="ta.util.cookie.setPIDCookie(1434); ta.util.ASDF.asdf('LqdWVGII26mbqgqguuuxizSxiSIqgbccRinJISiCtqHyvU3AkKqHnUqHz1qHrEVnVCiQQoqnQQfJCIJHESJxiGIac')">Scrivi una recensione</span>
+</li>
+</ul> </div>
+<div id="USER_PREFS" class="prfs">
+<ul class="opts">
+<li class="optItem fbConnect">
+<div class="sprite-facebook15x15 fkLnk hvrIE6  no_cpu " onclick=" ta.store('facebook.trackingpid',1882);  ta.call('ta.support.Facebook.loginButton', event, this);">Accedi&nbsp;attraverso&nbsp;Facebook</div>
+</li>
+<li class="optItem login"><span class="fkLnk hvrIE6" onClick="ta.util.cookie.setPIDCookie(429);ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNIN');">Entra</span></li>
+<li id="register" class="optItem register flyoutX" onclick="ta.util.cookie.setPIDCookie(427); ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNUP');"><span class="fkLnk hvrIE6">Iscriviti ora!</span>
+<li class="optItem" id="MOBHDRLNK">
+<span class="fkLnk hvrIE6 optItemLink sprite-mobile_org mobile_org" onClick="ta.util.cookie.setPIDCookie(4109); ta.util.ASDF.asdf('LDiHScVb22t')">Applicazione mobile GRATIS</span>
+</li>
+<li id="INTLPOP" class="optItem intSites last" onclick="ta.call('ta.overlays.Factory.intlPopup', event, this)"><span class="sprite-arrow_dropdown_blu arrowDn"><img class="sprite-flag" src="http://c1.tacdn.com/img2/x.gif" alt="Siti internazionali" title="Siti internazionali"/></span></li> </ul> </div> </div> </div>
+<div id="MAINWRAP">
+<div id="MAIN" class="AllLocations" rel="v:itemreviewed">
+<div id="LEFTNAV" class="col">
+<h2 class="geoHeader">Treceno</h2>
+<div class="lhnHigh onShow ">
+<ul>
+<li class="firstItem">
+<a class="k_overview" href="Tourism-g816970-Treceno_Cantabria-Vacations.html">
+Vacanze Treceno</a>
+</li>
+<li>
+<a class="k_hotels" href="Hotels-g816970-Treceno_Cantabria-Hotels.html">
+Hotel Treceno</a>
+</li>
+<li>
+<a class="k_flights" href="Flights-g816970-Treceno_Cantabria-Cheap_Discount_Airfares.html">
+Voli per Treceno</a>
+</li>
+<li>
+<a class="k_deals" href="SmartDeals-g816970-Treceno_Cantabria-Hotel-Deals.html">
+Offerte per Treceno</a>
+</li>
+<li class=" selForums">
+<a class="k_forums pid2995" href="ShowForum-g816970-Treceno_Cantabria.html">
+Forum Viaggi</a>
+</li>
+<li class=" navTitle">
+Altre info su Treceno
+</li>
+<li>
+<a class="k_dining" href="Restaurants-g816970-Treceno_Cantabria.html" onclick="setOneTimeCookie('mcreset','true')">
+Ristoranti</a>
+</li>
+<li>
+<a class="u_/LocationPhotos-g816970-Treceno_Cantabria.html k_photos" href="LocationPhotos-g816970-Treceno_Cantabria.html" onclick="return ta.call('ta.overlays.Factory.photosLB', event, this);">
+Foto</a>
+</li>
+<li>
+<a class="js_popup k_maps" href="LocalMaps-g816970-Treceno-Area.html">
+Mappa</a>
+</li>
+<li class=" navTitle">
+Offerte per Treceno
+</li>
+<li>
+<a class="k_packages" href="Packages-g816970-Vacation-Package-Discount-Treceno_Cantabria.html">
+Offerte di viaggio</a>
+</li>
+</ul>
+</div>
+<div class="bx01 deals swirllinks">
+<div class="h2">Esplora il mondo. Recensioni e informazioni su oltre 400.000 località su TripAdvisor</div>
+<div class="swirllinkset"> <div class=" header">Mete di viaggio</div>
+<ul>
+<li><a href="Tourism-g187902-Siena_Tuscany-Vacations.html">Siena</a></li>
+<li><a href="Hotels-g194927-Stromboli_Aeolian_Islands_Islands_of_Sicily_Sicily-Hotels.html">Hotel Stromboli</a></li>
+</ul>
+</div> <div class="swirllinkset"> <div class=" header">Hotel</div>
+<ul>
+<li><a href="Hotel_Review-g734479-d1856807-Reviews-Clarens_Inn_Backpackers-Clarens_Free_State.html">Clarens Inn & Backpackers</a></li>
+<li><a href="Hotel_Review-g187881-d237489-Reviews-La_Terrazza-Cagliari_Province_of_Cagliari_Sardinia.html">Hotel La Terrazza Cagliari</a></li>
+<li><a href="Hotel_Review-g642198-d2334440-Reviews-Hotel_Santa_Comba-Moura_Alentejo.html">Hotel Santa Comba a Moura</a></li>
+<li><a href="Hotel_Review-g187902-d230418-Reviews-NH_Excelsior-Siena_Tuscany.html">NH Excelsior a Siena</a></li>
+<li><a href="Hotel_Review-g187785-d202917-Reviews-Holiday_Inn_Naples-Naples_Province_of_Naples_Campania.html">Holiday Inn Naples a Napoli</a></li>
+<li><a href="Hotel_Review-g663484-d149454-Reviews-Viva_Wyndham_Dominicus_Beach-Bayahibe_Dominican_Republic.html">Viva Wyndham Dominicus Beach a Bayahibe</a></li>
+<li><a href="Hotel_Review-g187497-d651470-Reviews-Apt_Balmes-Barcelona_Catalonia.html">Apt Balmes a Barcellona</a></li>
+<li><a href="Hotel_Review-g181720-d182904-Reviews-Holiday_Inn_Hotel_Suites_Toronto_Markham-Markham_Ontario.html">Holiday Inn Hotel & Suites Toronto - Markham</a></li>
+</ul>
+</div> </div>
+</div>
+<div id="BODYCON" class=" col poolA" typeof="v:Organization">
+<div class="crumbs ">
+<ul>
+<li>
+<a href="index.html" id="HOME">Home</a>
+<ul>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g4-Europe-Vacations.html">Europa</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187427-Spain-Vacations.html">Spagna</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187483-Cantabria-Vacations.html">Cantabria</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g816970-Treceno_Cantabria-Vacations.html">Treceno</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="wrpHeader">
+</div>
+<p style="margin-top: 20px;">
+<b>Alloggi in Treceno </b>
+| <a href="AllLocations-g816970-c3-Restaurants-Treceno_Cantabria.html">Ristoranti a Treceno</a>
+</p>
+<p style="font-size: small">
+Sali: <a href="AllLocations-g187483-Places-Cantabria.html">Località in Cantabria </a>
+</p>
+<h1>Alloggi in Treceno </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g816970-d803543-Reviews-Casona_de_la_Salceda-Treceno_Cantabria.html">Casona de la Salceda</a> <br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: EUR 83
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Treceno, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g816970-d573519-Reviews-Hotel_Palacio_Guevara-Treceno_Cantabria.html">Hotel Palacio Guevara</a> <br/>
+Piccolo hotel .
+Prezzo*: EUR 82
+<br/>
+30 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Treceno, Spagna </div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g816970-d2098797-Reviews-Posada_rural_Prada_a_Tope_Treceno-Treceno_Cantabria.html">Posada rural Prada a Tope Treceno</a> <br/>
+Piccolo hotel .
+Prezzo*: US$ 96
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Treceno, Spagna </div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<h1>Alloggi vicino a Treceno </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1736011-d1571652-Reviews-Posada_El_Marques_De_Trancadorio-Udias_Cantabria.html">Posada El Marques De Trancadorio</a> <br/>
+<b>Udias, Cantabria</b>. 5 km a est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 68
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Udias, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1495393-d1492777-Reviews-Manoloentrecomillas-Ruisenada_Cantabria.html">Manoloentrecomillas</a> <br/>
+<b>Ruisenada, Cantabria</b>. 5 km a nord di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 100
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Ruisenada, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1123494-Reviews-Posada_Rural_Rioturbio-Comillas_Cantabria.html">Posada Rural Rioturbio</a> <br/>
+<b>Comillas, Cantabria</b>. 5 km a nord di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 106
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776864-d279202-Reviews-El_Jardin_de_Carrejo_Hotel-Cabezon_de_la_Sal_Cantabria.html">El Jardin de Carrejo Hotel</a> <br/>
+<b>Cabezon de la Sal, Cantabria</b>. 7 km a sud est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 134
+<br/>
+27 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Cabezon de la Sal, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776890-d2452492-Reviews-Hospedaje_La_Espina-Pechon_Cantabria.html">Hospedaje La Espina</a> <br/>
+<b>Pechon, Cantabria</b>. 7 km a est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 59
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776865-d2038122-Reviews-La_Fuentona_De_Ruente-Ruente_Cantabria.html">La Fuentona De Ruente</a> <br/>
+<b>Ruente, Cantabria</b>. 9 km a sud est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 68
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1492439-Reviews-Posada_La_Solana_Montanesa-Comillas_Cantabria.html">Posada La Solana Montanesa</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 87
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644320-d629080-Reviews-Posada_Entre_Comillas-Ruiloba_Cantabria.html">Posada Entre Comillas</a> <br/>
+<b>Ruiloba, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Pensione.
+Prezzo*: EUR 78
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d535555-Reviews-Abba_Comillas_Golf_Hotel-Comillas_Cantabria.html">abba Comillas Golf Hotel</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 101
+<br/>
+18 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644320-d1122058-Reviews-Posada_Ruilobuca-Ruiloba_Cantabria.html">Posada Ruilobuca</a> <br/>
+<b>Ruiloba, Cantabria</b>. 9 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 93
+<br/>
+14 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Ruiloba, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1508186-Reviews-Hotel_Fuente_Real-Comillas_Cantabria.html">Hotel Fuente Real</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1734406-Reviews-Posada_Rural_Mari_Paz-Comillas_Cantabria.html">Posada Rural Mari Paz</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Pensione.
+Prezzo*: EUR 55
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d576604-Reviews-Josein-Comillas_Cantabria.html">Josein</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 142
+<br/>
+19 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d573935-Reviews-Marina_de_Campios-Comillas_Cantabria.html">Marina de Campios</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 117
+<br/>
+16 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d2073215-Reviews-Posada_La_Montanesuca-Comillas_Cantabria.html">Posada La Montanesuca</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: EUR 60
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1727040-Reviews-Apartamentos_Club_Condal-Comillas_Cantabria.html">Apartamentos Club Condal</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 126
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d573517-Reviews-Hotel_Apartamentos_Mar-Comillas_Cantabria.html">Hotel & Apartamentos Mar</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 120
+<br/>
+24 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d535977-Reviews-Comillas_Hotel-Comillas_Cantabria.html">Comillas Hotel</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 115
+<br/>
+20 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1497334-Reviews-Solatorre-Comillas_Cantabria.html">Solatorre</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 75
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d536007-Reviews-El_Tejo-Comillas_Cantabria.html">El Tejo</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 117
+<br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1900671-Reviews-Pasaje_San_Jorge-Comillas_Cantabria.html">Pasaje San Jorge</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Bed and Breakfast.
+Prezzo*: US$ 93
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1498861-Reviews-Paraiso-Comillas_Cantabria.html">Paraiso</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1596766-d1194836-Reviews-Posada_Los_Trastolillos-El_Tejo_Valdaliga_Cantabria.html">Posada Los Trastolillos</a> <br/>
+<b>El Tejo, Valdaliga</b>. 9 km a nord di Treceno
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 98
+<br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a El Tejo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d505105-Reviews-Hotel_Casal_del_Castro-Comillas_Cantabria.html">Hotel Casal del Castro</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Hotel <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d1453754-Reviews-Esmeralda-Comillas_Cantabria.html">Esmeralda</a> <br/>
+<b>Comillas, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Ostello <br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d1508977-Reviews-Los_Llaos-San_Vicente_de_la_Barquera_Cantabria.html">Los Llaos</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 9 km a nord di Treceno
+<br/>
+Piccolo hotel <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a San Vicente de la Barquera, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776864-d1804084-Reviews-Posada_Rural_de_Cabrojo-Cabezon_de_la_Sal_Cantabria.html">Posada Rural de Cabrojo</a> <br/>
+<b>Cabezon de la Sal, Cantabria</b>. 9 km a est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 63
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Cabezon de la Sal, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776864-d2216115-Reviews-Hotel_Valle_De_Cabezon-Cabezon_de_la_Sal_Cantabria.html">Hotel Valle De Cabezon</a> <br/>
+<b>Cabezon de la Sal, Cantabria</b>. 9 km a est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 93
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Cabezon de la Sal, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d536000-Reviews-Don_Ramon-San_Vicente_de_la_Barquera_Cantabria.html">Don Ramon</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 10 km a nord ovest di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 190
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2290581-d2300094-Reviews-Posada_Las_Mananitas-Cobreces_Cantabria.html">Posada Las Mananitas</a> <br/>
+<b>Cobreces, Cantabria</b>. 12 km a nord est di Treceno
+<br/>
+Rifugio.
+Prezzo*: US$ 106
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Cobreces, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d1049906-Reviews-Hotel_El_Canton-San_Vicente_de_la_Barquera_Cantabria.html">Hotel El Canton</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 12 km a nord ovest di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 74
+<br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.5.gif" alt="2.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a San Vicente de la Barquera, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d1494500-Reviews-Boga_Boga-San_Vicente_de_la_Barquera_Cantabria.html">Boga Boga</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 12 km a nord ovest di Treceno
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1990717-d1490213-Reviews-Hotel_Palacio_de_Caranceja-Caranceja_Cantabria.html">Hotel Palacio de Caranceja</a> <br/>
+<b>Caranceja, Cantabria</b>. 12 km a est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 101
+<br/>
+18 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Caranceja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d1185698-Reviews-Apartamentos_Rincon_del_Puerto-San_Vicente_de_la_Barquera_Cantabria.html">Apartamentos Rincon del Puerto</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 12 km a nord ovest di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 103
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a San Vicente de la Barquera, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d1872294-Reviews-Hotel_Miramar-San_Vicente_de_la_Barquera_Cantabria.html">Hotel Miramar</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 12 km a nord ovest di Treceno
+<br/>
+Hotel <br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a San Vicente de la Barquera, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d574546-Reviews-Hotel_Noray-San_Vicente_de_la_Barquera_Cantabria.html">Hotel Noray</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 12 km a nord ovest di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 82
+<br/>
+12 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a San Vicente de la Barquera, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776866-d1494939-Reviews-Casona_del_Peregrino-Cabuerniga_Cantabria.html">Casona del Peregrino</a> <br/>
+<b>Cabuerniga, Cantabria</b>. 12 km a sud di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 90
+<br/>
+53 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Cabuerniga, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d2516784-Reviews-Posada_El_Labrador-San_Vicente_de_la_Barquera_Cantabria.html">Posada El Labrador</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 12 km a nord ovest di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 47
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a San Vicente de la Barquera, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776866-d1192710-Reviews-El_camino_real_de_Selores-Cabuerniga_Cantabria.html">El camino real de Selores</a> <br/>
+<b>Cabuerniga, Cantabria</b>. 13 km a sud di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 154
+<br/>
+33 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Cabuerniga, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2360335-d1816010-Reviews-Hotel_Rincon_de_Anton-Abanillas_Cantabria.html">Hotel Rincon de Anton</a> <br/>
+<b>Abanillas, Cantabria</b>. 13 km a ovest di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 81
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Abanillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1878412-d1858127-Reviews-Hotel_Casona_del_Nansa-Herrerias_Cantabria.html">Hotel Casona del Nansa</a> <br/>
+<b>Herrerias, Cantabria</b>. 15 km a ovest di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 109
+<br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Herrerias, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776866-d1812369-Reviews-El_Roblon_de_Cabuerniga-Cabuerniga_Cantabria.html">El Roblon de Cabuerniga</a> <br/>
+<b>Cabuerniga, Cantabria</b>. 15 km a sud di Treceno
+<br/>
+Pensione <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776866-d2319835-Reviews-Posada_El_Roblon_De_Cabue-Cabuerniga_Cantabria.html">Posada El Roblon De Cabue</a> <br/>
+<b>Cabuerniga, Cantabria</b>. 15 km a sud di Treceno
+<br/>
+Pensione <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1080368-d639983-Reviews-Valle_de_Arco_Hotel-Prellezo_Cantabria.html">Valle de Arco Hotel</a> <br/>
+<b>Prellezo, Cantabria</b>. 15 km a nord ovest di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 102
+<br/>
+17 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Prellezo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2398514-d2434044-Reviews-Vivienda_Rural_Las_Candelas-Orena_Cantabria.html">Vivienda Rural Las Candelas</a> <br/>
+<b>Orena, Cantabria</b>. 15 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 104
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2449508-d2523520-Reviews-Posada_El_Salin-Munorrodero_Cantabria.html">Posada El Salin</a> <br/>
+<b>Munorrodero, Cantabria</b>. 17 km a ovest di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 84
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2398514-d2393745-Reviews-Posada_rural_Caborredondo-Orena_Cantabria.html">Posada rural Caborredondo</a> <br/>
+<b>Orena, Cantabria</b>. 17 km a nord est di Treceno
+<br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: US$ 107
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Orena, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2398514-d2432051-Reviews-Posada_San_Pedro-Orena_Cantabria.html">Posada San Pedro</a> <br/>
+<b>Orena, Cantabria</b>. 17 km a nord est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 83
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Orena, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642215-d1758861-Reviews-Posada_Amalia-San_Sebastian_de_Garabandal_Cantabria.html">Posada Amalia</a> <br/>
+<b>San Sebastian de Garabandal, Cantabria</b>. 17 km a sud ovest di Treceno
+<br/>
+Pensione.
+Prezzo*: EUR 30
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a San Sebastian de Garabandal, Spagna </div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642215-d1634457-Reviews-Aparthotel_Los_Angeles-San_Sebastian_de_Garabandal_Cantabria.html">Aparthotel, Los Angeles</a> <br/>
+<b>San Sebastian de Garabandal, Cantabria</b>. 17 km a sud ovest di Treceno
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642215-d505241-Reviews-Pousada_San_Miguel_Hotel-San_Sebastian_de_Garabandal_Cantabria.html">Pousada San Miguel Hotel</a> <br/>
+<b>San Sebastian de Garabandal, Cantabria</b>. 17 km a sud ovest di Treceno
+<br/>
+Hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a San Sebastian de Garabandal, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642215-d481279-Reviews-Hosteria_Garabandal-San_Sebastian_de_Garabandal_Cantabria.html">Hosteria Garabandal</a> <br/>
+<b>San Sebastian de Garabandal, Cantabria</b>. 17 km a sud ovest di Treceno
+<br/>
+Hotel <br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a San Sebastian de Garabandal, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1070772-d290357-Reviews-Hotel_Casona_Torre_de_Quijas-Quijas_Cantabria.html">Hotel Casona Torre de Quijas</a> <br/>
+<b>Quijas, Cantabria</b>. 17 km a est di Treceno
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 75
+<br/>
+40 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Quijas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642215-d2227174-Reviews-Ongi_Etorri-San_Sebastian_de_Garabandal_Cantabria.html">Ongi Etorri</a> <br/>
+<b>San Sebastian de Garabandal, Cantabria</b>. 17 km a sud ovest di Treceno
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a San Sebastian de Garabandal, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1804658-Reviews-Posada_Herran-Santillana_del_Mar_Cantabria.html">Posada Herran</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 17 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 33
+<br/>
+27 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776890-d1852725-Reviews-Posada_Mellante-Pechon_Cantabria.html">Posada Mellante</a> <br/>
+<b>Pechon, Cantabria</b>. 18 km a nord ovest di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 71
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Pechon, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2290581-d2462782-Reviews-Posada_Alfonso-Cobreces_Cantabria.html">Posada Alfonso</a> <br/>
+<b>Cobreces, Cantabria</b>. 18 km a est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 86
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Cobreces, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1507212-Reviews-Hotel_La_Casona_de_los_Guelitos-Santillana_del_Mar_Cantabria.html">Hotel La Casona de los Guelitos</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 97
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d2261505-Reviews-Hotel_Senorio_de_Altamira-Santillana_del_Mar_Cantabria.html">Hotel Senorio de Altamira</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 105
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.13 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776890-d1751309-Reviews-Hotel_Don_Pablo-Pechon_Cantabria.html">Hotel Don Pablo</a> <br/>
+<b>Pechon, Cantabria</b>. 18 km a nord ovest di Treceno
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 74
+<br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Pechon, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1591606-Reviews-Hotel_Conde_Duque-Santillana_del_Mar_Cantabria.html">Hotel Conde Duque</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 70
+<br/>
+24 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.0.gif" alt="2.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.22 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d581655-Reviews-Los_Hidalgos_Hotel-Santillana_del_Mar_Cantabria.html">Los Hidalgos Hotel</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 62
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.16 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1069964-Reviews-Posada_Araceli-Santillana_del_Mar_Cantabria.html">Posada Araceli</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 59
+<br/>
+39 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1172094-Reviews-Posada_Revolgo-Santillana_del_Mar_Cantabria.html">Posada Revolgo</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Ostello <br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1085042-Reviews-Hotel_Zabala-Santillana_del_Mar_Cantabria.html">Hotel Zabala</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 144
+<br/>
+14 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.11 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d315731-Reviews-Hotel_SIGLO_XVIII-Santillana_del_Mar_Cantabria.html">Hotel SIGLO XVIII</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 87
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1492564-Reviews-Hotel_Los_Angeles-Santillana_del_Mar_Cantabria.html">Hotel Los Angeles</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 98
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.17 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1495454-Reviews-Posada_de_la_Abadia-Santillana_del_Mar_Cantabria.html">Posada de la Abadia</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: EUR 64
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d535726-Reviews-Apartamentos_Capriccio-Santillana_del_Mar_Cantabria.html">Apartamentos Capriccio</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Appartamento.
+Prezzo*: US$ 97
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d594096-Reviews-La_Casona_de_Revolgo-Santillana_del_Mar_Cantabria.html">La Casona de Revolgo</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 98
+<br/>
+30 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1115498-Reviews-Hotel_Santillana-Santillana_del_Mar_Cantabria.html">Hotel Santillana</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 72
+<br/>
+19 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.11 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d942315-Reviews-Santillana_Hotel-Santillana_del_Mar_Cantabria.html">Santillana Hotel</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 55
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1943452-Reviews-Hosteria_Miguel_Angel-Santillana_del_Mar_Cantabria.html">Hosteria Miguel Angel</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 74
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d2489688-Reviews-La_Casa_Solariega-Santillana_del_Mar_Cantabria.html">La Casa Solariega</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 86
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1084723-Reviews-San_Marcos_Posada-Santillana_del_Mar_Cantabria.html">San Marcos Posada</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: US$ 113
+<br/>
+17 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.20 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g642214-d646134-Reviews-Hosteria_El_Pomar_Novales-Comillas_Cantabria.html">Hosteria El Pomar - Novales</a> <br/>
+<b>Comillas, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel <br/>
+17 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Comillas, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1185946-Reviews-Casona_Solar_de_Hidalgos-Santillana_del_Mar_Cantabria.html">Casona Solar de Hidalgos</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 124
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.13 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d456914-Reviews-Los_Infantes-Santillana_del_Mar_Cantabria.html">Los Infantes</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 53
+<br/>
+19 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d507759-Reviews-Posada_Restaurante_Camino_de_Altamira-Santillana_del_Mar_Cantabria.html">Posada-Restaurante Camino de Altamira</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 68
+<br/>
+32 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.16 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d507783-Reviews-Hotel_Salldemar-Santillana_del_Mar_Cantabria.html">Hotel Salldemar</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 68
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.14 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d573829-Reviews-Hospederia_Santillana-Santillana_del_Mar_Cantabria.html">Hospederia Santillana</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione <br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.14 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d456918-Reviews-Casa_del_Organista-Santillana_del_Mar_Cantabria.html">Casa del Organista</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 77
+<br/>
+72 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d2343760-Reviews-Hospedaje_Angelica-Santillana_del_Mar_Cantabria.html">Hospedaje Angelica</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: EUR 40
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1474655-Reviews-Posada_Los_Calderones-Santillana_del_Mar_Cantabria.html">Posada Los Calderones</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione <br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.18 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d456908-Reviews-Parador_de_Santillana-Santillana_del_Mar_Cantabria.html">Parador de Santillana</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: EUR 133
+<br/>
+33 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d456909-Reviews-Parador_de_Santillana_Gil_Blas-Santillana_del_Mar_Cantabria.html">Parador de Santillana Gil Blas</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 180
+<br/>
+44 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1544104-Reviews-Hotel_Colegiata-Santillana_del_Mar_Cantabria.html">Hotel Colegiata</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Piccolo hotel <br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d498303-Reviews-La_Casa_de_Guela-Santillana_del_Mar_Cantabria.html">La Casa de Guela</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel <br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.18 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1541753-Reviews-Posada_las_Nieves-Santillana_del_Mar_Cantabria.html">Posada las Nieves</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Ranch/Agriturismo/Chalet <br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1036069-Reviews-Hotel_Casona_Palacio_los_Caballeros-Santillana_del_Mar_Cantabria.html">Hotel Casona Palacio los Caballeros</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a est di Treceno
+<br/>
+Hotel.
+Prezzo*: EUR 82
+<br/>
+26 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d264776-Reviews-Hotel_Altamira-Santillana_del_Mar_Cantabria.html">Hotel Altamira</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 111
+<br/>
+36 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d295476-Reviews-Hotel_Casa_del_Marques-Santillana_del_Mar_Cantabria.html">Hotel Casa del Marques</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 170
+<br/>
+49 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g816971-d803616-Reviews-Posada_La_Cabana_de_Salmon-Vispieres_Cantabria.html">Posada La Cabana de Salmon</a> <br/>
+<b>Vispieres, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Pensione.
+Prezzo*: EUR 55
+<br/>
+19 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Vispieres, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d535997-Reviews-De_Santillana_Del_Mar-Santillana_del_Mar_Cantabria.html">De Santillana Del Mar</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Hotel.
+Prezzo*: US$ 202
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.12 a Santillana del Mar, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g319796-d1737014-Reviews-Bungalows_Albergue_David_Park-Santillana_del_Mar_Cantabria.html">Bungalows Albergue David Park</a> <br/>
+<b>Santillana del Mar, Cantabria</b>. 18 km a nord est di Treceno
+<br/>
+Bungalow/Area per campeggiatori <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1058622-d1895913-Reviews-Ochohermanas-Arenas_de_Iguna_Cantabria.html">Ochohermanas</a> <br/>
+<b>Arenas de Iguna, Cantabria</b>. 20 km a sud di Treceno
+<br/>
+Pensione <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g668559-d2002810-Reviews-El_Rincon_de_Bustio-Ribadedeva_Asturias.html">El Rincon de Bustio</a> <br/>
+<b>Ribadedeva, Asturias</b>. 20 km a ovest di Treceno
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 67
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Ribadedeva, Spagna </div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<a href="Resources-g816970-Maps-Treceno_Cantabria.html">Local Treceno Resources</a>
+</div> </div> </div>
+<div id="FOOT">
+<div class="corporate">
+<div class="col sidebar">
+<div class="block">
+<dl class="about">
+<dt>TripAdvisor chi siamo&#8482;</dt> <dd> TripAdvisor offre suggerimenti su hotel, villaggi turistici, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto ancora!</dd>
+</dl>
+</div> </div>
+<div class="col balance">
+<div class="block">
+<dl class="sep brand">
+<dt>
+<img class="sprite-identityFOOT" src="http://c1.tacdn.com/img2/x.gif" alt="TripAdvisor"/>
+</dt>
+<dd class="meta">
+Consigli su hotel, località turistiche, voli, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto altro ancora!
+</dd>
+</dl>
+<dl class="sep flags">
+<dt>Scegli un sito di TripAdvisor:</dt>
+<dd>
+<ul id="FLAGS">
+<li class="flag_item">
+<span id="flag_us" class="flag_link flag_us"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and vacations" title="Unbiased reviews of hotels, resorts and vacations"></span>
+</li>
+<li class="flag_item">
+<span id="flag_uk" class="flag_link flag_uk"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ca" class="flag_link flag_ca"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<a id="flag_es" class="flag_link flag_es" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Todos los alojamientos en Treceno" href="http://www.tripadvisor.es/AllLocations-g816970-c1-Hotels-Treceno_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Treceno"></a>
+</li>
+<li class="flag_item">
+<a id="flag_de" class="flag_link flag_de" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Alle Unterkünfte in Treceno" href="http://www.tripadvisor.de/AllLocations-g816970-c1-Hotels-Treceno_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle Unterkünfte in Treceno"></a>
+</li>
+<li class="flag_item">
+<a id="flag_fr" class="flag_link flag_fr" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Tous les hébergements Treceno " href="http://www.tripadvisor.fr/AllLocations-g816970-c1-Hotels-Treceno_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tous les hébergements Treceno "></a>
+</li>
+<li class="flag_item">
+<span id="flag_ja" class="flag_link flag_ja"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Trecenoのすべてのホテル" title="Trecenoのすべてのホテル"></span>
+</li>
+<li class="flag_item">
+<span id="flag_cn" class="flag_link flag_cn"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Treceno的所有酒店 " title="Treceno的所有酒店 "></span>
+</li>
+<li class="flag_item">
+<span id="flag_in" class="flag_link flag_in"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Treceno" title="All accommodation in Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sv" class="flag_link flag_sv"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alla boenden i Treceno" title="Alla boenden i Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_nl" class="flag_link flag_nl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle accommodaties in Treceno" title="Alle accommodaties in Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pt" class="flag_link flag_pt"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todas as acomodações em Treceno" title="Todas as acomodações em Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tr" class="flag_link flag_tr"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tüm Treceno bölgesi konaklamaları" title="Tüm Treceno bölgesi konaklamaları"></span>
+</li>
+<li class="flag_item">
+<span id="flag_da" class="flag_link flag_da"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle indlogeringsmuligheder i Treceño" title="Alle indlogeringsmuligheder i Treceño"></span>
+</li>
+<li class="flag_item">
+<span id="flag_mx" class="flag_link flag_mx"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Treceno" title="Todos los alojamientos en Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ie" class="flag_link flag_ie"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Treceno" title="All accommodation in Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_eg" class="flag_link flag_eg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="‫كل أماكن الإقامة في ‫Treceno‬‬" title="‫كل أماكن الإقامة في ‫Treceno‬‬"></span>
+</li>
+<li class="flag_item">
+<span id="flag_el" class="flag_link flag_el"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Όλες οι διαμονές σε Treceno" title="Όλες οι διαμονές σε Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_au" class="flag_link flag_au"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Treceno" title="All accommodation in Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_my" class="flag_link flag_my"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Treceno" title="All accommodation in Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sg" class="flag_link flag_sg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Treceno" title="All accommodation in Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ar" class="flag_link flag_ar"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Treceno" title="Todos los alojamientos en Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_id" class="flag_link flag_id"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Semua akomodasi di Treceno" title="Semua akomodasi di Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ko" class="flag_link flag_ko"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="트레세노의 모든 기타 숙박시설" title="트레세노의 모든 기타 숙박시설"></span>
+</li>
+<li class="flag_item">
+<span id="flag_no" class="flag_link flag_no"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle overnattingssteder i Treceno" title="Alle overnattingssteder i Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pl" class="flag_link flag_pl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Wszystkie noclegi w: Treceno" title="Wszystkie noclegi w: Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ru" class="flag_link flag_ru"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Все варианты проживания в этом месте: Treceno" title="Все варианты проживания в этом месте: Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_th" class="flag_link flag_th"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="ที่ัพักทั้งหมดใน Treceno" title="ที่ัพักทั้งหมดใน Treceno"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tw" class="flag_link flag_tw"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Treceno所有住宿地點" title="Treceno所有住宿地點"></span>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="sep internal">
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LzFLJHipIQptB')">Chi siamo</span> |
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('Lqd')">Scrivi una recensione</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">Proprietari</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqnVVMHJn9')">Feedback</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('L7ptSCVttRStISCyt')">Profili Aziendali</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">APT/Ufficio Informazioni Turistiche</span>
+</div>
+<div class="sep legal">
+<div class="copyright">
+© 2012 TripAdvisor LLC Tutti i diritti riservati. <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFLIVEatB')"> Condizioni d'uso </span> e <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFL2ESsJngB')"> Normativa sulla privacy</span> di TripAdvisor.</div>
+<div class="vfm_disclaimer">
+</div>
+<div class="disclaimer">
+* TripAdvisor LLC non si occupa di prenotazioni e non applica ai suoi utenti alcuna tariffa per il servizio offerto... (<span id="TERMS" class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdfPopupTerms('LzFL2ESnSCyQIVEatB')">leggi tutto</span>) </div>
+<div class="userAgent">
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</div>
+<div class="disclaimer">TripAdvisor LLC non è responsabile per il contenuto su altri siti web. Tasse e spese non incluse nelle offerte.</div>
+</div>
+</div> </div> </div>
+</div>
+</div>
+<script type="text/javascript">
+var lazyImgs = [
+];
+var lazyHtml = [
+];
+ta.queueForLoad( function() {
+window.setupLazyLoad();
+}, 'lazy load images');
+</script>
+<script type="text/javascript">
+ta.keep('startOffset', '');
+ta.store('page.geo', "816970");
+ta.store('page.location', "816970");
+ta.store('page.urlSafe', "http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g816970__2D__c1__2D__Hotels__2D__Treceno__5F__Cantabria__2E__html");
+ta.store('facebook.disableLogin', true);
+ta.store('facebook.apiKey', "f1e687a58f0cdac60b7af2317a5febb3");
+ta.store('facebook.appId', "162729813767876");
+ta.store('facebook.appName', "tripadvisor");
+ta.store('facebook.taServerTime', "1340407481");
+ta.store("facebook.invalidFBCreds", true);
+window.fbAsyncInit = ta.support.Facebook.init;
+ta.queueForLoad(function(){
+new Asset.javascript("http://connect.facebook.net/it_IT/all.js");
+}, 0, 'LoadFBJS');
+ta.keep('facebook.data.request', ['ACTIVITY_COUNT']);
+ta.queueForLoad( function() { Cookie.writeSession('FBH', sniffFacebook() ? 1 : 2); }, 'SniffFB' );
+if(getTAMGFooterViaAjax)
+{
+ta.queueForLoad( function() {
+getTAMGFooterViaAjax('RBF_Mobile_Footer', 816970, false, 'AllLocations');
+}, 'TAMGFooter');
+}
+</script>
+<script type='text/javascript'>
+</script>
+<div id="TAMGFooterHolder"></div>
+<div id="IP_IFRAME_HOLDER"></div>
+</body>
+<!-- st: 421 dc: 0 sc: 1 -->
+<!-- uid: T@T@ucCoUgcAAHy6RQYAAABC -->
+</html>
+<!-- Localized -->

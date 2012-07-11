@@ -1,0 +1,1538 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript">
+</script>
+<meta http-equiv="imagetoolbar" content="no"/>
+<title>Alloggi in Pisticci - TripAdvisor</title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache,must-revalidate"/>
+<meta http-equiv="expires" content="0"/>
+<meta property="og:image" content="http://c1.tacdn.com/img2/postimg.jpg" height="150px" width="150px"/>
+<meta name="keywords" content="Pisticci sistemazioni, Provincia di Matera, alloggio a Pisticci, Hotel Pisticci, villaggi in Pisticci, Bed and breakfasts in Pisticci, B&amp;B in Pisticci, Pensioni in Pisticci, tutti gli alberghi in Pisticci, tutti i villaggi in Pisticci, tutte le pensioni in Pisticci, Alloggi in Pisticci"/>
+<meta name="description" content="Alloggi in Pisticci: sfoglia la lista di tutti gli hotel, B&amp;B, villaggi, pensioni, e altre strutture in Pisticci. "/>
+<script type="text/javascript">
+(function () { /* ensure that console.log is a valid function */
+if (typeof console == "undefined") console = {};
+var funcs = ["log", "error", "warn"];
+for (var i = 0; i < funcs.length; i++) {
+if (console[funcs[i]] == undefined) {
+console[funcs[i]] = function () {};
+}
+}
+})()
+var pageInit = new Date();
+var jsGlobalMonths =   new Array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
+var jsGlobalDaysAbbrev =   new Array("lun","mar","mer","gio","ven","sab","dom");
+var jsGlobalDaysShort =   new Array("L","M","M","G","V","S","D");
+var sInvalidDates = "Le date inserite non sono valide. Reinserire le date corrette ed effettuare una nuova ricerca.";
+var sSelectDeparture = "Please select a departure airport.";
+var DATE_FORMAT_MMM_YYYY = "MMM YYYY";
+var jsGlobalDayOffset = 2 - 1;
+var DATE_FORMAT = { pattern: /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/, month: 2, date: 1, year: 3 };
+var formatDate = function(d, m, y) {return [d,++m,y].join("/");}
+var cal_month_header = function(month, year) {return cal_months[month]+"&nbsp;"+year;}
+var currencyLevel = new Array();
+var currencySymbol = new Array();
+var cur_prefix = false;
+var cur_postfix = true;
+currencySymbol["USD"] = new Array("$", false);
+currencyLevel["USD"] = new Array("Sotto $100","100" ,"Sotto $200","200" ,"Sotto $300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["EUR"] = new Array("€", false);
+currencyLevel["EUR"] = new Array("Sotto €75","75" ,"Sotto €150","150" ,"Sotto €225","225" ,"Qualunque prezzo","9999999" );
+currencySymbol["GBP"] = new Array("£", false);
+currencyLevel["GBP"] = new Array("Sotto £50","50" ,"Sotto £100","100" ,"Sotto £150","150" ,"Qualunque prezzo","9999999" );
+currencySymbol["CAD"] = new Array("CAD", false);
+currencyLevel["CAD"] = new Array("Sotto CAD100","100" ,"Sotto CAD200","200" ,"Sotto CAD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["AUD"] = new Array("AUD", false);
+currencyLevel["AUD"] = new Array("Sotto AUD100","100" ,"Sotto AUD200","200" ,"Sotto AUD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["CHF"] = new Array("CHF", false);
+currencyLevel["CHF"] = new Array("Sotto CHF100","100" ,"Sotto CHF200","200" ,"Sotto CHF300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["JPY"] = new Array("JPY", false);
+currencyLevel["JPY"] = new Array("Sotto JPY10000","10000" ,"Sotto JPY20000","20000" ,"Sotto JPY30000","30000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RMB"] = new Array("CNY ", false);
+currencyLevel["RMB"] = new Array("Sotto CNY 200","200" ,"Sotto CNY 500","500" ,"Sotto CNY 800","800" ,"Qualunque prezzo","9999999" );
+currencySymbol["INR"] = new Array("INR ", false);
+currencyLevel["INR"] = new Array("Sotto INR 4000","4000" ,"Sotto INR 8000","8000" ,"Sotto INR 12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["SEK"] = new Array("SEK", false);
+currencyLevel["SEK"] = new Array("Sotto SEK500","500" ,"Sotto SEK1000","1000" ,"Sotto SEK1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["BRL"] = new Array("R$", false);
+currencyLevel["BRL"] = new Array("Sotto R$200","200" ,"Sotto R$400","400" ,"Sotto R$600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["TRY"] = new Array("TL", false);
+currencyLevel["TRY"] = new Array("Sotto TL200","200" ,"Sotto TL400","400" ,"Sotto TL600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["DKK"] = new Array("kr.", false);
+currencyLevel["DKK"] = new Array("Sotto kr.500","500" ,"Sotto kr.1000","1000" ,"Sotto kr.1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["MXN"] = new Array("MXN", false);
+currencyLevel["MXN"] = new Array("Sotto MXN1000","1000" ,"Sotto MXN2000","2000" ,"Sotto MXN3000","3000" ,"Qualunque prezzo","9999999" );
+currencySymbol["ARS"] = new Array("ARS", false);
+currencyLevel["ARS"] = new Array("Sotto ARS300","300" ,"Sotto ARS600","600" ,"Sotto ARS900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["NOK"] = new Array("NOK", false);
+currencyLevel["NOK"] = new Array("Sotto NOK600","600" ,"Sotto NOK1200","1200" ,"Sotto NOK1800","1800" ,"Qualunque prezzo","9999999" );
+currencySymbol["PLN"] = new Array("PLN", false);
+currencyLevel["PLN"] = new Array("Sotto PLN300","300" ,"Sotto PLN600","600" ,"Sotto PLN900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["SGD"] = new Array("S$", false);
+currencyLevel["SGD"] = new Array("Sotto S$100","100" ,"Sotto S$200","200" ,"Sotto S$300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["THB"] = new Array("THB", false);
+currencyLevel["THB"] = new Array("Sotto THB4000","4000" ,"Sotto THB8000","8000" ,"Sotto THB12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["KRW"] = new Array("KRW", false);
+currencyLevel["KRW"] = new Array("Sotto KRW100000","100000" ,"Sotto KRW200000","200000" ,"Sotto KRW300000","300000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RUB"] = new Array("RUB", false);
+currencyLevel["RUB"] = new Array("Sotto RUB3000","3000" ,"Sotto RUB6000","6000" ,"Sotto RUB9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["IDR"] = new Array("IDR", false);
+currencyLevel["IDR"] = new Array("Sotto IDR1000000","1000000" ,"Sotto IDR2000000","2000000" ,"Sotto IDR3000000","3000000" ,"Qualunque prezzo","9999999" );
+currencySymbol["TWD"] = new Array("TWD", false);
+currencyLevel["TWD"] = new Array("Sotto TWD3000","3000" ,"Sotto TWD6000","6000" ,"Sotto TWD9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["MYR"] = new Array("RM", false);
+currencyLevel["MYR"] = new Array("Sotto RM300","300" ,"Sotto RM600","600" ,"Sotto RM900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["EGP"] = new Array("EGP", false);
+currencyLevel["EGP"] = new Array("Sotto EGP3000","3000" ,"Sotto EGP6000","6000" ,"Sotto EGP9000","9000" ,"Qualunque prezzo","9999999" );
+var groupingSize = 3;
+var groupingSeparator = ".";
+var JS_location_not_found = "Non abbiamo trovato la tua località.";
+var JS_click_to_expand = "Fai clic qui per espandere";
+var JS_choose_valid_city = "Seleziona una città valida dalla lista. ";
+var JS_select_a_cruise_line = "Please select a cruise line.";
+var JS_loading = "Caricamento...";
+var JS_Ajax_failed="Ci scusiamo per il disguido tecnico. Ti preghiamo di riprovare più tardi. Grazie.";
+var JS_maintenance="Al momento il nostro sito \u00e8 in manutenzione.  Ci scusiamo per l\'inconveniente... ritorneremo presto on-line.";
+var JS_Stop_search = "interrompi la ricerca";
+var JS_Resume_search = "Continua la ricerca";
+var JS_Thankyou = "Grazie";
+var JS_DateFormat = "dd/mm/aaaa";
+var JS_review_lost = "La tua recensione non verrà conservata.";
+var JS_coppa_sorry = "Ci dispiace....";
+var JS_coppa_privacy = "Secondo le informazioni inviateci, la tua iscrizione a TripAdvisor non rispetta i requisiti delle nostra <a href='/pages/privacy.html'>normativa sulla privacy</a>.";
+var JS_coppa_deleted = "La tua iscrizione è stata cancellata.";
+var JS_close = "Chiudi";
+var JS_close_image = "http://c1.tacdn.com/img2/langs/it/buttons/closeButton.gif";
+var JS_CHANGES_SAVED = "Modifiche salvate";
+var JS_community_on = "La community è stata attivata.";
+var lang_Close = JS_close;
+var JS_UpdatingYourResults = "Aggiornamento risultati &#8230;";
+var JS_OwnerPhoto_heading = "Grazie per aver inviato la tua richiesta a TripAdvisor. ";
+var JS_OwnerPhoto_subheading = "Elaboriamo la maggior parte degli elenchi e delle modifiche entro 5 giorni lavorativi. ";
+var JS_OwnerPhoto_more = "Aggiungi altre foto al tuo profilo";
+var JS_OwnerPhoto_return = "Ritorna al Centro per i Proprietari";
+var JS_NMN_Timeout_title = "Vuoi fare un altro tentativo?";
+var JS_NMN_Timeout_msg = "Il riconoscimento della località sta durando più a lungo del previsto.";
+var JS_NMN_Error_title = "Errore località";
+var JS_NMN_Error_msg   = "Abbiamo riscontrato un errore nell'identificazione della località";
+var JS_KeepTrying = "Prova ancora";
+var JS_TryAgain   = "Riprova";
+var js_0001 = "Scegli almeno un venditore dalla lista."; var js_0002 = "Scegli le date future."; var js_0003 = "Scegli una data di uscita che sia almeno un giorno dopo quella di entrata."; var js_0004 = "Scegli le date entro 330 giorni da oggi.";   var js_0005 = "Stiamo cercando un\'offerta ... l\'operazione potrebbe richiedere qualche minuto."; var js_0006 = "Ciò che hai scelto non ha subito modifiche."; var js_0010 = "Clicca nuovamente per aprire tutte le finestre o per regolare le impostazioni del browser per disattivare i pop-up blockers."; var js_0011 = "Aggiorna"; var js_0012 = "Prossima offerta"; var js_0013 = "Please click the \"Check Rates!\" button above to open each window."; var js_0014 = 'Verrà aperta una finestra per ogni offerta. Disattiva il sistema di blocco popup';
+var js_0015 = 'Confronta i prezzi';
+var js_invalid_dates_text = "Le date inserite non sono corrette. Modificale e poi effettua una nuova ricerca."; var js_invalid_dates_text_new = "Indica le date e controlla i prezzi"; var js_invalid_dates_text_new2 = "Indica le date per vedere i prezzi";
+var qcErrorImage = '<center><img src="http://c1.tacdn.com/img/langs/it/action_required_blinking.gif" /></center>';
+var selectedHotelName = ""; var cr_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr.gif';
+var cr_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr_check.gif';
+var cr_loc_logo = 'http://c1.tacdn.com/img2/checkrates/logo.gif';
+var cd_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd.png';
+var cd_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd_check.png';
+var JS_Any_Date = "data";
+var JS_Update_List = "Aggiorna la lista";
+var sNexusTitleMissing = "The title must be populated";
+var JS_Challenge="Challenge";
+var JS_TIQ_Level="Level";
+var JS_TIQ="Travel IQ";
+var JS_TIQ_Pts="pts";
+var RATING_STRINGS = [
+"Fai clic per votare",
+"Pessimo",
+"Scarso",
+"Nella media",
+"Molto buono",
+"Eccellente"
+];
+var overlayLightbox = false;
+if("" != "")
+{
+overlayLightbox = true;
+}
+var isTakeOver = false;
+var overlayOptions = "";
+var overlayBackupLoc = "574760";
+var gmapDomain = "maps.google.com";
+var mapChannel = "ta.PRODUCTION";
+var bingMapsLang = "it".toLowerCase();
+var bingMapsCountry = "".toLowerCase();
+var bingMapsBaseUrl = "http://www.bing.com/maps/default.aspx?cc=it&";
+var googleMapsBaseUrl = "http://maps.google.it/?";
+var serverPool = "A";
+var reg_overhaul = true;
+var cssPhotoViewerAsset = "http://c1.tacdn.com/css2/photos_with_inline_review-v3071001267b.css";
+var jsPhotoViewerAsset = 'http://c1.tacdn.com/js3/src/ta/photos/Viewer-v908545329b.js';
+var jsPhotoViewerTALSOAsset = 'http://c1.tacdn.com/js3/src/TALSO-v12862410b.js';
+var jsJWPlayerHelperAsset = 'http://c1.tacdn.com/js3/src/ta/media/jwplayerHelper-v330147509b.js';
+var hideOnLoad = new Array();
+var IS_DEBUG = false;
+var CDNHOST = "http://c1.tacdn.com";
+var VERSION_MAP = {
+"ta-widgets-typeahead.js": "http://c1.tacdn.com/js3/ta-widgets-typeahead-c-v3965823353b.js",
+"ta-media.js": "http://c1.tacdn.com/js3/ta-media-c-v1954280484b.js"
+}
+var cookieDomain = ".tripadvisor.it";
+var modelLocaleCountry = "";
+var ipCountryId = "187768";
+var pageServlet = "AllLocations";
+var crPageServlet = "AllLocations";
+var cdnHost = "http://c1.tacdn.com";
+var userLoggedIn = false;
+var migrationMember = false;
+var savesEnable = false;
+var flagsUrl = '/AllLocations-g947829-c1-Hotels-Pisticci_Province_of_Matera_Basilicata.html';
+var noPopClass = "no_cpu";
+var flagsSettings = [
+];
+var isIPad = false;
+var lang_Close  = "Chiudi";
+var img_loop    = "http://c1.tacdn.com/img2/generic/site/loop.gif";
+var communityEnabled = true
+var footerFlagFormat = "all_loc_flag_hotel_ffffe1a6";
+var modelLocId = "947829";
+var modelGeoId = "947829";
+var gClient = 'gme-tripadvisorinc';
+var gKey = '';
+var gLang = '';
+var mapsJs = 'http://c1.tacdn.com/js3/ta-maps-bing-c-v2700478145b.js';
+var mapsJsLite = 'http://c1.tacdn.com/js3/lib/TAMap-v2716202300b.js';
+var memoverlayCSS = 'http://c1.tacdn.com/css2/pages/memberoverlay-v503555936b.css';
+var flagsFlyoutCSS = 'http://c1.tacdn.com/css2/overlays/flags/flags_flyout-v2900952896b.css';
+var emailHotelCSS = 'http://c1.tacdn.com/css2/t4b/emailhotel-v2182175311b.css';
+var sameGeoActivityCSS = 'http://c1.tacdn.com/css2/modules/same_geo_activity-v2647240916b.css';
+var passportStampsCSS = 'http://c1.tacdn.com/css2/modules/passport_stamps-v1996473260b.css';
+var wiFriHasMember =  false  ;
+var JS_SECURITY_TOKEN = "AAABOBYMsI6DklG4iAv7VnY8LrlZrZ5Whp5Z5g==";
+var addOverlayCloseClass = "";
+var isOverlayServlet = "";
+var IS_OVERLAY_DEBUG = "false";
+</script>
+<script type='text/javascript' src='http://c1.tacdn.com/js3/tripadvisor-c-v3957526096b.js'></script>
+<script type="text/javascript">var taSecureToken = "AAABOBYMsI6DklG4iAv7VnY8LrlZrZ5Whp5Z5g=="</script>
+<script type="text/javascript">
+var geoParam = "&geo=947829";
+</script>
+<link rel='stylesheet' type='text/css' media='screen, print' href='http://c1.tacdn.com/css2/universal_new-it-v2383219892b.css'/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/modules/checkrates_2col-v935430319b.css"/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css/brandCompat.css"/>
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE6-v2472753202b.css" />
+        <![endif]-->
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE7-v2962607074b.css" />
+        <![endif]-->
+<script type="text/javascript" src="http://c1.tacdn.com/js/tripcompat.js"></script>
+<script type="text/javascript">
+function showCascadeSearch(sHotelID, bFromPop, sLinkType, sArea) {
+if(sHotelID == null || sHotelID == '') {return;}
+var tgtUrl = "/HotelDateSearch?d=" + sHotelID + "&returnTo=http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g947829__2D__c1__2D__Hotels__2D__Pisticci__5F__Province__5F__of__5F__Matera__5F__Basilicata__2E__html&fromPop=" + bFromPop;
+tgtUrl = tgtUrl + "&area=" + sArea;
+var sFromSource = "AllLocations";
+if(sFromSource !="") {
+if(sLinkType && sLinkType != "") {sFromSource += sLinkType;}
+tgtUrl += "&from=" + sFromSource;
+}
+var w = window.open ( tgtUrl, "CascadeSearch", "toolbar=0,resizable=1,menubar=0,location=0,status=0,scrollbars=1,width=245,height=610,screenX=5,screenY=5,left=5,top=5");
+if (w != null) {
+w.opener = self;
+w.focus();
+}
+}
+</script>
+<style type="text/css">
+body{}
+</style>
+<!-- web06b.tripadvisor.com -->
+<!-- PRODUCTION -->
+<!-- PRODUCTION -->
+<script type="text/javascript" src="http://c1.tacdn.com/js3/src/trsupp-v283141723b.js"></script>
+</head>
+<body class="ltr domn_it withFtr globalNav2011_reset">
+<div id="fb-root"></div>
+<div style="width:973px; margin:0 auto 20px; padding:5px; background-color:#ffe5a5; font-size:.75em;">
+<div style="padding:6px 0 8px 79px;background: url(http://c1.tacdn.com/img2/icons/64/bv_alert.gif) 12px 2px no-repeat;line-height:167.5%;">
+<span>
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+</span>
+<span dir="ltr">
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('q5FyiiycV8LnGEiaV')">Google Chrome</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</span>
+</div>
+</div><!--/ BAD_VERSION -->
+<div id="iframediv"></div>
+<div id="PAGE">
+<div id="HEAD" class="sprite-gradient1x32_grn">
+<div class="masthead">
+<div class="container">
+<span class="topLogo">
+<span class="fkLnk hvrIE6 logoWrap" onClick="setPID(5045); ta.util.ASDF.asdf('L')"><img class="sprite-taLogo" src="http://c1.tacdn.com/img2/x.gif" width="362" height="42" alt="Il portale di viaggi più grande del mondo"/></span>
+</span>
+<h1 class="header language_select">Alloggi in Pisticci </h1>
+</div>
+<div class="navSrch navSrchLang sprite-magGlass_gry" id="SEARCH_LHN">
+<form method="get" action="/Search" onsubmit="return ta.call('ta.common.search.validate',event);">
+<input id="mainSearch" type="text" name="q" class=" text hasLangSelect sL focusClear" autocomplete="off" onfocus="ta.call('ta.widgets.typeahead.factory.global',event,this,'SITEWIDE','ta.widgets.typeahead.events.onSelectGlobalTypeAhead',{maxChoices:16,minLength:3,showOnlyTypedChoices:true,geo:'947829'}); return ta.call('ta.common.search.clearOnFocus',event);" onblur="return ta.call('ta.common.search.defaultOnBlur',event);" value="Città, nome dell'hotel ecc."/>
+<div class="submit_button sprite-gradient1x27_gry"><input id="mainSearchSubmit" onclick="setPID(3825);" onkeydown="var submitPID = function(event) { if(event.key && event.key=='enter') setPID(3826); }; submitPID(e);" type="submit" name="sub-search" class="submit" value="CERCA" title="CERCA"/></div>
+<input name="lang" id="SEARCH_LANG_SELECT_INPUT" type="hidden" value=" it"/> <div id="SEARCH_LANG_SELECT">
+<div id="SEARCH_LANG_SELECTED" class="langSelect sprite-arrow_dropdown_gry" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="SEARCH_LANG_SELECT_POPUP" class="hidden">
+<div id="lang_it" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="lang_all" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Tutte le lingue</div>
+</div> </div>
+<input type="hidden" name="geo" value="947829"/>
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g947829__2D__c1__2D__Hotels__2D__Pisticci__5F__Province__5F__of__5F__Matera__5F__Basilicata__2E__html"/>
+</form>
+</div>
+<div class="tabsBar">
+<ul class="tabs">
+<li class="tabItem  hvrIE6"><a href="index.html" class="tabLink  pid4921">
+Home
+</a>
+</li>
+<li class="tabItem dropDown hvrIE6">
+<a href="Tourism-g947829-Pisticci_Province_of_Matera_Basilicata-Vacations.html" class="tabLink arwLink geoLink" onclick="ta.util.cookie.setPIDCookie(4964)">
+<span class="arrow_text">Pisticci</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5">
+</a>
+<ul class="subNav">
+<li class="subItem">
+<a class="subLink " href="Tourism-g947829-Pisticci_Province_of_Matera_Basilicata-Vacations.html" onclick="ta.util.cookie.setPIDCookie(4971)">
+Vacanze Pisticci
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Hotels-g947829-Pisticci_Province_of_Matera_Basilicata-Hotels.html" onclick="ta.util.cookie.setPIDCookie(4972)">
+Hotel Pisticci
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Flights-g947829-Pisticci_Province_of_Matera_Basilicata-Cheap_Discount_Airfares.html" onclick="ta.util.cookie.setPIDCookie(4973)">
+Voli per Pisticci
+</a>
+</li>
+<li class="subItem">
+<a class="subLink selForums" href="ShowForum-g947829-i18925-Pisticci_Province_of_Matera_Basilicata.html" onclick="ta.util.cookie.setPIDCookie(4980)">
+Forum Viaggi Pisticci
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Restaurants-g947829-Pisticci_Province_of_Matera_Basilicata.html" onclick="ta.util.cookie.setPIDCookie(4974)">
+Ristoranti: Pisticci
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Attractions-g947829-Activities-Pisticci_Province_of_Matera_Basilicata.html" onclick="ta.util.cookie.setPIDCookie(4977)">
+Cose da fare: Pisticci
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="LocationPhotos-g947829-Pisticci_Province_of_Matera_Basilicata.html" onclick="ta.util.cookie.setPIDCookie(4979)">
+Foto di Pisticci
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem  hvrIE6"><a href="Hotels-g947829-Pisticci_Province_of_Matera_Basilicata-Hotels.html" class="tabLink  pid4965">
+Hotel
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Flights-g947829-Pisticci_Province_of_Matera_Basilicata-Cheap_Discount_Airfares.html" class="tabLink  pid4966">
+Voli
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Restaurants-g947829-Pisticci_Province_of_Matera_Basilicata.html" class="tabLink  pid4967">
+Ristoranti
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Attractions-g947829-Activities-Pisticci_Province_of_Matera_Basilicata.html" class="tabLink  pid4969">
+Cose da fare
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="TravelersChoice/index.html" class="tabLink  pid5087">
+Il meglio del 2012
+</a>
+</li>
+<li id="FRIENDSTAB" class="tabItem tooltip hvrIE6"><a href="Friends-rnauth/index.html" class="tabLink tooltip pid18784" rel="nofollow" onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">
+I tuoi amici <span id="FBL" class="sprite-facebook15x15"></span>
+</a>
+<div class='overlayContents'><div class='inner2'><div class='help'><div class='hdr'>È meglio viaggiare con gli amici.</div><div class='ttbody'>Lasciati ispirare dagli amici, condividi i tuoi programmi di viaggio. <a href='Friends-rnauth/index.html' alt='Maggiori informazioni' onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">Maggiori informazioni</a></div></div></div></div>
+</li>
+<script>
+var taExtraOverlayJs = 'http://c1.tacdn.com/js3/ta-overlays-c-v1032881204b.js';
+registerOnLoad(function() {
+if (ta.common && ta.common.header) { ta.common.header.checkFriendsToolTip(); } }, 'friendsTooltip');
+</script>
+<li class="tabItem dropDown hvrIE6" onmouseover="ta.call('ta.common.header.hideFriendsToolTip', event, this);">
+<span class="tabLink arwLink"><span class="arrow_text">Più</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5"></span> <ul class="subNav">
+<li class="subItem">
+<a href="ShowForum-g947829-i18925-Pisticci_Province_of_Matera_Basilicata.html" class="subLink ">Forum Viaggi
+</a>
+</li>
+<li class="subItem">
+<a href="apps/index.html" class="subLink pid18876">App
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem altItem warLink sprite-gradient1x32_grn_drk last hvrIE6">
+<span class="writeReview fkLnk hvrIE6 tabLink" onclick="ta.util.cookie.setPIDCookie(1434); ta.util.ASDF.asdf('LqdWVGII26mbqgqguuuxizSxiSIqgbccRinJISiCtqHyAdkvXAqHnUqHz1qHwStISnnSQQoqnQQwEisSCnVQQoqnQQiTQQoqnQQDJIVEJQQoqnQQ7JtScSnJIJxiGIac')">Scrivi una recensione</span>
+</li>
+</ul> </div>
+<div id="USER_PREFS" class="prfs">
+<ul class="opts">
+<li class="optItem fbConnect">
+<div class="sprite-facebook15x15 fkLnk hvrIE6  no_cpu " onclick=" ta.store('facebook.trackingpid',1882);  ta.call('ta.support.Facebook.loginButton', event, this);">Accedi&nbsp;attraverso&nbsp;Facebook</div>
+</li>
+<li class="optItem login"><span class="fkLnk hvrIE6" onClick="ta.util.cookie.setPIDCookie(429);ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNIN');">Entra</span></li>
+<li id="register" class="optItem register flyoutX" onclick="ta.util.cookie.setPIDCookie(427); ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNUP');"><span class="fkLnk hvrIE6">Iscriviti ora!</span>
+<li class="optItem" id="MOBHDRLNK">
+<span class="fkLnk hvrIE6 optItemLink sprite-mobile_org mobile_org" onClick="ta.util.cookie.setPIDCookie(4109); ta.util.ASDF.asdf('LDiHScVb22t')">Applicazione mobile GRATIS</span>
+</li>
+<li id="INTLPOP" class="optItem intSites last" onclick="ta.call('ta.overlays.Factory.intlPopup', event, this)"><span class="sprite-arrow_dropdown_blu arrowDn"><img class="sprite-flag" src="http://c1.tacdn.com/img2/x.gif" alt="Siti internazionali" title="Siti internazionali"/></span></li> </ul> </div> </div> </div>
+<div id="MAINWRAP">
+<div id="MAIN" class="AllLocations" rel="v:itemreviewed">
+<div id="LEFTNAV" class="col">
+<h2 class="geoHeader">Pisticci</h2>
+<div class="lhnHigh onShow ">
+<ul>
+<li class="firstItem">
+<a class="k_overview" href="Tourism-g947829-Pisticci_Province_of_Matera_Basilicata-Vacations.html">
+Vacanze Pisticci</a>
+</li>
+<li>
+<a class="k_hotels" href="Hotels-g947829-Pisticci_Province_of_Matera_Basilicata-Hotels.html">
+Hotel Pisticci</a>
+</li>
+<li>
+<a class="k_flights" href="Flights-g947829-Pisticci_Province_of_Matera_Basilicata-Cheap_Discount_Airfares.html">
+Voli per Pisticci</a>
+</li>
+<li>
+<a class="k_deals" href="SmartDeals-g947829-Pisticci_Province_of_Matera_Basilicata-Hotel-Deals.html">
+Offerte per Pisticci</a>
+</li>
+<li class=" selForums">
+<a class="k_forums pid2995" href="ShowForum-g947829-i18925-Pisticci_Province_of_Matera_Basilicata.html">
+Forum Viaggi</a>
+</li>
+<li class=" navTitle">
+Altre info su Pisticci
+</li>
+<li>
+<a class="k_dining" href="Restaurants-g947829-Pisticci_Province_of_Matera_Basilicata.html" onclick="setOneTimeCookie('mcreset','true')">
+Ristoranti</a>
+</li>
+<li>
+<a class="k_things_to_do" href="Attractions-g947829-Activities-Pisticci_Province_of_Matera_Basilicata.html">
+Cose da fare</a>
+</li>
+<li>
+<a class="u_/LocationPhotos-g947829-Pisticci_Province_of_Matera_Basilicata.html k_photos" href="LocationPhotos-g947829-Pisticci_Province_of_Matera_Basilicata.html" onclick="return ta.call('ta.overlays.Factory.photosLB', event, this);">
+Foto</a>
+</li>
+<li>
+<a class="js_popup k_maps" href="LocalMaps-g947829-Pisticci-Area.html">
+Mappa</a>
+</li>
+<li class=" navTitle">
+Offerte per Pisticci
+</li>
+<li>
+<a class="k_packages" href="Packages-g947829-Vacation-Package-Discount-Pisticci_Province_of_Matera_Basilicata.html">
+Offerte di viaggio</a>
+</li>
+</ul>
+</div>
+<div id="NEWSLETTER_CALLOUT" class="bx01">
+<dl>
+<dt class="title">Newsletter gratuita</dt> <dd class="content">
+<p>Ti interessa <b>Pisticci</b>?</p>
+<p>Ti invieremo aggiornamenti settimanali con <b>offerte, recensioni ed articoli più recenti su Pisticci</b>.</p>
+<form action="/twsubscriptions" method="get">
+<fieldset>
+<input type="hidden" name="subSrc" value="twhomepage"/>
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g947829__2D__c1__2D__Hotels__2D__Pisticci__5F__Province__5F__of__5F__Matera__5F__Basilicata__2E__html"/>
+<input type="hidden" name="from" value="twhomepage"/>
+<input type="hidden" name="pid" value="431"/>
+<input type="hidden" name="geo" value="947829"/>
+<input class="text focusClear" type="text" name="email" value="Inserisci la tua e-mail " onfocus="return ta.call('ta.common.search.clearOnFocus',event);"/> <div class="button"><input class="submit" type="submit" name="sub-tw" value="Registrati"/></div> </fieldset>
+</form>
+</dd>
+</dl>
+</div>
+<div class="bx01 deals swirllinks">
+<div class="h2">Esplora il mondo. Recensioni e informazioni su oltre 400.000 località su TripAdvisor</div>
+<div class="swirllinkset"> <div class=" header">Mete di viaggio</div>
+<ul>
+<li><a href="Tourism-g187497-Barcelona_Catalonia-Vacations.html">Vacanze Barcellona</a></li>
+<li><a href="Hotels-g194799-Livigno_Valtelline_Valley_Province_of_Sondrio_Lombardy-Hotels.html">Hotel Livigno</a></li>
+</ul>
+</div> <div class="swirllinkset"> <div class=" header">Hotel</div>
+<ul>
+<li><a href="Hotel_Review-g297555-d1828967-Reviews-Sol_Y_Mar_Riva_Mar-Sharm_El_Sheikh_South_Sinai_Red_Sea_and_Sinai.html">Sol Y Mar Riva Mar a Sharm El Sheikh</a></li>
+<li><a href="Hotel_Review-g666406-d2068322-Reviews-Jingang_Hotel-Zhanjiang_Guangdong.html">Jingang Hotel</a></li>
+<li><a href="Hotel_Review-g194799-d314250-Reviews-Hotel_Loredana-Livigno_Valtelline_Valley_Province_of_Sondrio_Lombardy.html">Hotel Loredana Livigno</a></li>
+<li><a href="Hotel_Review-g187849-d320669-Reviews-ATAHOTEL_Contessa_Jolanda-Milan_Lombardy.html">ATAHOTEL Contessa Jolanda a Milano</a></li>
+<li><a href="Hotel_Review-g297555-d299730-Reviews-Renaissance_Golden_View_Beach_Resort_Sharm_El_Sheikh-Sharm_El_Sheikh_South_Sinai_Red_Sea_and_Sinai.html">Renaissance Golden View Beach Resort Sharm El Sheikh</a></li>
+<li><a href="Hotel_Review-g190454-d627838-Reviews-Bag_Map_Apartment_Guesthouse-Vienna.html">Bag &amp; Map Apartment Guesthouse a Vienna</a></li>
+<li><a href="Hotel_Review-g194821-d239208-Reviews-Grand_Hotel_Victoria-Menaggio_Lake_Como_Lombardy.html">Grand Hotel Victoria a Menaggio</a></li>
+<li><a href="Hotel_Review-g580219-d1132439-Reviews-Villaggio_Saturno-Marina_di_Camerota_Province_of_Salerno_Campania.html">Villaggio Saturno Hotel</a></li>
+</ul>
+</div> </div>
+</div>
+<div id="BODYCON" class=" col poolA" typeof="v:Organization">
+<div class="crumbs ">
+<ul>
+<li>
+<a href="index.html" id="HOME">Home</a>
+<ul>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g4-Europe-Vacations.html">Europa</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187768-Italy-Vacations.html">Italia</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187771-Basilicata-Vacations.html">Basilicata</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g2440589-Province_of_Matera_Basilicata-Vacations.html">Provincia di Matera</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g947829-Pisticci_Province_of_Matera_Basilicata-Vacations.html">Pisticci</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="wrpHeader">
+</div>
+<p style="margin-top: 20px;">
+<b>Alloggi in Pisticci </b>
+| <a href="AllLocations-g947829-c2-Attractions-Pisticci_Province_of_Matera_Basilicata.html">Attrazioni a Pisticci </a>
+| <a href="AllLocations-g947829-c3-Restaurants-Pisticci_Province_of_Matera_Basilicata.html">Ristoranti a Pisticci</a>
+</p>
+<p style="font-size: small">
+Sali: <a href="AllLocations-g2440589-Places-Province_of_Matera_Basilicata.html">Località in Provincia di Matera </a>
+</p>
+<h1>Alloggi in Pisticci </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947829-d1146395-Reviews-Agriturismo_casa_Panetta-Pisticci_Province_of_Matera_Basilicata.html">Agriturismo casa Panetta</a> <br/>
+Hotel <br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Pisticci, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947829-d1056138-Reviews-Azienda_Agricola_Agrituristica_I_Caselli-Pisticci_Province_of_Matera_Basilicata.html">Azienda Agricola Agrituristica "I Caselli"</a> <br/>
+Ranch/Agriturismo/Chalet <br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Pisticci, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947829-d290350-Reviews-Hotel_Degli_Argonauti-Pisticci_Province_of_Matera_Basilicata.html">Hotel Degli Argonauti</a> <br/>
+Hotel.
+Prezzo*: US$ 215
+<br/>
+39 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Pisticci, Italia </div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947829-d2336295-Reviews-Il_Calanco-Pisticci_Province_of_Matera_Basilicata.html">Il Calanco</a> <br/>
+Hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Pisticci, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947829-d1745141-Reviews-Torre_Fiore_Hotel_Masseria-Pisticci_Province_of_Matera_Basilicata.html">Torre Fiore Hotel Masseria</a> <br/>
+Hotel.
+Prezzo*: EUR 216
+<br/>
+49 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Pisticci, Italia </div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<h1>Alloggi vicino a Pisticci </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1931483-d1916682-Reviews-Soprattutto_B_B-Montalbano_Jonico_Province_of_Matera_Basilicata.html">Soprattutto B&B</a> <br/>
+<b>Montalbano Jonico, Provincia di Matera</b>. 12 km a sud di Pisticci
+<br/>
+Bed and Breakfast <br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Montalbano Jonico, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1918714-d1897486-Reviews-Hotel_Giardino_Giamperduto-Bernalda_Province_of_Matera_Basilicata.html">Hotel Giardino Giamperduto</a> <br/>
+<b>Bernalda, Provincia di Matera</b>. 12 km a est di Pisticci
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 118
+<br/>
+12 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Bernalda, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d311220-Reviews-San_Teodoro_Nuovo-Matera_Province_of_Matera_Basilicata.html">San Teodoro Nuovo</a> <br/>
+<b>Matera, Provincia di Matera</b>. 17 km a est di Pisticci
+<br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: EUR 90
+<br/>
+13 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1644659-d231296-Reviews-Antique_Farmhouse_San_Teodoro_Nuovo-San_Basilio_Mottola_Province_of_Taranto_Puglia.html">Antique Farmhouse San Teodoro Nuovo</a> <br/>
+<b>San Basilio Mottola, Provincia di Taranto</b>. 17 km a est di Pisticci
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1392015-d1150238-Reviews-Villaggio_Torre_del_Faro-Scanzano_Jonico_Province_of_Matera_Basilicata.html">Villaggio Torre del Faro</a> <br/>
+<b>Scanzano Jonico, Provincia di Matera</b>. 18 km a sud est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 158
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1392015-d1159789-Reviews-Hotel_Portogreco-Scanzano_Jonico_Province_of_Matera_Basilicata.html">Hotel Portogreco</a> <br/>
+<b>Scanzano Jonico, Provincia di Matera</b>. 20 km a sud est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 189
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Scanzano Jonico, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1020248-d1092390-Reviews-B_B_Apricot-Policoro_Province_of_Matera_Basilicata.html">B&B Apricot</a> <br/>
+<b>Policoro, Provincia di Matera</b>. 21 km a sud di Pisticci
+<br/>
+Bed and Breakfast <br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Policoro, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1020248-d1017172-Reviews-Apricot_Bed_and_Breakfast-Policoro_Province_of_Matera_Basilicata.html">Apricot Bed and Breakfast</a> <br/>
+<b>Policoro, Provincia di Matera</b>. 21 km a sud di Pisticci
+<br/>
+Appartamento <br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Policoro, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947674-d1049772-Reviews-Motel_San_Marco-Metaponto_Province_of_Matera_Basilicata.html">Motel San Marco</a> <br/>
+<b>Metaponto, Provincia di Matera</b>. 21 km a est di Pisticci
+<br/>
+Motel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1183482-d1520764-Reviews-Masseria_Macchia_e_Relais_San_Pio-Marina_di_Pisticci_Province_of_Matera_Basilicata.html">Masseria Macchia e Relais San Pio</a> <br/>
+<b>Marina di Pisticci, Provincia di Matera</b>. 21 km a est di Pisticci
+<br/>
+Pensione.
+Prezzo*: US$ 187
+<br/>
+122 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Marina di Pisticci, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1007734-d969488-Reviews-Valle_Rita-Ginosa_Province_of_Taranto_Puglia.html">Valle Rita</a> <br/>
+<b>Ginosa, Provincia di Taranto</b>. 21 km a nord est di Pisticci
+<br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: EUR 131
+<br/>
+23 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Ginosa, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1020248-d1390153-Reviews-Albergo_Calla-Policoro_Province_of_Matera_Basilicata.html">Albergo Calla</a> <br/>
+<b>Policoro, Provincia di Matera</b>. 23 km a sud est di Pisticci
+<br/>
+Hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Policoro, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1020248-d649208-Reviews-Grand_Hotel_Marinagri-Policoro_Province_of_Matera_Basilicata.html">Grand Hotel Marinagri</a> <br/>
+<b>Policoro, Provincia di Matera</b>. 23 km a sud est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 193
+<br/>
+27 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Policoro, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1020248-d1390161-Reviews-Hotel_Ristorante_Calla-Policoro_Province_of_Matera_Basilicata.html">Hotel Ristorante Calla</a> <br/>
+<b>Policoro, Provincia di Matera</b>. 23 km a sud est di Pisticci
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1896793-Reviews-Agriturismo_L_Assiolo-Matera_Province_of_Matera_Basilicata.html">Agriturismo L'Assiolo</a> <br/>
+<b>Matera, Provincia di Matera</b>. 23 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.32 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947674-d563097-Reviews-Alessidamo_Club-Metaponto_Province_of_Matera_Basilicata.html">Alessidamo Club</a> <br/>
+<b>Metaponto, Provincia di Matera</b>. 23 km a est di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 98
+<br/>
+19 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Metaponto, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947674-d2053633-Reviews-Residence_Ex_Colonia_Marina-Metaponto_Province_of_Matera_Basilicata.html">Residence Ex Colonia Marina</a> <br/>
+<b>Metaponto, Provincia di Matera</b>. 25 km a est di Pisticci
+<br/>
+Rifugio.
+Prezzo*: EUR 25
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947674-d2082829-Reviews-Hotel_Residence_Kennedy-Metaponto_Province_of_Matera_Basilicata.html">Hotel Residence Kennedy</a> <br/>
+<b>Metaponto, Provincia di Matera</b>. 25 km a est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 70
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Metaponto, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947674-d947678-Reviews-Magna_Grecia_Hotel_Village-Metaponto_Province_of_Matera_Basilicata.html">Magna Grecia Hotel Village</a> <br/>
+<b>Metaponto, Provincia di Matera</b>. 25 km a est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 149
+<br/>
+73 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Metaponto, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1575046-d1021628-Reviews-Torreserena_Village_Bluserena-Marina_di_Ginosa_Province_of_Taranto_Puglia.html">Torreserena Village - Bluserena</a> <br/>
+<b>Marina di Ginosa, Provincia di Taranto</b>. 26 km a est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 191
+<br/>
+126 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Marina di Ginosa, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1020248-d1390154-Reviews-Heraclea_Hotel_Residence-Policoro_Province_of_Matera_Basilicata.html">Heraclea Hotel Residence</a> <br/>
+<b>Policoro, Provincia di Matera</b>. 26 km a sud est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 109
+<br/>
+54 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Policoro, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1020248-d2277307-Reviews-Policoro_Village-Policoro_Province_of_Matera_Basilicata.html">Policoro Village</a> <br/>
+<b>Policoro, Provincia di Matera</b>. 26 km a sud est di Pisticci
+<br/>
+Appartamento.
+Prezzo*: EUR 72
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Policoro, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1575046-d631097-Reviews-Stella_Maris_Hotel_Ristorante-Marina_di_Ginosa_Province_of_Taranto_Puglia.html">Stella Maris Hotel Ristorante</a> <br/>
+<b>Marina di Ginosa, Provincia di Taranto</b>. 28 km a est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 176
+<br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Marina di Ginosa, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1575046-d2277285-Reviews-Hotel_Emiliano-Marina_di_Ginosa_Province_of_Taranto_Puglia.html">Hotel Emiliano</a> <br/>
+<b>Marina di Ginosa, Provincia di Taranto</b>. 29 km a est di Pisticci
+<br/>
+Hotel <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Marina di Ginosa, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1575046-d1825919-Reviews-Masseria_San_Vincenzo-Marina_di_Ginosa_Province_of_Taranto_Puglia.html">Masseria San Vincenzo</a> <br/>
+<b>Marina di Ginosa, Provincia di Taranto</b>. 29 km a est di Pisticci
+<br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: EUR 70
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Marina di Ginosa, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1575046-d1109774-Reviews-Agriturismo_La_Stornara-Marina_di_Ginosa_Province_of_Taranto_Puglia.html">Agriturismo La Stornara</a> <br/>
+<b>Marina di Ginosa, Provincia di Taranto</b>. 29 km a est di Pisticci
+<br/>
+Ranch/Agriturismo/Chalet.
+Prezzo*: EUR 102
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Marina di Ginosa, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1575046-d1998925-Reviews-B_B_Le_Coccinelle-Marina_di_Ginosa_Province_of_Taranto_Puglia.html">B&B "Le Coccinelle"</a> <br/>
+<b>Marina di Ginosa, Provincia di Taranto</b>. 29 km a est di Pisticci
+<br/>
+Rifugio.
+Prezzo*: EUR 50
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Marina di Ginosa, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2289642-Reviews-Villa_Rossana-Matera_Province_of_Matera_Basilicata.html">Villa Rossana</a> <br/>
+<b>Matera, Provincia di Matera</b>. 29 km a nord di Pisticci
+<br/>
+Pensione.
+Prezzo*: US$ 75
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.17 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2275022-Reviews-Le_Sorbole-Matera_Province_of_Matera_Basilicata.html">Le Sorbole</a> <br/>
+<b>Matera, Provincia di Matera</b>. 29 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947666-d1490611-Reviews-Hotel_Siris-Nova_Siri_Province_of_Matera_Basilicata.html">Hotel Siris</a> <br/>
+<b>Nova Siri, Provincia di Matera</b>. 31 km a sud di Pisticci
+<br/>
+Hotel <br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Nova Siri, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947666-d1133418-Reviews-Hotel_Imperiale-Nova_Siri_Province_of_Matera_Basilicata.html">Hotel Imperiale</a> <br/>
+<b>Nova Siri, Provincia di Matera</b>. 31 km a sud di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 117
+<br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Nova Siri, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2355272-Reviews-Masseria_Del_Pantaleone-Matera_Province_of_Matera_Basilicata.html">Masseria Del Pantaleone</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Ranch/Agriturismo/Chalet <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.5.gif" alt="2.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2435955-Reviews-I_Tre_Fiori-Matera_Province_of_Matera_Basilicata.html">I Tre Fiori</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.23 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d615100-Reviews-Relais_Ridola-Matera_Province_of_Matera_Basilicata.html">Relais Ridola</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 96
+<br/>
+31 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947666-d2297364-Reviews-B_B_Nova_Siri-Nova_Siri_Province_of_Matera_Basilicata.html">B&B Nova Siri</a> <br/>
+<b>Nova Siri, Provincia di Matera</b>. 31 km a sud di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: US$ 85
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Nova Siri, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1105595-Reviews-B_B_Casastella-Matera_Province_of_Matera_Basilicata.html">B&B Casastella</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 78
+<br/>
+94 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947666-d563095-Reviews-Villaggio_Turistico_Akiris-Nova_Siri_Province_of_Matera_Basilicata.html">Villaggio Turistico Akiris</a> <br/>
+<b>Nova Siri, Provincia di Matera</b>. 31 km a sud di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 131
+<br/>
+71 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Nova Siri, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d664899-Reviews-Acad_Sassi-Matera_Province_of_Matera_Basilicata.html">Acad Sassi</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 59
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.45 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d586825-Reviews-Residence_Del_Casalnuovo-Matera_Province_of_Matera_Basilicata.html">Residence Del Casalnuovo</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 86
+<br/>
+66 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1874000-Reviews-Domina_Sassi-Matera_Province_of_Matera_Basilicata.html">Domina Sassi</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.41 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d530515-Reviews-Palace_Hotel-Matera_Province_of_Matera_Basilicata.html">Palace Hotel</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 78
+<br/>
+18 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.20 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947666-d947669-Reviews-Villaggio_Giardini_D_Oriente-Nova_Siri_Province_of_Matera_Basilicata.html">Villaggio Giardini D'Oriente</a> <br/>
+<b>Nova Siri, Provincia di Matera</b>. 31 km a sud di Pisticci
+<br/>
+Hotel <br/>
+110 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Nova Siri, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1793604-Reviews-Basiliani_Hotel-Matera_Province_of_Matera_Basilicata.html">Basiliani Hotel</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 104
+<br/>
+87 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g947666-d671685-Reviews-Villaggio_Nova_Siri-Nova_Siri_Province_of_Matera_Basilicata.html">Villaggio Nova Siri</a> <br/>
+<b>Nova Siri, Provincia di Matera</b>. 31 km a sud di Pisticci
+<br/>
+Hotel <br/>
+49 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Nova Siri, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2322610-Reviews-B_B_En_Suite-Matera_Province_of_Matera_Basilicata.html">B&B En Suite</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.26 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1463017-Reviews-Alle_Malve-Matera_Province_of_Matera_Basilicata.html">Alle Malve</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+20 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.13 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1514276-Reviews-La_Dolce_Vita_B_B-Matera_Province_of_Matera_Basilicata.html">La Dolce Vita B & B</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 68
+<br/>
+131 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2095452-Reviews-Donna_Eleonora_Bed_Breakfast-Matera_Province_of_Matera_Basilicata.html">Donna Eleonora Bed & Breakfast</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 68
+<br/>
+26 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Matera, Italia </div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2289828-Reviews-Alla_Piazzetta-Matera_Province_of_Matera_Basilicata.html">Alla Piazzetta</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.39 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d567204-Reviews-La_Casa_di_Lucio-Matera_Province_of_Matera_Basilicata.html">La Casa di Lucio</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 217
+<br/>
+28 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.11 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d656960-Reviews-Caveoso_Hotel-Matera_Province_of_Matera_Basilicata.html">Caveoso Hotel</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 108
+<br/>
+81 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.18 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1471512-Reviews-B_B_Sassolino-Matera_Province_of_Matera_Basilicata.html">B&B Sassolino</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 67
+<br/>
+34 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1234342-Reviews-Albergo_Italia-Matera_Province_of_Matera_Basilicata.html">Albergo Italia</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 112
+<br/>
+14 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.21 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2173881-Reviews-B_B_Il_Sorriso_dei_Sassi-Matera_Province_of_Matera_Basilicata.html">B&B Il Sorriso dei Sassi</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: US$ 98
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.25 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d586671-Reviews-Sant_Angelo_Hotel-Matera_Province_of_Matera_Basilicata.html">Sant'Angelo Hotel</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 223
+<br/>
+110 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.12 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d929366-Reviews-Albergo_del_Sedile-Matera_Province_of_Matera_Basilicata.html">Albergo del Sedile</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 87
+<br/>
+39 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2446303-Reviews-Suite_del_Corso-Matera_Province_of_Matera_Basilicata.html">Suite del Corso</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Villa.
+Prezzo*: EUR 90
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1209538-Reviews-Le_Dodici_Lune-Matera_Province_of_Matera_Basilicata.html">Le Dodici Lune</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: US$ 111
+<br/>
+30 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.18 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1507628-Reviews-B_B_Nel_Muro-Matera_Province_of_Matera_Basilicata.html">B & B Nel Muro</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 45
+<br/>
+89 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.16 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2099017-Reviews-B_B_Del_Castiglione-Matera_Province_of_Matera_Basilicata.html">B&B Del Castiglione</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.33 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1406713-Reviews-Park_Hotel-Matera_Province_of_Matera_Basilicata.html">Park Hotel</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2436156-Reviews-Santa_Marta-Matera_Province_of_Matera_Basilicata.html">Santa Marta</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Pensione.
+Prezzo*: EUR 87
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.14 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d584493-Reviews-Locanda_di_San_Martino_Hotel_e_Thermae-Matera_Province_of_Matera_Basilicata.html">Locanda di San Martino - Hotel e Thermae</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 106
+<br/>
+292 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2290617-Reviews-Albergo_Roma-Matera_Province_of_Matera_Basilicata.html">Albergo Roma</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 54
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.34 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1554098-Reviews-B_B_La_Casa_nei_Sassi-Matera_Province_of_Matera_Basilicata.html">B&B La Casa nei Sassi</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 57
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.36 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2227650-Reviews-Residence_Sassi_San_Gennaro-Matera_Province_of_Matera_Basilicata.html">Residence Sassi San Gennaro</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 123
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.26 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1372655-Reviews-Hotel_San_Domenico_Al_Piano-Matera_Province_of_Matera_Basilicata.html">Hotel San Domenico Al Piano</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 97
+<br/>
+65 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.13 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2067188-Reviews-Casa_Lamanna-Matera_Province_of_Matera_Basilicata.html">Casa Lamanna</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.19 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1885274-Reviews-B_B_Capriotti-Matera_Province_of_Matera_Basilicata.html">B&B Capriotti</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.28 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1159465-Reviews-Palazzo_Gattini-Matera_Province_of_Matera_Basilicata.html">Palazzo Gattini</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 224
+<br/>
+78 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1687449-Reviews-Palazzo_Viceconte-Matera_Province_of_Matera_Basilicata.html">Palazzo Viceconte</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 146
+<br/>
+14 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1223129-Reviews-Le_Monacelle-Matera_Province_of_Matera_Basilicata.html">Le Monacelle</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 88
+<br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.24 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d735902-Reviews-L_Hotel_in_Pietra-Matera_Province_of_Matera_Basilicata.html">L'Hotel in Pietra</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel di charme.
+Prezzo*: EUR 147
+<br/>
+155 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2450529-Reviews-La_Casa_di_Ele-Matera_Province_of_Matera_Basilicata.html">La Casa di Ele</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 70
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d314998-Reviews-Hotel_Sassi-Matera_Province_of_Matera_Basilicata.html">Hotel Sassi</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 88
+<br/>
+97 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.14 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1776869-Reviews-San_Giovanni_Vecchio_Residenza-Matera_Province_of_Matera_Basilicata.html">San Giovanni Vecchio Residenza</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 100
+<br/>
+11 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.42 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1063518-d1164417-Reviews-Casale_Donnaperna-Senise_Province_of_Potenza_Basilicata.html">Casale Donnaperna</a> <br/>
+<b>Senise, Provincia di Potenza</b>. 31 km a sud ovest di Pisticci
+<br/>
+Ranch/Agriturismo/Chalet <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1759233-Reviews-Centro_Estetico_Benessere_Gocce_di_Stella-Matera_Province_of_Matera_Basilicata.html">Centro Estetico & Benessere Gocce di Stella</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel <br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.19 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1390179-Reviews-Il_Piccolo_Albergo-Matera_Province_of_Matera_Basilicata.html">Il Piccolo Albergo</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Pensione (B&B).
+Prezzo*: EUR 77
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.24 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d754350-Reviews-Hilton_Garden_Inn_Matera-Matera_Province_of_Matera_Basilicata.html">Hilton Garden Inn Matera</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 109
+<br/>
+142 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.15 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1725804-Reviews-B_B_Sax_Barisano-Matera_Province_of_Matera_Basilicata.html">B&B Sax Barisano</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: EUR 78
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.31 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d656209-Reviews-B_B_San_Rocco-Matera_Province_of_Matera_Basilicata.html">B&B San Rocco</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.25 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1234089-Reviews-Sextantio_Le_Grotte_della_Civita-Matera_Province_of_Matera_Basilicata.html">Sextantio Le Grotte della Civita</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 244
+<br/>
+74 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d623363-Reviews-Residence_San_Giorgio-Matera_Province_of_Matera_Basilicata.html">Residence San Giorgio</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 94
+<br/>
+82 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d643058-Reviews-Casa_d_Imperio-Matera_Province_of_Matera_Basilicata.html">Casa d'Imperio</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.43 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1776545-Reviews-Fra_i_Sassi_Residence-Matera_Province_of_Matera_Basilicata.html">Fra i Sassi Residence</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Bed and Breakfast.
+Prezzo*: US$ 101
+<br/>
+27 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.11 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d585874-Reviews-Best_Value-Matera_Province_of_Matera_Basilicata.html">Best Value</a> <br/>
+<b>Matera, Provincia di Matera</b>. 31 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 59
+<br/>
+9 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s2.5.gif" alt="2.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.27 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d2051577-Reviews-Bed_Breakfast_Conte_Gattini-Matera_Province_of_Matera_Basilicata.html">Bed & Breakfast Conte Gattini</a> <br/>
+<b>Matera, Provincia di Matera</b>. 33 km a nord di Pisticci
+<br/>
+Rifugio.
+Prezzo*: EUR 65
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1900754-Reviews-La_Masseria_San_Giuliano-Matera_Province_of_Matera_Basilicata.html">La Masseria San Giuliano</a> <br/>
+<b>Matera, Provincia di Matera</b>. 33 km a nord di Pisticci
+<br/>
+Ranch/Agriturismo/Chalet <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d567544-Reviews-Il_Chiostro_delle_Cererie-Matera_Province_of_Matera_Basilicata.html">Il Chiostro delle Cererie</a> <br/>
+<b>Matera, Provincia di Matera</b>. 33 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 82
+<br/>
+18 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.23 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1390178-Reviews-Hotel_Nazionale-Matera_Province_of_Matera_Basilicata.html">Hotel Nazionale</a> <br/>
+<b>Matera, Provincia di Matera</b>. 33 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 83
+<br/>
+27 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d1731637-Reviews-FastmHotel-Matera_Province_of_Matera_Basilicata.html">FastmHotel</a> <br/>
+<b>Matera, Provincia di Matera</b>. 33 km a nord di Pisticci
+<br/>
+Piccolo hotel <br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.40 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187772-d231266-Reviews-Hotel_Del_Campo-Matera_Province_of_Matera_Basilicata.html">Hotel Del Campo</a> <br/>
+<b>Matera, Provincia di Matera</b>. 33 km a nord di Pisticci
+<br/>
+Hotel.
+Prezzo*: US$ 138
+<br/>
+23 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.22 a Matera, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g194719-d506600-Reviews-Nicotel_Pineto-Castellaneta_Province_of_Taranto_Puglia.html">Nicotel Pineto</a> <br/>
+<b>Castellaneta, Provincia di Taranto</b>. 34 km a est di Pisticci
+<br/>
+Hotel.
+Prezzo*: EUR 74
+<br/>
+46 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.12 a Castellaneta, Italia </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g194719-d1882532-Reviews-Alborea_Eco_Lodge_Suites-Castellaneta_Province_of_Taranto_Puglia.html">Alborea Eco Lodge Suites</a> <br/>
+<b>Castellaneta, Provincia di Taranto</b>. 34 km a est di Pisticci
+<br/>
+Resort.
+Prezzo*: US$ 297
+<br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Castellaneta, Italia </div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<a href="Resources-g947829-Maps-Pisticci_Province_of_Matera_Basilicata.html">Local Pisticci Resources</a>
+</div> </div> </div>
+<div id="FOOT">
+<div class="corporate">
+<div class="col sidebar">
+<div class="block">
+<dl class="about">
+<dt>TripAdvisor chi siamo&#8482;</dt> <dd> TripAdvisor offre suggerimenti su hotel, villaggi turistici, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto ancora!</dd>
+</dl>
+</div> </div>
+<div class="col balance">
+<div class="block">
+<dl class="sep brand">
+<dt>
+<img class="sprite-identityFOOT" src="http://c1.tacdn.com/img2/x.gif" alt="TripAdvisor"/>
+</dt>
+<dd class="meta">
+Consigli su hotel, località turistiche, voli, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto altro ancora!
+</dd>
+</dl>
+<dl class="sep flags">
+<dt>Scegli un sito di TripAdvisor:</dt>
+<dd>
+<ul id="FLAGS">
+<li class="flag_item">
+<span id="flag_us" class="flag_link flag_us"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and vacations" title="Unbiased reviews of hotels, resorts and vacations"></span>
+</li>
+<li class="flag_item">
+<span id="flag_uk" class="flag_link flag_uk"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ca" class="flag_link flag_ca"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<a id="flag_es" class="flag_link flag_es" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Todos los alojamientos en Pisticci" href="http://www.tripadvisor.es/AllLocations-g947829-c1-Hotels-Pisticci_Province_of_Matera_Basilicata.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Pisticci"></a>
+</li>
+<li class="flag_item">
+<a id="flag_de" class="flag_link flag_de" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Alle Unterkünfte in Pisticci" href="http://www.tripadvisor.de/AllLocations-g947829-c1-Hotels-Pisticci_Province_of_Matera_Basilicata.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle Unterkünfte in Pisticci"></a>
+</li>
+<li class="flag_item">
+<a id="flag_fr" class="flag_link flag_fr" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Tous les hébergements Pisticci " href="http://www.tripadvisor.fr/AllLocations-g947829-c1-Hotels-Pisticci_Province_of_Matera_Basilicata.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tous les hébergements Pisticci "></a>
+</li>
+<li class="flag_item">
+<span id="flag_ja" class="flag_link flag_ja"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="ピスチッチのすべてのホテル" title="ピスチッチのすべてのホテル"></span>
+</li>
+<li class="flag_item">
+<span id="flag_cn" class="flag_link flag_cn"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Pisticci的所有酒店 " title="Pisticci的所有酒店 "></span>
+</li>
+<li class="flag_item">
+<span id="flag_in" class="flag_link flag_in"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Pisticci" title="All accommodation in Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sv" class="flag_link flag_sv"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alla boenden i Pisticci" title="Alla boenden i Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_nl" class="flag_link flag_nl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle accommodaties in Pisticci" title="Alle accommodaties in Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pt" class="flag_link flag_pt"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todas as acomodações em Pisticci" title="Todas as acomodações em Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tr" class="flag_link flag_tr"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tüm Pisticci bölgesi konaklamaları" title="Tüm Pisticci bölgesi konaklamaları"></span>
+</li>
+<li class="flag_item">
+<span id="flag_da" class="flag_link flag_da"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle indlogeringsmuligheder i Pisticci" title="Alle indlogeringsmuligheder i Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_mx" class="flag_link flag_mx"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Pisticci" title="Todos los alojamientos en Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ie" class="flag_link flag_ie"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Pisticci" title="All accommodation in Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_eg" class="flag_link flag_eg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="‫كل أماكن الإقامة في ‫Pisticci‬‬" title="‫كل أماكن الإقامة في ‫Pisticci‬‬"></span>
+</li>
+<li class="flag_item">
+<span id="flag_el" class="flag_link flag_el"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Όλες οι διαμονές σε Pisticci" title="Όλες οι διαμονές σε Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_au" class="flag_link flag_au"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Pisticci" title="All accommodation in Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_my" class="flag_link flag_my"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Pisticci" title="All accommodation in Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sg" class="flag_link flag_sg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Pisticci" title="All accommodation in Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ar" class="flag_link flag_ar"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Pisticci" title="Todos los alojamientos en Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_id" class="flag_link flag_id"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Semua akomodasi di Pisticci" title="Semua akomodasi di Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ko" class="flag_link flag_ko"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="피스티치의 모든 기타 숙박시설" title="피스티치의 모든 기타 숙박시설"></span>
+</li>
+<li class="flag_item">
+<span id="flag_no" class="flag_link flag_no"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle overnattingssteder i Pisticci" title="Alle overnattingssteder i Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pl" class="flag_link flag_pl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Wszystkie noclegi w: Pisticci" title="Wszystkie noclegi w: Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ru" class="flag_link flag_ru"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Все варианты проживания в этом месте: Pisticci" title="Все варианты проживания в этом месте: Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_th" class="flag_link flag_th"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="ที่ัพักทั้งหมดใน Pisticci" title="ที่ัพักทั้งหมดใน Pisticci"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tw" class="flag_link flag_tw"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Pisticci所有住宿地點" title="Pisticci所有住宿地點"></span>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="sep internal">
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LzFLJHipIQptB')">Chi siamo</span> |
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('Lqd')">Scrivi una recensione</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">Proprietari</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqnVVMHJn9')">Feedback</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('L7ptSCVttRStISCyt')">Profili Aziendali</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">APT/Ufficio Informazioni Turistiche</span>
+</div>
+<div class="sep legal">
+<div class="copyright">
+© 2012 TripAdvisor LLC Tutti i diritti riservati. <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFLIVEatB')"> Condizioni d'uso </span> e <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFL2ESsJngB')"> Normativa sulla privacy</span> di TripAdvisor.</div>
+<div class="vfm_disclaimer">
+</div>
+<div class="disclaimer">
+* TripAdvisor LLC non si occupa di prenotazioni e non applica ai suoi utenti alcuna tariffa per il servizio offerto... (<span id="TERMS" class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdfPopupTerms('LzFL2ESnSCyQIVEatB')">leggi tutto</span>) </div>
+<div class="userAgent">
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</div>
+<div class="disclaimer">TripAdvisor LLC non è responsabile per il contenuto su altri siti web. Tasse e spese non incluse nelle offerte.</div>
+</div>
+</div> </div> </div>
+</div>
+</div>
+<script type="text/javascript">
+var lazyImgs = [
+];
+var lazyHtml = [
+];
+ta.queueForLoad( function() {
+window.setupLazyLoad();
+}, 'lazy load images');
+</script>
+<script type="text/javascript">
+ta.keep('startOffset', '');
+ta.store('page.geo', "947829");
+ta.store('page.location', "947829");
+ta.store('page.urlSafe', "http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g947829__2D__c1__2D__Hotels__2D__Pisticci__5F__Province__5F__of__5F__Matera__5F__Basilicata__2E__html");
+ta.store('facebook.disableLogin', true);
+ta.store('facebook.apiKey', "f1e687a58f0cdac60b7af2317a5febb3");
+ta.store('facebook.appId', "162729813767876");
+ta.store('facebook.appName', "tripadvisor");
+ta.store('facebook.taServerTime', "1340399726");
+ta.store("facebook.invalidFBCreds", true);
+window.fbAsyncInit = ta.support.Facebook.init;
+ta.queueForLoad(function(){
+new Asset.javascript("http://connect.facebook.net/it_IT/all.js");
+}, 0, 'LoadFBJS');
+ta.keep('facebook.data.request', ['ACTIVITY_COUNT']);
+ta.queueForLoad( function() { Cookie.writeSession('FBH', sniffFacebook() ? 1 : 2); }, 'SniffFB' );
+if(getTAMGFooterViaAjax)
+{
+ta.queueForLoad( function() {
+getTAMGFooterViaAjax('RBF_Mobile_Footer', 947829, false, 'AllLocations');
+}, 'TAMGFooter');
+}
+</script>
+<script type='text/javascript'>
+</script>
+<div id="TAMGFooterHolder"></div>
+<div id="IP_IFRAME_HOLDER"></div>
+</body>
+<!-- st: 391 dc: 2 sc: 1 -->
+<!-- uid: T@TgbsCoUgYAAEq2J14AAABw -->
+</html>
+<!-- Localized -->

@@ -1,0 +1,1489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript">
+</script>
+<meta http-equiv="imagetoolbar" content="no"/>
+<title>Alloggi in Castro Urdiales - TripAdvisor</title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache,must-revalidate"/>
+<meta http-equiv="expires" content="0"/>
+<meta property="og:image" content="http://c1.tacdn.com/img2/postimg.jpg" height="150px" width="150px"/>
+<meta name="keywords" content="Castro Urdiales sistemazioni, Cantabria, alloggio a Castro Urdiales, Hotel Castro Urdiales, villaggi in Castro Urdiales, Bed and breakfasts in Castro Urdiales, B&amp;B in Castro Urdiales, Pensioni in Castro Urdiales, tutti gli alberghi in Castro Urdiales, tutti i villaggi in Castro Urdiales, tutte le pensioni in Castro Urdiales, Alloggi in Castro Urdiales"/>
+<meta name="description" content="Alloggi in Castro Urdiales: sfoglia la lista di tutti gli hotel, B&amp;B, villaggi, pensioni, e altre strutture in Castro Urdiales. "/>
+<script type="text/javascript">
+(function () { /* ensure that console.log is a valid function */
+if (typeof console == "undefined") console = {};
+var funcs = ["log", "error", "warn"];
+for (var i = 0; i < funcs.length; i++) {
+if (console[funcs[i]] == undefined) {
+console[funcs[i]] = function () {};
+}
+}
+})()
+var pageInit = new Date();
+var jsGlobalMonths =   new Array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
+var jsGlobalDaysAbbrev =   new Array("lun","mar","mer","gio","ven","sab","dom");
+var jsGlobalDaysShort =   new Array("L","M","M","G","V","S","D");
+var sInvalidDates = "Le date inserite non sono valide. Reinserire le date corrette ed effettuare una nuova ricerca.";
+var sSelectDeparture = "Please select a departure airport.";
+var DATE_FORMAT_MMM_YYYY = "MMM YYYY";
+var jsGlobalDayOffset = 2 - 1;
+var DATE_FORMAT = { pattern: /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/, month: 2, date: 1, year: 3 };
+var formatDate = function(d, m, y) {return [d,++m,y].join("/");}
+var cal_month_header = function(month, year) {return cal_months[month]+"&nbsp;"+year;}
+var currencyLevel = new Array();
+var currencySymbol = new Array();
+var cur_prefix = false;
+var cur_postfix = true;
+currencySymbol["USD"] = new Array("$", false);
+currencyLevel["USD"] = new Array("Sotto $100","100" ,"Sotto $200","200" ,"Sotto $300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["EUR"] = new Array("€", false);
+currencyLevel["EUR"] = new Array("Sotto €75","75" ,"Sotto €150","150" ,"Sotto €225","225" ,"Qualunque prezzo","9999999" );
+currencySymbol["GBP"] = new Array("£", false);
+currencyLevel["GBP"] = new Array("Sotto £50","50" ,"Sotto £100","100" ,"Sotto £150","150" ,"Qualunque prezzo","9999999" );
+currencySymbol["CAD"] = new Array("CAD", false);
+currencyLevel["CAD"] = new Array("Sotto CAD100","100" ,"Sotto CAD200","200" ,"Sotto CAD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["AUD"] = new Array("AUD", false);
+currencyLevel["AUD"] = new Array("Sotto AUD100","100" ,"Sotto AUD200","200" ,"Sotto AUD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["CHF"] = new Array("CHF", false);
+currencyLevel["CHF"] = new Array("Sotto CHF100","100" ,"Sotto CHF200","200" ,"Sotto CHF300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["JPY"] = new Array("JPY", false);
+currencyLevel["JPY"] = new Array("Sotto JPY10000","10000" ,"Sotto JPY20000","20000" ,"Sotto JPY30000","30000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RMB"] = new Array("CNY ", false);
+currencyLevel["RMB"] = new Array("Sotto CNY 200","200" ,"Sotto CNY 500","500" ,"Sotto CNY 800","800" ,"Qualunque prezzo","9999999" );
+currencySymbol["INR"] = new Array("INR ", false);
+currencyLevel["INR"] = new Array("Sotto INR 4000","4000" ,"Sotto INR 8000","8000" ,"Sotto INR 12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["SEK"] = new Array("SEK", false);
+currencyLevel["SEK"] = new Array("Sotto SEK500","500" ,"Sotto SEK1000","1000" ,"Sotto SEK1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["BRL"] = new Array("R$", false);
+currencyLevel["BRL"] = new Array("Sotto R$200","200" ,"Sotto R$400","400" ,"Sotto R$600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["TRY"] = new Array("TL", false);
+currencyLevel["TRY"] = new Array("Sotto TL200","200" ,"Sotto TL400","400" ,"Sotto TL600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["DKK"] = new Array("kr.", false);
+currencyLevel["DKK"] = new Array("Sotto kr.500","500" ,"Sotto kr.1000","1000" ,"Sotto kr.1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["MXN"] = new Array("MXN", false);
+currencyLevel["MXN"] = new Array("Sotto MXN1000","1000" ,"Sotto MXN2000","2000" ,"Sotto MXN3000","3000" ,"Qualunque prezzo","9999999" );
+currencySymbol["ARS"] = new Array("ARS", false);
+currencyLevel["ARS"] = new Array("Sotto ARS300","300" ,"Sotto ARS600","600" ,"Sotto ARS900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["NOK"] = new Array("NOK", false);
+currencyLevel["NOK"] = new Array("Sotto NOK600","600" ,"Sotto NOK1200","1200" ,"Sotto NOK1800","1800" ,"Qualunque prezzo","9999999" );
+currencySymbol["PLN"] = new Array("PLN", false);
+currencyLevel["PLN"] = new Array("Sotto PLN300","300" ,"Sotto PLN600","600" ,"Sotto PLN900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["SGD"] = new Array("S$", false);
+currencyLevel["SGD"] = new Array("Sotto S$100","100" ,"Sotto S$200","200" ,"Sotto S$300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["THB"] = new Array("THB", false);
+currencyLevel["THB"] = new Array("Sotto THB4000","4000" ,"Sotto THB8000","8000" ,"Sotto THB12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["KRW"] = new Array("KRW", false);
+currencyLevel["KRW"] = new Array("Sotto KRW100000","100000" ,"Sotto KRW200000","200000" ,"Sotto KRW300000","300000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RUB"] = new Array("RUB", false);
+currencyLevel["RUB"] = new Array("Sotto RUB3000","3000" ,"Sotto RUB6000","6000" ,"Sotto RUB9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["IDR"] = new Array("IDR", false);
+currencyLevel["IDR"] = new Array("Sotto IDR1000000","1000000" ,"Sotto IDR2000000","2000000" ,"Sotto IDR3000000","3000000" ,"Qualunque prezzo","9999999" );
+currencySymbol["TWD"] = new Array("TWD", false);
+currencyLevel["TWD"] = new Array("Sotto TWD3000","3000" ,"Sotto TWD6000","6000" ,"Sotto TWD9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["MYR"] = new Array("RM", false);
+currencyLevel["MYR"] = new Array("Sotto RM300","300" ,"Sotto RM600","600" ,"Sotto RM900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["EGP"] = new Array("EGP", false);
+currencyLevel["EGP"] = new Array("Sotto EGP3000","3000" ,"Sotto EGP6000","6000" ,"Sotto EGP9000","9000" ,"Qualunque prezzo","9999999" );
+var groupingSize = 3;
+var groupingSeparator = ".";
+var JS_location_not_found = "Non abbiamo trovato la tua località.";
+var JS_click_to_expand = "Fai clic qui per espandere";
+var JS_choose_valid_city = "Seleziona una città valida dalla lista. ";
+var JS_select_a_cruise_line = "Please select a cruise line.";
+var JS_loading = "Caricamento...";
+var JS_Ajax_failed="Ci scusiamo per il disguido tecnico. Ti preghiamo di riprovare più tardi. Grazie.";
+var JS_maintenance="Al momento il nostro sito \u00e8 in manutenzione.  Ci scusiamo per l\'inconveniente... ritorneremo presto on-line.";
+var JS_Stop_search = "interrompi la ricerca";
+var JS_Resume_search = "Continua la ricerca";
+var JS_Thankyou = "Grazie";
+var JS_DateFormat = "dd/mm/aaaa";
+var JS_review_lost = "La tua recensione non verrà conservata.";
+var JS_coppa_sorry = "Ci dispiace....";
+var JS_coppa_privacy = "Secondo le informazioni inviateci, la tua iscrizione a TripAdvisor non rispetta i requisiti delle nostra <a href='/pages/privacy.html'>normativa sulla privacy</a>.";
+var JS_coppa_deleted = "La tua iscrizione è stata cancellata.";
+var JS_close = "Chiudi";
+var JS_close_image = "http://c1.tacdn.com/img2/langs/it/buttons/closeButton.gif";
+var JS_CHANGES_SAVED = "Modifiche salvate";
+var JS_community_on = "La community è stata attivata.";
+var lang_Close = JS_close;
+var JS_UpdatingYourResults = "Aggiornamento risultati &#8230;";
+var JS_OwnerPhoto_heading = "Grazie per aver inviato la tua richiesta a TripAdvisor. ";
+var JS_OwnerPhoto_subheading = "Elaboriamo la maggior parte degli elenchi e delle modifiche entro 5 giorni lavorativi. ";
+var JS_OwnerPhoto_more = "Aggiungi altre foto al tuo profilo";
+var JS_OwnerPhoto_return = "Ritorna al Centro per i Proprietari";
+var JS_NMN_Timeout_title = "Vuoi fare un altro tentativo?";
+var JS_NMN_Timeout_msg = "Il riconoscimento della località sta durando più a lungo del previsto.";
+var JS_NMN_Error_title = "Errore località";
+var JS_NMN_Error_msg   = "Abbiamo riscontrato un errore nell'identificazione della località";
+var JS_KeepTrying = "Prova ancora";
+var JS_TryAgain   = "Riprova";
+var js_0001 = "Scegli almeno un venditore dalla lista."; var js_0002 = "Scegli le date future."; var js_0003 = "Scegli una data di uscita che sia almeno un giorno dopo quella di entrata."; var js_0004 = "Scegli le date entro 330 giorni da oggi.";   var js_0005 = "Stiamo cercando un\'offerta ... l\'operazione potrebbe richiedere qualche minuto."; var js_0006 = "Ciò che hai scelto non ha subito modifiche."; var js_0010 = "Clicca nuovamente per aprire tutte le finestre o per regolare le impostazioni del browser per disattivare i pop-up blockers."; var js_0011 = "Aggiorna"; var js_0012 = "Prossima offerta"; var js_0013 = "Please click the \"Check Rates!\" button above to open each window."; var js_0014 = 'Verrà aperta una finestra per ogni offerta. Disattiva il sistema di blocco popup';
+var js_0015 = 'Confronta i prezzi';
+var js_invalid_dates_text = "Le date inserite non sono corrette. Modificale e poi effettua una nuova ricerca."; var js_invalid_dates_text_new = "Indica le date e controlla i prezzi"; var js_invalid_dates_text_new2 = "Indica le date per vedere i prezzi";
+var qcErrorImage = '<center><img src="http://c1.tacdn.com/img/langs/it/action_required_blinking.gif" /></center>';
+var selectedHotelName = ""; var cr_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr.gif';
+var cr_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr_check.gif';
+var cr_loc_logo = 'http://c1.tacdn.com/img2/checkrates/logo.gif';
+var cd_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd.png';
+var cd_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd_check.png';
+var JS_Any_Date = "data";
+var JS_Update_List = "Aggiorna la lista";
+var sNexusTitleMissing = "The title must be populated";
+var JS_Challenge="Challenge";
+var JS_TIQ_Level="Level";
+var JS_TIQ="Travel IQ";
+var JS_TIQ_Pts="pts";
+var RATING_STRINGS = [
+"Fai clic per votare",
+"Pessimo",
+"Scarso",
+"Nella media",
+"Molto buono",
+"Eccellente"
+];
+var overlayLightbox = false;
+if("" != "")
+{
+overlayLightbox = true;
+}
+var isTakeOver = false;
+var overlayOptions = "";
+var overlayBackupLoc = "780306";
+var gmapDomain = "maps.google.com";
+var mapChannel = "ta.PRODUCTION";
+var bingMapsLang = "it".toLowerCase();
+var bingMapsCountry = "".toLowerCase();
+var bingMapsBaseUrl = "http://www.bing.com/maps/default.aspx?cc=it&";
+var googleMapsBaseUrl = "http://maps.google.it/?";
+var serverPool = "A";
+var reg_overhaul = true;
+var cssPhotoViewerAsset = "http://c1.tacdn.com/css2/photos_with_inline_review-v3071001267b.css";
+var jsPhotoViewerAsset = 'http://c1.tacdn.com/js3/src/ta/photos/Viewer-v908545329b.js';
+var jsPhotoViewerTALSOAsset = 'http://c1.tacdn.com/js3/src/TALSO-v12862410b.js';
+var jsJWPlayerHelperAsset = 'http://c1.tacdn.com/js3/src/ta/media/jwplayerHelper-v330147509b.js';
+var hideOnLoad = new Array();
+var IS_DEBUG = false;
+var CDNHOST = "http://c1.tacdn.com";
+var VERSION_MAP = {
+"ta-widgets-typeahead.js": "http://c1.tacdn.com/js3/ta-widgets-typeahead-c-v3965823353b.js",
+"ta-media.js": "http://c1.tacdn.com/js3/ta-media-c-v1954280484b.js"
+}
+var cookieDomain = ".tripadvisor.it";
+var modelLocaleCountry = "";
+var ipCountryId = "187768";
+var pageServlet = "AllLocations";
+var crPageServlet = "AllLocations";
+var cdnHost = "http://c1.tacdn.com";
+var userLoggedIn = false;
+var migrationMember = false;
+var savesEnable = false;
+var flagsUrl = '/AllLocations-g776898-c1-Hotels-Castro_Urdiales_Cantabria.html';
+var noPopClass = "no_cpu";
+var flagsSettings = [
+];
+var isIPad = false;
+var lang_Close  = "Chiudi";
+var img_loop    = "http://c1.tacdn.com/img2/generic/site/loop.gif";
+var communityEnabled = true
+var footerFlagFormat = "all_loc_flag_hotel_ffffe1a6";
+var modelLocId = "776898";
+var modelGeoId = "776898";
+var gClient = 'gme-tripadvisorinc';
+var gKey = '';
+var gLang = '';
+var mapsJs = 'http://c1.tacdn.com/js3/ta-maps-bing-c-v2700478145b.js';
+var mapsJsLite = 'http://c1.tacdn.com/js3/lib/TAMap-v2716202300b.js';
+var memoverlayCSS = 'http://c1.tacdn.com/css2/pages/memberoverlay-v503555936b.css';
+var flagsFlyoutCSS = 'http://c1.tacdn.com/css2/overlays/flags/flags_flyout-v2900952896b.css';
+var emailHotelCSS = 'http://c1.tacdn.com/css2/t4b/emailhotel-v2182175311b.css';
+var sameGeoActivityCSS = 'http://c1.tacdn.com/css2/modules/same_geo_activity-v2647240916b.css';
+var passportStampsCSS = 'http://c1.tacdn.com/css2/modules/passport_stamps-v1996473260b.css';
+var wiFriHasMember =  false  ;
+var JS_SECURITY_TOKEN = "AAABOBaCEBXBNNK3sHOOzpik4plQt/WqD7cYFA==";
+var addOverlayCloseClass = "";
+var isOverlayServlet = "";
+var IS_OVERLAY_DEBUG = "false";
+</script>
+<script type='text/javascript' src='http://c1.tacdn.com/js3/tripadvisor-c-v3957526096b.js'></script>
+<script type="text/javascript">var taSecureToken = "AAABOBaCEBXBNNK3sHOOzpik4plQt/WqD7cYFA=="</script>
+<script type="text/javascript">
+var geoParam = "&geo=776898";
+</script>
+<link rel='stylesheet' type='text/css' media='screen, print' href='http://c1.tacdn.com/css2/universal_new-it-v2383219892b.css'/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/modules/checkrates_2col-v935430319b.css"/>
+<link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css/brandCompat.css"/>
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE6-v2472753202b.css" />
+        <![endif]-->
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE7-v2962607074b.css" />
+        <![endif]-->
+<script type="text/javascript" src="http://c1.tacdn.com/js/tripcompat.js"></script>
+<script type="text/javascript">
+function showCascadeSearch(sHotelID, bFromPop, sLinkType, sArea) {
+if(sHotelID == null || sHotelID == '') {return;}
+var tgtUrl = "/HotelDateSearch?d=" + sHotelID + "&returnTo=http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g776898__2D__c1__2D__Hotels__2D__Castro__5F__Urdiales__5F__Cantabria__2E__html&fromPop=" + bFromPop;
+tgtUrl = tgtUrl + "&area=" + sArea;
+var sFromSource = "AllLocations";
+if(sFromSource !="") {
+if(sLinkType && sLinkType != "") {sFromSource += sLinkType;}
+tgtUrl += "&from=" + sFromSource;
+}
+var w = window.open ( tgtUrl, "CascadeSearch", "toolbar=0,resizable=1,menubar=0,location=0,status=0,scrollbars=1,width=245,height=610,screenX=5,screenY=5,left=5,top=5");
+if (w != null) {
+w.opener = self;
+w.focus();
+}
+}
+</script>
+<style type="text/css">
+body{}
+</style>
+<!-- web66b.tripadvisor.com -->
+<!-- PRODUCTION -->
+<!-- PRODUCTION -->
+<script type="text/javascript" src="http://c1.tacdn.com/js3/src/trsupp-v283141723b.js"></script>
+</head>
+<body class="ltr domn_it withFtr globalNav2011_reset">
+<div id="fb-root"></div>
+<div style="width:973px; margin:0 auto 20px; padding:5px; background-color:#ffe5a5; font-size:.75em;">
+<div style="padding:6px 0 8px 79px;background: url(http://c1.tacdn.com/img2/icons/64/bv_alert.gif) 12px 2px no-repeat;line-height:167.5%;">
+<span>
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+</span>
+<span dir="ltr">
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('q5FyiiycV8LnGEiaV')">Google Chrome</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</span>
+</div>
+</div><!--/ BAD_VERSION -->
+<div id="iframediv"></div>
+<div id="PAGE">
+<div id="HEAD" class="sprite-gradient1x32_grn">
+<div class="masthead">
+<div class="container">
+<span class="topLogo">
+<span class="fkLnk hvrIE6 logoWrap" onClick="setPID(5045); ta.util.ASDF.asdf('L')"><img class="sprite-taLogo" src="http://c1.tacdn.com/img2/x.gif" width="362" height="42" alt="Il portale di viaggi più grande del mondo"/></span>
+</span>
+<h1 class="header language_select">Alloggi in Castro Urdiales </h1>
+</div>
+<div class="navSrch navSrchLang sprite-magGlass_gry" id="SEARCH_LHN">
+<form method="get" action="/Search" onsubmit="return ta.call('ta.common.search.validate',event);">
+<input id="mainSearch" type="text" name="q" class=" text hasLangSelect sL focusClear" autocomplete="off" onfocus="ta.call('ta.widgets.typeahead.factory.global',event,this,'SITEWIDE','ta.widgets.typeahead.events.onSelectGlobalTypeAhead',{maxChoices:16,minLength:3,showOnlyTypedChoices:true,geo:'776898'}); return ta.call('ta.common.search.clearOnFocus',event);" onblur="return ta.call('ta.common.search.defaultOnBlur',event);" value="Città, nome dell'hotel ecc."/>
+<div class="submit_button sprite-gradient1x27_gry"><input id="mainSearchSubmit" onclick="setPID(3825);" onkeydown="var submitPID = function(event) { if(event.key && event.key=='enter') setPID(3826); }; submitPID(e);" type="submit" name="sub-search" class="submit" value="CERCA" title="CERCA"/></div>
+<input name="lang" id="SEARCH_LANG_SELECT_INPUT" type="hidden" value=" it"/> <div id="SEARCH_LANG_SELECT">
+<div id="SEARCH_LANG_SELECTED" class="langSelect sprite-arrow_dropdown_gry" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="SEARCH_LANG_SELECT_POPUP" class="hidden">
+<div id="lang_it" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="lang_all" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Tutte le lingue</div>
+</div> </div>
+<input type="hidden" name="geo" value="776898"/>
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g776898__2D__c1__2D__Hotels__2D__Castro__5F__Urdiales__5F__Cantabria__2E__html"/>
+</form>
+</div>
+<div class="tabsBar">
+<ul class="tabs">
+<li class="tabItem  hvrIE6"><a href="index.html" class="tabLink  pid4921">
+Home
+</a>
+</li>
+<li class="tabItem dropDown hvrIE6">
+<a href="Tourism-g776898-Castro_Urdiales_Cantabria-Vacations.html" class="tabLink arwLink geoLink" onclick="ta.util.cookie.setPIDCookie(4964)">
+<span class="arrow_text truncate">Castro Urdiales</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5">
+</a>
+<ul class="subNav">
+<li class="subItem">
+<a class="subLink " href="Tourism-g776898-Castro_Urdiales_Cantabria-Vacations.html" onclick="ta.util.cookie.setPIDCookie(4971)">
+Vacanze Castro Urdiales
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Hotels-g776898-Castro_Urdiales_Cantabria-Hotels.html" onclick="ta.util.cookie.setPIDCookie(4972)">
+Hotel Castro Urdiales
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Flights-g776898-Castro_Urdiales_Cantabria-Cheap_Discount_Airfares.html" onclick="ta.util.cookie.setPIDCookie(4973)">
+Voli per Castro Urdiales
+</a>
+</li>
+<li class="subItem">
+<a class="subLink selForums" href="ShowForum-g776898-i17809-Castro_Urdiales_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4980)">
+Forum Viaggi Castro Urdiales
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Restaurants-g776898-Castro_Urdiales_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4974)">
+Ristoranti: Castro Urdiales
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="Attractions-g776898-Activities-Castro_Urdiales_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4977)">
+Cose da fare: Castro Urdiales
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="LocationPhotos-g776898-Castro_Urdiales_Cantabria.html" onclick="ta.util.cookie.setPIDCookie(4979)">
+Foto di Castro Urdiales
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem  hvrIE6"><a href="Hotels-g776898-Castro_Urdiales_Cantabria-Hotels.html" class="tabLink  pid4965">
+Hotel
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Flights-g776898-Castro_Urdiales_Cantabria-Cheap_Discount_Airfares.html" class="tabLink  pid4966">
+Voli
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Restaurants-g776898-Castro_Urdiales_Cantabria.html" class="tabLink  pid4967">
+Ristoranti
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="Attractions-g776898-Activities-Castro_Urdiales_Cantabria.html" class="tabLink  pid4969">
+Cose da fare
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="TravelersChoice/index.html" class="tabLink  pid5087">
+Il meglio del 2012
+</a>
+</li>
+<li id="FRIENDSTAB" class="tabItem tooltip hvrIE6"><a href="Friends-rnauth/index.html" class="tabLink tooltip pid18784" rel="nofollow" onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">
+I tuoi amici <span id="FBL" class="sprite-facebook15x15"></span>
+</a>
+<div class='overlayContents'><div class='inner2'><div class='help'><div class='hdr'>È meglio viaggiare con gli amici.</div><div class='ttbody'>Lasciati ispirare dagli amici, condividi i tuoi programmi di viaggio. <a href='Friends-rnauth/index.html' alt='Maggiori informazioni' onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">Maggiori informazioni</a></div></div></div></div>
+</li>
+<script>
+var taExtraOverlayJs = 'http://c1.tacdn.com/js3/ta-overlays-c-v1032881204b.js';
+registerOnLoad(function() {
+if (ta.common && ta.common.header) { ta.common.header.checkFriendsToolTip(); } }, 'friendsTooltip');
+</script>
+<li class="tabItem dropDown hvrIE6" onmouseover="ta.call('ta.common.header.hideFriendsToolTip', event, this);">
+<span class="tabLink arwLink"><span class="arrow_text">Più</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5"></span> <ul class="subNav">
+<li class="subItem">
+<a href="ShowForum-g776898-i17809-Castro_Urdiales_Cantabria.html" class="subLink ">Forum Viaggi
+</a>
+</li>
+<li class="subItem">
+<a href="apps/index.html" class="subLink pid18876">App
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem altItem warLink sprite-gradient1x32_grn_drk last hvrIE6">
+<span class="writeReview fkLnk hvrIE6 tabLink" onclick="ta.util.cookie.setPIDCookie(1434); ta.util.ASDF.asdf('LqdWVGII26mbqgqguuuxizSxiSIqgbccRinJISiCtqHykk3vAvqHnUqHz1qHfJtIEiQQoqnQQxGEMSJcVtQQoqnQQfJCIJHESJxiGIac')">Scrivi una recensione</span>
+</li>
+</ul> </div>
+<div id="USER_PREFS" class="prfs">
+<ul class="opts">
+<li class="optItem fbConnect">
+<div class="sprite-facebook15x15 fkLnk hvrIE6  no_cpu " onclick=" ta.store('facebook.trackingpid',1882);  ta.call('ta.support.Facebook.loginButton', event, this);">Accedi&nbsp;attraverso&nbsp;Facebook</div>
+</li>
+<li class="optItem login"><span class="fkLnk hvrIE6" onClick="ta.util.cookie.setPIDCookie(429);ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNIN');">Entra</span></li>
+<li id="register" class="optItem register flyoutX" onclick="ta.util.cookie.setPIDCookie(427); ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNUP');"><span class="fkLnk hvrIE6">Iscriviti ora!</span>
+<li class="optItem" id="MOBHDRLNK">
+<span class="fkLnk hvrIE6 optItemLink sprite-mobile_org mobile_org" onClick="ta.util.cookie.setPIDCookie(4109); ta.util.ASDF.asdf('LDiHScVb22t')">Applicazione mobile GRATIS</span>
+</li>
+<li id="INTLPOP" class="optItem intSites last" onclick="ta.call('ta.overlays.Factory.intlPopup', event, this)"><span class="sprite-arrow_dropdown_blu arrowDn"><img class="sprite-flag" src="http://c1.tacdn.com/img2/x.gif" alt="Siti internazionali" title="Siti internazionali"/></span></li> </ul> </div> </div> </div>
+<div id="MAINWRAP">
+<div id="MAIN" class="AllLocations" rel="v:itemreviewed">
+<div id="LEFTNAV" class="col">
+<h2 class="geoHeader">Castro Urdiales</h2>
+<div class="lhnHigh onShow ">
+<ul>
+<li class="firstItem">
+<a class="k_overview" href="Tourism-g776898-Castro_Urdiales_Cantabria-Vacations.html">
+Vacanze Castro Urdiales</a>
+</li>
+<li>
+<a class="k_hotels" href="Hotels-g776898-Castro_Urdiales_Cantabria-Hotels.html">
+Hotel Castro Urdiales</a>
+</li>
+<li>
+<a class="k_flights" href="Flights-g776898-Castro_Urdiales_Cantabria-Cheap_Discount_Airfares.html">
+Voli per Castro Urdiales</a>
+</li>
+<li>
+<a class="k_deals" href="SmartDeals-g776898-Castro_Urdiales_Cantabria-Hotel-Deals.html">
+Offerte per Castro Urdiales</a>
+</li>
+<li class=" selForums">
+<a class="k_forums pid2995" href="ShowForum-g776898-i17809-Castro_Urdiales_Cantabria.html">
+Forum Viaggi</a>
+</li>
+<li class=" navTitle">
+Altre info su Castro Urdiales
+</li>
+<li>
+<a class="k_dining" href="Restaurants-g776898-Castro_Urdiales_Cantabria.html" onclick="setOneTimeCookie('mcreset','true')">
+Ristoranti</a>
+</li>
+<li>
+<a class="k_things_to_do" href="Attractions-g776898-Activities-Castro_Urdiales_Cantabria.html">
+Cose da fare</a>
+</li>
+<li>
+<a class="u_/LocationPhotos-g776898-Castro_Urdiales_Cantabria.html k_photos" href="LocationPhotos-g776898-Castro_Urdiales_Cantabria.html" onclick="return ta.call('ta.overlays.Factory.photosLB', event, this);">
+Foto</a>
+</li>
+<li>
+<a class="js_popup k_maps" href="LocalMaps-g776898-Castro_Urdiales-Area.html">
+Mappa</a>
+</li>
+<li class=" navTitle">
+Offerte per Castro Urdiales
+</li>
+<li>
+<a class="k_packages" href="Packages-g776898-Vacation-Package-Discount-Castro_Urdiales_Cantabria.html">
+Offerte di viaggio</a>
+</li>
+</ul>
+</div>
+<div class="bx01 deals swirllinks">
+<div class="h2">Esplora il mondo. Recensioni e informazioni su oltre 400.000 località su TripAdvisor</div>
+<div class="swirllinkset"> <div class=" header">Mete di viaggio</div>
+<ul>
+<li><a href="Tourism-g189400-Athens_Attica-Vacations.html">Atene</a></li>
+<li><a href="Hotels-g38877-Manhattan_Kansas-Hotels.html">Hotel Manhattan</a></li>
+</ul>
+</div> <div class="swirllinkset"> <div class=" header">Hotel</div>
+<ul>
+<li><a href="Hotel_Review-g32685-d117848-Reviews-The_Verandah_Bed_and_Breakfast-Mariposa_California.html">The Verandah Bed and Breakfast</a></li>
+<li><a href="Hotel_Review-g194878-d1867740-Reviews-Hotel_York_Riccione-Riccione_Province_of_Rimini_Emilia_Romagna.html">Hotel York Riccione</a></li>
+<li><a href="Hotel_Review-g1073569-d1457655-Reviews-Grayling_House_Bed_and_Breakfast-Stoford_Wiltshire_England.html">Grayling House Bed and Breakfast</a></li>
+<li><a href="Hotel_Review-g580234-d1672559-Reviews-Hotel_Grifone-Arabba_Province_of_Belluno_Veneto.html">Hotel Grifone a Arabba</a></li>
+<li><a href="Hotel_Review-g190738-d1636697-Reviews-Crathie_Opportunity_Holidays-Ballater_Aberdeenshire_Scotland.html">Crathie Opportunity Holidays</a></li>
+<li><a href="Hotel_Review-g311425-d1204485-Reviews-Crowne_Plaza_Sahara_Sands_Port_Ghalib_Resort-Marsa_Alam_Red_Sea_and_Sinai.html">Crowne Plaza Sahara Sands Port Ghalib Hotel Marsa Alam</a></li>
+<li><a href="Hotel_Review-g187895-d203869-Reviews-Hotel_Monna_Lisa-Florence_Tuscany.html">Hotel Monna Lisa a Firenze</a></li>
+<li><a href="Hotel_Review-g194757-d275818-Reviews-Hotel_La_Pineta-Erice_Province_of_Trapani_Sicily.html">Hotel La Pineta a Erice</a></li>
+</ul>
+</div> </div>
+</div>
+<div id="BODYCON" class=" col poolA" typeof="v:Organization">
+<div class="crumbs ">
+<ul>
+<li>
+<a href="index.html" id="HOME">Home</a>
+<ul>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g4-Europe-Vacations.html">Europa</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187427-Spain-Vacations.html">Spagna</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g187483-Cantabria-Vacations.html">Cantabria</a></li>
+<li> <img class="sprite-breadcrumb" src="http://c1.tacdn.com/img2/x.gif" alt="arrow">
+<a href="Tourism-g776898-Castro_Urdiales_Cantabria-Vacations.html">Castro Urdiales</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="wrpHeader">
+</div>
+<p style="margin-top: 20px;">
+<b>Alloggi in Castro Urdiales </b>
+| <a href="AllLocations-g776898-c2-Attractions-Castro_Urdiales_Cantabria.html">Attrazioni a Castro Urdiales </a>
+| <a href="AllLocations-g776898-c3-Restaurants-Castro_Urdiales_Cantabria.html">Ristoranti a Castro Urdiales</a>
+</p>
+<p style="font-size: small">
+Sali: <a href="AllLocations-g187483-Places-Cantabria.html">Località in Cantabria </a>
+</p>
+<h1>Alloggi in Castro Urdiales </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d1215159-Reviews-Agua_Viva_Posada_Spa-Castro_Urdiales_Cantabria.html">Agua Viva Posada Spa</a> <br/>
+Hotel specializzato.
+Prezzo*: US$ 98
+<br/>
+47 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d1224194-Reviews-Aisia_Islares-Castro_Urdiales_Cantabria.html">Aisia Islares</a> <br/>
+Hotel specializzato.
+Prezzo*: US$ 104
+<br/>
+41 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d2468298-Reviews-Casa_Los_Olivos-Castro_Urdiales_Cantabria.html">Casa Los Olivos</a> <br/>
+Pensione.
+Prezzo*: US$ 97
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d1498246-Reviews-El_Rincon_de_Castro-Castro_Urdiales_Cantabria.html">El Rincon de Castro</a> <br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d775732-Reviews-Hostal_La_Mar-Castro_Urdiales_Cantabria.html">Hostal La Mar</a> <br/>
+Pensione <br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d1497078-Reviews-Hostal_Vista_Alegre-Castro_Urdiales_Cantabria.html">Hostal Vista Alegre</a> <br/>
+Pensione.
+Prezzo*: US$ 81
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d1758479-Reviews-Hotel_La_Ronda-Castro_Urdiales_Cantabria.html">Hotel La Ronda</a> <br/>
+Hotel <br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Castro Urdiales, Spagna </div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d2388924-Reviews-Hotel_Miramar-Castro_Urdiales_Cantabria.html">Hotel Miramar</a> <br/>
+Piccolo hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d2651516-Reviews-Hotel_Suite_Miono-Castro_Urdiales_Cantabria.html">Hotel Suite Miono</a> <br/>
+Piccolo hotel .
+Prezzo*: US$ 92
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d585359-Reviews-Las_Rocas_Playa_Hotel-Castro_Urdiales_Cantabria.html">Las Rocas Playa Hotel</a> <br/>
+Hotel.
+Prezzo*: US$ 124
+<br/>
+58 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d3246638-Reviews-Pension_Ardigales_11-Castro_Urdiales_Cantabria.html">Pension Ardigales 11</a> <br/>
+Piccolo hotel .
+Prezzo*: US$ 84
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d3149121-Reviews-Pension_Habitaciones_Economicas-Castro_Urdiales_Cantabria.html">Pension Habitaciones Economicas</a> <br/>
+Piccolo hotel .
+Prezzo*: EUR 30
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d2341532-Reviews-Pension_La_Sota-Castro_Urdiales_Cantabria.html">Pension La Sota</a> <br/>
+Pensione (B&B) <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Castro Urdiales, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776898-d1447494-Reviews-Posada_Casa_Rosalia-Castro_Urdiales_Cantabria.html">Posada Casa Rosalia</a> <br/>
+Hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Castro Urdiales, Spagna </div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<h1>Alloggi vicino a Castro Urdiales </h1>
+<br/><br/>
+<table style="width:100%">
+<tr>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1596772-d598198-Reviews-Hosteria_Lantaron-Islares_Cantabria.html">Hosteria Lantaron</a> <br/>
+<b>Islares, Cantabria</b>. 2 km a sud est di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+12 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Islares, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1078425-d1956343-Reviews-Hotel_Muskiz-San_Julian_de_Musques_Vizcaya_Province_Basque_Country.html">Hotel Muskiz</a> <br/>
+<b>San Julian de Musques, Provincia di Biscaglia</b>. 9 km a sud est di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 67
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1058621-d1045370-Reviews-La_Torre_de_la_Quintana-Liendo_Cantabria.html">La Torre de la Quintana</a> <br/>
+<b>Liendo, Cantabria</b>. 12 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 107
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Liendo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1058621-d1804546-Reviews-Bisabuela_Martina-Liendo_Cantabria.html">Bisabuela Martina</a> <br/>
+<b>Liendo, Cantabria</b>. 12 km a ovest di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 114
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Liendo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d536139-Reviews-Miramar_Hotel-Laredo_Cantabria.html">Miramar Hotel</a> <br/>
+<b>Laredo, Cantabria</b>. 13 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 116
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Laredo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d648125-Reviews-Hotel_Kaia-Bilbao_Vizcaya_Province_Basque_Country.html">Hotel Kaia</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 13 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 40
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1498534-Reviews-Hotel_Ramona-Laredo_Cantabria.html">Hotel Ramona</a> <br/>
+<b>Laredo, Cantabria</b>. 15 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Laredo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1498488-Reviews-El_Carro-Laredo_Cantabria.html">El Carro</a> <br/>
+<b>Laredo, Cantabria</b>. 17 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1497314-Reviews-Hotel_Rosi-Laredo_Cantabria.html">Hotel Rosi</a> <br/>
+<b>Laredo, Cantabria</b>. 17 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 65
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Laredo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1497424-Reviews-Hotel_Montecristo-Laredo_Cantabria.html">Hotel Montecristo</a> <br/>
+<b>Laredo, Cantabria</b>. 17 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 118
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1455723-Reviews-Hotel_Cortijo-Laredo_Cantabria.html">Hotel Cortijo</a> <br/>
+<b>Laredo, Cantabria</b>. 17 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 99
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1020067-Reviews-Hotel_El_Ancla-Laredo_Cantabria.html">Hotel El Ancla</a> <br/>
+<b>Laredo, Cantabria</b>. 17 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 181
+<br/>
+24 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Laredo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1070828-d506813-Reviews-Parador_de_Limpias-Limpias_Cantabria.html">Parador de Limpias</a> <br/>
+<b>Limpias, Cantabria</b>. 17 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 143
+<br/>
+55 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Limpias, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1499162-Reviews-Los_Granados_Apartments-Laredo_Cantabria.html">Los Granados Apartments</a> <br/>
+<b>Laredo, Cantabria</b>. 17 km a ovest di Castro Urdiales
+<br/>
+Appartamento.
+Prezzo*: US$ 87
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064172-d1758648-Reviews-Hotel_Almesan-Santurtzi_Vizcaya_Province_Basque_Country.html">Hotel Almesan</a> <br/>
+<b>Santurtzi, Provincia di Biscaglia</b>. 17 km a est di Castro Urdiales
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santurtzi, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1490895-d1491180-Reviews-Posada_Casa_de_Valle-Colindres_Cantabria.html">Posada Casa de Valle</a> <br/>
+<b>Colindres, Cantabria</b>. 18 km a ovest di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 101
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Colindres, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064172-d295168-Reviews-San_Jorge-Santurtzi_Vizcaya_Province_Basque_Country.html">San Jorge</a> <br/>
+<b>Santurtzi, Provincia di Biscaglia</b>. 18 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 71
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Santurtzi, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1490895-d2368745-Reviews-Hostal_Montecarlo-Colindres_Cantabria.html">Hostal Montecarlo</a> <br/>
+<b>Colindres, Cantabria</b>. 18 km a ovest di Castro Urdiales
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Colindres, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064172-d287021-Reviews-NH_Palacio_de_Oriol-Santurtzi_Vizcaya_Province_Basque_Country.html">NH Palacio de Oriol</a> <br/>
+<b>Santurtzi, Provincia di Biscaglia</b>. 18 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 65
+<br/>
+54 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santurtzi, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064173-d1863386-Reviews-Pension_Buenavista-Portugalete_Vizcaya_Province_Basque_Country.html">Pension Buenavista</a> <br/>
+<b>Portugalete, Provincia di Biscaglia</b>. 18 km a sud est di Castro Urdiales
+<br/>
+Pensione (B&B) <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Portugalete, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1675936-Reviews-Aparthotel_Playamar-Laredo_Cantabria.html">Aparthotel Playamar</a> <br/>
+<b>Laredo, Cantabria</b>. 18 km a ovest di Castro Urdiales
+<br/>
+Appartamento.
+Prezzo*: US$ 139
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Laredo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g943866-d1205092-Reviews-High_Tech_Tamarises_Bilbao-Getxo_Vizcaya_Province_Basque_Country.html">High Tech Tamarises Bilbao</a> <br/>
+<b>Getxo, Provincia di Biscaglia</b>. 18 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 105
+<br/>
+37 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Getxo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g943866-d295162-Reviews-Neguri-Getxo_Vizcaya_Province_Basque_Country.html">Neguri</a> <br/>
+<b>Getxo, Provincia di Biscaglia</b>. 18 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 126
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Getxo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064173-d279262-Reviews-Gran_Hotel_Puente_Colgante-Portugalete_Vizcaya_Province_Basque_Country.html">Gran Hotel Puente Colgante</a> <br/>
+<b>Portugalete, Provincia di Biscaglia</b>. 20 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 76
+<br/>
+37 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Portugalete, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g943866-d287314-Reviews-Hotel_Embarcadero-Getxo_Vizcaya_Province_Basque_Country.html">Hotel Embarcadero</a> <br/>
+<b>Getxo, Provincia di Biscaglia</b>. 20 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 159
+<br/>
+27 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Getxo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064173-d2517634-Reviews-Hostal_Santa_Maria-Portugalete_Vizcaya_Province_Basque_Country.html">Hostal Santa Maria</a> <br/>
+<b>Portugalete, Provincia di Biscaglia</b>. 20 km a sud est di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 43
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g943866-d2350399-Reviews-Pension_Areeta-Getxo_Vizcaya_Province_Basque_Country.html">Pension Areeta</a> <br/>
+<b>Getxo, Provincia di Biscaglia</b>. 20 km a est di Castro Urdiales
+<br/>
+Pensione (B&B).
+Prezzo*: EUR 44
+<br/>
+1 recensione. Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g943866-d1148729-Reviews-Artaza-Getxo_Vizcaya_Province_Basque_Country.html">Artaza</a> <br/>
+<b>Getxo, Provincia di Biscaglia</b>. 20 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 111
+<br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Getxo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g608999-d577886-Reviews-Hotel_Juan_de_la_Cosa-Santona_Cantabria.html">Hotel Juan de la Cosa</a> <br/>
+<b>Santona, Cantabria</b>. 20 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 107
+<br/>
+24 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santona, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644318-d1498551-Reviews-Hotel_Florida-Laredo_Cantabria.html">Hotel Florida</a> <br/>
+<b>Laredo, Cantabria</b>. 20 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g608999-d1498195-Reviews-Puerto_Rico_Hotel_Restaurante-Santona_Cantabria.html">Puerto Rico Hotel Restaurante</a> <br/>
+<b>Santona, Cantabria</b>. 20 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Santona, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1069105-d295093-Reviews-Goizalde-Sopelana_Vizcaya_Province_Basque_Country.html">Goizalde</a> <br/>
+<b>Sopelana, Provincia di Biscaglia</b>. 20 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 87
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Sopelana, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1842316-d2359407-Reviews-Casa_Vicente_Pallotti-Valle_de_Carranza_Vizcaya_Province_Basque_Country.html">Casa Vicente Pallotti</a> <br/>
+<b>Valle de Carranza, Provincia di Biscaglia</b>. 20 km a sud ovest di Castro Urdiales
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Valle de Carranza, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1064371-d1414921-Reviews-NH_La_Avanzada-Leioa_Vizcaya_Province_Basque_Country.html">NH La Avanzada</a> <br/>
+<b>Leioa, Provincia di Biscaglia</b>. 20 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 68
+<br/>
+22 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Leioa, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1842316-d1421274-Reviews-Alma_de_Romero_Hotel-Valle_de_Carranza_Vizcaya_Province_Basque_Country.html">Alma de Romero Hotel</a> <br/>
+<b>Valle de Carranza, Provincia di Biscaglia</b>. 21 km a sud ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 92
+<br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Valle de Carranza, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1069105-d585989-Reviews-Hotel_Modus_Vivendi-Sopelana_Vizcaya_Province_Basque_Country.html">Hotel Modus Vivendi</a> <br/>
+<b>Sopelana, Provincia di Biscaglia</b>. 21 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 105
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Sopelana, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g667203-d287323-Reviews-Ibis_Bilbao_Barakaldo-Barakaldo_Vizcaya_Province_Basque_Country.html">Ibis Bilbao Barakaldo</a> <br/>
+<b>Barakaldo, Provincia di Biscaglia</b>. 21 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 61
+<br/>
+70 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Barakaldo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g2370779-d2368746-Reviews-Posada_Casa_Cesar-Cicero_Cantabria.html">Posada Casa Cesar</a> <br/>
+<b>Cicero, Cantabria</b>. 21 km a ovest di Castro Urdiales
+<br/>
+Bed and Breakfast <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1069100-d1762422-Reviews-Begona-Balmaseda_Vizcaya_Province_Basque_Country.html">Begona</a> <br/>
+<b>Balmaseda, Provincia di Biscaglia</b>. 21 km a sud di Castro Urdiales
+<br/>
+Rifugio <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g667203-d576131-Reviews-Novotel_Bilbao_Exhibition_Center-Barakaldo_Vizcaya_Province_Basque_Country.html">Novotel Bilbao Exhibition Center</a> <br/>
+<b>Barakaldo, Provincia di Biscaglia</b>. 23 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 78
+<br/>
+173 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Barakaldo, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1161094-d1536790-Reviews-Hotel_Solymar-Argonos_Cantabria.html">Hotel Solymar</a> <br/>
+<b>Argonos, Cantabria</b>. 23 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 69
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Argonos, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1070750-d662692-Reviews-La_Casona_de_San_Pantaleon_de_Aras-San_Pantaleon_de_Aras_Cantabria.html">La Casona de San Pantaleon de Aras</a> <br/>
+<b>San Pantaleón de Aras, Cantabria</b>. 23 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 106
+<br/>
+35 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s5.0.gif" alt="5.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a San Pantaleón de Aras, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1161094-d1498548-Reviews-Hostal_Argonos-Argonos_Cantabria.html">Hostal Argonos</a> <br/>
+<b>Argonos, Cantabria</b>. 23 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 36
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Argonos, Spagna </div>
+</td>
+<td style="vertical-align: top; width: 50%;">
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1161094-d2479640-Reviews-Apartamentos_Turisticos_Noray-Argonos_Cantabria.html">Apartamentos Turisticos Noray</a> <br/>
+<b>Argonos, Cantabria</b>. 23 km a ovest di Castro Urdiales
+<br/>
+Appartamento.
+Prezzo*: US$ 105
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Argonos, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1161094-d1958983-Reviews-Posada_El_Trasmerano-Argonos_Cantabria.html">Posada El Trasmerano</a> <br/>
+<b>Argonos, Cantabria</b>. 23 km a ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: EUR 73
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Argonos, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1070769-d279210-Reviews-Hotel_San_Roman_de_Escalante-Escalante_Cantabria.html">Hotel San Roman de Escalante</a> <br/>
+<b>Escalante, Cantabria</b>. 23 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 212
+<br/>
+46 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Escalante, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1078426-d2265450-Reviews-Kaian-Plentzia_Vizcaya_Province_Basque_Country.html">Kaian</a> <br/>
+<b>Plentzia, Provincia di Biscaglia</b>. 23 km a est di Castro Urdiales
+<br/>
+Pensione <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1070769-d1422197-Reviews-Posada_la_Rivera_de_Escalante-Escalante_Cantabria.html">Posada la Rivera de Escalante</a> <br/>
+<b>Escalante, Cantabria</b>. 25 km a ovest di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: EUR 87
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Escalante, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1070769-d1833761-Reviews-Posada_Restaurante_Los_Gallos-Escalante_Cantabria.html">Posada Restaurante Los Gallos</a> <br/>
+<b>Escalante, Cantabria</b>. 25 km a ovest di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 93
+<br/>
+5 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Escalante, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d629105-Reviews-Pension_Don_Claudio-Bilbao_Vizcaya_Province_Basque_Country.html">Pension Don Claudio</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 25 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 49
+<br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.32 a Bilbao, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g644316-d634490-Reviews-Hotel_Garza_Real-Gama_Cantabria.html">Hotel Garza Real</a> <br/>
+<b>Gama, Cantabria</b>. 25 km a ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 60
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d669884-Reviews-Hotel_Las_Olas-Noja_Cantabria.html">Hotel Las Olas</a> <br/>
+<b>Noja, Cantabria</b>. 25 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 116
+<br/>
+19 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1579896-Reviews-Zenit_Mar-Noja_Cantabria.html">Zenit Mar</a> <br/>
+<b>Noja, Cantabria</b>. 25 km a nord ovest di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 143
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d2280234-Reviews-Apartamentos_La_Reserva-Noja_Cantabria.html">Apartamentos La Reserva</a> <br/>
+<b>Noja, Cantabria</b>. 25 km a ovest di Castro Urdiales
+<br/>
+Appartamento.
+Prezzo*: US$ 160
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1078424-d1045376-Reviews-Loiu_Hotel-Loiu_Vizcaya_Province_Basque_Country.html">Loiu Hotel</a> <br/>
+<b>Loiu, Provincia di Biscaglia</b>. 25 km a est di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 76
+<br/>
+19 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Loiu, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1078931-d2286954-Reviews-Sercotel_Seminario-Derio_Vizcaya_Province_Basque_Country.html">Sercotel Seminario</a> <br/>
+<b>Derio, Provincia di Biscaglia</b>. 26 km a est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 73
+<br/>
+6 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Derio, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1508437-Reviews-Virginia-Noja_Cantabria.html">Virginia</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d565312-Reviews-Hotel_Arillo-Noja_Cantabria.html">Hotel Arillo</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 115
+<br/>
+24 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1144183-Reviews-Apartamentos_Salceda-Noja_Cantabria.html">Apartamentos Salceda</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Appartamento.
+Prezzo*: US$ 133
+<br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g776863-d1492062-Reviews-Las_Calzadas-San_Vicente_de_la_Barquera_Cantabria.html">Las Calzadas</a> <br/>
+<b>San Vicente de la Barquera, Cantabria</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 86
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a San Vicente de la Barquera, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d2280265-Reviews-Hosteria_Los_Laureles-Noja_Cantabria.html">Hosteria Los Laureles</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 76
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1892247-Reviews-Hosteria_Las_Vinas-Noja_Cantabria.html">Hosteria Las Vinas</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Pensione.
+Prezzo*: US$ 81
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1492423-Reviews-Hotel_Pelayo_Noja-Noja_Cantabria.html">Hotel Pelayo Noja</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 109
+<br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.5 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d237007-Reviews-Albergue_Bilbao-Bilbao_Vizcaya_Province_Basque_Country.html">Albergue Bilbao</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d317684-Reviews-Albergue_Aterpetxea-Bilbao_Vizcaya_Province_Basque_Country.html">Albergue Aterpetxea</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Ostello <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.8 a Bilbao, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d952271-Reviews-Hostal_Ria_de_Bilbao-Bilbao_Vizcaya_Province_Basque_Country.html">Hostal Ria de Bilbao</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Ostello.
+Prezzo*: EUR 53
+<br/>
+15 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Bilbao, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d535650-Reviews-Viadero-Noja_Cantabria.html">Viadero</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 168
+<br/>
+32 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.6 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d236170-Reviews-Artetxe-Bilbao_Vizcaya_Province_Basque_Country.html">Artetxe</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 68
+<br/>
+42 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Bilbao, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d1517249-Reviews-Bilbao_Akelarre_Hostel-Bilbao_Vizcaya_Province_Basque_Country.html">Bilbao Akelarre Hostel</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Ostello <br/>
+10 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Bilbao, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1431671-Reviews-Hostel_Los_Pinos-Noja_Cantabria.html">Hostel Los Pinos</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1185951-Reviews-Hotel_Azcona-Noja_Cantabria.html">Hotel Azcona</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 72
+<br/>
+3 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.0.gif" alt="3.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.9 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1492649-Reviews-Hotel_Montemar-Noja_Cantabria.html">Hotel Montemar</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 156
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.4 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1508610-Reviews-Dorada-Noja_Cantabria.html">Dorada</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d778413-Reviews-Privilegio_de_Vara-Noja_Cantabria.html">Privilegio de Vara</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Ostello <br/>
+18 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1866839-Reviews-Hotel_Pineda_Playa-Noja_Cantabria.html">Hotel Pineda-Playa</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Hotel <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.10 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1916598-d1955888-Reviews-Hotel_Restaurante_Ibaia-Gordexola_Vizcaya_Province_Basque_Country.html">Hotel-Restaurante Ibaia</a> <br/>
+<b>Gordexola, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Piccolo hotel .
+Prezzo*: US$ 83
+<br/>
+8 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Gordexola, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d238990-Reviews-Plaza_San_Pedro-Bilbao_Vizcaya_Province_Basque_Country.html">Plaza San Pedro</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187513-d310096-Reviews-Ostatua_Gaztelubegi-Logrono_La_Rioja.html">Ostatua Gaztelubegi</a> <br/>
+<b>Logroño, La Rioja</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 120
+<br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.15 a Logroño, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g1916598-d1886970-Reviews-Hotel_Isasi-Gordexola_Vizcaya_Province_Basque_Country.html">Hotel Isasi</a> <br/>
+<b>Gordexola, Provincia di Biscaglia</b>. 26 km a sud est di Castro Urdiales
+<br/>
+Hotel <br/>
+Valutazione: senza valutazione <br/>
+</div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d535708-Reviews-Hostal_Pineda-Noja_Cantabria.html">Hostal Pineda</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Pensione <br/>
+1 recensione. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1737648-Reviews-Hotel_Apartment_Maritimo_Ris-Noja_Cantabria.html">Hotel & Apartment Maritimo Ris</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 103
+<br/>
+16 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.5.gif" alt="4.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.1 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1498533-Reviews-Hotel_Hoya-Noja_Cantabria.html">Hotel Hoya</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Piccolo hotel <br/>
+2 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1088718-Reviews-Gran_Hotel_Liber_Spa-Noja_Cantabria.html">Gran Hotel Liber & Spa</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 183
+<br/>
+94 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.2 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d535973-Reviews-Gala_Hotel-Noja_Cantabria.html">Gala Hotel</a> <br/>
+<b>Noja, Cantabria</b>. 26 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 149
+<br/>
+7 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s3.5.gif" alt="3.5 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.7 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g780926-d1145796-Reviews-Las_Dunas-Noja_Cantabria.html">Las Dunas</a> <br/>
+<b>Noja, Cantabria</b>. 28 km a nord ovest di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: US$ 115
+<br/>
+4 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.3 a Noja, Spagna </div>
+<div style="margin-bottom: 10px;"><a href="Hotel_Review-g187454-d228622-Reviews-Hesperia_Zubialde-Bilbao_Vizcaya_Province_Basque_Country.html">Hesperia Zubialde</a> <br/>
+<b>Bilbao, Provincia di Biscaglia</b>. 28 km a sud est di Castro Urdiales
+<br/>
+Hotel.
+Prezzo*: EUR 76
+<br/>
+73 recensioni. Valutazione: <img src="http://c1.tacdn.com/img/langs/it/ratings/owls/s4.0.gif" alt="4.0 su 5,0" border="0" width="95" height="12" align="" style=""/>
+<br/>
+N.17 a Bilbao, Spagna </div>
+</td>
+</tr>
+</table>
+<br/> <br/>
+<a href="Resources-g776898-Maps-Castro_Urdiales_Cantabria.html">Local Castro Urdiales Resources</a>
+</div> </div> </div>
+<div id="FOOT">
+<div class="corporate">
+<div class="col sidebar">
+<div class="block">
+<dl class="about">
+<dt>TripAdvisor chi siamo&#8482;</dt> <dd> TripAdvisor offre suggerimenti su hotel, villaggi turistici, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto ancora!</dd>
+</dl>
+</div> </div>
+<div class="col balance">
+<div class="block">
+<dl class="sep brand">
+<dt>
+<img class="sprite-identityFOOT" src="http://c1.tacdn.com/img2/x.gif" alt="TripAdvisor"/>
+</dt>
+<dd class="meta">
+Consigli su hotel, località turistiche, voli, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto altro ancora!
+</dd>
+</dl>
+<dl class="sep flags">
+<dt>Scegli un sito di TripAdvisor:</dt>
+<dd>
+<ul id="FLAGS">
+<li class="flag_item">
+<span id="flag_us" class="flag_link flag_us"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and vacations" title="Unbiased reviews of hotels, resorts and vacations"></span>
+</li>
+<li class="flag_item">
+<span id="flag_uk" class="flag_link flag_uk"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ca" class="flag_link flag_ca"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<a id="flag_es" class="flag_link flag_es" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Todos los alojamientos en Castro Urdiales" href="http://www.tripadvisor.es/AllLocations-g776898-c1-Hotels-Castro_Urdiales_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Castro Urdiales"></a>
+</li>
+<li class="flag_item">
+<a id="flag_de" class="flag_link flag_de" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Alle Unterkünfte in Castro Urdiales" href="http://www.tripadvisor.de/AllLocations-g776898-c1-Hotels-Castro_Urdiales_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle Unterkünfte in Castro Urdiales"></a>
+</li>
+<li class="flag_item">
+<a id="flag_fr" class="flag_link flag_fr" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Tous les hébergements Castro Urdiales " href="http://www.tripadvisor.fr/AllLocations-g776898-c1-Hotels-Castro_Urdiales_Cantabria.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tous les hébergements Castro Urdiales "></a>
+</li>
+<li class="flag_item">
+<span id="flag_ja" class="flag_link flag_ja"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Castro Urdialesのすべてのホテル" title="Castro Urdialesのすべてのホテル"></span>
+</li>
+<li class="flag_item">
+<span id="flag_cn" class="flag_link flag_cn"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Castro Urdiales的所有酒店 " title="Castro Urdiales的所有酒店 "></span>
+</li>
+<li class="flag_item">
+<span id="flag_in" class="flag_link flag_in"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Castro Urdiales" title="All accommodation in Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sv" class="flag_link flag_sv"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alla boenden i Castro Urdiales" title="Alla boenden i Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_nl" class="flag_link flag_nl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle accommodaties in Castro Urdiales" title="Alle accommodaties in Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pt" class="flag_link flag_pt"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todas as acomodações em Castro Urdiales" title="Todas as acomodações em Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tr" class="flag_link flag_tr"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Tüm Castro Urdiales bölgesi konaklamaları" title="Tüm Castro Urdiales bölgesi konaklamaları"></span>
+</li>
+<li class="flag_item">
+<span id="flag_da" class="flag_link flag_da"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle indlogeringsmuligheder i Castro Urdiales" title="Alle indlogeringsmuligheder i Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_mx" class="flag_link flag_mx"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Castro Urdiales" title="Todos los alojamientos en Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ie" class="flag_link flag_ie"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Castro Urdiales" title="All accommodation in Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_eg" class="flag_link flag_eg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="‫كل أماكن الإقامة في ‫Castro Urdiales‬‬" title="‫كل أماكن الإقامة في ‫Castro Urdiales‬‬"></span>
+</li>
+<li class="flag_item">
+<span id="flag_el" class="flag_link flag_el"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Όλες οι διαμονές σε Castro Urdiales" title="Όλες οι διαμονές σε Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_au" class="flag_link flag_au"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Castro Urdiales" title="All accommodation in Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_my" class="flag_link flag_my"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Castro Urdiales" title="All accommodation in Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sg" class="flag_link flag_sg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="All accommodation in Castro Urdiales" title="All accommodation in Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ar" class="flag_link flag_ar"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Todos los alojamientos en Castro Urdiales" title="Todos los alojamientos en Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_id" class="flag_link flag_id"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Semua akomodasi di Castro Urdiales" title="Semua akomodasi di Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ko" class="flag_link flag_ko"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="카스트로 우르디알레스의 모든 기타 숙박시설" title="카스트로 우르디알레스의 모든 기타 숙박시설"></span>
+</li>
+<li class="flag_item">
+<span id="flag_no" class="flag_link flag_no"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Alle overnattingssteder i Castro Urdiales" title="Alle overnattingssteder i Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pl" class="flag_link flag_pl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Wszystkie noclegi w: Castro Urdiales" title="Wszystkie noclegi w: Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ru" class="flag_link flag_ru"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Все варианты проживания в этом месте: Castro Urdiales" title="Все варианты проживания в этом месте: Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_th" class="flag_link flag_th"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="ที่ัพักทั้งหมดใน Castro Urdiales" title="ที่ัพักทั้งหมดใน Castro Urdiales"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tw" class="flag_link flag_tw"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Castro Urdiales所有住宿地點" title="Castro Urdiales所有住宿地點"></span>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="sep internal">
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LzFLJHipIQptB')">Chi siamo</span> |
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('Lqd')">Scrivi una recensione</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">Proprietari</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqnVVMHJn9')">Feedback</span>
+| <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('L7ptSCVttRStISCyt')">Profili Aziendali</span> | <span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">APT/Ufficio Informazioni Turistiche</span>
+</div>
+<div class="sep legal">
+<div class="copyright">
+© 2012 TripAdvisor LLC Tutti i diritti riservati. <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFLIVEatB')"> Condizioni d'uso </span> e <span class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFL2ESsJngB')"> Normativa sulla privacy</span> di TripAdvisor.</div>
+<div class="vfm_disclaimer">
+</div>
+<div class="disclaimer">
+* TripAdvisor LLC non si occupa di prenotazioni e non applica ai suoi utenti alcuna tariffa per il servizio offerto... (<span id="TERMS" class="fkLnk hvrIE6" onclick="ta.util.ASDF.asdfPopupTerms('LzFL2ESnSCyQIVEatB')">leggi tutto</span>) </div>
+<div class="userAgent">
+<b>Abbiamo notato che stai utilizzando un browser non compatibile. E'possibile che il sito di TripAdvisor non sia visualizzabile.</b><br/> Il nostro sito e' ottimizzato per i seguenti navigatori:
+<b>Windows:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaSnEitiTI8LuSCMiutLSVQSCIcLSILMVTJpcIYat2xE')">Internet Explorer</span>,
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFaizCSccJWVpEi2VxzLSIL')">Mozilla Firefox</span>.
+<b>Mac:</b>
+<span class="fkLnk hvrIE6" onClick="ta.util.ASDF.asdfPopup('PFJ22cV8LSILaJnitxELTVJIpEVtLtJTJESL')">Safari</span>.
+</div>
+<div class="disclaimer">TripAdvisor LLC non è responsabile per il contenuto su altri siti web. Tasse e spese non incluse nelle offerte.</div>
+</div>
+</div> </div> </div>
+</div>
+</div>
+<script type="text/javascript">
+var lazyImgs = [
+];
+var lazyHtml = [
+];
+ta.queueForLoad( function() {
+window.setupLazyLoad();
+}, 'lazy load images');
+</script>
+<script type="text/javascript">
+ta.keep('startOffset', '');
+ta.store('page.geo', "776898");
+ta.store('page.location', "776898");
+ta.store('page.urlSafe', "http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__AllLocations__2D__g776898__2D__c1__2D__Hotels__2D__Castro__5F__Urdiales__5F__Cantabria__2E__html");
+ta.store('facebook.disableLogin', true);
+ta.store('facebook.apiKey', "f1e687a58f0cdac60b7af2317a5febb3");
+ta.store('facebook.appId', "162729813767876");
+ta.store('facebook.appName', "tripadvisor");
+ta.store('facebook.taServerTime', "1340407418");
+ta.store("facebook.invalidFBCreds", true);
+window.fbAsyncInit = ta.support.Facebook.init;
+ta.queueForLoad(function(){
+new Asset.javascript("http://connect.facebook.net/it_IT/all.js");
+}, 0, 'LoadFBJS');
+ta.keep('facebook.data.request', ['ACTIVITY_COUNT']);
+ta.queueForLoad( function() { Cookie.writeSession('FBH', sniffFacebook() ? 1 : 2); }, 'SniffFB' );
+if(getTAMGFooterViaAjax)
+{
+ta.queueForLoad( function() {
+getTAMGFooterViaAjax('RBF_Mobile_Footer', 776898, false, 'AllLocations');
+}, 'TAMGFooter');
+}
+</script>
+<script type='text/javascript'>
+</script>
+<div id="TAMGFooterHolder"></div>
+<div id="IP_IFRAME_HOLDER"></div>
+</body>
+<!-- st: 477 dc: 2 sc: 1 -->
+<!-- uid: T@T@esCoUkIAAC69D54AAAAf -->
+</html>
+<!-- Localized -->
