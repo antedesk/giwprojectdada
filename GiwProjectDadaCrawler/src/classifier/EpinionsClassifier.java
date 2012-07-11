@@ -19,7 +19,13 @@ public class EpinionsClassifier implements PageClassifier{
 	
 	public String classifyPage(String html){
 		
-		Source source= new Source(html);
+		Source source = new Source(html);
+		
+		// Controllo da migliorare, server per evitare pagine che hanno un refresh page 0 che punta ad un altro url (effetto redirect, non categorizzabile)
+		if(source.toString().contains("<meta http-equiv=\"refresh\"")){
+			return "REFRESH_RELOCATE";
+		}
+				
 		List<Element> elements = source.getAllElementsByClass(BREADCRUMB);
 		List<String> breadcrumbCategory = new ArrayList<String>();
 		if(elements.size()>0){
@@ -53,7 +59,7 @@ public class EpinionsClassifier implements PageClassifier{
 		System.out.println();
 			
 		String category = "";
-		if(breadcrumbCategory.size()>=1){
+		if(breadcrumbCategory.size()>=2){
 			category = breadcrumbCategory.get(1);
 		}
 		
@@ -63,10 +69,14 @@ public class EpinionsClassifier implements PageClassifier{
 	public static void main(String args[]) throws IOException{
 		EpinionsClassifier t=new EpinionsClassifier();
 		List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
+		//List<String> listaFile=Utility.listFiles("/Users/dokkis/Downloads/www.epinions.com");
 		
 		List<String> uncategorized = new ArrayList<String>();
+		int i = 1;
+		int size = listaFile.size();
 		for (String url : listaFile) {
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
+				System.out.println(i+"/"+size+", uncategorized: "+uncategorized.size());
 				System.out.println("********************************************************");
 				System.out.println("URL: "+url);
 				String category = t.classifyPage(Utility.fileToString(url));
@@ -75,6 +85,7 @@ public class EpinionsClassifier implements PageClassifier{
 				else
 					uncategorized.add(url);
 				System.out.println("********************************************************\n");
+				i++;
 			}
 		}
 		
