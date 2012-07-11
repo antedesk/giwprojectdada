@@ -31,7 +31,6 @@ public class Utility {
 	public static List<String> listFiles(String dir) throws IOException
 	{
 		List<String> listaFile= new LinkedList<String>();
-
 		File file = new File(dir);
 		if(file.isDirectory())
 		{
@@ -39,8 +38,6 @@ public class Utility {
 			Arrays.sort(filesInDir);
 			for(File f : filesInDir)
 			{
-				//if(cont>0){
-				//cont--;
 				String prefix = "";
 
 				if(f.isFile()){
@@ -51,11 +48,16 @@ public class Utility {
 					prefix = "[d] ";
 					listaFile.addAll(listFiles(f.toString()));
 				}
-
-				//System.out.println(prefix + f.toString());
-				//}
 			}
 		}
 		return listaFile;
+	}
+	//da una lista di stringhe di un path ricrea il path con ->
+	public static String listToPath(List<String> lista){
+		String path = "";
+		for (String string : lista) {
+			path= path+string+" -> ";
+		}
+		return path.substring(0, path.length()-1-3);
 	}
 }

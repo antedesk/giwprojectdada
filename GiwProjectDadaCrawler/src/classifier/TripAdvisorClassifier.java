@@ -13,46 +13,22 @@ public class TripAdvisorClassifier implements PageClassifier{
 	}
 
 
-	public static String pathString(List<String> lista){
-		String path = "";
-		for (String string : lista) {
-			path= path+string+" -> ";
-			//System.out.print(string+", ");
-		}
-		//System.out.println("");
-		return path.substring(0, path.length()-1-3);
-	}
-	public String classifyPage(String filePath){
-		String html=Utility.fileToString(filePath);
+	
+	public String classifyPage(String html){
+		
 		//System.out.println(html);
 		Source source= new Source(html);
 
-		//controllo che ci sia il tag meta con le keywords
-		/*	List<Element> metas=source.getAllElements("meta");
-		String[] keywords=null;
-		for (Element metaEl : metas) {
-			if(metaEl.getAttributeValue("name")!=null&&metaEl.getAttributeValue("name").equals("keywords"))
-				{
-				keywords=metaEl.getAttributeValue("content").split(", ");
-				for (String string : keywords) {
-					if(mapCategory.containsKey(string))
-						mapCategory.put(string, mapCategory.get(string)+1);
-					else mapCategory.put(string, 1);
-				}
-				}
-		}*/
 		List<String> descrizioneList=new LinkedList<String>();
 
 		List<Element> allEl = source.getAllElements();
-		boolean trovatoClass=false;
+		
 		for (Element element : allEl) {
 
 			if(element.getAttributeValue("class")!=null&&((String)element.getAttributeValue("class")).equals("crumbs "))
 			{
-				trovatoClass=true;
-				//System.out.println("****************************");
+				
 
-				//System.out.println("URL: "+filePath);
 				Element liEl=element.getFirstElement("li");
 				if(liEl.getFirstElement("a")!=null){
 					descrizioneList.add(liEl.getFirstElement("a").getTextExtractor().toString());
@@ -103,7 +79,7 @@ public class TripAdvisorClassifier implements PageClassifier{
 		for (String string : listaFile) {
 			System.out.println("****************************");
 			System.out.println("URL: "+string);
-			System.out.println(t.classifyPage(string));
+			System.out.println(t.classifyPage(Utility.fileToString(string)));
 		}
 	}
 }
