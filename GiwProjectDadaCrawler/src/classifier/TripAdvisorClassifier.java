@@ -75,7 +75,7 @@ public class TripAdvisorClassifier implements PageClassifier{
 
 	public static void main(String args[]) throws IOException{
 		TripAdvisorClassifier t=new TripAdvisorClassifier();
-		List<String> listaFile=Utility.listFiles("/Users/Geppo/Desktop/tripadvisor/www.tripadvisor.it/");
+		List<String> listaFile=Utility.listFiles("./TripAdvisorExamplePages");
 		for (String string : listaFile) {
 			System.out.println("****************************");
 			System.out.println("URL: "+string);
