@@ -53,7 +53,7 @@ public class Utility {
 		return listaFile;
 	}
 	//da una lista di stringhe di un path ricrea il path con ->
-	public static String listToPath(List<String> lista){
+	public static String listToBreadcrumb(List<String> lista){
 		String path = "";
 		for (String string : lista) {
 			path= path+string+" -> ";
