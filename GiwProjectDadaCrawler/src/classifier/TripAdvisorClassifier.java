@@ -23,22 +23,25 @@ public class TripAdvisorClassifier implements PageClassifier{
 	}
 
 
-	
+
 	public String classifyPage(String html){
-		
+
 		//System.out.println(html);
 		boolean isForumListPage=false;
 		Source source= new Source(html);
-
+		if(source.toString().contains("<meta http-equiv=\"refresh\"")){
+			return "REFRESH_RELOCATE";
+		}
+		
 		List<String> descrizioneList=new LinkedList<String>();
 
 		List<Element> allEl = source.getAllElements();
-		
+
 		for (Element element : allEl) {
 
 			if(element.getAttributeValue("class")!=null&&((String)element.getAttributeValue("class")).equals("crumbs "))
 			{
-				
+
 				if(source.getElementById("HEADING")!=null&&source.getElementById("HEADING").getTextExtractor().toString().startsWith("Forum"))
 					isForumListPage=true;
 				Element liEl=element.getFirstElement("li");
@@ -68,25 +71,31 @@ public class TripAdvisorClassifier implements PageClassifier{
 			System.out.println("Breadcrumb: "+Utility.listToBreadcrumb(descrizioneList));
 			int size=descrizioneList.size();
 			String ultimo=descrizioneList.get(size-1);
-			String penultimo = descrizioneList.get(size-2);
-			for (String keyword : this.keywords) {
-				if(penultimo.startsWith(keyword))
-					return "istanza di "+keyword;
+			if(size>1){
+				String penultimo = descrizioneList.get(size-2);
+				for (String keyword : this.keywords) {
+					if(penultimo.startsWith(keyword))
+						return "istanza di "+keyword;
+				}
+				for (String keyword : this.keywords) {
+					if(ultimo.startsWith(keyword))
+						return keyword;
+				}
+				if(ultimo.startsWith("Forum"))
+					return "discussione Forum";
+				else {
+					if(isForumListPage)
+						return "Forum Topics list";
+					return "Informazioni su "+ultimo; 
+				}
 			}
-			for (String keyword : this.keywords) {
-				if(ultimo.startsWith(keyword))
-					return keyword;
-			}
-			if(ultimo.startsWith("Forum"))
-				return "discussione Forum";
-			else {
-				if(isForumListPage)
-					return "Forum Topics list";
-				return "Informazioni su "+ultimo; 
-			}
+			else 
+				if(isForumListPage) return "Home Forum";
+				//per ora non ho idea di cosa possa esserci qui sotto
+				else return "";
 		}
 	}
-	
+
 
 
 	/*public static void main(String args[]) throws IOException{
@@ -98,13 +107,13 @@ public class TripAdvisorClassifier implements PageClassifier{
 			System.out.println(t.classifyPage(Utility.fileToString(string)));
 		}
 	}*/
-	
-	
+
+
 	public static void main(String args[]) throws IOException{
 		TripAdvisorClassifier t=new TripAdvisorClassifier();
-		List<String> listaFile=Utility.listFiles("./TripAdvisorExamplePages");
-		//List<String> listaFile=Utility.listFiles("/Users/dokkis/Downloads/www.epinions.com");
-		
+		//List<String> listaFile=Utility.listFiles("./TripAdvisorExamplePages");
+		List<String> listaFile=Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
+
 		List<String> uncategorized = new ArrayList<String>();
 		int i = 1;
 		int size = listaFile.size();
@@ -113,19 +122,29 @@ public class TripAdvisorClassifier implements PageClassifier{
 				System.out.println(i+"/"+size+", uncategorized: "+uncategorized.size());
 				System.out.println("********************************************************");
 				System.out.println("URL: "+url);
-				String category = t.classifyPage(Utility.fileToString(url));
+				String category;
+				if(url.contains("/TravelersChoice/"))
+					category ="TravelChoise";
+				else if(url.contains("/members/"))
+					category ="members";
+				else if(url.contains("/members-photos/"))
+					category ="members photos";
+				else if(url.contains("/members-forums/"))
+					category ="members forums";
+				else  category = t.classifyPage(Utility.fileToString(url));
 				if(!category.equals(""))
 					System.out.println("Categoria (breadcrumb[1]) = " + category);
 				else
 					uncategorized.add(url);
 				System.out.println("********************************************************\n");
-				i++;
+
 			}
+			i++;
 		}
-		
+
 		System.out.println("\n*************** Pagine non categorizzate ***************");
 		for(String url : uncategorized)
 			System.out.println(url);
-		System.out.println("********************************************************");
+				System.out.println("********************************************************");
 	}
 }
