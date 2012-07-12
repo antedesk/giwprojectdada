@@ -58,6 +58,9 @@ public class Utility {
 		for (String string : lista) {
 			path= path+string+" -> ";
 		}
+		if(path.length()==0)
+			return path;
+		
 		return path.substring(0, path.length()-1-3);
 	}
 }
