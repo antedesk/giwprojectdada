@@ -123,7 +123,7 @@ public class TripAdvisorClassifier implements PageClassifier{
 				System.out.println("********************************************************");
 				System.out.println("URL: "+url);
 				String category;
-				if(url.contains("/TravelersChoice/"))
+				if(url.contains("/TravelersChoice"))
 					category ="TravelChoise";
 				else if(url.contains("/members/"))
 					category ="members";

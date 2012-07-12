@@ -133,8 +133,8 @@ public class EpinionsClassifier implements PageClassifier{
 
 	public static void main(String args[]) throws IOException{
 		EpinionsClassifier t=new EpinionsClassifier();
-		//List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
-		List<String> listaFile=Utility.listFiles("./EpinionsTemp");
+		List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
+		//List<String> listaFile=Utility.listFiles("./EpinionsTemp");
 		//List<String> listaFile=Utility.listFiles("/Users/dokkis/Downloads/www.epinions.com");
 		HashMap<String, Integer> frequencyCategory = new HashMap<String, Integer>();
 		
