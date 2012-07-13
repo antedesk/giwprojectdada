@@ -7,7 +7,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class MainClassifier {
-	public static void mainT(String[] args) throws IOException, InterruptedException{
+	public static void main(String[] args) throws IOException, InterruptedException{
 		//List<String> allPages = Utility.listFiles("./TripAdvisorExamplePages");
 		List<String> allPages = Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
 		int numThread=4;
@@ -33,7 +33,7 @@ public class MainClassifier {
 		System.out.println("tot non categorizzate: "+notCat.size());
 				
 	}
-	public static void main(String[] args) throws IOException, InterruptedException{
+	public static void mainT(String[] args) throws IOException, InterruptedException{
 
 		//List<String> allPages=Utility.listFiles("./EpinionsTemp");
 		List<String> allPages = Utility.listFiles("./epinionsExamplePages");
