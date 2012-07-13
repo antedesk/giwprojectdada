@@ -1,6 +1,6 @@
 package classifier;
 
-public interface PageClassifier {
+public abstract class PageClassifier extends Thread{
 	
-	public String classifyPage(String html);
+	public abstract String classifyPage(String html);
 }

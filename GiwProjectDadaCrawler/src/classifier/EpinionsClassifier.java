@@ -9,8 +9,9 @@ import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 
 
-public class EpinionsClassifier implements PageClassifier{
-
+public class EpinionsClassifier extends PageClassifier{
+	List<String> pagine;
+	List<String> uncategorized;
 	private static final String SPAN = "span";
 	private static final String CLASS = "class";
 	private static final String HOME = "Home";
@@ -20,7 +21,9 @@ public class EpinionsClassifier implements PageClassifier{
 	private final String RGR = "rgr";
 	private final String MAGGIORE = " &gt;&nbsp;";
 
-	public EpinionsClassifier(){ }
+	public EpinionsClassifier(List<String> pagine){ 
+		this.pagine=pagine;
+	}
 
 	public String classifyPage(String html){
 
@@ -131,22 +134,22 @@ public class EpinionsClassifier implements PageClassifier{
 		return category;
 	}
 
-	public static void main(String args[]) throws IOException{
-		EpinionsClassifier t=new EpinionsClassifier();
-		List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
+	public  void run(){
+		uncategorized = new ArrayList<String>();
+
+		//List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
 		//List<String> listaFile=Utility.listFiles("./EpinionsTemp");
 		//List<String> listaFile=Utility.listFiles("/Users/dokkis/Downloads/www.epinions.com");
 		HashMap<String, Integer> frequencyCategory = new HashMap<String, Integer>();
 		
-		List<String> uncategorized = new ArrayList<String>();
-		int i = 1;
-		int size = listaFile.size();
-		for (String url : listaFile) {
+		//int i = 1;
+		//int size = this.pagine.size();
+		for (String url : this.pagine) {
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
-				System.out.println(i+"/"+size+", uncategorized: "+uncategorized.size());
+				//System.out.println(i+"/"+size+", uncategorized: "+uncategorized.size());
 				System.out.println("********************************************************");
 				System.out.println("URL: "+url);
-				String category = t.classifyPage(Utility.fileToString(url));
+				String category = classifyPage(Utility.fileToString(url));
 				if(!category.equals("")){
 					System.out.println("Categoria (breadcrumb[1]) = " + category);
 					
@@ -160,9 +163,9 @@ public class EpinionsClassifier implements PageClassifier{
 					uncategorized.add(url);
 				System.out.println("********************************************************\n");
 			}
-			i++;
+			//i++;
 		}
-
+/*
 		System.out.println("\n*************** Pagine non categorizzate ***************");
 		for(String url : uncategorized)
 			System.out.println(url);
@@ -172,5 +175,5 @@ public class EpinionsClassifier implements PageClassifier{
 		for(String category : frequencyCategory.keySet())
 			System.out.println("Category: "+category+": "+frequencyCategory.get(category));
 		System.out.println("********************************************************");
-	}
+	*/}
 }

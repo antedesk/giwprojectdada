@@ -7,9 +7,12 @@ import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 
 
-public class TripAdvisorClassifier implements PageClassifier{
+public class TripAdvisorClassifier extends PageClassifier{
 	List<String> keywords;
-	public TripAdvisorClassifier(){
+	List<String> pagine;
+	List<String> uncategorized;
+	public TripAdvisorClassifier(List<String> pagine){
+		this.pagine=pagine;
 		this.keywords = new LinkedList<String>();
 		keywords.add("Attrazioni");
 		keywords.add("Vacanze");
@@ -32,7 +35,7 @@ public class TripAdvisorClassifier implements PageClassifier{
 		if(source.toString().contains("<meta http-equiv=\"refresh\"")){
 			return "REFRESH_RELOCATE";
 		}
-		
+
 		List<String> descrizioneList=new LinkedList<String>();
 
 		List<Element> allEl = source.getAllElements();
@@ -68,7 +71,6 @@ public class TripAdvisorClassifier implements PageClassifier{
 			return "";
 		else 
 		{
-			System.out.println("Breadcrumb: "+Utility.listToBreadcrumb(descrizioneList));
 			int size=descrizioneList.size();
 			String ultimo=descrizioneList.get(size-1);
 			if(size>1){
@@ -91,37 +93,21 @@ public class TripAdvisorClassifier implements PageClassifier{
 			}
 			else 
 				if(isForumListPage) return "Home Forum";
-				//per ora non ho idea di cosa possa esserci qui sotto
+			//per ora non ho idea di cosa possa esserci qui sotto
 				else return "";
 		}
 	}
+	public void run(){
 
-
-
-	/*public static void main(String args[]) throws IOException{
-		TripAdvisorClassifier t=new TripAdvisorClassifier();
-		List<String> listaFile=Utility.listFiles("./TripAdvisorExamplePages");
-		for (String string : listaFile) {
-			System.out.println("****************************");
-			System.out.println("URL: "+string);
-			System.out.println(t.classifyPage(Utility.fileToString(string)));
-		}
-	}*/
-
-
-	public static void main(String args[]) throws IOException{
-		TripAdvisorClassifier t=new TripAdvisorClassifier();
-		//List<String> listaFile=Utility.listFiles("./TripAdvisorExamplePages");
-		List<String> listaFile=Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
-
-		List<String> uncategorized = new ArrayList<String>();
-		int i = 1;
-		int size = listaFile.size();
-		for (String url : listaFile) {
+		String toPrint="";
+		uncategorized = new ArrayList<String>();
+		//int i = 1;
+		//int size = this.pagine.size();
+		for (String url : this.pagine) {
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
-				System.out.println(i+"/"+size+", uncategorized: "+uncategorized.size());
-				System.out.println("********************************************************");
-				System.out.println("URL: "+url);
+				//toPrint+=(i+"/"+size+", uncategorized: "+uncategorized.size()+"\n");
+				toPrint+=("********************************************************\n");
+				toPrint+=("URL: "+url+"\n");
 				String category;
 				if(url.contains("/TravelersChoice"))
 					category ="TravelChoise";
@@ -131,20 +117,17 @@ public class TripAdvisorClassifier implements PageClassifier{
 					category ="members photos";
 				else if(url.contains("/members-forums/"))
 					category ="members forums";
-				else  category = t.classifyPage(Utility.fileToString(url));
+				else  category = this.classifyPage(Utility.fileToString(url));
 				if(!category.equals(""))
-					System.out.println("Categoria (breadcrumb[1]) = " + category);
-				else
+					toPrint+=("Categoria (breadcrumb[1]) = " + category+"\n");
+				else 
 					uncategorized.add(url);
-				System.out.println("********************************************************\n");
+				toPrint+=("********************************************************\n\n");
 
 			}
-			i++;
+			//i++;
 		}
-
-		System.out.println("\n*************** Pagine non categorizzate ***************");
-		for(String url : uncategorized)
-			System.out.println(url);
-				System.out.println("********************************************************");
-	}
+		System.out.println(toPrint);
 }
+	}
+
