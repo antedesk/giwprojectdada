@@ -1,12 +1,20 @@
 package classifier;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
+import model.PageDetails;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
+import net.htmlparser.jericho.StartTagType;
 
 
 public class EpinionsClassifier extends PageClassifier{
@@ -24,7 +32,50 @@ public class EpinionsClassifier extends PageClassifier{
 	public EpinionsClassifier(List<String> pagine){ 
 		this.pagine=pagine;
 	}
-
+	public PageDetails createPageDetails(Source source,String category,String url) throws ParseException{
+		
+		List<Element> elementsTitle = source.getAllElementsByClass("product_title");
+		if(elementsTitle.size()>0){
+			String productName=elementsTitle.get(0).getContent().toString();
+			System.out.println("NOME: "+productName);
+		}
+			int numberOfReviews=0;
+			List<Element> elementsReviewNumber = source.getAllElementsByClass("rkr reviewLinks");
+			String numReview=null;
+			if(elementsReviewNumber.size()==1)
+				numReview = elementsReviewNumber.get(0).getFirstElement("a").getTextExtractor().toString();
+			if(numReview!=null)
+				numberOfReviews = Integer.parseInt(numReview.split(" ")[0]);
+			System.out.println(numberOfReviews);
+			
+			List<Element> e = source.getAllElementsByClass("review_info");
+			//System.out.println(e.size());
+			
+			Date lastDateReview = null;
+			List<Date> listaDate=new LinkedList<Date>();
+			for (Element element : e) {
+				List<Element> cvb = element.getAllElementsByClass("rgr");
+				if(cvb.size()==1){
+					String stringDate = cvb.get(0).getTextExtractor().toString();
+					//stringDate = stringDate.replaceAll("'","");
+					DateFormat formatter ;
+					Date dateGMT ;
+					formatter = new SimpleDateFormat(" MMM dd ''yy ");
+					System.out.println(stringDate);
+					dateGMT = formatter.parse(stringDate);
+					
+					listaDate.add(dateGMT);
+				}
+			}
+			Date[] arrayDate = (Date[]) listaDate.toArray();
+			Arrays.sort(arrayDate);
+			lastDateReview=arrayDate[arrayDate.length-1];
+			System.out.println(lastDateReview.toString());
+			
+			//PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, lastDateReview);
+		
+		return null;
+	}
 	public String classifyPage(Source source){
 
 		
@@ -32,7 +83,12 @@ public class EpinionsClassifier extends PageClassifier{
 		if(source.toString().contains("<meta http-equiv=\"refresh\"")){
 			return "REFRESH_RELOCATE";
 		}
-
+		
+		//System.out.println(source.getElementById("product_top_box").toString());
+		
+		
+		
+		
 		List<Element> elements = source.getAllElementsByClass(BREADCRUMB);
 		List<String> breadcrumbCategory = new ArrayList<String>();
 		if(elements.size()>0){
@@ -62,22 +118,22 @@ public class EpinionsClassifier extends PageClassifier{
 					}
 				}
 
-				/*elements = breadcrumb.getAllElementsByClass(RKR);
-				for(Element el : elements){
-					List<Element> links = el.getAllElements(HREF);
-					if(links.size()>0){
-						Element category = links.get(0);
-						breadcrumbCategory.add(category.getContent().toString());
-					} else{
+				//elements = breadcrumb.getAllElementsByClass(RKR);
+				//for(Element el : elements){
+					//List<Element> links = el.getAllElements(HREF);
+					//if(links.size()>0){
+						//Element category = links.get(0);
+					//	breadcrumbCategory.add(category.getContent().toString());
+				//	} else{
 						// E' utile? forse c'è sempre solo  '&gt;&nbsp;'
 						////System.out.println(el.getContent());
-					}
-				}
+					//}
+				//}
 
-				elements = breadcrumb.getAllElementsByClass(RGR);
-				for(Element category : elements){
-					breadcrumbCategory.add(category.getContent().toString());
-				}*/
+				//elements = breadcrumb.getAllElementsByClass(RGR);
+				//for(Element category : elements){
+					//breadcrumbCategory.add(category.getContent().toString());
+				//}
 			} 
 		} else {
 			elements = source.getAllElements(SPAN);
@@ -129,7 +185,7 @@ public class EpinionsClassifier extends PageClassifier{
 			category = breadcrumbCategory.get(1);
 		}
 
-		return category;
+		return "";
 	}
 
 	public  void run(){
@@ -154,6 +210,17 @@ public class EpinionsClassifier extends PageClassifier{
 				source.fullSequentialParse();
 				
 				String category = classifyPage(source);
+				
+				if(source.getElementById("product_top_box")!=null){
+					try {
+						createPageDetails(source,category,url);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					System.out.println("DetailsPage created");
+				}
+				
 				if(!category.equals("")){
 					System.out.println("Categoria (breadcrumb[1]) = " + category);
 					
