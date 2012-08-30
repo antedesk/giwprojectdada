@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.PageDetails;
+import model.PageList;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 import net.htmlparser.jericho.StartTagType;
@@ -25,9 +26,16 @@ public class EpinionsClassifier extends PageClassifier{
 	private static final String HOME = "Home";
 	private final String BREADCRUMB = "breadcrumb";
 	private final String HREF = "a";
+	private final String ATTRHREF = "href";
 	private final String RKR = "rkr";
 	private final String RGR = "rgr";
 	private final String MAGGIORE = " &gt;&nbsp;";
+	private final String TABLERESULT = "tableResult";
+	private final String PRODUCTROW = "productRow";
+	private final String PRODUCTROWNOBORDER = "productRow no_border";
+	private final String PRODUCTREVIEWS = "productReviews";
+	private final String PRODUCTINFOLEFT = "productInfo left";
+	
 
 	public EpinionsClassifier(List<String> pagine){ 
 		this.pagine=pagine;
@@ -94,7 +102,7 @@ public class EpinionsClassifier extends PageClassifier{
 		if(elements.size()>0){
 			Element breadcrumb = elements.get(0);
 			if(breadcrumb!=null){
-				System.out.println("BREADCRUMB" + breadcrumb.toString());
+				//System.out.println("BREADCRUMB" + breadcrumb.toString());
 
 				elements = breadcrumb.getAllElements(SPAN);
 				for(Element el : elements){
@@ -107,12 +115,12 @@ public class EpinionsClassifier extends PageClassifier{
 							Element category = links.get(0);
 							if(!MAGGIORE.equals(category.getContent())){
 								breadcrumbCategory.add(category.getContent().toString());
-								System.out.println("IF: "+category.getContent());
+								//System.out.println("IF: "+category.getContent());
 							}
 						} else{
 							if(!MAGGIORE.equals(el.getContent().toString())){
 								breadcrumbCategory.add(el.getContent().toString());
-								System.out.println("ELSE: "+el.getContent());
+								//System.out.println("ELSE: "+el.getContent());
 							}
 						}
 					}
@@ -151,13 +159,13 @@ public class EpinionsClassifier extends PageClassifier{
 							if(!MAGGIORE.equals(category.getContent())){
 								if(el.getParentElement()!=null && el.getParentElement().equals(parentHome) || category.getContent().toString().equalsIgnoreCase(HOME)){
 									if(parentHome==null){
-										System.out.println("HOME: "+category.getContent());
+										//System.out.println("HOME: "+category.getContent());
 										parentHome = el.getParentElement();
-										System.out.println("PARENT: "+parentHome);
+										//System.out.println("PARENT: "+parentHome);
 									}
 								
 									breadcrumbCategory.add(category.getContent().toString());
-									System.out.println("IF: "+category.getContent());
+									//System.out.println("IF: "+category.getContent());
 								}
 							}
 						} else{
@@ -165,10 +173,10 @@ public class EpinionsClassifier extends PageClassifier{
 								if(el.getParentElement()!=null && el.getParentElement().equals(parentHome) || el.getContent().toString().equalsIgnoreCase(HOME)){
 									if(parentHome==null){
 										parentHome = el.getParentElement();
-										System.out.println("PARENT: "+parentHome);
+										//System.out.println("PARENT: "+parentHome);
 									}
 									breadcrumbCategory.add(el.getContent().toString());
-									System.out.println("ELSE: "+el.getContent());
+									//System.out.println("ELSE: "+el.getContent());
 								}
 							}
 						}
@@ -177,8 +185,8 @@ public class EpinionsClassifier extends PageClassifier{
 			}
 		}
 
-		System.out.print("Breadcrumb: " + Utility.listToBreadcrumb(breadcrumbCategory));
-		System.out.println();
+		//System.out.print("Breadcrumb: " + Utility.listToBreadcrumb(breadcrumbCategory));
+		//System.out.println();
 
 		String category = "";
 		if(breadcrumbCategory.size()>=2){
@@ -187,12 +195,66 @@ public class EpinionsClassifier extends PageClassifier{
 
 		return "";
 	}
+	
+	public PageList createPageList(Source source, String url, String category){
+		Element el = source.getElementById(TABLERESULT);
+		
+		List<PageDetails> pageDetailsProducts = new ArrayList<PageDetails>();
+		List<Element> products = el.getAllElementsByClass(PRODUCTROWNOBORDER);
+		for(Element productrow : products){
+			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
+			pageDetailsProducts.add(pageDetails);
+		}
+		
+		products = el.getAllElementsByClass(PRODUCTROW);
+		for(Element productrow : products){
+			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
+			pageDetailsProducts.add(pageDetails);
+		}
+		
+		PageList pageList = new PageList(url, category, pageDetailsProducts);
+		return pageList;
+	}
+	
+	public PageDetails getPageDetailsFromRow(Element productrow, String category){
+		List<Element> reviews = productrow.getAllElementsByClass(PRODUCTREVIEWS);
+		int review = 0;
+		String productName = null;
+		String url = null;
+		
+		if(reviews.size()>0){
+			Element prodRev = reviews.get(0);
+			List<Element> hrefs = prodRev.getAllElements(HREF);
+			if(hrefs.size()>0){
+				Element e = hrefs.get(0);
+				String rev = e.getContent().toString();
+				rev = rev.substring(0, rev.indexOf(" "));
+				review = Integer.parseInt(rev);
+			}
+		}
+		
+		List<Element> infos = productrow.getAllElementsByClass(PRODUCTINFOLEFT);
+		if(infos.size()>0){
+			Element info = infos.get(0);
+			List<Element> hrefs = info.getAllElements(HREF);
+			if(hrefs.size()>0){
+				Element e = hrefs.get(0);
+				url = e.getAttributeValue(ATTRHREF);
+				url = url.replace("../prices/", "../reviews/");
+				productName = e.getContent().toString();
+			}
+		}
+		
+		System.out.println(productName +" - "+ url + " - "+ review);
+		
+		// La data della lastReview non è ricavabile dalle pagine di dettaglio quindi viene settata a null
+		PageDetails pageDetails = new PageDetails(url, category, productName, review, null);
+		return pageDetails;
+	}
 
 	public  void run(){
-		
 
 		uncategorized = new ArrayList<String>();
-
 		//List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
 		//List<String> listaFile=Utility.listFiles("./EpinionsTemp");
 		//List<String> listaFile=Utility.listFiles("/Users/dokkis/Downloads/www.epinions.com");
@@ -206,7 +268,8 @@ public class EpinionsClassifier extends PageClassifier{
 				System.out.println("********************************************************");
 				System.out.println("URL: "+url);
 				
-				Source source = new Source(Utility.fileToString(url));
+				String html = Utility.fileToString(url);
+				Source source = new Source(html);
 				source.fullSequentialParse();
 				
 				String category = classifyPage(source);
@@ -232,6 +295,13 @@ public class EpinionsClassifier extends PageClassifier{
 				}
 				else
 					uncategorized.add(url);
+				
+				
+				if(source.getElementById(TABLERESULT) != null){
+					createPageList(source, url, category);
+					System.out.println(url + " PAGINA DI ELENCO");
+				}
+				
 				System.out.println("********************************************************\n");
 			}
 			//i++;
