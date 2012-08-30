@@ -25,11 +25,9 @@ public class EpinionsClassifier extends PageClassifier{
 		this.pagine=pagine;
 	}
 
-	public String classifyPage(String html){
+	public String classifyPage(Source source){
 
-		Source source = new Source(html);
-		source.fullSequentialParse();
-
+		
 		// Controllo da migliorare, server per evitare pagine che hanno un refresh page 0 che punta ad un altro url (effetto redirect, non categorizzabile)
 		if(source.toString().contains("<meta http-equiv=\"refresh\"")){
 			return "REFRESH_RELOCATE";
@@ -135,6 +133,8 @@ public class EpinionsClassifier extends PageClassifier{
 	}
 
 	public  void run(){
+		
+
 		uncategorized = new ArrayList<String>();
 
 		//List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
@@ -149,7 +149,11 @@ public class EpinionsClassifier extends PageClassifier{
 				//System.out.println(i+"/"+size+", uncategorized: "+uncategorized.size());
 				System.out.println("********************************************************");
 				System.out.println("URL: "+url);
-				String category = classifyPage(Utility.fileToString(url));
+				
+				Source source = new Source(Utility.fileToString(url));
+				source.fullSequentialParse();
+				
+				String category = classifyPage(source);
 				if(!category.equals("")){
 					System.out.println("Categoria (breadcrumb[1]) = " + category);
 					

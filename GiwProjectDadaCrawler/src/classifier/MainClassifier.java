@@ -7,9 +7,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class MainClassifier {
-	public static void main(String[] args) throws IOException, InterruptedException{
-		//List<String> allPages = Utility.listFiles("./TripAdvisorExamplePages");
-		List<String> allPages = Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
+	public static void mainR(String[] args) throws IOException, InterruptedException{
+		List<String> allPages = Utility.listFiles("./TripAdvisorExamplePages");
+		//List<String> allPages = Utility.listFiles("/Volumes/LaCie/tripBackup");
+		//List<String> allPages = Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
 		int numThread=4;
 		int PagePerThread=allPages.size()/numThread;
 		TripAdvisorClassifier t1=new TripAdvisorClassifier(allPages.subList(0, 0+PagePerThread));
@@ -33,7 +34,7 @@ public class MainClassifier {
 		System.out.println("tot non categorizzate: "+notCat.size());
 				
 	}
-	public static void mainT(String[] args) throws IOException, InterruptedException{
+	public static void main(String[] args) throws IOException, InterruptedException{
 
 		//List<String> allPages=Utility.listFiles("./EpinionsTemp");
 		List<String> allPages = Utility.listFiles("./epinionsExamplePages");
