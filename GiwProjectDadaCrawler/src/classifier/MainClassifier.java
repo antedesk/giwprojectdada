@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ThreadPoolExecutor;
 
+import db.DBDatasource;
+
 public class MainClassifier {
 	public static void mainR(String[] args) throws IOException, InterruptedException{
 		List<String> allPages = Utility.listFiles("./TripAdvisorExamplePages");
@@ -36,6 +38,7 @@ public class MainClassifier {
 	}
 	public static void main(String[] args) throws IOException, InterruptedException{
 
+	
 		//List<String> allPages=Utility.listFiles("./EpinionsTemp");
 		List<String> allPages = Utility.listFiles("./epinionsExamplePages");
 		int numThread=1;
