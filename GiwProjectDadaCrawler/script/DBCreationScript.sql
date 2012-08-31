@@ -34,9 +34,9 @@ CREATE  TABLE IF NOT EXISTS `GiwDB`.`page` (
   `iddetails` INT NULL ,
   PRIMARY KEY (`id`) ,
   UNIQUE INDEX `url_UNIQUE` (`url` ASC) ,
-  INDEX `fk_iddetails` (`id` ASC) ,
+  INDEX `fk_iddetails` (`iddetails` ASC) ,
   CONSTRAINT `fk_iddetails`
-    FOREIGN KEY (`id` )
+    FOREIGN KEY (`iddetails` )
     REFERENCES `GiwDB`.`pagedetails` (`id` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
