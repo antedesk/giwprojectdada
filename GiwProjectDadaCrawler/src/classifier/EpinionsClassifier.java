@@ -198,7 +198,7 @@ public class EpinionsClassifier extends PageClassifier{
 			category = breadcrumbCategory.get(1);
 		}
 
-		return "";
+		return category;
 	}
 
 	public PageList createPageList(Source source, String url, String category){
@@ -278,15 +278,17 @@ public class EpinionsClassifier extends PageClassifier{
 				source.fullSequentialParse();
 
 				String category = classifyPage(source);
-
+				System.out.println("CATEGORIA: "+category);
+				PageDetails pd=null;
 				if(source.getElementById("product_top_box")!=null){
 					try {
-						createPageDetails(source,category,url);
+						pd = createPageDetails(source,category,url);
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					System.out.println("DetailsPage created");
+					System.out.println("DetailsPage created: ");
+					System.out.println(pd.toString());
 				}
 
 				if(!category.equals("")){
