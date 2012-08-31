@@ -59,4 +59,9 @@ public class PageDetails {
 	public void setLastDateReview(Date lastDateReview) {
 		this.lastDateReview = lastDateReview;
 	}
+	public String toString(){
+		return  "URL="+url+ "  Category="
+	+this.category+"  ProductName="+productName+"  NumberOfReviews="
+				+numberOfReviews+"  LastDateReview="+lastDateReview;
+	}
 }
