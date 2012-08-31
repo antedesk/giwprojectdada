@@ -1,6 +1,7 @@
 package classifier;
 
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,12 +17,15 @@ import model.PageDetails;
 import model.PageList;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
-import net.htmlparser.jericho.StartTagType;
+import db.DAOServices;
+import db.DBDatasource;
 
 
 public class EpinionsClassifier extends PageClassifier{
-	List<String> pagine;
-	List<String> uncategorized;
+	private DAOServices dao;
+	
+	private List<String> pagine;
+	public List<String> uncategorized;
 	private static final String SPAN = "span";
 	private static final String CLASS = "class";
 	private static final String HOME = "Home";
@@ -32,8 +36,7 @@ public class EpinionsClassifier extends PageClassifier{
 	private final String RGR = "rgr";
 	private final String MAGGIORE = " &gt;&nbsp;";
 	private final String TABLERESULT = "tableResult";
-	private final String PRODUCTROW = "productRow";
-	private final String PRODUCTROWNOBORDER = "productRow no_border";
+	private final String[] PRODUCTROWS = new String[]{"productRow", "productRow ", "productRow firstRow", "productRow no_border"};
 	private final String PRODUCTREVIEWS = "productReviews";
 	private final String PRODUCTINFOLEFT = "productInfo left";
 
@@ -205,17 +208,20 @@ public class EpinionsClassifier extends PageClassifier{
 		Element el = source.getElementById(TABLERESULT);
 
 		List<PageDetails> pageDetailsProducts = new ArrayList<PageDetails>();
-		List<Element> products = el.getAllElementsByClass(PRODUCTROWNOBORDER);
-		for(Element productrow : products){
-			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
-			pageDetailsProducts.add(pageDetails);
+			for(String rowClass : PRODUCTROWS){
+			
+			List<Element> products = el.getAllElementsByClass(rowClass);
+			for(Element productrow : products){
+				PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
+				pageDetailsProducts.add(pageDetails);
+			}
 		}
 
-		products = el.getAllElementsByClass(PRODUCTROW);
+		/*products = el.getAllElementsByClass(PRODUCTROW);
 		for(Element productrow : products){
 			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
 			pageDetailsProducts.add(pageDetails);
-		}
+		}*/
 
 		PageList pageList = new PageList(url, category, pageDetailsProducts);
 		return pageList;
@@ -257,8 +263,20 @@ public class EpinionsClassifier extends PageClassifier{
 		return pageDetails;
 	}
 
-	public  void run(){
-
+	public void run(){
+		DBDatasource dbDataSource;
+		try {
+			dbDataSource = new DBDatasource();
+		
+			Connection conn = dbDataSource.getConnection();
+		
+			this.dao = new DAOServices(conn);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return;
+		}
+		
+		
 		uncategorized = new ArrayList<String>();
 		//List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
 		//List<String> listaFile=Utility.listFiles("./EpinionsTemp");
@@ -283,6 +301,12 @@ public class EpinionsClassifier extends PageClassifier{
 				if(source.getElementById("product_top_box")!=null){
 					try {
 						pd = createPageDetails(source,category,url);
+						try {
+							this.dao.insertPageDetails(pd, false);
+						} catch (SQLException e) {
+							e.printStackTrace();
+							//return;
+						}
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -305,7 +329,13 @@ public class EpinionsClassifier extends PageClassifier{
 
 
 				if(source.getElementById(TABLERESULT) != null){
-					createPageList(source, url, category);
+					PageList pageList = createPageList(source, url, category);
+					try {
+						this.dao.insertPage(pageList);
+					} catch (SQLException e) {
+						e.printStackTrace();
+						//return;
+					}
 					System.out.println(url + " PAGINA DI ELENCO");
 				}
 
