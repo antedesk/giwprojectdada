@@ -12,7 +12,7 @@ USE `GiwDB` ;
 DROP TABLE IF EXISTS `GiwDB`.`pagedetails` ;
 
 CREATE  TABLE IF NOT EXISTS `GiwDB`.`pagedetails` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `productName` VARCHAR(200) NULL ,
   `numberOfReviews` INT NULL ,
   `numberOfReviewsList` INT NULL ,
@@ -28,7 +28,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `GiwDB`.`page` ;
 
 CREATE  TABLE IF NOT EXISTS `GiwDB`.`page` (
-  `id` INT NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `url` VARCHAR(500) NULL ,
   `category` VARCHAR(50) NULL ,
   `iddetails` INT NULL ,
