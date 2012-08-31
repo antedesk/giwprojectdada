@@ -79,13 +79,14 @@ public class EpinionsClassifier extends PageClassifier{
 				listaDate.add(dateGMT);
 			}
 		}
+		if(listaDate.size()>=1){
 		Object[] arrayDate = listaDate.toArray();
 		Arrays.sort(arrayDate);
 		lastDateReview=(Date) arrayDate[arrayDate.length-1];
 		System.out.println(lastDateReview.toString());
-
+		}
 		PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, lastDateReview);
-
+		
 		return pageD;
 	}
 	public String classifyPage(Source source){
