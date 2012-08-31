@@ -38,21 +38,21 @@ public class MainClassifier {
 
 		//List<String> allPages=Utility.listFiles("./EpinionsTemp");
 		List<String> allPages = Utility.listFiles("./epinionsExamplePages");
-		int numThread=4;
+		int numThread=1;
 		int PagePerThread=allPages.size()/numThread;
-		EpinionsClassifier t1=new EpinionsClassifier(allPages.subList(0, 0+PagePerThread));
-		EpinionsClassifier t2=new EpinionsClassifier(allPages.subList(PagePerThread, PagePerThread*2));
-		EpinionsClassifier t3=new EpinionsClassifier(allPages.subList(PagePerThread*2,PagePerThread*3));
-		EpinionsClassifier t4=new EpinionsClassifier(allPages.subList(PagePerThread*3,allPages.size()));
+		EpinionsClassifier t1=new EpinionsClassifier(allPages);//.subList(0, 0+PagePerThread));
+		//EpinionsClassifier t2=new EpinionsClassifier(allPages.subList(PagePerThread, PagePerThread*2));
+		//EpinionsClassifier t3=new EpinionsClassifier(allPages.subList(PagePerThread*2,PagePerThread*3));
+		//EpinionsClassifier t4=new EpinionsClassifier(allPages.subList(PagePerThread*3,allPages.size()));
 		
-		t1.start();t2.start();t3.start();t4.start();
-		t1.join();t2.join();t3.join();t4.join();
+		t1.start();//t2.start();t3.start();t4.start();
+		t1.join();//t2.join();t3.join();t4.join();
 		
 		List<String> notCat = new LinkedList<String>();
 		notCat.addAll(t1.uncategorized);
-		notCat.addAll(t2.uncategorized);
-		notCat.addAll(t3.uncategorized);
-		notCat.addAll(t4.uncategorized);
+		//notCat.addAll(t2.uncategorized);
+		//notCat.addAll(t3.uncategorized);
+		//notCat.addAll(t4.uncategorized);
 		
 		System.out.println("\n*************** Pagine non categorizzate ***************");
 		for(String url : notCat)
