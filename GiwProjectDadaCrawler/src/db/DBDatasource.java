@@ -18,7 +18,7 @@ public class DBDatasource {
 	public DBDatasource() throws Exception{
 
 		Properties properties = new Properties();
-		properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("config/settings.properties"));
+		properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("db/config/settings.properties"));
 		
 		this.dbDriver = properties.getProperty("database.driver");
 		this.dbURL = properties.getProperty("database.url");
