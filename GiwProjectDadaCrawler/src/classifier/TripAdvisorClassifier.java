@@ -185,8 +185,8 @@ public class TripAdvisorClassifier extends PageClassifier{
 					e.printStackTrace();
 				}
 				//toPrint+=(i+"/"+size+", uncategorized: "+uncategorized.size()+"\n");
-				toPrint+=("********************************************************\n");
-				toPrint+=("URL: "+indirizzo+"\n");
+				System.out.println("********************************************************\n");
+				System.out.println("URL: "+indirizzo+"\n");
 				String category;
 				if(indirizzo.contains("/TravelersChoice"))
 					category ="TravelChoise";
@@ -206,18 +206,19 @@ public class TripAdvisorClassifier extends PageClassifier{
 				else  {
 					Source source= new Source(Utility.fileToString(indirizzo));
 					category = this.classifyPage(source);
-				
+					System.out.println(category);
 				}
-				if(!category.equals(""))
-					toPrint+=("Categoria (breadcrumb[1]) = " + category+"\n");
-				else 
+				if(category.equals(""))
 					uncategorized.add(indirizzo);
-				toPrint+=("********************************************************\n\n");
+				//toPrint+=("Categoria (breadcrumb[1]) = " + category+"\n");
+				//else 
+				//	uncategorized.add(indirizzo);
+				//toPrint+=("********************************************************\n\n");
 
 			}
 			//i++;
 		}
-		System.out.println(toPrint);
+		//System.out.println(toPrint);
 	}
 }
 
