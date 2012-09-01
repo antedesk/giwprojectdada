@@ -40,11 +40,11 @@ public class MainClassifier {
 				System.out.println("tot non categorizzate: "+notCat.size());
 
 	}
-	public static void main(String[] args) throws IOException, InterruptedException{
+	public static void mainS(String[] args) throws IOException, InterruptedException{
 
 
-		List<String> allPages=Utility.listFiles("./EpinionsTemp");
-		//List<String> allPages = Utility.listFiles("./epinionsExamplePages");
+		//List<String> allPages=Utility.listFiles("./EpinionsTemp");
+		List<String> allPages = Utility.listFiles("./epinionsExamplePages");
 		int numThread=1;
 		int PagePerThread=allPages.size()/numThread;
 		EpinionsClassifier t1=new EpinionsClassifier(allPages);//.subList(0, 0+PagePerThread));
@@ -69,12 +69,13 @@ public class MainClassifier {
 
 	}
 
-	public static void mainTestDAO(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception{
 		DBDatasource dbDataSource = new DBDatasource();
 		Connection conn = dbDataSource.getConnection();
 
 		DAOServices dao = new DAOServices(conn);
-
+		System.out.println(dao.getPageDetailsFromProductName("Apple iPhone 3GS White (16 GB) Smartphone").toString());
+		/*
 		List<PageDetails> products = new ArrayList<PageDetails>();
 		products.add(new PageDetails("url1", "electronics", "ipod", 10, new Date()));
 		products.add(new PageDetails("url2", "electronics", "iphone", 42, new Date()));
@@ -82,6 +83,6 @@ public class MainClassifier {
 		products.add(new PageDetails("url4", "electronics", "nexus 7", 1, new Date()));
 		PageList pageList = new PageList("asdasd", "lollol", products);
 
-		dao.insertPage(pageList);
+		dao.insertPage(pageList);*/
 	}
 }
