@@ -157,4 +157,36 @@ public class DAOServices {
 
 		//PageDetails pd = new PageDetails(url, category, productName, numberOfReviews, lastDateReview);
 	}
+	public void SaveOrUpdatePageList(PageList pl) throws SQLException{
+		
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGELIST);
+		PreparedStatement psDeletePage=connection.prepareStatement(DBQuery.DELETEPAGE);
+		PreparedStatement psDeleteAggrPage=connection.prepareStatement(DBQuery.DELETEAGGRPAGE);
+		try{
+			ps.setString(1, pl.getUrl());
+			ResultSet rs = ps.executeQuery();
+			if(rs.next())
+			{
+				int todel = rs.getInt(1);
+				psDeleteAggrPage.setInt(1, todel);
+				psDeletePage.setInt(1, todel);
+				psDeleteAggrPage.execute();
+				psDeletePage.execute();
+			}
+			insertPage(pl);
+		}catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+				if(psDeleteAggrPage!=null)
+					ps.close();
+				if(psDeletePage!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+	}
 }
