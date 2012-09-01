@@ -92,7 +92,7 @@ public class EpinionsClassifier extends PageClassifier{
 		lastDateReview=(Date) arrayDate[arrayDate.length-1];
 		System.out.println(lastDateReview.toString());
 		}
-		PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, lastDateReview);
+		PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, 0, lastDateReview);
 		
 		return pageD;
 	}
@@ -264,7 +264,7 @@ public class EpinionsClassifier extends PageClassifier{
 		System.out.println(productName +" - "+ url + " - "+ review);
 
 		// La data della lastReview non è ricavabile dalle pagine di dettaglio quindi viene settata a null
-		PageDetails pageDetails = new PageDetails(url, category, productName, review, null);
+		PageDetails pageDetails = new PageDetails(url, category, productName, 0, review, null);
 		return pageDetails;
 	}
 	
@@ -272,7 +272,9 @@ public class EpinionsClassifier extends PageClassifier{
 		url = url.replace("../", "");
 		url = url.replace("/index.html", "");
 		url = url.replace(rootFile, "");
-		url = ROOTSITE + "/"+url;
+		
+		if(!url.startsWith("http"))
+			url = ROOTSITE + "/"+url;
 		return url;
 	}
 
@@ -305,7 +307,7 @@ public class EpinionsClassifier extends PageClassifier{
 					try {
 						pd = createPageDetails(source,category,url);
 						try {
-							this.dao.insertPageDetails(pd, false);
+							this.dao.saveOrUpdatePageDetails(pd, false);
 						} catch (SQLException e) {
 							e.printStackTrace();
 							//return;
@@ -334,7 +336,7 @@ public class EpinionsClassifier extends PageClassifier{
 				if(source.getElementById(TABLERESULT) != null){
 					PageList pageList = createPageList(source, url, category);
 					try {
-						this.dao.insertPage(pageList);
+						this.dao.saveOrUpdatePageList(pageList);
 					} catch (SQLException e) {
 						e.printStackTrace();
 						//return;
