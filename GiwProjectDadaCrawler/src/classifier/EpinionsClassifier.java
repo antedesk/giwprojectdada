@@ -25,10 +25,12 @@ public class EpinionsClassifier extends PageClassifier{
 	private DAOServices dao;
 	
 	private List<String> pagine;
+	private String rootFile;
 	public List<String> uncategorized;
-	private static final String SPAN = "span";
-	private static final String CLASS = "class";
-	private static final String HOME = "Home";
+	private final String ROOTSITE = "http://www.epinions.com";
+	private final String SPAN = "span";
+	private final String CLASS = "class";
+	private final String HOME = "Home";
 	private final String BREADCRUMB = "breadcrumb";
 	private final String HREF = "a";
 	private final String ATTRHREF = "href";
@@ -41,7 +43,9 @@ public class EpinionsClassifier extends PageClassifier{
 	private final String PRODUCTINFOLEFT = "productInfo left";
 
 
-	public EpinionsClassifier(List<String> pagine){ 
+	public EpinionsClassifier(DAOServices dao, String rootFile, List<String> pagine){ 
+		this.dao = dao;
+		this.rootFile = rootFile;
 		this.pagine=pagine;
 	}
 	public PageDetails createPageDetails(Source source,String category,String url) throws ParseException{
@@ -252,6 +256,7 @@ public class EpinionsClassifier extends PageClassifier{
 				Element e = hrefs.get(0);
 				url = e.getAttributeValue(ATTRHREF);
 				url = url.replace("../prices/", "../reviews/");
+				url = normalizeURL(url);
 				productName = e.getContent().toString();
 			}
 		}
@@ -262,20 +267,16 @@ public class EpinionsClassifier extends PageClassifier{
 		PageDetails pageDetails = new PageDetails(url, category, productName, review, null);
 		return pageDetails;
 	}
+	
+	private String normalizeURL(String url){
+		url = url.replace("../", "");
+		url = url.replace("/index.html", "");
+		url = url.replace(rootFile, "");
+		url = ROOTSITE + "/"+url;
+		return url;
+	}
 
 	public void run(){
-		DBDatasource dbDataSource;
-		try {
-			dbDataSource = new DBDatasource();
-		
-			Connection conn = dbDataSource.getConnection();
-		
-			this.dao = new DAOServices(conn);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return;
-		}
-		
 		
 		uncategorized = new ArrayList<String>();
 		//List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
@@ -294,6 +295,8 @@ public class EpinionsClassifier extends PageClassifier{
 				String html = Utility.fileToString(url);
 				Source source = new Source(html);
 				source.fullSequentialParse();
+				
+				url = normalizeURL(url);
 
 				String category = classifyPage(source);
 				System.out.println("CATEGORIA: "+category);
