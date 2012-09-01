@@ -4,9 +4,18 @@ import java.util.List;
 
 public class PageList {
 	
+	private int id;
 	private String url;
 	private String category;
 	private List<PageDetails> products;
+	
+	public PageList(int id, String url, String category, List<PageDetails> products) {
+		super();
+		this.id = id;
+		this.url = url;
+		this.category = category;
+		this.products = products;
+	}
 	
 	public PageList(String url, String category, List<PageDetails> products) {
 		super();
@@ -15,6 +24,10 @@ public class PageList {
 		this.products = products;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
 	public String getUrl() {
 		return url;
 	}
