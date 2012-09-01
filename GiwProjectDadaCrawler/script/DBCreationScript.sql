@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS `GiwDB`.`pagedetails` ;
 
 CREATE  TABLE IF NOT EXISTS `GiwDB`.`pagedetails` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `productName` VARCHAR(200) NULL ,
+  `productName` VARCHAR(500) NULL ,
   `numberOfReviews` INT NULL ,
   `numberOfReviewsList` INT NULL ,
   `lastDateReviews` DATETIME NULL ,
@@ -29,11 +29,10 @@ DROP TABLE IF EXISTS `GiwDB`.`page` ;
 
 CREATE  TABLE IF NOT EXISTS `GiwDB`.`page` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `url` VARCHAR(500) NULL ,
+  `url` TEXT NULL ,
   `category` VARCHAR(50) NULL ,
   `iddetails` INT NULL ,
   PRIMARY KEY (`id`) ,
-  UNIQUE INDEX `url_UNIQUE` (`url` ASC) ,
   INDEX `fk_iddetails` (`iddetails` ASC) ,
   CONSTRAINT `fk_iddetails`
     FOREIGN KEY (`iddetails` )
@@ -58,7 +57,7 @@ CREATE  TABLE IF NOT EXISTS `GiwDB`.`pagelistaggregation` (
   CONSTRAINT `fk_idPageList`
     FOREIGN KEY (`idPageList` )
     REFERENCES `GiwDB`.`page` (`id` )
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_idPage`
     FOREIGN KEY (`idPage` )
