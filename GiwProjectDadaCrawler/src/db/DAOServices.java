@@ -127,4 +127,34 @@ public class DAOServices {
 			}
 		}
 	}
+	public PageDetails getPageDetailsFromProductName(String productName) throws SQLException{
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMPRODUCTNAME);
+		PageDetails pd=null;
+		try{
+
+			ps.setString(1, productName);
+			ResultSet rs = ps.executeQuery();
+			java.util.Date date=null;
+			if(rs.next()){
+				if(rs.getDate(5)!=null)
+					date=new java.util.Date(rs.getDate(5).getTime());
+				pd=new PageDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),date);
+
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return pd;
+
+
+		//PageDetails pd = new PageDetails(url, category, productName, numberOfReviews, lastDateReview);
+	}
 }
