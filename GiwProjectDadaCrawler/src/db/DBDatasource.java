@@ -28,7 +28,7 @@ public class DBDatasource {
 	}
 	
 	public Connection getConnection() throws Exception {
-		Class.forName(dbDriver);
+		//Class.forName(dbDriver);
 		return DriverManager.getConnection(dbURL, username, password);
 	}
 }
