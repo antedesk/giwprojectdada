@@ -13,25 +13,21 @@ import db.DAOServices;
 import db.DBDatasource;
 
 public class MainClassifier {
-	public static void mainR(String[] args) throws IOException, InterruptedException{
+	public static void main(String[] args) throws IOException, InterruptedException{
 		List<String> allPages = Utility.listFiles("./TripAdvisorExamplePages");
 		//List<String> allPages = Utility.listFiles("/Volumes/LaCie/tripBackup");
 		//List<String> allPages = Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
 		int numThread=4;
 		int PagePerThread=allPages.size()/numThread;
-		TripAdvisorClassifier t1=new TripAdvisorClassifier(allPages.subList(0, 0+PagePerThread));
-		TripAdvisorClassifier t2=new TripAdvisorClassifier(allPages.subList(PagePerThread, PagePerThread*2));
-		TripAdvisorClassifier t3=new TripAdvisorClassifier(allPages.subList(PagePerThread*2,PagePerThread*3));
-		TripAdvisorClassifier t4=new TripAdvisorClassifier(allPages.subList(PagePerThread*3,allPages.size()));
+		TripAdvisorClassifier t1=new TripAdvisorClassifier(allPages);
+		
 
-		t1.start();t2.start();t3.start();t4.start();
-		t1.join();t2.join();t3.join();t4.join();
+		t1.start();
+		t1.join();
 
 		List<String> notCat = new LinkedList<String>();
 		notCat.addAll(t1.uncategorized);
-		notCat.addAll(t2.uncategorized);
-		notCat.addAll(t3.uncategorized);
-		notCat.addAll(t4.uncategorized);
+
 
 		System.out.println("\n*************** Pagine non categorizzate ***************");
 		for(String url : notCat)
@@ -40,7 +36,7 @@ public class MainClassifier {
 				System.out.println("tot non categorizzate: "+notCat.size());
 
 	}
-	public static void main(String[] args) throws Exception{
+	public static void mainE(String[] args) throws Exception{
 		DBDatasource dbDataSource;
 		DAOServices dao;
 		Connection conn;
