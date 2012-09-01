@@ -53,8 +53,8 @@ public class DAOServices {
 		}
 	}
 
-	public void insertPageListAggregation(PageDetails pageDetails, int id_page) throws SQLException{
-		int id_page_details = this.insertPageDetails(pageDetails, true);
+	private void insertPageListAggregation(PageDetails pageDetails, int id_page) throws SQLException{
+		int id_page_details = this.saveOrUpdatePageDetails(pageDetails, true);
 
 		PreparedStatement statement = null;
 		try {
@@ -77,8 +77,54 @@ public class DAOServices {
 			}
 		}
 	}
+	
+	public int saveOrUpdatePageDetails(PageDetails pageDetails, boolean fromAggregationPageList) throws SQLException{
+		int id_page_details;
+		PageDetails dbPageDetails = this.getPageDetailsFromProductName(pageDetails.getProductName());
+		if(dbPageDetails==null)
+			id_page_details = this.insertPageDetails(pageDetails, fromAggregationPageList);
+		else{
+			id_page_details = dbPageDetails.getId();
+			this.updatePageDetails(pageDetails, dbPageDetails, fromAggregationPageList);
+		}
+		return id_page_details;
+	}
 
-	public int insertPageDetails(PageDetails pageDetails, boolean fromAggregationPageList) throws SQLException{
+	private void updatePageDetails(PageDetails pageDetails, PageDetails dbPageDetails, boolean fromAggregationPageList) throws SQLException {
+		PreparedStatement statement = null, statement2 = null;
+		try {
+			statement = connection.prepareStatement(DBQuery.UPDATEPAGEDETAILS);
+
+			if(fromAggregationPageList){
+				statement.setInt(1, dbPageDetails.getNumberOfReviews());
+				statement.setInt(2, pageDetails.getNumberOfReviewsList());
+			} else {
+				statement.setInt(1, pageDetails.getNumberOfReviews());
+				statement.setInt(2, dbPageDetails.getNumberOfReviewsList());
+			}
+			if(pageDetails.getLastDateReview()!=null)
+				statement.setDate(3, new java.sql.Date(pageDetails.getLastDateReview().getTime()));
+			else
+				statement.setNull(3, java.sql.Types.DATE);
+			
+			statement.setInt(4, dbPageDetails.getId());
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(statement!=null)
+					statement.close();
+				if(statement2!=null)
+					statement2.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+	}
+
+	private int insertPageDetails(PageDetails pageDetails, boolean fromAggregationPageList) throws SQLException{
 		PreparedStatement statement = null, statement2 = null;
 		try {
 			statement = connection.prepareStatement(DBQuery.INSERTPAGEDETAILS, Statement.RETURN_GENERATED_KEYS);
@@ -86,7 +132,7 @@ public class DAOServices {
 			statement.setString(1, pageDetails.getProductName());
 			if(fromAggregationPageList){
 				statement.setNull(2, java.sql.Types.INTEGER);
-				statement.setInt(3, pageDetails.getNumberOfReviews());
+				statement.setInt(3, pageDetails.getNumberOfReviewsList());
 			} else {
 				statement.setInt(2, pageDetails.getNumberOfReviews());
 				statement.setNull(3, java.sql.Types.INTEGER);
@@ -127,6 +173,7 @@ public class DAOServices {
 			}
 		}
 	}
+	
 	public PageDetails getPageDetailsFromProductName(String productName) throws SQLException{
 		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMPRODUCTNAME);
 		PageDetails pd=null;
@@ -136,10 +183,10 @@ public class DAOServices {
 			ResultSet rs = ps.executeQuery();
 			java.util.Date date=null;
 			if(rs.next()){
-				if(rs.getDate(5)!=null)
-					date=new java.util.Date(rs.getDate(5).getTime());
-				pd=new PageDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4),date);
-
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				pd=new PageDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), date);
 			}
 		}
 		catch (SQLException e) {
@@ -153,14 +200,12 @@ public class DAOServices {
 			}
 		}
 		return pd;
-
-
-		//PageDetails pd = new PageDetails(url, category, productName, numberOfReviews, lastDateReview);
 	}
-	public void SaveOrUpdatePageList(PageList pl) throws SQLException{
+	
+	public void saveOrUpdatePageList(PageList pl) throws SQLException{
 		
 		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGELIST);
-		PreparedStatement psDeletePage=connection.prepareStatement(DBQuery.DELETEPAGE);
+		//PreparedStatement psDeletePage=connection.prepareStatement(DBQuery.DELETEPAGE);
 		PreparedStatement psDeleteAggrPage=connection.prepareStatement(DBQuery.DELETEAGGRPAGE);
 		try{
 			ps.setString(1, pl.getUrl());
@@ -169,9 +214,9 @@ public class DAOServices {
 			{
 				int todel = rs.getInt(1);
 				psDeleteAggrPage.setInt(1, todel);
-				psDeletePage.setInt(1, todel);
 				psDeleteAggrPage.execute();
-				psDeletePage.execute();
+				//psDeletePage.setInt(1, todel);
+				//psDeletePage.execute();
 			}
 			insertPage(pl);
 		}catch (SQLException e) {
@@ -181,9 +226,9 @@ public class DAOServices {
 				if(ps!=null)
 					ps.close();
 				if(psDeleteAggrPage!=null)
-					ps.close();
-				if(psDeletePage!=null)
-					ps.close();
+					psDeleteAggrPage.close();
+				//if(psDeletePage!=null)
+				//	psDeletePage.close();
 			} catch (SQLException e) {
 				throw e;
 			}

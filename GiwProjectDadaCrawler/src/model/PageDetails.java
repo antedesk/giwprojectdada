@@ -4,20 +4,39 @@ import java.util.Date;
 
 public class PageDetails {
 	
+	private int id;
 	private String url;
 	private String category;
 	private String productName;
 	private int numberOfReviews;
+	private int numberOfReviewsList;
 	private Date lastDateReview;
 	
+	public PageDetails(int id, String url, String category, String productName,
+			int numberOfReviews, int numberOfReviewsList, Date lastDateReview) {
+		super();
+		this.id = id;
+		this.url = url;
+		this.category = category;
+		this.productName = productName;
+		this.numberOfReviews = numberOfReviews;
+		this.numberOfReviewsList = numberOfReviewsList;
+		this.lastDateReview = lastDateReview;
+	}
+	
 	public PageDetails(String url, String category, String productName,
-			int numberOfReviews, Date lastDateReview) {
+			int numberOfReviews, int numberOfReviewsList, Date lastDateReview) {
 		super();
 		this.url = url;
 		this.category = category;
 		this.productName = productName;
 		this.numberOfReviews = numberOfReviews;
+		this.numberOfReviewsList = numberOfReviewsList;
 		this.lastDateReview = lastDateReview;
+	}
+	
+	public int getId() {
+		return id;
 	}
 
 	public String getUrl() {
@@ -59,6 +78,14 @@ public class PageDetails {
 	public void setLastDateReview(Date lastDateReview) {
 		this.lastDateReview = lastDateReview;
 	}
+	
+	public int getNumberOfReviewsList() {
+		return numberOfReviewsList;
+	}
+	public void setNumberOfReviewsList(int numberOfReviewsList) {
+		this.numberOfReviewsList = numberOfReviewsList;
+	}
+
 	public String toString(){
 		return  "URL="+url+ "  Category="
 	+this.category+"  ProductName="+productName+"  NumberOfReviews="

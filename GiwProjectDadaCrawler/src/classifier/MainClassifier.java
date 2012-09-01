@@ -49,8 +49,8 @@ public class MainClassifier {
 		conn = dbDataSource.getConnection();
 		dao = new DAOServices(conn);
 		
-		String rootFile = "./EpinionsTemp/";
-		//String rootFile = "./epinionsExamplePages";
+		//String rootFile = "./EpinionsTemp/";
+		String rootFile = "./epinionsExamplePages";
 		
 		List<String> allPages=Utility.listFiles(rootFile);
 		int numThread=1;
@@ -86,12 +86,12 @@ public class MainClassifier {
 		DAOServices dao = new DAOServices(conn);
 
 		List<PageDetails> products = new ArrayList<PageDetails>();
-		products.add(new PageDetails("url1", "electronics", "ipod", 10, new Date()));
-		products.add(new PageDetails("url2", "electronics", "iphone", 42, new Date()));
-		products.add(new PageDetails("url3", "electronics", "galaxy s3", 110, new Date()));
-		products.add(new PageDetails("url4", "electronics", "nexus 7", 1, new Date()));
+		products.add(new PageDetails("url1", "electronics", "ipod", 10, 10, new Date()));
+		products.add(new PageDetails("url2", "electronics", "iphone", 42, 42, new Date()));
+		products.add(new PageDetails("url3", "electronics", "galaxy s3", 110, 110, new Date()));
+		products.add(new PageDetails("url4", "electronics", "nexus 7", 1, 1, new Date()));
 		PageList pageList = new PageList("asdasd", "lollol", products);
 
-		dao.insertPage(pageList);
+		dao.saveOrUpdatePageList(pageList);
 	}
 }
