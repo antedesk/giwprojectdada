@@ -9,6 +9,8 @@ import model.PageList;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
 
 public class DAOServices {
 
@@ -202,6 +204,61 @@ public class DAOServices {
 		return pd;
 	}
 	
+	public PageDetails getPageDetailsFromIdProduct(int id) throws SQLException{
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMID);
+		PageDetails pd=null;
+		try{
+
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			java.util.Date date=null;
+			if(rs.next()){
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				pd=new PageDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), date);
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return pd;
+	}
+	public PageDetails getPageDetailsFromURL(String url) throws SQLException{
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMURL);
+		PageDetails pd=null;
+		try{
+
+			ps.setString(1, url);
+			ResultSet rs = ps.executeQuery();
+			java.util.Date date=null;
+			if(rs.next()){
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				pd=new PageDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), date);
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return pd;
+	}
+	
 	public void saveOrUpdatePageList(PageList pl) throws SQLException{
 		
 		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGELIST);
@@ -233,5 +290,58 @@ public class DAOServices {
 				throw e;
 			}
 		}
+	}
+
+	public String getCategoryByURL(String url) throws SQLException{
+		PreparedStatement ps=connection.prepareStatement(DBQuery.URLTOCATEGORY);
+		PageDetails pd=null;
+		String cat = null;
+		try{
+
+			ps.setString(1, url);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					cat = rs.getString(1);
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return cat;
+	}
+	
+	//dato un url di una pageList torna gli id delle pagine di dettaglio contenute
+	public List<Integer> getDeteilIDsByURL(String url) throws SQLException{
+		PreparedStatement ps=connection.prepareStatement(DBQuery.URLTTOPRODUCTSID);
+		List<Integer> ids = new LinkedList<Integer>();
+		try{
+
+			ps.setString(1, url);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()){
+				if(!rs.wasNull())
+					ids.add( rs.getInt(1));
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return ids;
 	}
 }
