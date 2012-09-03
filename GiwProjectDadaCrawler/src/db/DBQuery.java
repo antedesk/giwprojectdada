@@ -9,4 +9,10 @@ public class DBQuery {
 	public static final String SELECTPAGELIST = "SELECT id FROM page WHERE url=?";
 	public static final String DELETEPAGE = "DELETE FROM page WHERE id=?";
 	public static final String DELETEAGGRPAGE = "DELETE FROM pagelistaggregation WHERE idPageList=?";
+	
+	public static final String SELECTPAGEDETAILSFROMID = "SELECT pagedetails.id, url, category, productName, numberOfReviews, numberOfReviewsList, lastDateReviews FROM pagedetails join page on page.iddetails=pagedetails.id WHERE pagedetails.id=?";
+	public static final String SELECTPAGEDETAILSFROMURL = "SELECT pagedetails.id, url, category, productName, numberOfReviews, numberOfReviewsList, lastDateReviews FROM pagedetails join page on page.iddetails=pagedetails.id WHERE url=?";
+
+	public static final String URLTOCATEGORY = "SELECT category FROM page WHERE url=?";
+	public static final String URLTTOPRODUCTSID = "SELECT idpage FROM pagelistaggregation join page on pagelistaggregation.idpagelist=page.id WHERE page.url=?";
 }
