@@ -2,25 +2,19 @@ package model;
 
 import java.util.List;
 
-public class PageList {
+public class PageList extends Page{
 	
-	private int id;
-	private String url;
-	private String category;
+	
 	private List<PageDetails> products;
 	
 	public PageList(int id, String url, String category, List<PageDetails> products) {
-		super();
-		this.id = id;
-		this.url = url;
-		this.category = category;
+		super(id,url,category);
+
 		this.products = products;
 	}
 	
 	public PageList(String url, String category, List<PageDetails> products) {
-		super();
-		this.url = url;
-		this.category = category;
+		super(url,category);
 		this.products = products;
 	}
 	
