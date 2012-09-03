@@ -2,11 +2,9 @@ package model;
 
 import java.util.Date;
 
-public class PageDetails {
+public class PageDetails extends Page{
 	
-	private int id;
-	private String url;
-	private String category;
+
 	private String productName;
 	private int numberOfReviews;
 	private int numberOfReviewsList;
@@ -14,10 +12,8 @@ public class PageDetails {
 	
 	public PageDetails(int id, String url, String category, String productName,
 			int numberOfReviews, int numberOfReviewsList, Date lastDateReview) {
-		super();
-		this.id = id;
-		this.url = url;
-		this.category = category;
+		super(id,url,category);
+
 		this.productName = productName;
 		this.numberOfReviews = numberOfReviews;
 		this.numberOfReviewsList = numberOfReviewsList;
@@ -26,9 +22,7 @@ public class PageDetails {
 	
 	public PageDetails(String url, String category, String productName,
 			int numberOfReviews, int numberOfReviewsList, Date lastDateReview) {
-		super();
-		this.url = url;
-		this.category = category;
+		super(url,category);
 		this.productName = productName;
 		this.numberOfReviews = numberOfReviews;
 		this.numberOfReviewsList = numberOfReviewsList;
