@@ -37,7 +37,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 	private final String ATTRHREF = "href";
 	private final String REVIEWNUMCLASS = "taLnk hvrIE6";
 	private final String HAC_RESULTS = "HAC_RESULTS";
-	private final String[] LISTING = new String[]{"listing ", "listing first"};
+	private final String[] LISTING = new String[]{"listing", "listing first"};
 	private final String RS_RATING = "rs rating";
 	private final String QUALITYWRAP = "quality wrap";
 
@@ -136,105 +136,37 @@ public class TripAdvisorClassifier extends PageClassifier{
 		uncategorized = new ArrayList<String>();
 		//int i = 1;
 		//int size = this.pagine.size();
-		for (String indirizzo : this.pagine) {
-			if(!indirizzo.contains("/.svn/") && !indirizzo.contains("/.DS_Store")){
+		for (String url : this.pagine) {
+			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
 				//RICHIESTA HTTP PER LAST MODIFY
-				try {
-					int x=indirizzo.lastIndexOf("/");
-					String httpURL="http://www.tripadvisor.it"+indirizzo.substring(x);
-					URL url= new URL(httpURL);
-
-
-
-					System.out.print(url);
-					URLConnection hpCon = url.openConnection(); 
-					System.out.println("Date: " + new Date(hpCon.getDate())); 
-					System.out.println("Content-Type: " + 
-							hpCon.getContentType()); 
-					System.out.println("Expires: " + hpCon.getExpiration()); 
-					System.out.println("Last-Modified: " + 
-							new Date(hpCon.getLastModified())); 
-					int len = hpCon.getContentLength(); 
-					System.out.println("Content-Length: " + len); 
-					if (len > 0) { 
-						System.out.println("=== Content ==="); 
-						InputStream input = hpCon.getInputStream(); 
-						int i = len; 
-						int c;
-						while (((c = input.read()) != -1) && (-i > 0)) { 
-							System.out.print((char) c); 
-						} 
-						input.close(); 
-					} else { 
-						System.out.println("No Content Available"); 
-					} 
-					System.out.println("***********");
-
-
-
-					/*
-
-					URLConnection c = url.openConnection();
-					c.setConnectTimeout(5000);   // 5 seconds
-					System.out.println(url.toString());
-					String lastMod = c.getHeaderField("Last-Modified");
-					System.out.println("last mod: "+lastMod);
-
-					System.out.println("***********");
-					 */
-
-					// List all the response headers from the server.
-					// Note: The first call to getHeaderFieldKey() will implicit send
-					// the HTTP request to the server.
-					/* for (int i=0; ; i++) {
-				        String headerName = c.getHeaderFieldKey(i);
-				        String headerValue = c.getHeaderField(i);
-
-				        if (headerName == null && headerValue == null) {
-				            // No more headers
-				            break;
-				        }
-				        if (headerName!=null&&headerName.contains("Last-modified")) {
-				            // The header value contains the server's HTTP version
-				        	System.out.println("***********");
-				        	System.out.println(headerValue);
-				        }
-				    }*/
-
-
-				} catch (MalformedURLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				
 				//toPrint+=(i+"/"+size+", uncategorized: "+uncategorized.size()+"\n");
 				System.out.println("********************************************************\n");
-				System.out.println("URL: "+indirizzo+"\n");
+				System.out.println("URL: "+url+"\n");
 				String category;
-				if(indirizzo.contains("/TravelersChoice"))
+				if(url.contains("/TravelersChoice"))
 					category ="TravelChoise";
-				else if(indirizzo.contains("/members/"))
+				else if(url.contains("/members/"))
 					category ="members";
-				else if(indirizzo.contains("/members-photos/"))
+				else if(url.contains("/members-photos/"))
 					category ="members photos";
-				else if(indirizzo.contains("/members-forums/"))
+				else if(url.contains("/members-forums/"))
 					category ="members forums";
-				else if(indirizzo.contains("/Attractions"))
+				else if(url.contains("/Attractions"))
 					category = "Lista attrazioni";
-				else if(indirizzo.contains("/Hotels"))
+				else if(url.contains("/Hotels"))
 					category = "Lista hotel";
-				else if(indirizzo.contains("/Restaurants"))
+				else if(url.contains("/Restaurants"))
 					category = "Lista ristoranti";
 
 				else  {
-					Source source= new Source(Utility.fileToString(indirizzo));
+					Source source= new Source(Utility.fileToString(url));
 					category = this.classifyPage(source);
+					createPageList(source, url, category);
 					System.out.println(category);
 				}
 				if(category.equals(""))
-					uncategorized.add(indirizzo);
+					uncategorized.add(url);
 				//toPrint+=("Categoria (breadcrumb[1]) = " + category+"\n");
 				//else 
 				//	uncategorized.add(indirizzo);
@@ -296,7 +228,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 			if(hrefs.size()>0){
 				Element e = hrefs.get(0);
 				url = e.getAttributeValue(ATTRHREF);
-				url = normalizeURL(url);
+				//url = normalizeURL(url);
 				productName = e.getContent().toString();
 			}
 		}
