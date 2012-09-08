@@ -1,4 +1,5 @@
 package classifier;
+import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -43,6 +44,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 	private final String ENTRYWRAP = "entry wrap";
 	private final String WRAP = "wrap";
 	private final String MORE = "more";
+	private final String H1 = "h1";
 
 
 
@@ -144,7 +146,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
 				//RICHIESTA HTTP PER LAST MODIFY
 				Source source= new Source(Utility.fileToString(url));
-				
+
 				//toPrint+=(i+"/"+size+", uncategorized: "+uncategorized.size()+"\n");
 				System.out.println("********************************************************\n");
 				System.out.println("URL: "+url+"\n");
@@ -169,9 +171,15 @@ public class TripAdvisorClassifier extends PageClassifier{
 					System.out.println();
 					System.out.println(category);
 				}
+				if(category.contains("lista"))
+				{
+					createPageList(source, url, category);
+					System.out.println(category);	
+				}
 				
-				createPageList(source, url, category);
-				System.out.println(category);				
+				if(category.contains("istanza"))
+					createPageDetails(source, category, url);
+
 				if(category.equals(""))
 					uncategorized.add(url);
 				//toPrint+=("Categoria (breadcrumb[1]) = " + category+"\n");
@@ -192,11 +200,11 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 		List<PageDetails> pageDetailsProducts = new ArrayList<PageDetails>();
 
-			List<Element> products = el.getAllElementsByClass(LISTING);
-			for(Element productrow : products){
-				PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
-				pageDetailsProducts.add(pageDetails);
-			}
+		List<Element> products = el.getAllElementsByClass(LISTING);
+		for(Element productrow : products){
+			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
+			pageDetailsProducts.add(pageDetails);
+		}
 
 		/*products = el.getAllElementsByClass(PRODUCTROW);
 		for(Element productrow : products){
@@ -211,10 +219,10 @@ public class TripAdvisorClassifier extends PageClassifier{
 	public PageDetails getPageDetailsFromRow(Element productrow, String category){
 		int review = 0;
 		if(category.equals("Ristoranti"))
-			review = this.getResturantReviewsNumber(productrow);
+			review = this.getResturantReviewsNumberFromResultsList(productrow);
 		else
-			review = this.getReviewsNumber(productrow);
-		
+			review = this.getReviewsNumberFromResultsList(productrow);
+
 		String productName = null;
 		String url = null;
 
@@ -240,7 +248,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 
 	// reupera il numero di review dei ristoranti
-	private int getResturantReviewsNumber(Element productrow) {
+	private int getResturantReviewsNumberFromResultsList(Element productrow) {
 		List<Element> reviews = productrow.getAllElementsByClass(MORE);
 		int review = 0;
 		if(reviews.size()>0){
@@ -257,7 +265,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 	}
 
 	// Recupera il numero di review per hotel e le attrazioni
-	private int getReviewsNumber(Element productrow) {
+	private int getReviewsNumberFromResultsList(Element productrow) {
 		int review = 0;
 		List<Element> more = productrow.getAllElementsByClass(MORE);
 		if(more.size()>0)
@@ -270,7 +278,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 				/* NON CAPISCO PERCHE' CI SONO DUE ELEMENTI NELLA LISTA 
 				   DOVE IL PRIMO E' TUTTO <SPAN>#RECENSIONI</SPAN> E IL SECONDO E' #RECENSIONI 
 				   Mi illuminate voi? :D
-				*/
+				 */
 				Element e = reviews.get(1);
 				String rev = e.getContent().toString();
 				//System.out.println("**********************************************************\n\n"+rev+"\n\n**********************************************************");
@@ -286,54 +294,59 @@ public class TripAdvisorClassifier extends PageClassifier{
 	}
 
 
-	
-		public PageDetails createPageDetails(Source source,String category,String url) throws ParseException{
-	
-			List<Element> elementsTitle = source.getAllElementsByClass("product_title");
-			String productName="";
-			if(elementsTitle.size()>0){
-				 productName=elementsTitle.get(0).getContent().toString();
-				System.out.println("NOME: "+productName);
-			}
-			int numberOfReviews=0;
-			List<Element> elementsReviewNumber = source.getAllElementsByClass("rkr reviewLinks");
-			String numReview=null;
-			if(elementsReviewNumber.size()==1)
-				numReview = elementsReviewNumber.get(0).getFirstElement("a").getTextExtractor().toString();
-			if(numReview!=null)
-				numberOfReviews = Integer.parseInt(numReview.split(" ")[0]);
-			System.out.println(numberOfReviews);
-	
-			List<Element> e = source.getAllElementsByClass("review_info");
-			//System.out.println(e.size());
-	
-			Date lastDateReview = null;
-			List<Date> listaDate=new LinkedList<Date>();
-			for (Element element : e) {
-				List<Element> cvb = element.getAllElementsByClass("rgr");
-				if(cvb.size()==1){
-					String stringDate = cvb.get(0).getTextExtractor().toString();
-					//stringDate = stringDate.replaceAll("'","");
-	
-					Date dateGMT ;
-					DateFormat formatter = new SimpleDateFormat("MMM.dd.yy", Locale.US);
-					stringDate=stringDate.replace(" ",".");
-					stringDate=stringDate.replace("'","");
-					//System.out.println(stringDate);
-					dateGMT = (Date)formatter.parse(stringDate);
-	
-					listaDate.add(dateGMT);
-				}
-			}
-			if(listaDate.size()>=1){
-			Object[] arrayDate = listaDate.toArray();
-			Arrays.sort(arrayDate);
-			lastDateReview=(Date) arrayDate[arrayDate.length-1];
-			System.out.println(lastDateReview.toString());
-			}
-			PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, 0, lastDateReview);
-			
-			return pageD;
+
+	public PageDetails createPageDetails(Source source, String category, String url){
+		
+		/* 
+		 * il nome dell'albergo è contenuto in <h1></h1> è sempre il secondo elemento della lista, 
+		 * il primo è compreso di località e si trova in altro sotto il logo tripadvisor.
+		 */
+		List<Element> elementsTitle = source.getAllElements(H1);
+		String productName="";
+		if(elementsTitle.size()>0){
+			productName = elementsTitle.get(1).getContent().toString().substring(1);
+			System.out.println("NOME: "+productName);
 		}
+		
+		int num_rev=0;
+		// mi faccio restituire la lista di tutti gli span che sono in rs rating (per l'esattezza tre)
+		List<Element> ratingElements = source.getAllElementsByClass(RS_RATING).get(0).getAllElements(SPAN);
+		//mi faccio restituire il terzo elemento della lista che contiene il numero delle recensioni e ne prendo il contenuto
+		Element e = ratingElements.get(2);
+		String rev = e.getContent().toString();
+		num_rev = Integer.parseInt(rev);
+		System.out.println(rev);
+		
+//		List<Element> e = source.getAllElementsByClass("review_info");
+		//System.out.println(e.size());
+
+//		Date lastDateReview = null;
+//		List<Date> listaDate=new LinkedList<Date>();
+//		for (Element element : e) {
+//			List<Element> cvb = element.getAllElementsByClass("rgr");
+//			if(cvb.size()==1){
+//				String stringDate = cvb.get(0).getTextExtractor().toString();
+//				//stringDate = stringDate.replaceAll("'","");
+//
+//				Date dateGMT ;
+//				DateFormat formatter = new SimpleDateFormat("MMM.dd.yy", Locale.US);
+//				stringDate=stringDate.replace(" ",".");
+//				stringDate=stringDate.replace("'","");
+//				//System.out.println(stringDate);
+//				dateGMT = (Date)formatter.parse(stringDate);
+//
+//				listaDate.add(dateGMT);
+//			}
+//		}
+//		if(listaDate.size()>=1){
+//			Object[] arrayDate = listaDate.toArray();
+//			Arrays.sort(arrayDate);
+//			lastDateReview=(Date) arrayDate[arrayDate.length-1];
+//			System.out.println(lastDateReview.toString());
+//		}
+//		PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, 0, lastDateReview);
+
+		return null;
+	}
 }
 
