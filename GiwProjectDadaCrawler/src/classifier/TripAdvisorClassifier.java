@@ -143,32 +143,35 @@ public class TripAdvisorClassifier extends PageClassifier{
 		for (String url : this.pagine) {
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
 				//RICHIESTA HTTP PER LAST MODIFY
-
+				Source source= new Source(Utility.fileToString(url));
+				
 				//toPrint+=(i+"/"+size+", uncategorized: "+uncategorized.size()+"\n");
 				System.out.println("********************************************************\n");
 				System.out.println("URL: "+url+"\n");
 				String category;
-				if(url.contains("/TravelersChoice"))
+				if(url.contains("TravelersChoice"))
 					category ="TravelChoise";
-				else if(url.contains("/members/"))
+				else if(url.contains("members/"))
 					category ="members";
-				else if(url.contains("/members-photos/"))
+				else if(url.contains("members-photos/"))
 					category ="members photos";
-				else if(url.contains("/members-forums/"))
+				else if(url.contains("members-forums/"))
 					category ="members forums";
-				else if(url.contains("/Attractions"))
+				else if(url.contains("Attractions"))
 					category = "Lista attrazioni";
-				else if(url.contains("/Hotels"))
+				else if(url.contains("Hotels"))
 					category = "Lista hotel";
-				else if(url.contains("/Restaurants"))
+				else if(url.contains("Restaurants"))
 					category = "Lista ristoranti";
 
 				else  {
-					Source source= new Source(Utility.fileToString(url));
 					category = this.classifyPage(source);
-					createPageList(source, url, category);
+					System.out.println();
 					System.out.println(category);
 				}
+				
+				createPageList(source, url, category);
+				System.out.println(category);				
 				if(category.equals(""))
 					uncategorized.add(url);
 				//toPrint+=("Categoria (breadcrumb[1]) = " + category+"\n");
@@ -283,80 +286,54 @@ public class TripAdvisorClassifier extends PageClassifier{
 	}
 
 
-	//		private String normalizeURL(String url){
-	//			url = url.replace("../", "");
-	//			url = url.replace("/index.html", "");
-	//			url = url.replace(rootFile, "");
-	//
-	//			if(!url.startsWith("http"))
-	//				url = ROOTSITE + "/"+url;
-	//			return url;
-	//		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//--------------------------DETTAGLI PAGINA NON GUARDARE!-----------------------------//
-	//	public PageDetails createPageDetails(Source source,String category,String url) throws ParseException{
-	//
-	//		List<Element> elementsTitle = source.getAllElementsByClass("product_title");
-	//		String productName="";
-	//		if(elementsTitle.size()>0){
-	//			 productName=elementsTitle.get(0).getContent().toString();
-	//			System.out.println("NOME: "+productName);
-	//		}
-	//		int numberOfReviews=0;
-	//		List<Element> elementsReviewNumber = source.getAllElementsByClass("rkr reviewLinks");
-	//		String numReview=null;
-	//		if(elementsReviewNumber.size()==1)
-	//			numReview = elementsReviewNumber.get(0).getFirstElement("a").getTextExtractor().toString();
-	//		if(numReview!=null)
-	//			numberOfReviews = Integer.parseInt(numReview.split(" ")[0]);
-	//		System.out.println(numberOfReviews);
-	//
-	//		List<Element> e = source.getAllElementsByClass("review_info");
-	//		//System.out.println(e.size());
-	//
-	//		Date lastDateReview = null;
-	//		List<Date> listaDate=new LinkedList<Date>();
-	//		for (Element element : e) {
-	//			List<Element> cvb = element.getAllElementsByClass("rgr");
-	//			if(cvb.size()==1){
-	//				String stringDate = cvb.get(0).getTextExtractor().toString();
-	//				//stringDate = stringDate.replaceAll("'","");
-	//
-	//				Date dateGMT ;
-	//				DateFormat formatter = new SimpleDateFormat("MMM.dd.yy", Locale.US);
-	//				stringDate=stringDate.replace(" ",".");
-	//				stringDate=stringDate.replace("'","");
-	//				//System.out.println(stringDate);
-	//				dateGMT = (Date)formatter.parse(stringDate);
-	//
-	//				listaDate.add(dateGMT);
-	//			}
-	//		}
-	//		if(listaDate.size()>=1){
-	//		Object[] arrayDate = listaDate.toArray();
-	//		Arrays.sort(arrayDate);
-	//		lastDateReview=(Date) arrayDate[arrayDate.length-1];
-	//		System.out.println(lastDateReview.toString());
-	//		}
-	//		PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, 0, lastDateReview);
-	//		
-	//		return pageD;
-	//	}
+	
+		public PageDetails createPageDetails(Source source,String category,String url) throws ParseException{
+	
+			List<Element> elementsTitle = source.getAllElementsByClass("product_title");
+			String productName="";
+			if(elementsTitle.size()>0){
+				 productName=elementsTitle.get(0).getContent().toString();
+				System.out.println("NOME: "+productName);
+			}
+			int numberOfReviews=0;
+			List<Element> elementsReviewNumber = source.getAllElementsByClass("rkr reviewLinks");
+			String numReview=null;
+			if(elementsReviewNumber.size()==1)
+				numReview = elementsReviewNumber.get(0).getFirstElement("a").getTextExtractor().toString();
+			if(numReview!=null)
+				numberOfReviews = Integer.parseInt(numReview.split(" ")[0]);
+			System.out.println(numberOfReviews);
+	
+			List<Element> e = source.getAllElementsByClass("review_info");
+			//System.out.println(e.size());
+	
+			Date lastDateReview = null;
+			List<Date> listaDate=new LinkedList<Date>();
+			for (Element element : e) {
+				List<Element> cvb = element.getAllElementsByClass("rgr");
+				if(cvb.size()==1){
+					String stringDate = cvb.get(0).getTextExtractor().toString();
+					//stringDate = stringDate.replaceAll("'","");
+	
+					Date dateGMT ;
+					DateFormat formatter = new SimpleDateFormat("MMM.dd.yy", Locale.US);
+					stringDate=stringDate.replace(" ",".");
+					stringDate=stringDate.replace("'","");
+					//System.out.println(stringDate);
+					dateGMT = (Date)formatter.parse(stringDate);
+	
+					listaDate.add(dateGMT);
+				}
+			}
+			if(listaDate.size()>=1){
+			Object[] arrayDate = listaDate.toArray();
+			Arrays.sort(arrayDate);
+			lastDateReview=(Date) arrayDate[arrayDate.length-1];
+			System.out.println(lastDateReview.toString());
+			}
+			PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, 0, lastDateReview);
+			
+			return pageD;
+		}
 }
 
