@@ -8,6 +8,8 @@ import java.util.Properties;
  *
  * @author Daniele D'Andrea
  * @author Antonio Gallo
+ * @author Antonio Tedeschi
+ * @author Daniele Malta
  */
 public class DBDatasource {
 

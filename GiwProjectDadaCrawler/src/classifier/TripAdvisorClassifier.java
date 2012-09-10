@@ -27,22 +27,15 @@ public class TripAdvisorClassifier extends PageClassifier{
 	List<String> pagine;
 	List<String> uncategorized;
 
-	private String rootFile;
 	private final String SPAN = "span";
-	private final String CLASS = "class";
-	private final String HOME = "Home";
-	private final String BREADCRUMB = "breadcrumb";
 
 	private final String ROOTSITE = "http://www.tripadvisor.it/";
 	private final String HREF = "a";
 	private final String ATTRHREF = "href";
-	private final String[] REVIEWNUM_CLASS = new String[]{"fkLnk hvrIE6","taLnk hvrIE6"};
 	private final String HAC_RESULTS = "HAC_RESULTS";
 	private final String LISTING = "listing";
 	private final String RS_RATING = "rs rating";
 	private final String QUALITYWRAP = "quality wrap";
-	private final String ENTRYWRAP = "entry wrap";
-	private final String WRAP = "wrap";
 	private final String MORE = "more";
 	private final String H1 = "h1";
 
@@ -176,9 +169,14 @@ public class TripAdvisorClassifier extends PageClassifier{
 					createPageList(source, url, category);
 					System.out.println(category);	
 				}
-				
+
 				if(category.contains("istanza"))
-					createPageDetails(source, category, url);
+					try {
+						createPageDetails(source, category, url);
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 
 				if(category.equals(""))
 					uncategorized.add(url);
@@ -233,7 +231,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 			if(hrefs.size()>0){
 				Element e = hrefs.get(0);
 				url = e.getAttributeValue(ATTRHREF);
-				//url = normalizeURL(url);
+				//ricostruzione dell'url unendo la root e il path
 				url= ROOTSITE+url;
 				productName = e.getContent().toString();
 			}
@@ -255,6 +253,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 			Element prodRev = reviews.get(0);
 			List<Element> hrefs = prodRev.getAllElements(HREF);
 			if(hrefs.size()>0){
+				//recupero l'elemento, il suo contenuto da cui è ricavato il numero di review e infine lo converto in intero
 				Element e = hrefs.get(0);
 				String rev = e.getContent().toString();
 				rev = rev.substring(0, rev.indexOf(" "));
@@ -275,10 +274,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 			System.out.print("**********\n"+reviews.size()+"\n**********");			
 			if(reviews.size()>0)
 			{
-				/* NON CAPISCO PERCHE' CI SONO DUE ELEMENTI NELLA LISTA 
-				   DOVE IL PRIMO E' TUTTO <SPAN>#RECENSIONI</SPAN> E IL SECONDO E' #RECENSIONI 
-				   Mi illuminate voi? :D
-				 */
+
 				Element e = reviews.get(1);
 				String rev = e.getContent().toString();
 				//System.out.println("**********************************************************\n\n"+rev+"\n\n**********************************************************");
@@ -295,8 +291,8 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 
 
-	public PageDetails createPageDetails(Source source, String category, String url){
-		
+	public PageDetails createPageDetails(Source source, String category, String url) throws ParseException{
+
 		/* 
 		 * il nome dell'albergo è contenuto in <h1></h1> è sempre il secondo elemento della lista, 
 		 * il primo è compreso di località e si trova in altro sotto il logo tripadvisor.
@@ -307,7 +303,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 			productName = elementsTitle.get(1).getContent().toString().substring(1);
 			System.out.println("NOME: "+productName);
 		}
-		
+
 		int num_rev=0;
 		// mi faccio restituire la lista di tutti gli span che sono in rs rating (per l'esattezza tre)
 		List<Element> ratingElements = source.getAllElementsByClass(RS_RATING).get(0).getAllElements(SPAN);
@@ -316,37 +312,41 @@ public class TripAdvisorClassifier extends PageClassifier{
 		String rev = e.getContent().toString();
 		num_rev = Integer.parseInt(rev);
 		System.out.println(rev);
+
+		//ottengo la data dell'ultima recensione.
+		Date lastdate = this.getDateFromPageDetails(source);
+
+		PageDetails pageDatails=new PageDetails(url, category, productName, num_rev, 0, lastdate);
+
+		return pageDatails;
+	}
+	
+	//recupero la data dell'ultima recensione presente nella pagina
+	public Date getDateFromPageDetails(Source source) throws ParseException
+	{
+		List<Element> allReviewsDate = source.getAllElementsByClass("ratingDate");
+		System.out.println(allReviewsDate.size()+"\t"+allReviewsDate.get(0).getContent().toString());
+		Element recentDate = allReviewsDate.get(0);
+		String stringDate = recentDate.getContent().toString();
+		int lung = stringDate.length();
+		stringDate= stringDate.substring(13, lung-1);
+		System.out.println(stringDate);
+
+		Date lastDate = null ;
+		DateFormat formatter = new SimpleDateFormat("dd.MMMMMMMMM.yyyy", Locale.ITALY);
+		stringDate=stringDate.replace(" ",".");
 		
-//		List<Element> e = source.getAllElementsByClass("review_info");
-		//System.out.println(e.size());
-
-//		Date lastDateReview = null;
-//		List<Date> listaDate=new LinkedList<Date>();
-//		for (Element element : e) {
-//			List<Element> cvb = element.getAllElementsByClass("rgr");
-//			if(cvb.size()==1){
-//				String stringDate = cvb.get(0).getTextExtractor().toString();
-//				//stringDate = stringDate.replaceAll("'","");
-//
-//				Date dateGMT ;
-//				DateFormat formatter = new SimpleDateFormat("MMM.dd.yy", Locale.US);
-//				stringDate=stringDate.replace(" ",".");
-//				stringDate=stringDate.replace("'","");
-//				//System.out.println(stringDate);
-//				dateGMT = (Date)formatter.parse(stringDate);
-//
-//				listaDate.add(dateGMT);
-//			}
-//		}
-//		if(listaDate.size()>=1){
-//			Object[] arrayDate = listaDate.toArray();
-//			Arrays.sort(arrayDate);
-//			lastDateReview=(Date) arrayDate[arrayDate.length-1];
-//			System.out.println(lastDateReview.toString());
-//		}
-//		PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, 0, lastDateReview);
-
-		return null;
+		//controllo per eliminare lo span inserito all'interno del numero di recensioni, non è presente in tutte le pagine.
+		if(stringDate.contains("<span.class=\"new\">"))
+		{
+			String array[]=stringDate.split("<");
+			int leng = array[0].length();
+			stringDate = array[0].substring(0,leng-1); //rimuovo lo \n che c'è
+		}
+		System.out.println(stringDate);
+		lastDate = (Date)formatter.parse(stringDate);
+		
+		return lastDate;
 	}
 }
 

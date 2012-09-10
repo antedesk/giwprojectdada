@@ -54,5 +54,32 @@ public class ServicesImpl implements Services {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public List<PageDetails> DateToPages(Date date) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<PageDetails> RangesDateToPages(Date minDate, Date maxDate)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<PageDetails> RangesDateToCategories(Date minDate, Date maxDate)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<PageDetails> DateToBackPages(Date Date) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<PageDetails> DateToFuturePages(Date Date) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
