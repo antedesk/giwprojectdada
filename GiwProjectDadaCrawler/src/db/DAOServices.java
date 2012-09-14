@@ -9,6 +9,7 @@ import model.PageList;
 
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -258,6 +259,132 @@ public class DAOServices {
 		}
 		return pd;
 	}
+	
+	public PageDetails getPageDetailsFromDate(Date date) throws SQLException{
+		
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMDATE);
+		PageDetails pd=null;
+		try{
+
+			ps.setDate(7, (java.sql.Date) date);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				pd=new PageDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), date);
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return pd;
+		
+	}
+	
+	
+	public PageDetails getPageDetailsFromAfterDate(Date date) throws SQLException{
+		
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMAFTERDATE);
+		PageDetails pd=null;
+		try{
+
+			ps.setDate(7, (java.sql.Date) date);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				pd=new PageDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), date);
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return pd;
+		
+	}
+	
+	public PageDetails getPageDetailsFromBeforeDate(Date date) throws SQLException{
+		
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMAFTERDATE);
+		PageDetails pd=null;
+		try{
+
+			ps.setDate(7, (java.sql.Date) date);
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				pd=new PageDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), date);
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return pd;
+		
+	}
+	
+	//NON FA QUELLO CHE DEVE FARE!!! OCCHIO!!!!
+	public PageDetails getPageDetailsFromBetweenDate(Date before_date, Date after_date) throws SQLException{
+		
+		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMBETWEENDATES);
+		PageDetails pd=null;
+		try{
+
+			ps.setDate(7, (java.sql.Date) before_date);
+			ps.setDate(7, (java.sql.Date) after_date);
+			ResultSet rs = ps.executeQuery();
+			java.util.Date date = null;
+			if(rs.next()){
+				//INCOMPLETO VA MODIFICATO IL GET DELLA DATA!!!
+				java.sql.Date data = rs.getDate(7);
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				pd=new PageDetails(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6), date);
+			}
+		}
+		catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+		return pd;
+		
+	}
+	
+
 	
 	public void saveOrUpdatePageList(PageList pl) throws SQLException{
 		
