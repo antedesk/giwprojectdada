@@ -198,8 +198,10 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 		List<PageDetails> pageDetailsProducts = new ArrayList<PageDetails>();
 
+		//recupero tutti gli elementi presenti nella lista di risultati
 		List<Element> products = el.getAllElementsByClass(LISTING);
 		for(Element productrow : products){
+			//recupera le informazioni presenti nella pagina dei risultati relative al prodotto
 			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
 			pageDetailsProducts.add(pageDetails);
 		}
@@ -210,10 +212,12 @@ public class TripAdvisorClassifier extends PageClassifier{
 			pageDetailsProducts.add(pageDetails);
 		}*/
 
+		//crea una nuova PageList aggiungendo url categoria e una lista di PageDetails presenti nei risultati.
 		PageList pageList = new PageList(url, category, pageDetailsProducts);
 		return pageList;
 	}
 
+	// Recupera le informazioni dei singoli prodotti
 	public PageDetails getPageDetailsFromRow(Element productrow, String category){
 		int review = 0;
 		if(category.equals("Ristoranti"))
@@ -224,6 +228,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 		String productName = null;
 		String url = null;
 
+		//RECUPERO IL NOME DEL PRODOTTO
 		List<Element> infos = productrow.getAllElementsByClass(QUALITYWRAP);
 		if(infos.size()>0){
 			Element info = infos.get(0);
@@ -294,7 +299,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 	public PageDetails createPageDetails(Source source, String category, String url) throws ParseException{
 
 		/* 
-		 * il nome dell'albergo è contenuto in <h1></h1> è sempre il secondo elemento della lista, 
+		 * il nome dell'albergo/prodotto è contenuto in <h1></h1> è sempre il secondo elemento della lista, 
 		 * il primo è compreso di località e si trova in altro sotto il logo tripadvisor.
 		 */
 		List<Element> elementsTitle = source.getAllElements(H1);
