@@ -4,8 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import model.PageDetails;
 
@@ -60,44 +63,59 @@ public class Main {
 		 else if(service.equals("Date To Pages"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a quella data");
+        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
+        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+     		 date = (Date)formatter.parse(stringDate);
         	 serv.DateToPages(date);
          }
 		 else if(service.equals("Ranges Date To Pages"))
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
+        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
         	 System.out.println("Inserisci la prima data");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
+        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+     		 date1 = (Date)formatter.parse(stringDate1);
         	 System.out.println("Inserisci la seconda data");
         	 String stringDate2 = stdin.readLine();
-        	 Date date2 = null;
+        	 Date date2 = (Date)formatter.parse(stringDate2);
         	 serv.RangesDateToPages(date1, date2);
          }
 		 else if(service.equals("Ranges Date To Categories"))
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
         	 System.out.println("Inserisci la prima data");
+        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
+        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+     		 date1 = (Date)formatter.parse(stringDate1);
         	 System.out.println("Inserisci la seconda data");
         	 String stringDate2 = stdin.readLine();
-        	 Date date2 = null;
+        	 Date date2 = (Date)formatter.parse(stringDate2);
         	 serv.RangesDateToCategories(date1, date2);
          }
 		 else if(service.equals("Date To Back Pages"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a prima di quella data");
+        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
+        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+     		 date = (Date)formatter.parse(stringDate);
         	 serv.DateToBackPages(date);
          }
 		 else if(service.equals("Date To Future Pages"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a dopo quella data");
+        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
+        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+     		 date = (Date)formatter.parse(stringDate);
         	 serv.DateToFuturePages(date);
          }
         		
