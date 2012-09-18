@@ -63,7 +63,7 @@ public class Main {
 		 else if(service.equals("Date To Pages"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a quella data");
-        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
@@ -73,7 +73,7 @@ public class Main {
 		 else if(service.equals("Ranges Date To Pages"))
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
-        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
         	 System.out.println("Inserisci la prima data");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
@@ -88,7 +88,7 @@ public class Main {
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
         	 System.out.println("Inserisci la prima data");
-        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
@@ -101,7 +101,7 @@ public class Main {
 		 else if(service.equals("Date To Back Pages"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a prima di quella data");
-        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
@@ -111,7 +111,7 @@ public class Main {
 		 else if(service.equals("Date To Future Pages"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a dopo quella data");
-        	 System.out.println("il formato della data richiesto è: gg/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
