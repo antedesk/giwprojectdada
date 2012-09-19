@@ -6,6 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +17,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import db.DAOServices;
+
 import model.PageDetails;
 import model.PageList;
 import net.htmlparser.jericho.Element;
@@ -23,6 +26,7 @@ import net.htmlparser.jericho.Source;
 
 
 public class TripAdvisorClassifier extends PageClassifier{
+	private DAOServices dao;
 	List<String> keywords;
 	List<String> pagine;
 	List<String> uncategorized;
@@ -41,8 +45,9 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 
 
-	public TripAdvisorClassifier(List<String> pagine){
+	public TripAdvisorClassifier(DAOServices dao, List<String> pagine){
 		this.pagine=pagine;
+		this.dao=dao;
 		this.keywords = new LinkedList<String>();
 		keywords.add("Attrazioni");
 		keywords.add("Vacanze");
@@ -166,17 +171,30 @@ public class TripAdvisorClassifier extends PageClassifier{
 				}
 				if(category.contains("lista"))
 				{
-					createPageList(source, url, category);
-					System.out.println(category);	
+					PageList pl = createPageList(source, url, category);
+					System.out.println(category);
+					try {
+						this.dao.saveOrUpdatePageList(pl);
+					} catch (SQLException e) {
+						e.printStackTrace();
+						//return;
+					}
 				}
 
 				if(category.contains("istanza"))
 					try {
-						createPageDetails(source, category, url);
+						PageDetails pd = createPageDetails(source, category, url);
+						try {
+							this.dao.saveOrUpdatePageDetails(pd, false);
+						} catch (SQLException e) {
+							e.printStackTrace();
+							//return;
+						}
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+				
 
 				if(category.equals(""))
 					uncategorized.add(url);

@@ -13,13 +13,20 @@ import db.DAOServices;
 import db.DBDatasource;
 
 public class MainClassifier {
-	public static void mainT(String[] args) throws IOException, InterruptedException{
+	public static void main(String[] args) throws Exception{
 		List<String> allPages = Utility.listFiles("./TripAdvisorExamplePages");
 		//List<String> allPages = Utility.listFiles("/Volumes/LaCie/tripBackup");
 		//List<String> allPages = Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
 		int numThread=4;
 		int PagePerThread=allPages.size()/numThread;
-		TripAdvisorClassifier t1=new TripAdvisorClassifier(allPages);
+		DBDatasource dbDataSource;
+		DAOServices dao;
+		Connection conn;
+
+		dbDataSource = new DBDatasource();
+		conn = dbDataSource.getConnection();
+		dao = new DAOServices(conn);
+		TripAdvisorClassifier t1=new TripAdvisorClassifier(dao,allPages);
 		
 
 		t1.start();
@@ -36,7 +43,7 @@ public class MainClassifier {
 				System.out.println("tot non categorizzate: "+notCat.size());
 
 	}
-	public static void main(String[] args) throws Exception{
+	public static void mainT(String[] args) throws Exception{
 		DBDatasource dbDataSource;
 		DAOServices dao;
 		Connection conn;

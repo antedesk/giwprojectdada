@@ -14,7 +14,7 @@ import model.PageDetails;
 
 public class Main {
 	
-	public static void main(String[] args) throws Exception{
+	public static void mainTak(String[] args) throws Exception{
 		System.out.println("I servizi a disposizione sono:"
 								+"\nURL To Category"
 								+"\nURL To Products"
