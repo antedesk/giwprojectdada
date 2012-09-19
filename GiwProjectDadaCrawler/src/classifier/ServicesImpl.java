@@ -1,4 +1,4 @@
-package classifier;
+	package classifier;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,6 +9,7 @@ import java.util.List;
 import db.DAOServices;
 import db.DBDatasource;
 
+import model.Page;
 import model.PageDetails;
 
 public class ServicesImpl implements Services {
@@ -50,7 +51,7 @@ public class ServicesImpl implements Services {
 	}
 
 	@Override //QUALE TIPI DI PAGINE????
-	public List<PageDetails> CategoryToPages(String category) throws SQLException {
+	public List<Page> CategoryToPages(String category) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
