@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import model.Page;
 import model.PageDetails;
 
 public interface Services {
@@ -21,7 +22,7 @@ public interface Services {
 	public Date URLToLastDateReview(String url) throws SQLException;
 	
 	//Data una categoria restituisce tutte la pagine appartenenti ad essa
-	public List<PageDetails> CategoryToPages(String category) throws SQLException;
+	public List<Page> CategoryToPages(String category) throws SQLException;
 	
 	//Data una data restituisce tutte le pagine con quella data
 	public List<PageDetails> DateToPages(Date date) throws SQLException;
