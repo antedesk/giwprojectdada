@@ -26,18 +26,18 @@ public interface Services {
 	
 	//Data una data restituisce tutte le pagine con quella data
 	public List<PageDetails> DateToPages(Date date) throws SQLException;
-	
-	//Date due date restituisce tutte le pagine relative a quel periodo, estremi inclusi
-	public List<PageDetails> RangesDateToPages(Date minDate,Date maxDate) throws SQLException;
-
-	//Date due date restituisce tutte le categorie delle pagine relative a quel periodo, estremi inclusi
-	public List<PageDetails> RangesDateToCategories(Date minDate,Date maxDate) throws SQLException;
 
 	//Data una date restituisce tutte le pagine prima di quella data
 	public List<PageDetails> DateToBackPages(Date Date) throws SQLException;
 
 	//Data una date restituisce tutte le pagine dopo di quella data
 	public List<PageDetails> DateToFuturePages(Date Date) throws SQLException;
+	
+	//Date due date restituisce tutte le pagine relative a quel periodo, estremi inclusi
+	public List<PageDetails> RangesDateToPages(Date minDate,Date maxDate) throws SQLException;
+
+	//Date due date restituisce tutte le categorie delle pagine relative a quel periodo, estremi inclusi
+	public List<String> RangesDateToCategories(Date minDate,Date maxDate) throws SQLException;
 
 
 }
