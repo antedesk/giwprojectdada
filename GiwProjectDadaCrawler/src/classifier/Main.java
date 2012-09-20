@@ -13,8 +13,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import crawler.BasicCrawlController;
+import crawler.BasicCrawler;
+
 import db.DAOServices;
 import db.DBDatasource;
+import edu.uci.ics.crawler4j.crawler.CrawlConfig;
+import edu.uci.ics.crawler4j.crawler.CrawlController;
+import edu.uci.ics.crawler4j.fetcher.PageFetcher;
+import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
+import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
 import model.Page;
 import model.PageDetails;
@@ -36,7 +44,9 @@ public class Main {
 								+"\n10) Date To Future Pages"
 								+"\n11) Processa TripAdvisor directory"
 								+"\n12) Processa Epinions directory"
-								+"\n13) Clear Database Tables");
+								+"\n13) Clear Database Tables"
+								+"\n14) Lancia WebCrawler"
+								+"\n");
 		 BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
          String service = stdin.readLine();
          ServicesImpl serv = new ServicesImpl(); 
@@ -155,6 +165,24 @@ public class Main {
 		 else if(service.equals("13")){
 			 serv.ClearDatabase();
 			 System.out.println("Tabelle del database cancellate con successo");
+		 }
+		 else if(service.equals("14")){
+			 System.out.println("Avviato WebCrawler, il processo di crawling è stoppabile e riprendibile in un secondo momento dallo stesso punto in cui si era fermato.");
+			 System.out.println("Inserisci l'indirizzo del sito da cui far partire il crawler");
+        	 String site = stdin.readLine();
+        	 System.out.println("Inserisci il numero di Thread per l'elaborazione");
+        	 int numberOfCrawlers = Integer.parseInt(stdin.readLine());
+        	 System.out.println("Inserisci il numero di Profondità massima per il crawler (-1 = nessuna limitazione di profondità)");
+        	 int depth = Integer.parseInt(stdin.readLine());
+        	 System.out.println("Inserisci il numero di Massimo di pagine da scaricare (-1 = nessuna limitazione di profondità)");
+        	 int maxpage = Integer.parseInt(stdin.readLine());
+        	 
+             System.out.println("Partito Crawler sul sito "+site);
+             
+             BasicCrawlController basicCrawlController = new BasicCrawlController();
+             basicCrawlController.startCrawler(site, numberOfCrawlers, depth, maxpage);
+             
+             System.out.println("WebCrawler Terminato");
 		 }
 	}
 	
