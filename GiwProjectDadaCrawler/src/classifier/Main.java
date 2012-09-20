@@ -75,7 +75,6 @@ public class Main {
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
      		 date = formatter.parse(stringDate);
-     		System.out.println(serv.DateToPages(date));
      		for (PageDetails p : serv.DateToPages(date)) {
  				System.out.println(p.getProductName());
         	 }
