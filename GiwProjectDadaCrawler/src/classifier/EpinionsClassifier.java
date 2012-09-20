@@ -1,5 +1,6 @@
 package classifier;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -61,8 +62,15 @@ public class EpinionsClassifier extends PageClassifier{
 		String numReview=null;
 		if(elementsReviewNumber.size()==1)
 			numReview = elementsReviewNumber.get(0).getFirstElement("a").getTextExtractor().toString();
-		if(numReview!=null)
-			numberOfReviews = Integer.parseInt(numReview.split(" ")[0]);
+		if(numReview!=null){
+			try{
+				numberOfReviews = Integer.parseInt(numReview.split(" ")[0]);
+			} catch(NumberFormatException e){
+				System.out.println("Errore durante il parse in numero di "+numReview.split(" ")[0]+" da "+numReview);
+				
+				//throw new NumberFormatException("Errore durante il parse in numero di "+numReview.split(" ")[0]+" da "+numReview);
+			}
+		}
 		System.out.println(numberOfReviews);
 
 		List<Element> e = source.getAllElementsByClass("review_info");
@@ -217,7 +225,8 @@ public class EpinionsClassifier extends PageClassifier{
 			List<Element> products = el.getAllElementsByClass(rowClass);
 			for(Element productrow : products){
 				PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
-				pageDetailsProducts.add(pageDetails);
+				if(pageDetails.getUrl().contains(ROOTSITE))
+					pageDetailsProducts.add(pageDetails);
 			}
 		}
 
@@ -243,8 +252,16 @@ public class EpinionsClassifier extends PageClassifier{
 			if(hrefs.size()>0){
 				Element e = hrefs.get(0);
 				String rev = e.getContent().toString();
+				String tmp = e.getContent().toString();
 				rev = rev.substring(0, rev.indexOf(" "));
-				review = Integer.parseInt(rev);
+				
+				try{
+					review = Integer.parseInt(rev);
+				} catch(NumberFormatException ex){
+					System.out.println("Errore durante il parse in numero di "+rev+" da "+tmp);
+					
+					//throw new NumberFormatException("Errore durante il parse in numero di "+rev+" da "+tmp);
+				}
 			}
 		}
 
@@ -272,18 +289,18 @@ public class EpinionsClassifier extends PageClassifier{
 		url = url.replace("../", "");
 		url = url.replace("/index.html", "");
 		url = url.replace(rootFile, "");
-		
 		if(!url.startsWith("http"))
 			url = ROOTSITE + "/"+url;
+		
+		url = url.replace("//", "/");
+		url = url.replace("http:/", "http://");
 		return url;
 	}
 
 	public void run(){
 		
 		uncategorized = new ArrayList<String>();
-		//List<String> listaFile=Utility.listFiles("./epinionsExamplePages");
-		//List<String> listaFile=Utility.listFiles("./EpinionsTemp");
-		//List<String> listaFile=Utility.listFiles("/Users/dokkis/Downloads/www.epinions.com");
+		
 		HashMap<String, Integer> frequencyCategory = new HashMap<String, Integer>();
 
 		//int i = 1;
@@ -303,7 +320,7 @@ public class EpinionsClassifier extends PageClassifier{
 				String category = classifyPage(source);
 				System.out.println("CATEGORIA: "+category);
 				PageDetails pd=null;
-				if(source.getElementById("product_top_box")!=null){
+				if(source.getElementById("product_top_box")!=null && source.getElementById("product_area")!=null){
 					try {
 						pd = createPageDetails(source,category,url);
 						try {
