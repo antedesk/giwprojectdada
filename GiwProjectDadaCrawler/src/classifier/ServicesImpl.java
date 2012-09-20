@@ -69,6 +69,8 @@ public class ServicesImpl implements Services {
 			throws SQLException {
 		return dao.getCategoriesBetweenDates(minDate, maxDate);
 	}
-
-
+	@Override
+	public void ClearDatabase() throws SQLException {
+		dao.clearAllTables();
+	}
 }

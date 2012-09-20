@@ -424,8 +424,6 @@ public class DAOServices {
 					ps.close();
 				if(psDeleteAggrPage!=null)
 					psDeleteAggrPage.close();
-				//if(psDeletePage!=null)
-				//	psDeletePage.close();
 			} catch (SQLException e) {
 				throw e;
 			}
@@ -583,6 +581,28 @@ public class DAOServices {
 			}
 		}
 		return pd;
+	}
+	
+	public void deleteTable(String table) throws SQLException {
+		PreparedStatement ps=connection.prepareStatement("DELETE FROM "+table);
+		try{
+			ps.execute();
+		}catch (SQLException e) {
+			throw e;
+		} finally{
+			try {
+				if(ps!=null)
+					ps.close();
+			} catch (SQLException e) {
+				throw e;
+			}
+		}
+	}
+
+	public void clearAllTables() throws SQLException {
+		deleteTable("pagelistaggregation");
+		deleteTable("page");
+		deleteTable("pagedetails");
 	}
 
 }

@@ -38,6 +38,9 @@ public interface Services {
 
 	//Date due date restituisce tutte le categorie delle pagine relative a quel periodo, estremi inclusi
 	public List<String> RangesDateToCategories(Date minDate,Date maxDate) throws SQLException;
+	
+	//Cancella tutti i dati dal database
+	public void ClearDatabase() throws SQLException;
 
 
 }

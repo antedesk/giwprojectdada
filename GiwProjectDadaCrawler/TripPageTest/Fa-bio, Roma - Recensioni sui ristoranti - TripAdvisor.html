@@ -1,0 +1,3087 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraphprotocol.org/schema/">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<script type="text/javascript">
+</script>
+<meta http-equiv="imagetoolbar" content="no"/>
+<title>Fa-bio, Roma - Recensioni sui ristoranti - TripAdvisor</title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="cache-control" content="no-cache,must-revalidate"/>
+<meta http-equiv="expires" content="0"/>
+<meta property="og:image" content="http://c1.tacdn.com/img2/postimg.jpg" height="150px" width="150px"/>
+<meta name="keywords" content="Fa-bio, Roma, ristorante, recensioni di ristoranti, cibo, ristoranti"/>
+<meta name="description" content="Fa-bio, Roma: su TripAdvisor trovi 87 recensioni imparziali su Fa-bio, con punteggio 4.5 su 5 e al n.2 su 4.379 ristoranti a Roma."/>
+<script type="text/javascript">
+(function () { /* ensure that console.log is a valid function */
+if (typeof console == "undefined") console = {};
+var funcs = ["log", "error", "warn"];
+for (var i = 0; i < funcs.length; i++) {
+if (console[funcs[i]] == undefined) {
+console[funcs[i]] = function () {};
+}
+}
+})()
+var pageInit = new Date();
+var jsGlobalMonths =   new Array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
+var jsGlobalDaysAbbrev =   new Array("lun","mar","mer","gio","ven","sab","dom");
+var jsGlobalDaysShort =   new Array("L","M","M","G","V","S","D");
+var sInvalidDates = "Le date inserite non sono valide. Reinserire le date corrette ed effettuare una nuova ricerca.";
+var sSelectDeparture = "Please select a departure airport.";
+var DATE_FORMAT_MMM_YYYY = "MMM YYYY";
+var jsGlobalDayOffset = 2 - 1;
+var DATE_FORMAT = { pattern: /(\d{1,2})\/(\d{1,2})\/(\d{2,4})/, month: 2, date: 1, year: 3 };
+var formatDate = function(d, m, y) {return [d,++m,y].join("/");}
+var cal_month_header = function(month, year) {return cal_months[month]+"&nbsp;"+year;}
+var currencyLevel = new Array();
+var currencySymbol = new Array();
+var cur_prefix = false;
+var cur_postfix = true;
+currencySymbol["USD"] = new Array("$", false);
+currencyLevel["USD"] = new Array("Sotto $100","100" ,"Sotto $200","200" ,"Sotto $300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["EUR"] = new Array("€", false);
+currencyLevel["EUR"] = new Array("Sotto €75","75" ,"Sotto €150","150" ,"Sotto €225","225" ,"Qualunque prezzo","9999999" );
+currencySymbol["GBP"] = new Array("£", false);
+currencyLevel["GBP"] = new Array("Sotto £50","50" ,"Sotto £100","100" ,"Sotto £150","150" ,"Qualunque prezzo","9999999" );
+currencySymbol["CAD"] = new Array("CAD", false);
+currencyLevel["CAD"] = new Array("Sotto CAD100","100" ,"Sotto CAD200","200" ,"Sotto CAD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["AUD"] = new Array("AUD", false);
+currencyLevel["AUD"] = new Array("Sotto AUD100","100" ,"Sotto AUD200","200" ,"Sotto AUD300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["CHF"] = new Array("CHF", false);
+currencyLevel["CHF"] = new Array("Sotto CHF100","100" ,"Sotto CHF200","200" ,"Sotto CHF300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["JPY"] = new Array("JPY", false);
+currencyLevel["JPY"] = new Array("Sotto JPY10000","10000" ,"Sotto JPY20000","20000" ,"Sotto JPY30000","30000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RMB"] = new Array("CNY ", false);
+currencyLevel["RMB"] = new Array("Sotto CNY 200","200" ,"Sotto CNY 500","500" ,"Sotto CNY 800","800" ,"Qualunque prezzo","9999999" );
+currencySymbol["INR"] = new Array("INR ", false);
+currencyLevel["INR"] = new Array("Sotto INR 4000","4000" ,"Sotto INR 8000","8000" ,"Sotto INR 12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["SEK"] = new Array("SEK", false);
+currencyLevel["SEK"] = new Array("Sotto SEK500","500" ,"Sotto SEK1000","1000" ,"Sotto SEK1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["BRL"] = new Array("R$", false);
+currencyLevel["BRL"] = new Array("Sotto R$200","200" ,"Sotto R$400","400" ,"Sotto R$600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["TRY"] = new Array("TL", false);
+currencyLevel["TRY"] = new Array("Sotto TL200","200" ,"Sotto TL400","400" ,"Sotto TL600","600" ,"Qualunque prezzo","9999999" );
+currencySymbol["DKK"] = new Array("kr.", false);
+currencyLevel["DKK"] = new Array("Sotto kr.500","500" ,"Sotto kr.1000","1000" ,"Sotto kr.1500","1500" ,"Qualunque prezzo","9999999" );
+currencySymbol["MXN"] = new Array("MXN", false);
+currencyLevel["MXN"] = new Array("Sotto MXN1000","1000" ,"Sotto MXN2000","2000" ,"Sotto MXN3000","3000" ,"Qualunque prezzo","9999999" );
+currencySymbol["ARS"] = new Array("ARS", false);
+currencyLevel["ARS"] = new Array("Sotto ARS300","300" ,"Sotto ARS600","600" ,"Sotto ARS900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["NOK"] = new Array("NOK", false);
+currencyLevel["NOK"] = new Array("Sotto NOK600","600" ,"Sotto NOK1200","1200" ,"Sotto NOK1800","1800" ,"Qualunque prezzo","9999999" );
+currencySymbol["PLN"] = new Array("PLN", false);
+currencyLevel["PLN"] = new Array("Sotto PLN300","300" ,"Sotto PLN600","600" ,"Sotto PLN900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["SGD"] = new Array("S$", false);
+currencyLevel["SGD"] = new Array("Sotto S$100","100" ,"Sotto S$200","200" ,"Sotto S$300","300" ,"Qualunque prezzo","9999999" );
+currencySymbol["THB"] = new Array("THB", false);
+currencyLevel["THB"] = new Array("Sotto THB4000","4000" ,"Sotto THB8000","8000" ,"Sotto THB12000","12000" ,"Qualunque prezzo","9999999" );
+currencySymbol["KRW"] = new Array("KRW", false);
+currencyLevel["KRW"] = new Array("Sotto KRW100000","100000" ,"Sotto KRW200000","200000" ,"Sotto KRW300000","300000" ,"Qualunque prezzo","9999999" );
+currencySymbol["RUB"] = new Array("RUB", false);
+currencyLevel["RUB"] = new Array("Sotto RUB3000","3000" ,"Sotto RUB6000","6000" ,"Sotto RUB9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["IDR"] = new Array("IDR", false);
+currencyLevel["IDR"] = new Array("Sotto IDR1000000","1000000" ,"Sotto IDR2000000","2000000" ,"Sotto IDR3000000","3000000" ,"Qualunque prezzo","9999999" );
+currencySymbol["TWD"] = new Array("TWD", false);
+currencyLevel["TWD"] = new Array("Sotto TWD3000","3000" ,"Sotto TWD6000","6000" ,"Sotto TWD9000","9000" ,"Qualunque prezzo","9999999" );
+currencySymbol["MYR"] = new Array("RM", false);
+currencyLevel["MYR"] = new Array("Sotto RM300","300" ,"Sotto RM600","600" ,"Sotto RM900","900" ,"Qualunque prezzo","9999999" );
+currencySymbol["EGP"] = new Array("EGP", false);
+currencyLevel["EGP"] = new Array("Sotto EGP3000","3000" ,"Sotto EGP6000","6000" ,"Sotto EGP9000","9000" ,"Qualunque prezzo","9999999" );
+var groupingSize = 3;
+var groupingSeparator = ".";
+var JS_location_not_found = "Non abbiamo trovato la tua località.";
+var JS_click_to_expand = "Fai clic qui per espandere";
+var JS_choose_valid_city = "Seleziona una città valida dalla lista. ";
+var JS_select_a_cruise_line = "Please select a cruise line.";
+var JS_loading = "Caricamento...";
+var JS_Ajax_failed="Ci scusiamo per il disguido tecnico. Ti preghiamo di riprovare più tardi. Grazie.";
+var JS_maintenance="Al momento il nostro sito \u00e8 in manutenzione.  Ci scusiamo per l\'inconveniente... ritorneremo presto on-line.";
+var JS_Stop_search = "interrompi la ricerca";
+var JS_Resume_search = "Continua la ricerca";
+var JS_Thankyou = "Grazie";
+var JS_DateFormat = "dd/mm/aaaa";
+var JS_review_lost = "La tua recensione non verrà conservata.";
+var JS_coppa_sorry = "Ci dispiace....";
+var JS_coppa_privacy = "Secondo le informazioni inviateci, la tua iscrizione a TripAdvisor non rispetta i requisiti delle nostra <a href='/pages/privacy.html'>normativa sulla privacy</a>.";
+var JS_coppa_deleted = "La tua iscrizione è stata cancellata.";
+var JS_close = "Chiudi";
+var JS_close_image = "http://c1.tacdn.com/img2/langs/it/buttons/closeButton.gif";
+var JS_CHANGES_SAVED = "Modifiche salvate";
+var JS_community_on = "La community è stata attivata.";
+var lang_Close = JS_close;
+var JS_UpdatingYourResults = "Aggiornamento risultati &#8230;";
+var JS_OwnerPhoto_heading = "Grazie per aver inviato la tua richiesta a TripAdvisor. ";
+var JS_OwnerPhoto_subheading = "Elaboriamo la maggior parte degli elenchi e delle modifiche entro 5 giorni lavorativi. ";
+var JS_OwnerPhoto_more = "Aggiungi altre foto al tuo profilo";
+var JS_OwnerPhoto_return = "Ritorna al Centro per i Proprietari";
+var JS_NMN_Timeout_title = "Vuoi fare un altro tentativo?";
+var JS_NMN_Timeout_msg = "Il riconoscimento della località sta durando più a lungo del previsto.";
+var JS_NMN_Error_title = "Errore località";
+var JS_NMN_Error_msg   = "Abbiamo riscontrato un errore nell'identificazione della località";
+var JS_KeepTrying = "Prova ancora";
+var JS_TryAgain   = "Riprova";
+var js_0001 = "Scegli almeno un venditore dalla lista."; var js_0002 = "Scegli le date future."; var js_0003 = "Scegli una data di uscita che sia almeno un giorno dopo quella di entrata."; var js_0004 = "Scegli le date entro 330 giorni da oggi.";   var js_0005 = "Stiamo cercando un\'offerta ... l\'operazione potrebbe richiedere qualche minuto."; var js_0006 = "Ciò che hai scelto non ha subito modifiche."; var js_0010 = "Clicca nuovamente per aprire tutte le finestre o per regolare le impostazioni del browser per disattivare i pop-up blockers."; var js_0011 = "Aggiorna"; var js_0012 = "Prossima offerta"; var js_0013 = "Please click the \"Check Rates!\" button above to open each window."; var js_0014 = 'Verrà aperta una finestra per ogni offerta. Disattiva il sistema di blocco popup';
+var js_0015 = 'Confronta i prezzi';
+var js_invalid_dates_text = "Le date inserite non sono corrette. Modificale e poi effettua una nuova ricerca."; var js_invalid_dates_text_new = "Indica le date e controlla i prezzi"; var js_invalid_dates_text_new2 = "Indica le date per vedere i prezzi";
+var qcErrorImage = '<center><img src="http://c1.tacdn.com/img/langs/it/action_required_blinking.gif" /></center>';
+var selectedHotelName = ""; var cr_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr.gif';
+var cr_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cr_check.gif';
+var cr_loc_logo = 'http://c1.tacdn.com/img2/checkrates/logo.gif';
+var cd_loc_vend = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd.png';
+var cd_loc_vend_ch = 'http://c1.tacdn.com/img2/langs/it/checkrates/cd_check.png';
+var JS_Any_Date = "data";
+var JS_Update_List = "Aggiorna la lista";
+var sNexusTitleMissing = "The title must be populated";
+var JS_Challenge="Challenge";
+var JS_TIQ_Level="Level";
+var JS_TIQ="Travel IQ";
+var JS_TIQ_Pts="pts";
+var RATING_STRINGS = [
+"Fai clic per votare",
+"Pessimo",
+"Scarso",
+"Nella media",
+"Molto buono",
+"Eccellente"
+];
+var overlayLightbox = false;
+if("" != "")
+{
+overlayLightbox = true;
+}
+var isTakeOver = false;
+var overlayOptions = "";
+var overlayBackupLoc = "";
+var gmapDomain = "maps.google.com";
+var mapChannel = "ta.PRODUCTION";
+var bingMapsLang = "it".toLowerCase();
+var bingMapsCountry = "".toLowerCase();
+var bingMapsBaseUrl = "http://www.bing.com/maps/default.aspx?cc=it&";
+var googleMapsBaseUrl = "http://maps.google.it/?";
+var serverPool = "T";
+var reg_overhaul = true;
+var bUseNewFlashPhotoUploader = false;
+var cssPhotoViewerAsset = "http://c1.tacdn.com/css2/photos_with_inline_review-v147233239a.css";
+var jsPhotoViewerAsset = 'http://c1.tacdn.com/js3/src/ta/photos/Viewer-v3566348393a.js';
+var jsPhotoViewerTALSOAsset = 'http://c1.tacdn.com/js3/src/TALSO-v12862410a.js';
+var jsJWPlayerHelperAsset = 'http://c1.tacdn.com/js3/src/ta/media/jwplayerHelper-v1505891908a.js';
+var hideOnLoad = new Array();
+var IS_DEBUG = false;
+var CDNHOST = "http://c1.tacdn.com";
+var MEDIA_HTTP_BASE = "http://media-cdn.tripadvisor.com/media/";
+var VERSION_MAP = {
+"ta-maps.js": "http://c1.tacdn.com/js3/ta-maps-bing-c-v1295893913a.js",
+"ta-overlays.js": "http://c1.tacdn.com/js3/ta-overlays-c-v3955526010a.js",
+"ta-photos.js": "http://c1.tacdn.com/js3/ta-photos-c-v2634310647a.js",
+"ta-widgets-typeahead.js": "http://c1.tacdn.com/js3/ta-widgets-typeahead-c-v3974639123a.js",
+"ta-media.js": "http://c1.tacdn.com/js3/ta-media-c-v2638089269a.js"
+}
+var cookieDomain = ".tripadvisor.it";
+var modelLocaleCountry = "";
+var ipCountryId = "187768";
+var pageServlet = "Restaurant_Review";
+var crPageServlet = "Restaurant_Review";
+var cdnHost = "http://c1.tacdn.com";
+var arrowLeft     = "http://c1.tacdn.com/img/saves/saveIconArrowLeft.gif";
+var arrow         = "http://c1.tacdn.com/img/saves/saveIconArrow.gif";
+var example       = "http://c1.tacdn.com/img/saves/saveButtonExample.gif";
+var save          = "http://c1.tacdn.com/img/saves/folderSave.gif";
+var closedSub     = "http://c1.tacdn.com/img/saves/closedForSubfolder.gif";
+var closedFolder  = "http://c1.tacdn.com/img/saves/closedFolder.gif";
+var openFolder    = "http://c1.tacdn.com/img/saves/openFolder.gif";
+var add           = "http://c1.tacdn.com/img/saves/addFolder.gif";
+var userLoggedIn = false;
+var migrationMember = false;
+var savesEnable = true;
+var savesJS = 'http://c1.tacdn.com/js3/src/saves-v2062170575a.js';
+var flagsUrl = '/Restaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html';
+var noPopClass = "no_cpu";
+var flagsSettings = [
+];
+var isIPad = false;
+var lang_Close  = "Chiudi";
+var img_loop    = "http://c1.tacdn.com/img2/generic/site/loop.gif";
+var communityEnabled = true
+var footerFlagFormat = "common_detailgeo";
+var modelLocId = "2328311";
+var modelGeoId = "187791";
+var gClient = 'gme-tripadvisorinc';
+var gKey = 'ABQIAAAAbrotionfLoNjvl0WlUPGSRQzGsK1hcfTiqQ6B3Nc1Mwa2HhBThT_jpF5g4xX-Fs9VtzfcdO9h6Zjhw&client=gme-tripadvisorinc';
+var gLang = '';
+var mapsJs = 'http://c1.tacdn.com/js3/ta-maps-bing-c-v1295893913a.js';
+var mapsJsLite = 'http://c1.tacdn.com/js3/lib/TAMap-v2716202300a.js';
+var memoverlayCSS = 'http://c1.tacdn.com/css2/pages/memberoverlay-v1425099229a.css';
+var flagsFlyoutCSS = 'http://c1.tacdn.com/css2/overlays/flags/flags_flyout-v2900952896a.css';
+var emailHotelCSS = 'http://c1.tacdn.com/css2/t4b/emailhotel-v1199781753a.css';
+var sameGeoActivityCSS = 'http://c1.tacdn.com/css2/modules/same_geo_activity-v2888784286a.css';
+var passportStampsCSS = 'http://c1.tacdn.com/css2/modules/passport_stamps-v1996473260a.css';
+var compareHotelCSS = 'http://c1.tacdn.com/css2/pages/compareHotel-v3157710472a.css';
+var wiFriHasMember =  false  ;
+var JS_SECURITY_TOKEN = "AAABOeN0RNWGZ3rHHrRcRi0fyauK3WHO8tZrUg==";
+var addOverlayCloseClass = "";
+var isOverlayServlet = "";
+var IS_OVERLAY_DEBUG = "false";
+var PXL8_JS_SRC = "http://c1.tacdn.com/js3/pxl8/aa_ta_v1.js"
++ "#tad;paid=DFP;{DART_INFO};__aa__=http://cdn.adrta.com/aa.js#";
+</script>
+<script type='text/javascript' src='http://c1.tacdn.com/js3/tripadvisor-c-v4160149700a.js'></script>
+<script type="text/javascript">var taSecureToken = "AAABOeN0RNWGZ3rHHrRcRi0fyauK3WHO8tZrUg=="</script>
+<script type="text/javascript">
+var geoParam = "&geo=187791";
+</script>
+<script type="text/javascript" src='http://c1.tacdn.com/js3/eatery-detail-2col-c-v3273847692a.js'></script>
+<link rel='stylesheet' type='text/css' media='screen, print' href='http://c1.tacdn.com/css2/eatery_review_2col-it-v312794158a.css'/>
+<!--[if IE 6]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE6-v882370764a.css" />
+        <![endif]-->
+<!--[if IE 7]>
+    <link rel="stylesheet" type="text/css" media="screen, print" href="http://c1.tacdn.com/css2/winIE7-v2374043089a.css" />
+        <![endif]-->
+<style type="text/css">
+body{}
+.viaLocalPicks { display: inline-block; margin-left: 9px; padding-left: 18px; text-decoration: none; color: #656565; background-image: url("http://c1.tacdn.com/img2/localPicksBadge.png"); background-repeat: no-repeat }
+.viaLocalPicks:hover,
+.viaLocalPicks:visited,
+.viaLocalPicks:active { color:#656565; text-decoration: none; }
+#ALSO_VIEWED_LIST li.lodging {
+margin-bottom: 10px;
+}
+#ALSO_VIEWED_LIST{
+margin:0 0 15px 0;
+padding:2px 0 20px 0;
+}
+#ALSO_VIEWED_LIST .propertyLink {
+margin-top: 1px;
+}
+#ALSO_VIEWED_LIST .propertyLink, #ALSO_VIEWED_LIST .propertyLink a {
+font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
+font-size: 1em;
+color: #006699;
+font-weight: bold;
+width: 135px;
+}
+#ALSO_VIEWED_LIST .rating {
+font-size: .8em;
+padding-top: 2px;
+height: auto;
+margin-left: 0;
+width: 135px;
+}
+#ALSO_VIEWED_LIST .reviewsButton {
+font-size: .8em;
+}
+#ALSO_VIEWED_LIST .sizedThumb {
+overflow: hidden;
+position: relative;
+}
+#ALSO_VIEWED_LIST .rating .rate {
+margin-bottom: 4px;
+}
+#ALSO_VIEWED_LIST .location {
+font-size: .8335em;
+color: #656565;
+padding-top: 1px;
+width: 229px;
+}
+#ALSO_VIEWED_LIST .oh {
+overflow:hidden;
+float:left;
+}
+#ALSO_VIEWED_LIST .wsnw {
+white-space: nowrap;
+}
+#ALSO_VIEWED_LIST {
+border-bottom: 1px solid #e6e6e6;}
+.avthumb {
+padding-right:7px;
+}
+#ALSO_VIEWED_LIST h2{
+font-family: Arial,Tahoma,"Bitstream Vera Sans",sans-serif;
+font-size: 1.5em;
+font-weight: bold;
+padding-bottom: 7px;
+color: #4A4A4A;
+}
+#ALSO_VIEWED_LIST .noImageBorder {
+height: 60px;
+width: 60px;
+border: 0px solid #E6E6E6;
+}
+#ALSO_VIEWED_LIST .noImageContainer {
+height: 60px;
+width: 60px;
+padding: 0px;
+}
+#ALSO_VIEWED_LIST .button {
+margin-left: 0;
+margin-right: 0;
+}
+#ALSO_VIEWED_LIST .greatValue {
+color: #c60;
+font-weight: bold;
+}
+#ALSO_VIEWED_LIST .data.fl {
+max-width: 135px;
+}
+#ALSO_VIEWED_LIST #expand_av { position:relative; z-index:1;}
+#ALSO_VIEWED_LIST #expand_av_on_hover { position:relative; z-index:0;}
+#ALSO_VIEWED_LIST #expand_av_on_hover.hidden {display:none;}
+#ALSO_VIEWED_LIST #expand_av_on_hover.expanding {display:block;visibility:hidden}
+#ALSO_VIEWED_LIST #expand_av_on_hover.show {display:block;height:0px;overflow:hidden;visibility:visible}
+#ALSO_VIEWED_LIST #expand_av_on_hover.show li {height:auto;}
+#history_carousel {
+background: #f4f4f4;
+border: 1px solid #cccccc;
+margin: 0 14px 14px 14px;
+margin: 20px 0px 0px 0px;
+}
+#history_carousel h3 {
+color: #4A4A4A;
+font-size: 1em;
+margin-bottom: -5px;
+margin-top: 1px;
+}
+#history_carousel .sizedThumb {
+overflow: hidden;
+}
+#history_carousel_content .location {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+font-size: .8335em;
+color: #656565;
+}
+#history_carousel .history_carousel_header {
+padding: 12px 0 13px 14px;
+font-size: 1.5em;
+font-weight: bold;
+color: #4A4A4A;
+}
+#history_carousel .history_carousel_tabs_wrapper {
+margin-top: -7px;
+position: relative;
+z-index: 101;
+}
+#history_carousel_tabs {
+margin:0 0 0 10px;
+}
+#history_carousel_tabs li {
+margin-left:4px;
+padding:8px 14px 7px 14px;
+border:1px solid #c7c7c7;
+font:bold 1.1670em Arial;
+color:#069;
+background-color:#ededed;
+float:left;
+}
+#history_carousel_tabs li.active, #history_carousel_tabs li.activeHover{
+color:#3a3a3a;
+background-color:#fff;
+}
+#history_carousel_tabs li.active{
+border-bottom-color:#fff;
+}
+#history_carousel_tabs li.activeHover{
+cursor:pointer;
+}
+#history_carousel_tabs .num{
+font:normal 1.00em Arial;
+color:#656565;
+}
+#history_carousel .history_carousel_content {
+background: #fff;
+border-top: 1px solid #C7C7C7;
+margin-top: -1px;
+padding: 14px;
+z-index: 100;
+position: relative;
+}
+#history_carousel .hotel_list_wrapper {
+float: left;
+width: 180px;
+}
+#history_carousel .hotel_list_wrapper li.lodging {
+margin-top: 14px;
+}
+#history_carousel .hotel_list_wrapper li.lodging .content {
+display: block;
+float: left;
+}
+#history_carousel .hotel_list_wrapper li.lodging .content div {
+line-height: 13px;
+width: 105px;
+overflow: hidden;
+}
+#history_carousel .hotel_list_wrapper li.lodging .content div.propertyLink {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+#history_carousel .hotel_list_wrapper li.lodging .content .rating rate
+{
+display:block;
+float:none;
+}
+#history_carousel .hotel_list_wrapper li.lodging .content .rating {
+margin-left: 0;
+}
+#history_carousel .hotel_list_wrapper li.lodging .content div .rate {
+margin-bottom: 2px;
+}
+#history_carousel .hotel_list_wrapper .thumbnail {
+height: 61px;
+width: 60px;
+overflow: hidden;
+padding-right: 10px;
+}
+#history_carousel .hotel_list_wrapper .thumbnail img {
+height: 60px;
+width: auto;
+border: none;
+}
+#history_carousel .hotel_list_wrapper .noImageBorder,
+#history_carousel .hotel_list_wrapper .noImageContainer {
+height: 60px;
+width: 60px;
+}
+#history_carousel .hotel_list_wrapper .thumbnail img.npp
+{
+height: 30px;
+width: 50px;
+}
+#also_viewed_carousel {
+font-family: Arial, Tahoma, "Bitstream Vera Sans", sans-serif;
+}
+#also_viewed_carousel .carousel_content .content .rating {
+margin-left: 0;
+position: relative;
+}
+#also_viewed_carousel .carousel_content .content,
+#also_viewed_carousel .carousel_content .content .rating span.rate {
+float:none;
+display: block;
+position: relative;
+}
+#also_viewed_carousel .carousel_content .content .rate {
+margin-bottom: 2px;
+}
+#history_carousel .also_viewed_carousel_wrapper {
+float: left;
+padding: 0 0 0 14px;
+width: 399px;
+border-left: 1px solid #ebebeb;
+}
+#also_viewed_carousel {
+padding: 14px 0 0 0;
+}
+#also_viewed_carousel .carousel_content div.parent_name {
+line-height: 14px !important;
+}
+#also_viewed_carousel .carousel_content .sizedThumb {
+margin-bottom: 5px;
+}
+#also_viewed_carousel .carousel_content {
+width: 399px;
+overflow: hidden !important;
+position: relative;
+}
+#also_viewed_carousel .carousel_items_wrapper {
+white-space: nowrap;
+width: 413px; /* number of items x 139px */
+position: relative;
+}
+#also_viewed_carousel .carousel_content .carousel_item {
+width: 115px;
+overflow: hidden;
+float: left;
+margin-right: 22px;
+display: block;
+position: relative;
+}
+#also_viewed_carousel .carousel_content .carousel_item .noImageBorder,
+#also_viewed_carousel .carousel_content .carousel_item .noImageContainer {
+height: 108px;
+width: 113px;
+}
+#also_viewed_carousel .carousel_content .carousel_item .sizedThumb{
+width: 115px;
+height: 110px;
+overflow: hidden;
+}
+#also_viewed_carousel .carousel_content .carousel_item .sizedThumb img {
+position: relative;
+height: 110px;
+width: auto;
+border: 0;
+}
+#also_viewed_carousel .carousel_content .carousel_item .sizedThumb img.npp
+{
+width: 81px;
+height: 44px;
+}
+#also_viewed_carousel .carousel_content .carousel_item .content {
+margin-top: 5px;
+}
+#also_viewed_carousel .carousel_content .carousel_item .content div {
+line-height: 17px;
+}
+#also_viewed_carousel .carousel_content .carousel_item .content div.propertyLink {
+text-overflow: ellipsis;
+line-height: 12px;
+overflow: hidden;
+width: 115px;
+}
+#also_viewed_carousel .crOverlayButton
+{
+width: 115px;
+}
+#also_viewed_carousel .vr_recommend .carousel_items_wrapper {
+width:426px; /* number of items x 144px */
+white-space: normal;
+}
+#also_viewed_carousel .vr_recommend .carousel_item {
+width: 118px;
+}
+#also_viewed_carousel .vrDetailButton
+{
+width:113px;
+padding: 5px 0px 6px;
+background: url("/img2/vacationrentals/Button-Big.gif") repeat-x transparent;
+border-top: 1px solid #f39e1f;
+border-bottom: 1px solid #cb8418;
+border-left: 1px solid #f39e1f;
+border-right: 1px solid #cb8418;
+cursor: pointer;
+text-align: center;
+font-size: 13px;
+font-weight: bold;
+text-shadow: 1px 1px 1px white;
+color: black;
+}
+</style>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/Feeds-d2328311-treviews.xml"/>
+<!-- web103a.tripadvisor.com -->
+<!-- PRODUCTION -->
+<!-- PRODUCTION -->
+<script type="text/javascript" src="http://c1.tacdn.com/js3/src/trsupp-v283141723a.js"></script>
+</head>
+<body class="ltr domn_it withFtr globalNav2011_reset js_logging">
+<div id="fb-root"></div>
+<script type="text/javascript">
+function initSaves()
+{
+SV_DEFAULT_FOLDER_NAME = "My Roma Trip";
+if (SV_DEFAULT_FOLDER_NAME.length > $('savesWidgetNewFolder').maxLength) {
+SV_DEFAULT_FOLDER_NAME = "My Trip";
+}
+SV_IS_POPUP = 0;
+}
+</script>
+<div id="iframediv"></div>
+<div id="PAGE" xmlns:v="http://rdf.data-vocabulary.org/#" typeof="v:Review-aggregate">
+<div id="HEAD" class="sprite-gradient1x32_grn">
+<div class="masthead">
+<div class="container">
+<span class="topLogo">
+<span class="taLnk hvrIE6 logoWrap" onClick="setPID(5045); ta.util.ASDF.asdf('L')"><img class="sprite-taLogo" src="http://c1.tacdn.com/img2/x.gif" width="362" height="42" alt="Il portale di viaggi più grande del mondo"/></span>
+</span>
+<h1 class="header language_select">Fa-bio, Roma</h1>
+</div>
+<div class="navSrch navSrchLang sprite-magGlass_gry" id="SEARCH_LHN">
+<form method="get" action="/Search" onsubmit="return ta.call('ta.common.search.validate',event);">
+<input id="mainSearch" type="text" name="q" class=" text hasLangSelect sL focusClear" autocomplete="off" onfocus="ta.call('ta.widgets.typeahead.factory.global',event,this,'SITEWIDE','ta.widgets.typeahead.events.onSelectGlobalTypeAhead',{maxChoices:16,minLength:3,showOnlyTypedChoices:true,geo:'187791'}); return ta.call('ta.common.search.clearOnFocus',event);" onblur="return ta.call('ta.common.search.defaultOnBlur',event);" value="Città, nome dell'hotel ecc."/>
+<div class="submit_button sprite-gradient1x27_gry"><input id="mainSearchSubmit" onclick="setPID(3825);" onkeydown="var submitPID = function(event) { if(event.key && event.key=='enter') setPID(3826); }; submitPID(e);" type="submit" name="sub-search" class="submit" value="CERCA" title="CERCA"/></div>
+<input name="lang" id="SEARCH_LANG_SELECT_INPUT" type="hidden" value=" it"/> <div id="SEARCH_LANG_SELECT">
+<div id="SEARCH_LANG_SELECTED" class="langSelect sprite-arrow_dropdown_gry" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="SEARCH_LANG_SELECT_POPUP" class="hidden">
+<div id="lang_it" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Solo risultati in italiano</div>
+<div id="lang_all" class="langSelectOption" onclick="return ta.call('ta.common.search.selectLang', event, this);">Tutte le lingue</div>
+</div> </div>
+<input type="hidden" name="geo" value="187791"/>
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html"/>
+</form>
+</div>
+<div class="tabsBar">
+<ul class="tabs">
+<li class="tabItem  hvrIE6"><a href="/" class="tabLink  pid4921">
+Home
+</a>
+</li>
+<li class="tabItem dropDown hvrIE6">
+<a href="/Tourism-g187791-Rome_Lazio-Vacations.html" class="tabLink arwLink geoLink" onclick="ta.util.cookie.setPIDCookie(4964)">
+<span class="arrow_text">Roma</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5">
+</a>
+<ul class="subNav">
+<li class="subItem">
+<a class="subLink " href="/Tourism-g187791-Rome_Lazio-Vacations.html" onclick="ta.util.cookie.setPIDCookie(4971)">
+Viaggi Roma
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="/Hotels-g187791-Rome_Lazio-Hotels.html" onclick="ta.util.cookie.setPIDCookie(4972)">
+Hotel Roma
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="/VacationRentals-g187791-Reviews-Rome_Lazio-Vacation_Rentals.html" onclick="ta.util.cookie.setPIDCookie(4975)">
+Affitti per le vacanze a Roma
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="/Flights-g187791-Rome_Lazio-Cheap_Discount_Airfares.html" onclick="ta.util.cookie.setPIDCookie(4973)">
+Voli per Roma
+</a>
+</li>
+<li class="subItem">
+<a class="subLink selForums" href="/ShowForum-g187791-i22-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(4980)">
+Forum Viaggi Roma
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="/Restaurants-g187791-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(4974)">
+Ristoranti: Roma
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="/Attractions-g187791-Activities-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(4977)">
+Cose da fare: Roma
+</a>
+</li>
+<li class="subItem">
+<a class="subLink " href="/LocationPhotos-g187791-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(4979)">
+Foto di Roma
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem  hvrIE6"><a href="/Hotels-g187791-Rome_Lazio-Hotels.html" class="tabLink  pid4965">
+Hotel
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="/Flights-g187791-Rome_Lazio-Cheap_Discount_Airfares.html" class="tabLink  pid4966">
+Voli
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="/VacationRentals-g187791-Reviews-Rome_Lazio-Vacation_Rentals.html" class="tabLink  pid2795">
+Case vacanze
+<span class="new">NOVITÀ</span>
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="/Restaurants-g187791-Rome_Lazio.html" class="tabLink  pid4967">
+Ristoranti
+</a>
+</li>
+<li class="tabItem  hvrIE6"><a href="/Attractions-g187791-Activities-Rome_Lazio.html" class="tabLink  pid4969">
+Cose da fare
+</a>
+</li>
+<li id="FRIENDSTAB" class="tabItem tooltip hvrIE6"><a href="/Friends-rnauth" class="tabLink tooltip pid18784" onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">
+I tuoi amici <span id="FBL" class="sprite-facebook15x15"></span>
+</a>
+<div class='overlayContents'><div class='inner2'><div class='help'><div class='hdr'>È meglio viaggiare con gli amici.</div><div class='ttbody'>Lasciati ispirare dagli amici, condividi i tuoi programmi di viaggio. <a href='/Friends-rnauth' onclick="return ta.call('ta.common.header.adjustFriendsLink', event, this);">Maggiori informazioni</a></div></div></div></div>
+</li>
+<script>
+var taExtraOverlayJs = 'http://c1.tacdn.com/js3/ta-overlays-c-v3955526010a.js';
+registerOnLoad(function() {
+if (ta.common && ta.common.header) { ta.common.header.checkFriendsToolTip(); } }, 'friendsTooltip');
+</script>
+<li class="tabItem dropDown hvrIE6" onmouseover="ta.call('ta.common.header.hideFriendsToolTip', event, this);">
+<span class="tabLink arwLink"><span class="arrow_text">Più</span><img class="arrow_dropdown_wht sprite-arrow_dropdown_wht" src="http://c1.tacdn.com/img2/x.gif" alt="" width="7" height="5"></span> <ul class="subNav">
+<li class="subItem">
+<a href="/TravelersChoice" class="subLink pid5087">Il meglio del 2012
+</a>
+</li>
+<li class="subItem">
+<a href="/ShowForum-g187791-i22-Rome_Lazio.html" class="subLink ">Forum Viaggi
+</a>
+</li>
+<li class="subItem">
+<a href="/apps" class="subLink pid18876">App
+</a>
+</li>
+</ul>
+</li>
+<li class="tabItem altItem warLink sprite-gradient1x32_grn_drk last hvrIE6">
+<span class="writeReview taLnk hvrIE6 tabLink" onclick="ta.util.cookie.setPIDCookie(1434); ta.util.ASDF.asdf('LqdWyUvkkAUWMXmXvmUUWVGII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIacWqnJQHSiWeiaVQRJzCSiB')">Scrivi una recensione</span>
+</li>
+</ul> </div>
+<div id="USER_PREFS" class="prfs">
+<ul class="opts">
+<li class="optItem fbConnect">
+<div class="sprite-facebook15x15 taLnk hvrIE6  no_cpu " onclick=" ta.store('facebook.trackingpid',1882);  ta.call('ta.support.Facebook.loginButton', event, this);">Accedi&nbsp;attraverso&nbsp;Facebook</div>
+</li>
+<li class="optItem login"><span class="taLnk hvrIE6" onClick="ta.util.cookie.setPIDCookie(429);ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNIN');">Entra</span></li>
+<li id="register" class="optItem register flyoutX" onclick="ta.util.cookie.setPIDCookie(427); ta.call('ta.overlays.Factory.showConnectOverlay', event, this, {flow: 'MASTHEAD'}, 'SIGNUP');"><span class="taLnk hvrIE6">Iscriviti ora!</span>
+<li class="optItem" id="MOBHDRLNK">
+<span class="taLnk hvrIE6 optItemLink sprite-mobile_org mobile_org" onClick="ta.util.cookie.setPIDCookie(4109); ta.util.ASDF.asdf('LDiHScVb22t')">Applicazione mobile GRATIS</span>
+</li>
+<li id="INTLPOP" class="optItem intSites last" onclick="ta.call('ta.overlays.Factory.intlPopup', event, this)"><span class="sprite-arrow_dropdown_blu arrowDn"><img class="sprite-flag" src="http://c1.tacdn.com/img2/x.gif" alt="Siti internazionali" title="Siti internazionali"/></span></li> </ul> </div> </div> </div>
+<div id="MAINWRAP">
+<div id="SAVES" style="display: none;"><div id="SAVES_ALERT" class="saveAlert">
+<script type="text/html" id="SAVES_ALERT_CONTENT">
+<span id="SAVES_CLOSE_ALERT" class="saveAlertClose sprite-greenX" onclick="return ta.call('ta.widgets.Saves.closeAlert', event, this);"></span>
+<div class="contentAdded">Hai aggiunto SAVED_LOCATION_NAME ai Preferiti</div>       <div class="allContent"><span class="sprite-saveArrow"></span>Vedi tutti i profili salvati</div>     </script>
+</div>
+<a id="SAVES_BUTTON" class="saveWrap" onclick="ta.call('ta.overlays.Factory.openSavesRegflow', event);">
+<span class="saveCTABorder">
+<div id="SAVES_BACK" class="saveCTA sprite-gradient1x58_grn">
+<span id="SAVES_STAR" class="saveCTAStar sprite-saveCTAStar"></span><!--
+        --><span id="SAVES_COPY" class="saveCTACopy"><span id="SAVES_SAVE" class="active">Salva</span><span id="SAVES_SAVED">Salvato</span></span> </div>
+</span></a><div class="savesBelow"><div id="SAVES_VIEW_ALL" class="viewAllSaves">
+<a href="/MemberProfile-cv" class="allSavesLink" onclick="ta.setEvtCookie('LeftGutter', 'mySaves', '', 1, '/MemberProfile')">
+Preferiti </a>
+</div>
+<div class="shareButtons">
+<div class="shareButton">
+<fb:send href="http://www.tripadvisor.it/Restaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html"></fb:send>
+</div>
+<div class="shareButton">
+<a href="//pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.tripadvisor.it%2FRestaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html-m15802&description=Fa-bio&media=http%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F02%2F62%2Ffa%2F4b%2Ffa-bio.jpg" class="pin-it-button" count-layout="none"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It"/></a>
+</div>
+<div class="shareButton" id="LAZY_TWITTER"></div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+ta.queueForLoad( function() {
+new Asset.css("http://c1.tacdn.com/css2/saves-v3226635437a.css");
+new Asset.javascript("http://c1.tacdn.com/js3/src/ta/widgets/Saves-v851224280a.js", {
+onLoad: function() {
+ta.id('SAVES_BUTTON').addEvents({
+mouseenter: ta.widgets.Saves.overAction,
+mouseleave: ta.widgets.Saves.outAction
+});
+var imageLoader = function () {
+var image = ta.id('SAVES_STAR').getStyle('background-image');
+if ( image != "none" ) {
+var image = image.substr(4, image.length - 5).replace(/\"/g, '');
+new Asset.image(image, { onLoad: ta.widgets.Saves.assetsLoaded });
+} else {
+imageLoader.delay(50);
+}
+};
+imageLoader();
+ta.widgets.Saves.locationid = 2328311;
+ta.widgets.Saves.parentName = "Roma";
+}
+});
+new Asset.javascript("http://assets.pinterest.com/js/pinit.js");
+if( ta.id('LAZY_TWITTER') && !window.twitter_loaded) {
+window.twitter_loaded = true;
+var i = document.createElement("iframe");
+i.src = "http://platform.twitter.com/widgets/tweet_button.html?count=none&url=http%3A%2F%2Fwww.tripadvisor.it%2FRestaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html-m15801";
+i.scrolling = "no";
+i.frameBorder = "0";
+i.marginHeight = "0";
+i.marginWidth =  "0";
+i.width = "59px";
+i.height = "20px";
+ta.id('LAZY_TWITTER').appendChild(i);
+}
+});
+</script>
+<div id="MAIN" class="Restaurant_Review" rel="v:itemreviewed">
+<div id="BODYCON" class="bodLHN  col poolT" typeof="v:Organization">
+<div class="big_center_ad">
+<div class="ad iab_leaBoa">
+<div id="ad728X90" class="adInner"><!-- Ad tags: doubleclick
+domain=ad.it.doubleclick.net
+site=ta.ta.it.s
+zone=eu.italy.rome
+PageType=Restaurant_Review
+PlaceType=Eatery
+pool=T
+kw=Fa-bio
+geo=187791
+detail=2328311
+rd=it
+hname=Fa-bio
+gname=Roma
+sz=728X90,970X66
+tile=1
+u=Restaurant_Review|T|-NOT-DEFINED-|187791|-NOT-DEFINED-|2328311
+ord=39558091
+area=EU.Italy.Lazio.Rome
+
+-->
+<div class="adServer noFrame dom_it">
+<script language=Javascript1.1 src="http://ad.it.doubleclick.net/adj/ta.ta.it.s/eu.italy.rome;PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;geo=187791;detail=2328311;rd=it;hname=Fa-bio;gname=Roma;sz=728X90%2C970X66;tile=1;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7C-NOT-DEFINED-%7C2328311;ord=39558091;abr=!webtv?"></script>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="http://ad.it.doubleclick.net/jump/ta.ta.it.s/eu.italy.rome;PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;geo=187791;detail=2328311;rd=it;hname=Fa-bio;gname=Roma;sz=728X90%2C970X66;tile=1;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7C-NOT-DEFINED-%7C2328311;ord=39558091?" rel="nofollow">
+<img src="http://ad.it.doubleclick.net/ad/ta.ta.it.s/eu.italy.rome;PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;geo=187791;detail=2328311;rd=it;hname=Fa-bio;gname=Roma;sz=728X90%2C970X66;tile=1;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7C-NOT-DEFINED-%7C2328311;ord=39558091?" width="728" height="90" border="0">
+</a>
+</noscript>
+</div> </div>
+</div>
+</div>
+<div class="crumbs ">
+<div style="float:left"> <ul>
+<li>
+<a href="/" id="HOME">Home</a>
+<ul>
+<li><span class="crumbSep">&gt;</span> <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="/Tourism-g4-Europe-Vacations.html" itemprop="url">
+<span itemprop="title">Europa</span>
+</a>
+</div>
+</li>
+<li><span class="crumbSep">&gt;</span> <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="/Tourism-g187768-Italy-Vacations.html" itemprop="url">
+<span itemprop="title">Italia</span>
+</a>
+</div>
+</li>
+<li><span class="crumbSep">&gt;</span> <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="/Tourism-g187789-Lazio-Vacations.html" itemprop="url">
+<span itemprop="title">Lazio</span>
+</a>
+</div>
+</li>
+<li><span class="crumbSep">&gt;</span> <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="/Tourism-g187791-Rome_Lazio-Vacations.html" itemprop="url">
+<span itemprop="title">Roma</span>
+</a>
+</div>
+</li>
+<li><span class="crumbSep">&gt;</span> <div itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+<a href="/Restaurants-g187791-Rome_Lazio.html" itemprop="url" onclick="return setOneTimeCookie('mcreset','true')">
+<span itemprop="title">Ristoranti: Roma</span>
+</a>
+</div>
+</li>
+<li><span class="crumbSep">&gt;</span> Fa-bio</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="fr b">
+<span class="taLnk hvrIE6" onClick="ta.util.ASDF.asdf('LeVtIJpEJCItWyUvkkAUWeiaVQRJzCSiB');ta.util.cookie.setPIDCookie(1021);">
+Tutti i 4.379 ristoranti di Roma &raquo;
+</span>
+</div>
+</div>
+<div>
+</div>
+<div id="HDPR_V1" class="gridA">
+<div class="col balance">
+<div id="HEADING_GROUP" class="">
+<h1 id="HEADING" property="v:name">
+Fa-bio </h1>
+<div class="wrap infoBox">
+<address>
+<span rel="v:address">
+<span dir="ltr"><span class="street-address" property="v:street-address">via Germanico 43</span>, <span class="locality"><span property="v:locality">Roma</span></span>, <span class="country-name" property="v:country-name">Italia</span> </span>
+</span>
+</address>
+<div class="odcHotel blDetails">
+<div class="fl notLast">
+<div class="sprite-greenPhone fl icnLink"></div>
+<div class="fl">(+39) 0664 525810</div>
+</div>
+<div class="fl notLast">
+<div class="sprite-greenWeb fl icnLink"></div>
+<div class="fl">
+<a class="taLnk hvrIE6" target="_blank" onclick="ta.util.cookie.setPIDCookie(15190)" href="/ShowUrl-a_odc.Restaurant__5F__Url__5F__Restaurant__5F__Review-a_partnerKey.1-a_url.http%253A__5F____5F__2F__5F____5F____5F____5F__2F__5F____5F__www__5F____5F__2E__5F____5F__facebook__5F____5F__2E__5F____5F__com__5F____5F__2F__5F____5F__group__5F____5F__2E__5F____5F__php__5F____5F__3F__5F____5F__gid%253D376109692231__5F____5F__26__5F____5F__v%253Dinfo-a_urlKey.5728d5886c1b53631.html">Sito web</a> </div>
+</div>
+</div>
+</div>
+</div>
+<div id="listing_main" class="lowListingTreatment">
+<div class="full_wrap">
+<div class="col1of2e">
+<div class="photoGrid photoBx">
+<div class="photo ">
+<a class="u_/LocationPhotoDirectLink-g187791-d2328311-i40041035-Fa_bio-Rome_Lazio.html#40041035" href="http://media-cdn.tripadvisor.com/media/photo-s/02/62/fa/4b/fa-bio.jpg" onclick="ta.util.cookie.setPIDCookie(5042);return ta.call('ta.overlays.Factory.photosLB', event);">
+<div style="width: 250px; height: 200px; overflow: hidden; position: relative;">
+<img id='HERO_PHOTO' onload='onImageLoad("HERO_PHOTO");' alt='Outside Fa Bio'/>
+</div>
+</a>
+</div>
+</div>
+</div> <div class="col2of2">
+<div class="popRanking wrap">
+<span onclick="ta.util.cookie.setPIDCookie(15191)">
+<div class="slim_ranking">
+<b class="rank_text">Al <span class="">n.2</span></b> in classifica su 4.379 <a href="/Restaurants-g187791-Rome_Lazio.html">ristoranti a Roma</a> </div>
+</span>
+</div>
+<div class="rs rating" rel="v:rating">
+<span class="rate rate_no no45">
+<img class="sprite-ratings" property="v:average" src="http://c1.tacdn.com/img2/x.gif" alt="4.5 su 5 stelle"/>
+</span>
+<span class="more taLnk hvrIE6" onclick="ta.util.ASDF.asdf('xyezsqilzsxdh')"><span property="v:count">87</span> Recensioni</span> </div>
+<div class="onShow"></div>
+<div class="listing_details">
+<div class="detail">
+<b>Cucina:</b> Continentale
+</div>
+<div class="detail">
+<b>Possibilità per mangiare:</b> Colazione/Brunch </div>
+</div>
+<div class="photoGrid photoBx">
+<div class="wrap">
+<div class="lowListingPhoto">
+<a class="u_/LocationPhotos-g187791-d2328311-Fa_bio-Rome_Lazio.html#47950246" href="http://media-cdn.tripadvisor.com/media/photo-s/02/db/a9/a6/fa-bio.jpg" onclick="setPID(3901); return ta.call('ta.overlays.Factory.photosLB', event, this); ">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/02/db/a9/a6/fa-bio.jpg" alt=" taste good!
+"/>
+</a>
+<a class="u_/LocationPhotos-g187791-d2328311-Fa_bio-Rome_Lazio.html#47349980" href="http://media-cdn.tripadvisor.com/media/photo-s/02/d2/80/dc/la-centrifuga.jpg" onclick="setPID(3901); return ta.call('ta.overlays.Factory.photosLB', event, this); ">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/02/d2/80/dc/la-centrifuga.jpg" alt=" la centrifuga
+"/>
+</a>
+<a class="u_/LocationPhotos-g187791-d2328311-Fa_bio-Rome_Lazio.html#47349979" href="http://media-cdn.tripadvisor.com/media/photo-s/02/d2/80/db/il-rotolo-di-kamut-ripieno.jpg" onclick="setPID(3901); return ta.call('ta.overlays.Factory.photosLB', event, this); ">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/02/d2/80/db/il-rotolo-di-kamut-ripieno.jpg" alt=" Il rotolo di kamut ripieno
+"/>
+</a>
+</div>
+</div>
+<div class="">
+<span class="u_/LocationPhotos-g187791-d2328311-Fa_bio-Rome_Lazio.html fkASDF taLnk hvrIE6" onclick="return ta.call('ta.overlays.Factory.photosLB', event, this);">17 foto dei visitatori</span>
+</div>
+</div>
+<div id="EATERY_OVERLAY_CONTENTS" class="eateryOverlay eateryOverlayHide">
+<b>Dettagli sui ristoranti</b> <div class="listing_details">
+<div class="detail">
+<b>Possibilità per mangiare:</b> Colazione/Brunch </div>
+</div>
+</div>
+<div class="report_listing">
+<span class="fkASDF taLnk hvrIE6" onclick="ta.call('ta.servlet.Location.reportGeoCodeDialog', event, this, 2328311)">Modifica info ristorante</span> </div>
+</div> </div> </div>
+<div id="REVIEWS" class="deckB review_collection">
+<div class="ratings_and_types">
+<span class="button_2011_grn button_war"><span class="sprite-gradient1x32_grn gradient" onclick="ta.util.cookie.setPIDCookie(458);ta.util.ASDF.asdf('LqdWyUvkkAUWMXmXvmUUWVGII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIacWqnJQHSiWeiaVQRJzCSiB')">Scrivi una recensione</span></span>
+<h3 class="reviews_header">87 recensioni dei viaggiatori</h3>
+<form id="REVIEW_FILTER_FORM" class="review_filter_2col review_filter_radios_2col" method="post" action="/SortReviews#REVIEWS">
+<fieldset class="review_filter_lodging">
+<div class="content wrap">
+<div class="col1of2 composite">
+<div class="colTitle"><b>
+Il 91% consiglia </b>
+</div>
+<ul class="barChart">
+<div class="wrap row">
+<span class="rdoSet">
+<label class="row" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='5';document.forms.REVIEW_FILTER_FORM.submit();" for="com1">
+<input class="radio" type="radio" id="com1" name="comRdo"/>
+<span class="text">Eccellente</span>
+</label>
+</span>
+<div class="line clickable" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='5';document.forms.REVIEW_FILTER_FORM.submit();"><div class="fill" style="width:75px;"></div></div>
+<span class="compositeCount">68</span>
+</div>
+<div class="wrap row">
+<span class="rdoSet">
+<label class="row" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='4';document.forms.REVIEW_FILTER_FORM.submit();" for="com2">
+<input class="radio" type="radio" id="com2" name="comRdo"/>
+<span class="text">Molto buono</span>
+</label>
+</span>
+<div class="line clickable" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='4';document.forms.REVIEW_FILTER_FORM.submit();"><div class="fill" style="width:13px;"></div></div>
+<span class="compositeCount">12</span>
+</div>
+<div class="wrap row">
+<span class="rdoSet">
+<label class="row" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='3';document.forms.REVIEW_FILTER_FORM.submit();" for="com3">
+<input class="radio" type="radio" id="com3" name="comRdo"/>
+<span class="text">Nella media</span>
+</label>
+</span>
+<div class="line clickable" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='3';document.forms.REVIEW_FILTER_FORM.submit();"><div class="fill" style="width:5px;"></div></div>
+<span class="compositeCount">5</span>
+</div>
+<div class="wrap row">
+<span class="rdoSet">
+<label class="row" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='2';document.forms.REVIEW_FILTER_FORM.submit();" for="com4">
+<input class="radio" type="radio" id="com4" name="comRdo"/>
+<span class="text">Scarso</span>
+</label>
+</span>
+<div class="line clickable" onclick="document.forms.REVIEW_FILTER_FORM.filterRating.value='2';document.forms.REVIEW_FILTER_FORM.submit();"><div class="fill" style="width:2px;"></div></div>
+<span class="compositeCount">2</span>
+</div>
+<div class="wrap row">
+<span class="rdoSet">
+<label class="row disabled" for="com5">
+<input class="radio" type="radio" name="comRdo" disabled="disabled"/>
+<span class="text">Pessimo</span>
+</label>
+</span>
+<div class="line"><div class="fill" style="width:0px;"></div></div>
+<span class="compositeCount disabled">0</span>
+</div>
+</ul> </div>
+<div class="col2of2 composite">
+<div class="colTitle">
+<b>Riassunto punteggio</b> </div>
+<ul class="barChart">
+<div class="wrap row">
+<span class="rdoSet">
+<span class="smalltext">
+Cucina
+</span>
+</span>
+<div class="line"><div class="fill" style="width:87px;"></div></div>
+</div>
+<div class="wrap row">
+<span class="rdoSet">
+<span class="smalltext">
+Servizio
+</span>
+</span>
+<div class="line"><div class="fill" style="width:87px;"></div></div>
+</div>
+<div class="wrap row">
+<span class="rdoSet">
+<span class="smalltext">
+Qualità/prezzo
+</span>
+</span>
+<div class="line"><div class="fill" style="width:87px;"></div></div>
+</div>
+<div class="wrap row">
+<span class="rdoSet">
+<span class="smalltext">
+Atmosfera
+</span>
+</span>
+<div class="line"><div class="fill" style="width:87px;"></div></div>
+</div>
+</ul>
+</div>
+</div>
+<input name="returnTo" type="hidden" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html#REVIEWS"/>
+<input name="filterSegment" type="hidden" value="0"/>
+<input name="filterRating" type="hidden" value="0"/>
+</fieldset>
+</form>
+</div>
+<div class="deckTools">
+<div class="srtTools">
+<form action="/SortEateries" method="post" id="SORT_FORM">
+<fieldset class="inlineFldst">
+<label for="sortOrder">87 recensioni filtrate per</label>
+<input name="sortOrder" id="sortOrder" type="hidden" value="1"/>
+<input name="preferredSegment" id="preferredSegment" type="hidden" value="-1"/>
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html"/>
+<span id="FRIENDS_SORT_PLACEHOLDER"></span>
+<span class="srtLnk taLnk sort_1 hvrIE6 sprite-sortArrowDnBl sortArrow" onclick="  document.forms.SORT_FORM.sortOrder.value='2';
+ document.forms.SORT_FORM.submit();">Data</span>
+<span class="srtLnk taLnk sort_3 hvrIE6" onclick="  document.forms.SORT_FORM.sortOrder.value='3';
+ document.forms.SORT_FORM.submit();">Punteggio</span>
+</fieldset>
+</form>
+<form action="/SetLangFilter" method="post" id="LANG_FORM">
+<fieldset class="inlineFldst">
+<input type="hidden" name="returnTo" value="http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html"/>
+<div class="show language">
+<select name="filterLang" id="filterLang" class="submitOnChange" onchange="this.form.submit()">
+<option value="fr">
+Francese per primo </option>
+<option value="ja">
+Giapponese per primo </option>
+<option value="en">
+Inglese per primo </option>
+<option value="it" selected="selected">
+Italiano per primo </option>
+<option value="es">
+Spagnolo per primo </option>
+<option value="de">
+Tedesco per primo </option>
+<option value="ALL">
+Qualsiasi </option>
+</select>
+</div>
+</fieldset>
+</form>
+</div> </div>
+<div id="review_140703098" class="reviewSelector">
+<div class="review basic_review first   provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_1089F42F408F8BB5D1CDC31A7596413B-SRC_140703098" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_1089F42F408F8BB5D1CDC31A7596413B ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLrEpMgV2VyygXKUK'); setPID(4442);">
+<script type="text/javascript">
+ta.store('friendAvatarSwitcherObj', (function() {
+var AVATAR_CLASS_GUID_REGEX = /\bavatarGUID:(\w+)\b/; // Class that contains the GUID of the member
+//  whose avatar it's on.
+var AVATAR_CLASS = 'potentialFacebookAvatar';         // Signal class for Mootools parsing of the DOM.
+var AVATAR_CLASS_SELECTOR = '.' + AVATAR_CLASS;       // Selector needed for Mootools $$ function.
+var guidToImgMap = {};        // mapping of member guids to avatar img tags
+var friendGuidToSrcMap = {};  // mapping of friend guids* to facebook profile pic src values
+//  *only ever contains guids of people with avatar img tags on page
+var friendGuids = [];         // array of friend guids*, used because IE doesn't like for-each loops
+//  *only ever contains guids of people with avatar img tags on page
+return {
+// Finds all avatars on the page that match the signal class, and stores them
+// in a map for later replacement.
+findAvatarsOnPage: function() {
+$$(AVATAR_CLASS_SELECTOR).each(function (avatarImg) {
+var guid = avatarImg.className.match(AVATAR_CLASS_GUID_REGEX);
+if (guid && guid[1]) { // based on how JS regex works, guid[1] is the user's guid
+guidToImgMap[guid[1]] = avatarImg; // associate the guid with the img tag
+}
+});
+},
+// Replaces all avatars on the page with the correct FB avatars, using
+// the maps of GUIDs to img tags and FB profile src values.
+replaceAvatarsOnPage: function() {
+for (var i = 0; i < friendGuids.length; i++) { // because IE doesn't like for-each loops
+var avatarImg = guidToImgMap[friendGuids[i]]
+avatarImg.src = friendGuidToSrcMap[friendGuids[i]];
+avatarImg.className = avatarImg.className.replace(AVATAR_CLASS_GUID_REGEX, '').replace(AVATAR_CLASS, '');
+}
+},
+// Checks if guid is already in map of avatar img guids, and
+// if it is, adds it to map of guids to be converted. This is called
+// by a different file, such as friends_avatar_data_js.vm.
+checkAndAddGuidAndSrc: function(guid, src) {
+if (guidToImgMap.hasOwnProperty(guid)) {
+friendGuids.push(guid);
+friendGuidToSrcMap[guid] = src;
+}
+}
+}
+})());
+// Make the partial request, and set our response behavior.
+ta.keep('facebook.data.onAvail.FRIEND_AVATARS', function() {
+ta.retrieve('friendAvatarSwitcherObj').replaceAvatarsOnPage();
+});
+ta.queueForLoad(function() { // just in case we have the ta object before the DOM is fully initialized
+ta.retrieve('friendAvatarSwitcherObj').findAvatarsOnPage(); // as soon as we can, start parsing the DOM for avatars
+});
+</script>
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/01/2e/70/75/avatar057.jpg" class="avatar potentialFacebookAvatar avatarGUID:1089F42F408F8BB5D1CDC31A7596413B" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_1089F42F408F8BB5D1CDC31A7596413B">Trudyepeggy2010</span>
+</div>
+</div>
+<div class="location">
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/Trudyepeggy2010')">
+<span class="badgeText">1 recensione</span> </div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140703098-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140703098">&#x201c;Molto bello&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 19 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+<a class="viaMobile sprite-greenPhone" href="/apps" target="_blank" onclick="ta.util.cookie.setPIDCookie(24687)">tramite dispositivo mobile</a>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Siamo stati benissimo in questo ristoranti no meraviglioso in Roma. Abbiamo mangiato benissimo con un servizio eccellente!!!! Ci ritorneremo sicuramente!
+</p>
+</div>
+<div id="helpfulq140703098_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140703098 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKkKmKAv0tEn1UdKkKmKAv0zH1UvkkAU0pSM1UKvAqndXqndKvqnv77oxMUfxMfmUbkoA3dUm70EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 140703098, memberId: '1089F42F408F8BB5D1CDC31A7596413B', geo: 187791, isFriend: false, size: 3, screenName: 'Trudyepeggy2010' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 3 recensioni di Trudyepeggy2010 su Roma </span>
+</div>
+</div> </div>
+</div>
+<div id="review_140692013" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_7CA39F2DF08BC54643D4E44C35977765-SRC_140692013" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_7CA39F2DF08BC54643D4E44C35977765 ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLlcJESJeDQXm'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/01/2e/70/73/avatar055.jpg" class="avatar potentialFacebookAvatar avatarGUID:7CA39F2DF08BC54643D4E44C35977765" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_7CA39F2DF08BC54643D4E44C35977765">IlariaRM_23</span>
+</div>
+</div>
+<div class="location">
+Roma, Italia
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/IlariaRM_23')">
+<span class="badgeText">1 recensione</span> </div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140692013-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140692013">&#x201c;Bellissima scoperta&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 19 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Sono stata da Fa.bio per colazione un sabato mattina.
+Il personale è molto gentile e competente, ho provato ben due diverse centrifughe ed entrambe erano a dir poco deliziose, per non parlare dei biscotti.
+Ho anche preso del pane di segale da portare a casa ed è finito nel giro di pochissimo tempo!
+Rimpiango solo di non lavorare in zona...
+<span class="partnerRvw">
+<span class="taLnk hvrIE6 tr140692013 moreLink" onclick="ta.util.cookie.setPIDCookie(4444);ta.call('ta.servlet.Reviews.expandReviews',event,this,'review_140692013', '1', 4444)">
+Più </span>
+<img class="textArrow_more sprite-text_arrow_dropdown_blu" src="http://c1.tacdn.com/img2/x.gif" alt="" width="10" height="11">
+</span>
+</p>
+</div>
+<div id="helpfulq140692013_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140692013 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdK3AXKUm0tEn1UdK3AXKUm0zH1UvkkAU0pSM1kfbmAqnXxMqnKv7fod3dmxMdzsddfmoAkkk3o0EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 140692013, memberId: '7CA39F2DF08BC54643D4E44C35977765', geo: 187791, isFriend: false, size: 3, screenName: 'IlariaRM_23' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 3 recensioni di IlariaRM_23 su Roma </span>
+</div>
+</div> </div>
+</div>
+<div id="review_140563643" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_B3F29A1D2F40AF27CB283B462F88B286-SRC_140563643" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_B3F29A1D2F40AF27CB283B462F88B286 ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLwJicJQqiSicJ'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/01/2e/70/7f/avatar066.jpg" class="avatar potentialFacebookAvatar avatarGUID:B3F29A1D2F40AF27CB283B462F88B286" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_B3F29A1D2F40AF27CB283B462F88B286">Paola_Viola</span>
+</div>
+</div>
+<div class="location">
+Kiev, Ucraina
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/Paola_Viola')">
+<span class="badgeText">1 recensione</span> </div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140563643-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140563643">&#x201c;SOPRAVVALUTATO?&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 17 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Ha il grosso vantaggio di essere vicino al Vaticano e non costa troppo, vista la zona, ma non è che sia poi così speciale, almeno come ce lo aspettavamo viste le super recensioni che ha sul web.
+</p>
+</div>
+<div id="helpfulq140563643_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140563643 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKo3m3dm0tEn1UdKo3m3dm0zH1UvkkAU0pSM17mqnXAbUxMXqndKbqnXkf7Xvm7d3Xqnvv7Xv30EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+</div> </div>
+</div>
+<div id="review_140499382" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_5E6CF1AF143DB2894F8C37D3DE0E033E-SRC_140499382" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_5E6CF1AF143DB2894F8C37D3DE0E033E ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLfJcSnVwSJCyVCIV'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/02/df/db/9b/calicepiangente.jpg" class="avatar potentialFacebookAvatar avatarGUID:5E6CF1AF143DB2894F8C37D3DE0E033E" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_5E6CF1AF143DB2894F8C37D3DE0E033E">CalicePiangente</span>
+</div>
+</div>
+<div class="location">
+Roma, Italia
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/CalicePiangente')">
+<div class="reviewerTitle">Recensore esperto</div>
+<img id='lazyload_-1402663501_0' height='24' alt='23 recensioni' width='25' class='icon lazy'/>
+<span class="badgeText">23 recensioni</span> </div>
+<div class="passportStampsBadge badge" onclick="ta.call('ta.overlays.Factory.memberPassportStampOverlay', event, this, 
+       { actionRecord: 'Cities_Badge_Clicked', memberId: '5E6CF1AF143DB2894F8C37D3DE0E033E', screenName: 'CalicePiangente', geos: [187789, 187791, 1050426, 187785, 616170, 194853, 580227, 580203, 194714], geo: '187791' })">
+<img id='lazyload_-1402663501_1' height='24' alt='Recensioni in 9 città' width='25' class='icon lazy'/>
+<span class="badgeText">Recensioni in 9 città</span> </div>
+<div class="helpfulVotesBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15983'); window.open('/members-reviews/CalicePiangente')">
+<img id='lazyload_-1402663501_2' height='24' alt='1 voto utile' width='25' class='icon lazy'/>
+<span class="badgeText">1 voto utile</span>
+</div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140499382-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140499382">&#x201c;Che bontà!!!&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 17 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Ingredienti genuini, freschi, leggeri, biologici per preparare al momento insalate e sandwich! Mi sono lasciata consigliare sugli ingredienti da Fabio e il risultato è stato eccezionale: sandwich con crema di radicchio rosso, tofu alle olive, pomodoro e lattuga con un ottimo pane! Il tutto accompagnato da una centrifugata di frutta eccezionale con frutti tropicali. Ho assaggiato anche i rotoli di...
+<span class="partnerRvw">
+<span class="taLnk hvrIE6 tr140499382 moreLink" onclick="ta.util.cookie.setPIDCookie(4444);ta.call('ta.servlet.Reviews.expandReviews',event,this,'review_140499382', '1', 4444)">
+Più </span>
+<img class="textArrow_more sprite-text_arrow_dropdown_blu" src="http://c1.tacdn.com/img2/x.gif" alt="" width="10" height="11">
+</span>
+</p>
+</div>
+<div id="helpfulq140499382_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140499382 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKdAAmvX0tEn1UdKdAAmvX0zH1UvkkAU0pSM1ozs3fqnUbqnUdmxM7XvAdqnvfmkxMmxMzsKzsKmmzs0EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 140499382, memberId: '5E6CF1AF143DB2894F8C37D3DE0E033E', geo: 187791, isFriend: false, size: 12, screenName: 'CalicePiangente' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 12 recensioni di CalicePiangente su Roma </span>
+</div>
+</div> </div>
+</div>
+<div id="review_140445512" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_54098A3E9AF38AC56608F9485B328E37-SRC_140445512" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_54098A3E9AF38AC56608F9485B328E37 ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLMVyptIJEVxMNf'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/02/dc/51/b1/degustaredoc.jpg" class="avatar potentialFacebookAvatar avatarGUID:54098A3E9AF38AC56608F9485B328E37" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_54098A3E9AF38AC56608F9485B328E37">degustareDOC</span>
+</div>
+</div>
+<div class="location">
+Roma, Italia
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/degustareDOC')">
+<div class="reviewerTitle">Recensore</div>
+<img id='lazyload_-1402663501_3' height='24' alt='18 recensioni' width='25' class='icon lazy'/>
+<span class="badgeText">18 recensioni</span> </div>
+<div class="passportStampsBadge badge" onclick="ta.call('ta.overlays.Factory.memberPassportStampOverlay', event, this, 
+       { actionRecord: 'Cities_Badge_Clicked', memberId: '54098A3E9AF38AC56608F9485B328E37', screenName: 'degustareDOC', geos: [187790, 187791, 1531876, 194853, 194765, 194714], geo: '187791' })">
+<img id='lazyload_-1402663501_4' height='24' alt='Recensioni in 6 città' width='25' class='icon lazy'/>
+<span class="badgeText">Recensioni in 6 città</span> </div>
+<div class="helpfulVotesBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15983'); window.open('/members-reviews/degustareDOC')">
+<img id='lazyload_-1402663501_5' height='24' alt='4 voti utili' width='25' class='icon lazy'/>
+<span class="badgeText">4 voti utili</span>
+</div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140445512-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140445512">&#x201c;paradiso&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 16 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+</div>
+<div class="fndhlpInline"><div class="hlpNmbr">1</div> <div class="hlpTxt">persona pensa che questa recensione sia utile</div></div>
+<div class="entry">
+<p class="partial_entry">
+quando io entro in un posto del genere mi emoziono:tutti prodotti freschissimi e da agricoltura biologica certificata! sono andato con la mia ragazza ho preso un&#39;insalata al farro due rotolini con capocollo pesto e radicchio e una buonissima centrifugata di carote mela e limone con un cubetto di ghiaccio,lei ha preso un fantastico sandwich con il tofu e una salsa...
+<span class="partnerRvw">
+<span class="taLnk hvrIE6 tr140445512 moreLink" onclick="ta.util.cookie.setPIDCookie(4444);ta.call('ta.servlet.Reviews.expandReviews',event,this,'review_140445512', '1', 4444)">
+Più </span>
+<img class="textArrow_more sprite-text_arrow_dropdown_blu" src="http://c1.tacdn.com/img2/x.gif" alt="" width="10" height="11">
+</span>
+</p>
+</div>
+<div id="helpfulq140445512_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140445512 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKddooUX0tEn1UdKddooUX0zH1UvkkAU0pSM1odKAvbmzsAbqnmvbfo33KvqnAdvo7mXvzsmk0EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 140445512, memberId: '54098A3E9AF38AC56608F9485B328E37', geo: 187791, isFriend: false, size: 10, screenName: 'degustareDOC' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 10 recensioni di degustareDOC su Roma </span>
+</div>
+</div> </div>
+</div>
+<div id="review_140405544" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_B6161FA484AEE055B0742C80F917F40B-SRC_140405544" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_B6161FA484AEE055B0742C80F917F40B ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLRpnSJCSCi3'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/01/2e/70/a7/avatar078.jpg" class="avatar potentialFacebookAvatar avatarGUID:B6161FA484AEE055B0742C80F917F40B" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_B6161FA484AEE055B0742C80F917F40B">Lucianino6</span>
+</div>
+</div>
+<div class="location">
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/Lucianino6')">
+<div class="reviewerTitle">Recensore esperto</div>
+<img id='lazyload_-1402663501_6' height='24' alt='25 recensioni' width='25' class='icon lazy'/>
+<span class="badgeText">25 recensioni</span> </div>
+<div class="helpfulVotesBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15983'); window.open('/members-reviews/Lucianino6')">
+<img id='lazyload_-1402663501_7' height='24' alt='24 voti utili' width='25' class='icon lazy'/>
+<span class="badgeText">24 voti utili</span>
+</div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140405544-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140405544">&#x201c;Giusto per fame..&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s20">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="2 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 16 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+<a class="viaMobile sprite-greenPhone" href="/apps" target="_blank" onclick="ta.util.cookie.setPIDCookie(24687)">tramite dispositivo mobile</a>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Se state nei pressi del Vaticano,quando vi soprassale la fame,Fa-bio è il locale che fa per voi,centrifughe,insalate e sandwich buonissimi..che pero&#39; non soddisfano pienamente in caso di bisogno di riposare o di sedersi per uno snak,l&#39;andicap di questa panineria è lo spazio,soffocante e quasi sempre affollato..vista la posizione su TA,mi aspettavo qualcosa di diverso.Cmq bravi.
+</p>
+</div>
+<div id="helpfulq140405544_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140405544 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKdKoodd0tEn1UdKdKoodd0zH1UvkkAU0pSM173U3UqnbdvdbzszsKoo7KkdXfvKqnAUkqndK70EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 140405544, memberId: 'B6161FA484AEE055B0742C80F917F40B', geo: 187791, isFriend: false, size: 27, screenName: 'Lucianino6' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 27 recensioni di Lucianino6 su Roma </span>
+</div>
+</div> </div>
+</div>
+<div id="review_140342805" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_230609F0A50DC92497C6CD5F2AD353C2-SRC_140342805" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_230609F0A50DC92497C6CD5F2AD353C2 ">
+<div class="facebookAvatar">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLzzSif3mv'); setPID(4442);">
+<img id='lazyload_-1402663501_8' height='74' width='74' class='facebookAvatarIcon avatar'/>
+<img class="sprite-facebookAvatarLogo facebookAvatarLogo" src="http://c1.tacdn.com/img2/x.gif"/>
+</span> </div>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_230609F0A50DC92497C6CD5F2AD353C2">Gio C</span>
+</div>
+</div>
+<div class="location">
+Milano, Italia
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/GioC638')">
+<div class="reviewerTitle">Contributore esperto</div>
+<img id='lazyload_-1402663501_9' height='24' alt='6 recensioni' width='25' class='icon lazy'/>
+<span class="badgeText">6 recensioni</span> </div>
+<div class="passportStampsBadge badge" onclick="ta.call('ta.overlays.Factory.memberPassportStampOverlay', event, this, 
+       { actionRecord: 'Cities_Badge_Clicked', memberId: '230609F0A50DC92497C6CD5F2AD353C2', screenName: 'Gio C', geos: [187849, 187791], geo: '187791' })">
+<img id='lazyload_-1402663501_10' height='24' alt='Recensioni in 2 città' width='25' class='icon lazy'/>
+<span class="badgeText">Recensioni in 2 città</span> </div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140342805-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140342805">&#x201c;tutto buono e fresco&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 15 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Una scoperta questo posto. a roma per lavoro, tutto di corsa e poi decido di fermarmi per una pausa pranzo veloce. l&#39;insegna non mi ispirava un gran che, ma il nome mi sembrava simpatico...devo dire che una normale pausa pranzo si è rivelata un momento &quot;energizzante&quot;, centrifugati e panino davvero buono, ingredienti freschi ed ambiente simpatico. se lo aprissero anche...
+<span class="partnerRvw">
+<span class="taLnk hvrIE6 tr140342805 moreLink" onclick="ta.util.cookie.setPIDCookie(4444);ta.call('ta.servlet.Reviews.expandReviews',event,this,'review_140342805', '1', 4444)">
+Più </span>
+<img class="textArrow_more sprite-text_arrow_dropdown_blu" src="http://c1.tacdn.com/img2/x.gif" alt="" width="10" height="11">
+</span>
+</p>
+</div>
+<div id="helpfulq140342805_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140342805 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKmdXvKo0tEn1UdKmdXvKo0zH1UvkkAU0pSM1XmK3KAqnKboKxMfAXdAkf3fxMoqnXbxMmomfX0EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+</div> </div>
+</div>
+<div id="review_140239590" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_8983C5ED908C4FA1577B8EC5FB4D152A-SRC_140239590" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_8983C5ED908C4FA1577B8EC5FB4D152A ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLxdSzCzCgUAkv'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/01/ea/0a/c6/wizzy1978.jpg" class="avatar potentialFacebookAvatar avatarGUID:8983C5ED908C4FA1577B8EC5FB4D152A" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_8983C5ED908C4FA1577B8EC5FB4D152A">Wizzy1978</span>
+</div>
+</div>
+<div class="location">
+Roma, Italia
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/Wizzy1978')">
+<div class="reviewerTitle">Recensore esperto</div>
+<img id='lazyload_-1402663501_11' height='24' alt='26 recensioni' width='25' class='icon lazy'/>
+<span class="badgeText">26 recensioni</span> </div>
+<div class="passportStampsBadge badge" onclick="ta.call('ta.overlays.Factory.memberPassportStampOverlay', event, this, 
+       { actionRecord: 'Cities_Badge_Clicked', memberId: '8983C5ED908C4FA1577B8EC5FB4D152A', screenName: 'Wizzy1978', geos: [187791, 194774, 187782, 794657, 194787, 187906, 187801, 1015346, 194758, 189421, 186338, 189417, 656834, 194934, 187892], geo: '187791' })">
+<img id='lazyload_-1402663501_12' height='24' alt='Recensioni in 15 città' width='25' class='icon lazy'/>
+<span class="badgeText">Recensioni in 15 città</span> </div>
+<div class="helpfulVotesBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15983'); window.open('/members-reviews/Wizzy1978')">
+<img id='lazyload_-1402663501_13' height='24' alt='10 voti utili' width='25' class='icon lazy'/>
+<span class="badgeText">10 voti utili</span>
+</div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140239590-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140239590">&#x201c;Un piccolo angolo di benessere!&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s40">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="4 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 14 settembre 2012
+<span class="new">NOVITÀ</span>
+</span>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Questo posto è dedicato a tutti coloro che vogliono concedersi uno snack veloce all&#39;insegna del benessere!
+I due ragazzi che ci lavorano (credo che siano soci o che comunque uno dei due sia il proprietario) sono molto simpatici e cordiali!
+Preparano sandwich, insalatone, frullati di frutta fresca e tutto rigorosamente biologico e al momento, a prezzi onestissimi!
+Unica grande pecca...
+<span class="partnerRvw">
+<span class="taLnk hvrIE6 tr140239590 moreLink" onclick="ta.util.cookie.setPIDCookie(4444);ta.call('ta.servlet.Reviews.expandReviews',event,this,'review_140239590', '1', 4444)">
+Più </span>
+<img class="textArrow_more sprite-text_arrow_dropdown_blu" src="http://c1.tacdn.com/img2/x.gif" alt="" width="10" height="11">
+</span>
+</p>
+</div>
+<div id="helpfulq140239590_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140239590 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKXmAoAK0tEn1UdKXmAoAK0zH1UvkkAU0pSM1vAvmfozsxMAKvfdqnbUokk7vzsfoqn7dxMUoXb0EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 140239590, memberId: '8983C5ED908C4FA1577B8EC5FB4D152A', geo: 187791, isFriend: false, size: 5, screenName: 'Wizzy1978' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 5 recensioni di Wizzy1978 su Roma </span>
+</div>
+</div> </div>
+</div>
+<div id="review_140078871" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_A0A1D4741B3BC8934961AB4657CF9303-SRC_140078871" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_A0A1D4741B3BC8934961AB4657CF9303 ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLJIGVCJCS9Vvk'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/01/2e/70/8c/avatar013.jpg" class="avatar potentialFacebookAvatar avatarGUID:A0A1D4741B3BC8934961AB4657CF9303" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_A0A1D4741B3BC8934961AB4657CF9303">athenanike87</span>
+</div>
+</div>
+<div class="location">
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/athenanike87')">
+<div class="reviewerTitle">Contributore esperto</div>
+<img id='lazyload_-1402663501_14' height='24' alt='9 recensioni' width='25' class='icon lazy'/>
+<span class="badgeText">9 recensioni</span> </div>
+<div class="passportStampsBadge badge" onclick="ta.call('ta.overlays.Factory.memberPassportStampOverlay', event, this, 
+       { actionRecord: 'Cities_Badge_Clicked', memberId: 'A0A1D4741B3BC8934961AB4657CF9303', screenName: 'athenanike87', geos: [187791, 1020247, 194798, 187892], geo: '187791' })">
+<img id='lazyload_-1402663501_15' height='24' alt='Recensioni in 4 città' width='25' class='icon lazy'/>
+<span class="badgeText">Recensioni in 4 città</span> </div>
+<div class="helpfulVotesBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15983'); window.open('/members-reviews/athenanike87')">
+<img id='lazyload_-1402663501_16' height='24' alt='2 voti utili' width='25' class='icon lazy'/>
+<span class="badgeText">2 voti utili</span>
+</div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r140078871-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r140078871">&#x201c;cibo salutare e particolare&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 12 settembre 2012
+</span>
+</div>
+<div class="entry">
+<p class="partial_entry">
+incuriosita dalle recensioni su tripadvisor ho voluto provarlo. piuttosto piccolo il locale con pochissimi posti a sedere ha però delle delizie tutte da provare: dai panini (da condire con moltissimi ingredienti a disposizione...andateci presto per avere più scelta!), ai frullati (ottimo quello con banana e cannella!) ai centrifugati (buonissimo quello con mela, sedano e kiwi!). i ragazzi sono gentilissimi! andateci!
+</p>
+</div>
+<div id="helpfulq140078871_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq140078871 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUdKKkvvkU0tEn1UdKKkvvkU0zH1UvkkAU0pSM1bKbUxMdkdU7m7fvAmdA3Ub7d3okfqnAmKm0EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 140078871, memberId: 'A0A1D4741B3BC8934961AB4657CF9303', geo: 187791, isFriend: false, size: 4, screenName: 'athenanike87' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 4 recensioni di athenanike87 su Roma </span>
+</div>
+</div> </div>
+</div>
+<div id="review_139891938" class="reviewSelector">
+<div class="review basic_review    provider0 inlineReviewUpdate">
+<div class="col1of2">
+<div class="member_info">
+<div id="UID_F3B4793351A04D2B943C7923C1934B4B-SRC_139891938" class="memberOverlayLink" onmouseover="ta.call('ta.overlays.Factory.memberOverlay', event, this, 's3 dg rgba_gry update2012');">
+<div class="avatar profile_F3B4793351A04D2B943C7923C1934B4B ">
+<span class="taLnk" onclick="ta.util.ASDF.asdf('LxOLbCMEVJeVyEip2'); setPID(4442);">
+<img src="http://media-cdn.tripadvisor.com/media/photo-s/01/f1/bb/60/andrearegroup.jpg" class="avatar potentialFacebookAvatar avatarGUID:F3B4793351A04D2B943C7923C1934B4B" width="74" height="74"/>
+</span>
+</div>
+<div class="username mo">
+<span class="expand_inline scrname hvrIE6 mbrName_F3B4793351A04D2B943C7923C1934B4B">AndreaRegroup</span>
+</div>
+</div>
+<div class="location">
+Roma, Italia
+</div>
+</div>
+<div class="memberBadging">
+<div class="totalReviewBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15984'); window.open('/members-reviews/AndreaRegroup')">
+<div class="reviewerTitle">Contributore esperto</div>
+<img id='lazyload_-1402663501_17' height='24' alt='8 recensioni' width='25' class='icon lazy'/>
+<span class="badgeText">8 recensioni</span> </div>
+<div class="passportStampsBadge badge" onclick="ta.call('ta.overlays.Factory.memberPassportStampOverlay', event, this, 
+       { actionRecord: 'Cities_Badge_Clicked', memberId: 'F3B4793351A04D2B943C7923C1934B4B', screenName: 'AndreaRegroup', geos: [187791, 2339162, 815431], geo: '187791' })">
+<img id='lazyload_-1402663501_18' height='24' alt='Recensioni in 3 città' width='25' class='icon lazy'/>
+<span class="badgeText">Recensioni in 3 città</span> </div>
+<div class="helpfulVotesBadge badge no_cpu" onclick="ta.util.cookie.setPIDCookie('15983'); window.open('/members-reviews/AndreaRegroup')">
+<img id='lazyload_-1402663501_19' height='24' alt='10 voti utili' width='25' class='icon lazy'/>
+<span class="badgeText">10 voti utili</span>
+</div>
+</div>
+</div>
+<div class="col2of2">
+<div class="quote">
+<a href="/ShowUserReviews-g187791-d2328311-r139891938-Fa_bio-Rome_Lazio.html#REVIEWS" onclick="ta.util.cookie.setPIDCookie('4442')" id="r139891938">&#x201c;Mangiar sano&#x201d;</a>
+</div>
+<div class="rating reviewItemInline">
+<span class="rate rate_s s50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<span class="ratingDate">Recensito il 10 settembre 2012
+</span>
+</div>
+<div class="entry">
+<p class="partial_entry">
+Incuriosito dalle recensioni di T.A. mi sono recato in questo posto. Piccolissimo ( 2 sgabelli) ma super fornito. Io che non sono vegetariano ho gustato cosa vuol dire saper combinare i giusti ingredienti. Non essendo un esperto ho lasciato fare alle sapienti mani di Fabio, il gentile e disponibile gestore, il quale mi ha servito due sandwiches ( uno vegetariano...
+<span class="partnerRvw">
+<span class="taLnk hvrIE6 tr139891938 moreLink" onclick="ta.util.cookie.setPIDCookie(4444);ta.call('ta.servlet.Reviews.expandReviews',event,this,'review_139891938', '1', 4444)">
+Più </span>
+<img class="textArrow_more sprite-text_arrow_dropdown_blu" src="http://c1.tacdn.com/img2/x.gif" alt="" width="10" height="11">
+</span>
+</p>
+</div>
+<div id="helpfulq139891938_collapsed" class="helpful ">
+<span class="isHelpful">Questa recensione è stata utile?</span>
+<span class="button_2011_grn">
+<span class="yes tgt_helpfulq139891938 sprite-gradient1x32_grn gradient" onmouseover="this.style.cursor='pointer';" onclick="ta.util.cookie.setPIDCookie(5034); ta.call('ta.servlet.Reviews.helpfulVoteHandlerOb', event, this, 'LeJIVqd4EVIpECri1GII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIac6XoXmqoTpcUmAvAUAmv0tEn1UmAvAUAmv0zH1UvkkAU0pSM1qnm7dkAmmoUbKdxMX7AdmfkAXmfUAmd7d70EJIVqiJcpV1U');">Si</span> </span>
+</div>
+<div class="wrap reportProblem"> <span class="problem collapsed taLnk" onmouseover="ta.util.taLnk.mouseover(this)" onmouseout="ta.util.taLnk.mouseout(this)" onclick="login(['tt', 'ajax', 'returnTo', 'http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html']);">Problemi con questa recensione?</span>
+</div>
+<div class="sameGeoActivity">
+<span class="taLnk" onclick="ta.call('ta.overlays.Factory.sameGeoActivityOverlay', event, this, 
+          { reviewId: 139891938, memberId: 'F3B4793351A04D2B943C7923C1934B4B', geo: 187791, isFriend: false, size: 5, screenName: 'AndreaRegroup' }); 
+          ta.util.cookie.setPIDCookie(19160)">
+Mostra altre 5 recensioni di AndreaRegroup su Roma </span>
+</div>
+</div> </div>
+</div>
+<div class="deckTools btm">
+<div class="pagination">
+<span class="pgCount"><span>1-10</span> <i>di</i> 87 <i>recensioni</i></span>
+<div id="" class="pgLinks">
+<span class="guiArw pageEndPrev">&laquo;</span>
+<span class="paging pageDisplay">1</span>
+<span class="paging  taLnk hvrIE6" onclick="ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMXmXvmUUWxfWiEUKWqnJQHSiWeiaVQRJzCSiBxyezsqilzsxdh',0)">2</span>
+<span class="paging pagePause">...</span>
+<span class="paging  taLnk hvrIE6" onclick="ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMXmXvmUUWxfWiEvKWqnJQHSiWeiaVQRJzCSiBxyezsqilzsxdh',0)">9</span>
+<span class="ie_rgt"><span class="guiArw sprite-pageNext  taLnk hvrIE6" onclick="ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMXmXvmUUWxfWiEUKWqnJQHSiWeiaVQRJzCSiBxyezsqilzsxdh',0)">&raquo;</span></span>
+</div> </div> </div>
+</div>
+<div id="ALSO_VIEWED" class="bx03">
+<h2 class="title">Gli utenti che hanno visto Fa-bio hanno visto anche</h2>
+<div class="wrap">
+<div class="thumbnail fl">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(1063);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMUmvUvKKWxfWbMQ5inWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 74px; width: 74px">
+<img id='lazyload_-1402663501_20' height='74' style='height: 74px; width: 74px;' alt='Ad Hoc' width='74' class='photo_image'/>
+</div>
+</span>
+</div>
+<div class="data fl">
+<div class="propertyLink"><a href="/Restaurant_Review-g187791-d1381800-Reviews-Ad_Hoc-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(1020)">Ad Hoc</a></div>
+<div class="rating">
+<span class="rate rate_s s45">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle"/>
+</span>
+<em class="taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(1020);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMUmvUvKKWxfWbMQ5inWeiaVQRJzCSiBxyezsqilzsxdh')">
+1.089 recensioni
+</em>
+</div>
+<div class="location">
+Roma, Lazio </div>
+</div>
+<div class="thumbnail fl">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(1063);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMXdm3oXKWxfWwS2VEiQJcQeVxEWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 74px; width: 74px">
+<img id='lazyload_-1402663501_21' height='74' style='height: 74px; width: 74px;' alt='Pipero al Rex' width='74' class='photo_image'/>
+</div>
+</span>
+</div>
+<div class="data fl">
+<div class="propertyLink"><a href="/Restaurant_Review-g187791-d2436520-Reviews-Pipero_al_Rex-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(1020)">Pipero al Rex</a></div>
+<div class="rating">
+<span class="rate rate_s s45">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle"/>
+</span>
+<em class="taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(1020);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMXdm3oXKWxfWwS2VEiQJcQeVxEWeiaVQRJzCSiBxyezsqilzsxdh')">
+59 recensioni
+</em>
+</div>
+<div class="location">
+Roma, Lazio </div>
+</div>
+</div><div class="wrap">
+<div class="data row_spacing">&nbsp;</div>
+<div class="thumbnail fl">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(1063);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMkvXm3vWxfWRJQrJsVECJQMVSQqniESQla2VESJcSWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 74px; width: 74px">
+<img id='lazyload_-1402663501_22' height='74' style='height: 74px; width: 74px;' alt='La Taverna dei Fori Imperiali' width='74' class='photo_image'/>
+</div>
+</span>
+</div>
+<div class="data fl">
+<div class="propertyLink"><a href="/Restaurant_Review-g187791-d782368-Reviews-La_Taverna_dei_Fori_Imperiali-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(1020)">La Taverna dei Fori Imperiali</a></div>
+<div class="rating">
+<span class="rate rate_s s45">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle"/>
+</span>
+<em class="taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(1020);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMkvXm3vWxfWRJQrJsVECJQMVSQqniESQla2VESJcSWeiaVQRJzCSiBxyezsqilzsxdh')">
+620 recensioni
+</em>
+</div>
+<div class="location">
+Roma, Lazio </div>
+</div>
+<div class="thumbnail fl">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(1063);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMXmXKdXKWxfWhpVQzzSpQfpnSCJQeiaJCJWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 74px; width: 74px">
+<img id='lazyload_-1402663501_23' height='74' style='height: 74px; width: 74px;' alt='Sue & Giu Cucina Romana' width='74' class='photo_image'/>
+</div>
+</span>
+</div>
+<div class="data fl">
+<div class="propertyLink"><a href="/Restaurant_Review-g187791-d2320420-Reviews-Sue_Giu_Cucina_Romana-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(1020)">Sue & Giu Cucina Romana</a></div>
+<div class="rating">
+<span class="rate rate_s s45">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle"/>
+</span>
+<em class="taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(1020);ta.util.ASDF.asdf('LeVtIJpEJCIQeVsSVuWyUvkkAUWMXmXKdXKWxfWhpVQzzSpQfpnSCJQeiaJCJWeiaVQRJzCSiBxyezsqilzsxdh')">
+105 recensioni
+</em>
+</div>
+<div class="location">
+Roma, Lazio </div>
+</div>
+</div><div class="wrap">
+<div class="data row_spacing">&nbsp;</div> </div>
+</div>
+<div class="also_viewed_count">
+<a href="/Restaurants-g187791-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(1021);">Ristoranti a Roma</a> (4379)
+</div>
+<div class="bx03 writeOwn">
+<dl>
+<dt>
+<h2 class="title">Conosci Fa-bio? Condividi la tua esperienza! </h2> </dt>
+<dd class="content">
+<div class="wrpBtn">
+<span class="button_2011_grn"><span class="sprite-gradient1x32_grn gradient" onclick="ta.util.cookie.setPIDCookie(458);ta.util.ASDF.asdf('LqdWyUvkkAUWMXmXvmUUWVGII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIacWTHVTSEtIQeVtIJpEJCIQeVsSVuQuESIVJEVsSVuQIi2WqnJQHSiWeiaVQRJzCSiB')">Scrivi una recensione</span></span>
+<span class="button_2011_grn"><span class="sprite-gradient1x32_grn gradient" onclick="ta.call('ta.media.uploader.start', event, this, {oldPhotoUploadURL: 'LxTq3WyUvkkAUWMXmXvmUUWVGII26mbqgqguuuxizSxiSIqgeVtIJpEJCIQQoqnQQeVsSVuqHyUvkkAUqHMXmXvmUUqHxfqHqnJQQoqnQQHSiqHeiaVQQoqnQQRJzCSixiGIacWTHVTSEtIQeVtIJpEJCIQeVsSVuQ2itI2GiIitiCcgQIi2WqnJQHSiWeiaVQRJzCSiB', oldPhotoUploadPID: 459, locationId: 187791, detailId: 2328311, locale: 'it'})">Aggiungi foto</span></span>
+</div>
+</dd> </dl>
+</div>
+<div class="bx03 owners">
+<h2 class="do_you_own">
+Proprietari: qual è la vostra versione? </h2>
+<p>Se siete il proprietario o il gestore di Fa-bio, registratevi ora gratuitamente per usufruire di strumenti che permettono di migliorare il profilo, ottenere nuove recensioni e rispondere agli utenti.</p>
+<span class="taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie('18844'); ta.util.ASDF.asdf('LDJCJyVaVCIfVCIVEWyUvkkAUWMXmXvmUUWnKWqnJQHSiWeiaVQRJzCSiB')">Gestione profilo</span>
+</div>
+<div class="clearFix"></div>
+<div id='lazyload_-1402663501_24'><!-- lazy loaded --></div>
+<script type="text/javascript">
+ta.p13n.RV = {
+onTabMouseover: function(evnt, elmt) {
+elmt.addClass('activeHover');
+},
+onTabMouseout: function(evnt, elmt) {
+elmt.removeClass('activeHover');
+},
+onTabClick: function(evnt, elmt, placeTypeId) {
+try {
+var old_key = 'ta.p13n.RV.' + ta.remove('ta.p13n.RV.active');
+var old_val = ta.retrieve(old_key);
+if(!old_val) {
+ta.store(old_key, ta.id('history_carousel_content').innerHTML);
+}
+var key = 'ta.p13n.RV.' + placeTypeId;
+var val = ta.retrieve(key);
+if(val) {
+ta.id('history_carousel_content').innerHTML = val;
+$$("#history_carousel_tabs .active")[0].removeClass("active");
+elmt.addClass("active");
+}
+else {
+var location = ta.retrieve('page.location');
+if(location) {
+location = "-d" + location;
+}
+new Request( {
+url : "/RecentlyViewed" + location,
+evalScripts : true,
+data : {
+placeTypeOverride : placeTypeId,
+narrow : 1
+},
+onSuccess : function(txt, xml) {
+ta.id('history_carousel_content').innerHTML = txt;
+$$("#history_carousel_tabs .active")[0].removeClass("active");
+elmt.addClass("active");
+var rvCallback = ta.remove('ta.p13n.RV.callback');
+if(rvCallback) {
+rvCallback();
+}
+}
+}).send();
+}
+} catch(e) {
+ta.util.error.record(e, 'recently viewed narrow tab switching');
+}
+}
+};
+</script>
+</div> <div class="col sidebar">
+<div id="ALSO_VIEWED_LIST" class="oldVer" onmouseover="ta.commerce.checkrates.avafIn(event, 500)" onmouseout="ta.commerce.checkrates.avafOut(event)">
+<h2 class="title">Gli ospiti di hotel sono entusiasti di…</h2>
+<ul id="expand_av">
+<li class="lodging wrap">
+<div class="thumbnail fl avthumb">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(18708);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWM3KUdmXWxfWwiEIEJSIQhpSIVtWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 60px; width: 60px">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/01/88/5a/03/panoramic-terrace.jpg" class="photo_image" style="height: 60px; width: 60px;" alt="Portrait Suites" width="60" height="60">
+</div>
+</span>
+</div>
+<div class="oh">
+<div class="wrap">
+<div class="data fl">
+<div class="propertyLink"><a href="/Hotel_Review-g187791-d601432-Reviews-Portrait_Suites-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(18707)">Portrait Suites</a></div>
+<div class="rating wrap">
+<span class="rate rate_ss ss50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<em class="wsnw taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(18707);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWM3KUdmXWxfWwiEIEJSIQhpSIVtWeiaVQRJzCSiB')">
+169 recensioni </em>
+</div>
+</div>
+<div class="reviewsButton">
+<span onclick="ta.util.cookie.setPIDCookie(18842); ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWM3KUdmXWxfWwiEIEJSIQhpSIVtWeiaVQRJzCSiB')" class="button taLnk hvrIE6"><span class="sprite-button taLnk hvrIE6">Recensioni</span></span>
+</div>
+</div> <div class="location fl">
+Roma, Lazio </div>
+</div> </li>
+<li class="lodging wrap">
+<div class="thumbnail fl avthumb">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(18708);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMUkXAKmKWxfWlxXQqWQeiaJWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 60px; width: 60px">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/01/da/6d/d7/iq-hotel-roma-exterior.jpg" class="photo_image" style="height: 60px; width: 60px;" alt="iQ Hotel Roma" width="60" height="60">
+</div>
+</span>
+</div>
+<div class="oh">
+<div class="wrap">
+<div class="data fl">
+<div class="propertyLink"><a href="/Hotel_Review-g187791-d1729030-Reviews-IQ_Hotel_Roma-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(18707)">iQ Hotel Roma</a></div>
+<div class="rating wrap">
+<span class="rate rate_ss ss45">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle"/>
+</span>
+<em class="wsnw taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(18707);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMUkXAKmKWxfWlxXQqWQeiaJWeiaVQRJzCSiB')">
+1.212 recensioni </em>
+</div>
+</div>
+<div class="reviewsButton">
+<span onclick="ta.util.cookie.setPIDCookie(18842); ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMUkXAKmKWxfWlxXQqWQeiaJWeiaVQRJzCSiB')" class="button taLnk hvrIE6"><span class="sprite-button taLnk hvrIE6">Recensioni</span></span>
+</div>
+</div> <div class="location fl">
+Roma, Lazio </div>
+</div> </li>
+<li class="lodging wrap">
+<div class="thumbnail fl avthumb">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(18708);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMXKAUKUXWxfWxMV9iQeiaVWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 60px; width: 60px">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/01/dc/61/28/building-entrance.jpg" class="photo_image" style="height: 60px; width: 60px;" alt="Deko Rome" width="60" height="60">
+</div>
+</span>
+</div>
+<div class="oh">
+<div class="wrap">
+<div class="data fl">
+<div class="propertyLink"><a href="/Hotel_Review-g187791-d2091012-Reviews-Deko_Rome-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(18707)">Deko Rome</a></div>
+<div class="rating wrap">
+<span class="rate rate_ss ss50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<em class="wsnw taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(18707);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMXKAUKUXWxfWxMV9iQeiaVWeiaVQRJzCSiB')">
+246 recensioni </em>
+</div>
+</div>
+<div class="reviewsButton">
+<span onclick="ta.util.cookie.setPIDCookie(18842); ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMXKAUKUXWxfWxMV9iQeiaVWeiaVQRJzCSiB')" class="button taLnk hvrIE6"><span class="sprite-button taLnk hvrIE6">Recensioni</span></span>
+</div>
+</div> <div class="location fl">
+Roma, Lazio </div>
+</div> </li>
+</ul>
+<ul id="expand_av_on_hover" class="hidden">
+<li class="lodging wrap">
+<div class="thumbnail fl avthumb">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(18708);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMXKvooXWxfWqWQfJa2iQxMVQqnSiESWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 60px; width: 60px">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/01/cb/bb/6d/top-floor-room.jpg" class="photo_image" style="height: 60px; width: 60px;" alt="Hotel Campo De' Fiori" width="60" height="60">
+</div>
+</span>
+</div>
+<div class="oh">
+<div class="wrap">
+<div class="data fl">
+<div class="propertyLink"><a href="/Hotel_Review-g187791-d208552-Reviews-Hotel_Campo_De_Fiori-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(18707)">Hotel Campo De' Fiori</a></div>
+<div class="rating wrap">
+<span class="rate rate_ss ss45">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle"/>
+</span>
+<em class="wsnw taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(18707);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMXKvooXWxfWqWQfJa2iQxMVQqnSiESWeiaVQRJzCSiB')">
+828 recensioni </em>
+</div>
+</div>
+<div class="reviewsButton">
+<span onclick="ta.util.cookie.setPIDCookie(18842); ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMXKvooXWxfWqWQfJa2iQxMVQqnSiESWeiaVQRJzCSiB')" class="button taLnk hvrIE6"><span class="sprite-button taLnk hvrIE6">Recensioni</span></span>
+</div>
+</div> <div class="location fl">
+Roma, Lazio </div>
+</div> </li>
+<li class="lodging wrap">
+<div class="thumbnail fl avthumb">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(18708);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMUAUKAAWxfWbcHVEyiQMVcQhVCJIiWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 60px; width: 60px">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/02/3b/cd/94/the-pantheon-our-hotel.jpg" class="photo_image" style="height: 60px; width: 60px;" alt="Albergo del Senato" width="60" height="60">
+</div>
+</span>
+</div>
+<div class="oh">
+<div class="wrap">
+<div class="data fl">
+<div class="propertyLink"><a href="/Hotel_Review-g187791-d191099-Reviews-Albergo_del_Senato-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(18707)">Albergo del Senato</a></div>
+<div class="rating wrap">
+<span class="rate rate_ss ss50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<em class="wsnw taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(18707);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMUAUKAAWxfWbcHVEyiQMVcQhVCJIiWeiaVQRJzCSiB')">
+1.303 recensioni </em>
+</div>
+</div>
+<div class="reviewsButton">
+<span onclick="ta.util.cookie.setPIDCookie(18842); ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMUAUKAAWxfWbcHVEyiQMVcQhVCJIiWeiaVQRJzCSiB')" class="button taLnk hvrIE6"><span class="sprite-button taLnk hvrIE6">Recensioni</span></span>
+</div>
+</div> <div class="location fl">
+Roma, Lazio </div>
+</div> </li>
+<li class="lodging wrap">
+<div class="thumbnail fl avthumb">
+<span class="taLnk" onclick="ta.util.cookie.setPIDCookie(18708);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMoAkkKmWxfWqiSccJQh2JccVIISQrESsVccSWeiaVQRJzCSiB')">
+<div class="sizedThumb" style="height: 60px; width: 60px">
+<img src="http://media-cdn.tripadvisor.com/media/photo-l/01/99/d5/54/front-view-villa-spalleti.jpg" class="photo_image" style="height: 60px; width: 60px;" alt="Villa Spalletti Trivelli" width="60" height="60">
+</div>
+</span>
+</div>
+<div class="oh">
+<div class="wrap">
+<div class="data fl">
+<div class="propertyLink"><a href="/Hotel_Review-g187791-d597703-Reviews-Villa_Spalletti_Trivelli-Rome_Lazio.html" onclick="ta.util.cookie.setPIDCookie(18707)">Villa Spalletti Trivelli</a></div>
+<div class="rating wrap">
+<span class="rate rate_ss ss50">
+<img class="sprite-ratings" src="http://c1.tacdn.com/img2/x.gif" alt="5 su 5 stelle"/>
+</span>
+<em class="wsnw taLnk hvrIE6" onclick="ta.util.cookie.setPIDCookie(18707);ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMoAkkKmWxfWqiSccJQh2JccVIISQrESsVccSWeiaVQRJzCSiB')">
+161 recensioni </em>
+</div>
+</div>
+<div class="reviewsButton">
+<span onclick="ta.util.cookie.setPIDCookie(18842); ta.util.ASDF.asdf('LqWQeVsSVuWyUvkkAUWMoAkkKmWxfWqiSccJQh2JccVIISQrESsVccSWeiaVQRJzCSiB')" class="button taLnk hvrIE6"><span class="sprite-button taLnk hvrIE6">Recensioni</span></span>
+</div>
+</div> <div class="location fl">
+Roma, Lazio </div>
+</div> </li>
+</ul>
+<div class="clearFix"></div>
+<div class="hacSearch_v2">
+<span class="hacLnk"><a class="pid18709" href="/Hotels-g187791-Rome_Lazio-Hotels.html">Tutti gli hotel in Roma</a></span>
+<span class="value">(1278)</span>
+</div>
+</div>
+<dl id="RHS_MAP" class="mapAdjust">
+<h2>Cerca nei dintorni</h2>
+<dd>
+<div class="nearby_links wrap">
+<a href="/Restaurants-g187791-Rome_Lazio.html">Ristoranti</a> <span class="nearby_count">(4379)</span>
+<span class="nearby_pipes">|</span>
+<a href="/Hotels-g187791-Rome_Lazio-Hotels.html)">Hotel</a> <span class="nearby_count">(1278)</span>
+<span class="nearby_pipes">|</span>
+<a href="/Attractions-g187791-Activities-Rome_Lazio.html">Cose da fare</a> <span class="nearby_count">(1023)</span>
+</div>
+<div id="FMRD" class="box med js_floatableMap">
+<div class="object js_floatMap">
+<div id="STATIC_MAP" class="staticMap js_mapThumb">
+<span class="mapWxH" onclick=" ta.call('ta.maps.Factory.createFloatMapDelay', event, this,  'ta.maps.floatmap.onShowFunc_showAll' );">
+<img id='lazyload_-1402663501_25' height='150' alt='' width='300'/>
+</span>
+</div>
+<div class="js_floatContent" title="Mappa">
+<script type="text/javascript">
+window.mapDivId = 'map0Div';
+window.map0Div = {
+lat: 41.909405,
+lng: 12.461853,
+zoom: null,
+locId: 2328311,
+title: "Fa-bio",
+url: "/Restaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html",
+minPins: [
+['hotel',       30],
+['restaurant',  10],
+['attraction',  10]
+],
+geoMap: false    };
+</script>
+<div class="whatsNearby">
+<div class="sidebar">
+<div class="pNameDir">
+<span class="sprite-pinHeader pName hvrIE6 js_mapHome">Fa-bio</span>
+<div class="addr">
+<span>via Germanico 43</span>
+<div>
+<span> Roma</span>
+</div>
+<span>Italia</span>
+<div>
+<span class="taLnk hvrIE6" onclick="ta.call('ta.util.link.directionsPop', event, this, { width:800, height:600, aHref:ta.util.ASDF.asdfDcd('PFHSCy8LaJ2tLMVTJpcIYJt2xE4nn1SI0eI21zMJMEYsSJ zzVEaJCSni dm eiaJlIJcSJ') }, 'getDirectionsCorner');">Come arrivarci</span>
+</div>
+</div>
+</div>
+<form id="CHECK_NEARBY" class="fNear">
+<fieldset>
+<legend>Nei dintorni:</legend>
+<span class="chkSet lHac js_markerClass cur">
+<div class="imgBox"></div>
+<input type="checkbox" checked="checked" id="cbx1" class="hotel"/>
+<label for="cbx1">Hotel</label>
+</span>
+<span class="chkSet lRest js_markerClass cur">
+<div class="imgBox"></div>
+<input type="checkbox" checked="checked" id="cbx2" class="restaurant"/>
+<label for="cbx2">Ristoranti</label>
+</span>
+<span class="chkSet lAtt js_markerClass cur">
+<div class="imgBox"></div>
+<input type="checkbox" checked="checked" id="cbx3" class="attraction"/>
+<label for="cbx3">Cose da fare</label>
+</span>
+</fieldset>
+</form>
+<div class="nfo">Fai clic sugli spilli per maggiori informazioni. </div>
+<div class="js_error" style="display:none;">Hai ingrandito troppo per vedere gli spilli sulla mappa. Riduci l'immagine.</div>
+</div> <div class="balance">
+<div id="FM_BANNER_CONTAINER">
+<div id="FM_BANNER" class="fmBanner">
+</div>
+</div>
+<div id="map0Div" class="js_map"></div>
+</div> </div> </div> </div>
+<div class="all"> <a onclick="setPID(1103);return ta.call('ta.maps.Factory.createFloatMapDelay', event, this,  'ta.maps.floatmap.onShowFunc_showAll' );" href="/LocalMaps-g187791-d2328311-Fa_bio-Area.html" class="magGlass_grn sprite-magGlass_grn taLnk">Mappa interattiva</a>
+</div>
+</div>
+</dd>
+</dl>
+<div class="bxDivider map"></div>
+<div id='lazyload_-1402663501_26'><!-- lazy loaded --></div>
+<div class="ad iab_medRec">
+<div id="ad300X250" class="adInner"><!-- Ad tags: doubleclick
+domain=ad.it.doubleclick.net
+site=ta.ta.it.s
+zone=eu.italy.rome
+PageType=Restaurant_Review
+PlaceType=Eatery
+pool=T
+kw=Fa-bio
+pos=top
+geo=187791
+detail=2328311
+rd=it
+dcopt=ist
+hname=Fa-bio
+gname=Roma
+sz=300X250,300X600
+tile=2
+u=Restaurant_Review|T|-NOT-DEFINED-|187791|top|2328311
+ord=39558091
+area=EU.Italy.Lazio.Rome
+
+-->
+<div class="adServer ">
+<div class="details" id="adiframe2" style="display: none">
+<script> var adiframe2 = "ad.it.doubleclick.net+ta.ta.it.s+eu.italy.rome+250+300+EU.Italy.Lazio.Rome+false+PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;pos=top;geo=187791;detail=2328311;rd=it;dcopt=ist;hname=Fa-bio;gname=Roma;sz=300X250%2C300X600;tile=2;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7Ctop%7C2328311;ord=39558091;abr=!webtv"; adpHtml = "adp/adp-v3298128279a.html"
+</script>
+</div>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="http://ad.it.doubleclick.net/jump/ta.ta.it.s/eu.italy.rome;PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;pos=top;geo=187791;detail=2328311;rd=it;dcopt=ist;hname=Fa-bio;gname=Roma;sz=300X250%2C300X600;tile=2;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7Ctop%7C2328311;ord=39558091?" rel="nofollow">
+<img src="http://ad.it.doubleclick.net/ad/ta.ta.it.s/eu.italy.rome;PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;pos=top;geo=187791;detail=2328311;rd=it;dcopt=ist;hname=Fa-bio;gname=Roma;sz=300X250%2C300X600;tile=2;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7Ctop%7C2328311;ord=39558091?" width="300" height="250" border="0">
+</a>
+</noscript>
+</div> </div>
+</div>
+<div class="bx01 railGuidePromo">
+<div class="title">Guida gratuita di Roma</div> <div class="content wrap">
+<div class="thumb">
+<img id='lazyload_-1402663501_27' height='87' width='115'/>
+</div>
+<div class="railGuidePromoLink">
+<a href="/QuickGuide-g187791-Rome_Lazio.html" onclick="setPID('26094');">Ottieni la tua guida ai migliori hotel, ristoranti e attrattive turistiche.</a> </div>
+</div>
+</div>
+<div class="lhnHigh onShow">
+<h2>Ristoranti più richiesti: Roma </h2> <ul>
+<li><a href="/Restaurant_Review-g187791-d1381800-Reviews-Ad_Hoc-Rome_Lazio.html">Ad Hoc</a></li>
+<li><a href="/Restaurant_Review-g187791-d1536097-Reviews-Ristorante_Eleonora_D_Arborea-Rome_Lazio.html">Ristorante Eleonora D'Arborea</a></li>
+<li><a href="/Restaurant_Review-g187791-d1835816-Reviews-L_Altro_Sostegno-Rome_Lazio.html">L'Altro Sostegno</a></li>
+<li><a href="/Restaurant_Review-g187791-d2313678-Reviews-Gelateria_Valentino-Rome_Lazio.html">Gelateria Valentino</a></li>
+<li><a href="/Restaurant_Review-g187791-d2316203-Reviews-Antica_trattoria_pizzeria_liverotti-Rome_Lazio.html">antica trattoria pizzeria liverotti</a></li>
+<li><a href="/Restaurant_Review-g187791-d782368-Reviews-La_Taverna_dei_Fori_Imperiali-Rome_Lazio.html">La Taverna dei Fori Imperiali</a></li>
+<li><a href="/Restaurant_Review-g187791-d1140866-Reviews-Gelateria_del_Teatro-Rome_Lazio.html">Gelateria del Teatro</a></li>
+<li><a href="/Restaurant_Review-g187791-d1536028-Reviews-La_Gelateria_Frigidarium-Rome_Lazio.html">La Gelateria Frigidarium</a></li>
+<li><a href="/Restaurant_Review-g187791-d1026600-Reviews-Matermatuta-Rome_Lazio.html">Matermatuta</a></li>
+<li><a href="/Restaurant_Review-g187791-d1175620-Reviews-Ristorante_Tema-Rome_Lazio.html">Ristorante Tema</a></li>
+<li><a href="/Restaurant_Review-g187791-d2320420-Reviews-Sue_Giu_Cucina_Romana-Rome_Lazio.html">Sue & Giu Cucina Romana</a></li>
+<li><a href="/Restaurant_Review-g187791-d1573090-Reviews-Osteria_Barberini-Rome_Lazio.html">Osteria Barberini</a></li>
+<li><a href="/Restaurant_Review-g187791-d1821172-Reviews-Marco_G-Rome_Lazio.html">Marco G</a></li>
+<li><a href="/Restaurant_Review-g187791-d2481106-Reviews-Gelateria_La_Dolce_Vita-Rome_Lazio.html">Gelateria La Dolce Vita</a></li>
+<li><a href="/Restaurant_Review-g187791-d790167-Reviews-Life-Rome_Lazio.html">Life</a></li>
+<li><a href="/Restaurant_Review-g187791-d3222775-Reviews-Gelo_Stellato-Rome_Lazio.html">Gelo Stellato</a></li>
+<li><a href="/Restaurant_Review-g187791-d1894032-Reviews-Al_Duello-Rome_Lazio.html">Al Duello</a></li>
+<li><a href="/Restaurant_Review-g187791-d1905146-Reviews-Sensus_Restaurant-Rome_Lazio.html">Sensus Restaurant</a></li>
+<li><a href="/Restaurant_Review-g187791-d2083267-Reviews-Trattoria_Pino_alle_Coppelle-Rome_Lazio.html">Trattoria Pino alle Coppelle</a></li>
+</ul>
+</div>
+<div class="bxDivider popularGeoPlaces"></div>
+<div class="ad iab_medRec">
+<div id="ad300X250-bottom" class="adInner deferAd"><!-- Ad tags: doubleclick
+domain=ad.it.doubleclick.net
+site=ta.ta.it.s
+zone=eu.italy.rome
+PageType=Restaurant_Review
+PlaceType=Eatery
+pool=T
+kw=Fa-bio
+pos=bottom
+geo=187791
+detail=2328311
+rd=it
+hname=Fa-bio
+gname=Roma
+sz=300X250
+tile=3
+u=Restaurant_Review|T|-NOT-DEFINED-|187791|bottom|2328311
+ord=39558091
+area=EU.Italy.Lazio.Rome
+
+-->
+<div class="adServer ">
+<div class="details" id="adiframe3" style="display: none">
+<script> var adiframe3 = "ad.it.doubleclick.net+ta.ta.it.s+eu.italy.rome+250+300+EU.Italy.Lazio.Rome+false+PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;pos=bottom;geo=187791;detail=2328311;rd=it;hname=Fa-bio;gname=Roma;sz=300X250;tile=3;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7Cbottom%7C2328311;ord=39558091;abr=!webtv"; adpHtml = "adp/adp-v3298128279a.html"
+</script>
+</div>
+<noscript>
+<!-- for non JavaScript browsers and Netscape 2.x -->
+<a href="http://ad.it.doubleclick.net/jump/ta.ta.it.s/eu.italy.rome;PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;pos=bottom;geo=187791;detail=2328311;rd=it;hname=Fa-bio;gname=Roma;sz=300X250;tile=3;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7Cbottom%7C2328311;ord=39558091?" rel="nofollow">
+<img src="http://ad.it.doubleclick.net/ad/ta.ta.it.s/eu.italy.rome;PageType=Restaurant_Review;PlaceType=Eatery;pool=T;kw=Fa-bio;pos=bottom;geo=187791;detail=2328311;rd=it;hname=Fa-bio;gname=Roma;sz=300X250;tile=3;u=Restaurant_Review%7CT%7C-NOT-DEFINED-%7C187791%7Cbottom%7C2328311;ord=39558091?" width="300" height="250" border="0">
+</a>
+</noscript>
+</div> </div>
+</div>
+<div id="HOTELS_AROUND" class="bx01 hotelsAround">
+<h2 class="title">Hotel vicino Roma</h2>
+<ul>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d203057-Reviews-Grand_Olympic_Aurum_Hotel-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_28' height='40' style='height: 53px; width: 40px; margin-top: -13px;' alt='Grand Olympic - Aurum Hotel' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d203057-Reviews-Grand_Olympic_Aurum_Hotel-Rome_Lazio.html">Grand Olympic - Aurum Hotel</a>
+</div>
+<div>
+<span>3.5 su 5, </span> 457 recensioni </div>
+<div class="data">
+Ultima recensione 20 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d1866343-Reviews-B_B_El_Dorado-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_29' height='40' style='height: 40px; width: 40px;' alt='B&B El Dorado' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d1866343-Reviews-B_B_El_Dorado-Rome_Lazio.html">B&B El Dorado</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 91 recensioni </div>
+<div class="data">
+Ultima recensione 19 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d2499885-Reviews-Angelica_Home_B_B-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_30' height='40' style='height: 40px; width: 40px;' alt='Angelica Home B&B' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d2499885-Reviews-Angelica_Home_B_B-Rome_Lazio.html">Angelica Home B&B</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 7 recensioni </div>
+<div class="data">
+Ultima recensione 18 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d288841-Reviews-Hotel_San_Pietrino-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_31' height='40' style='height: 59px; width: 40px;' alt='Hotel San Pietrino' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d288841-Reviews-Hotel_San_Pietrino-Rome_Lazio.html">Hotel San Pietrino</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 78 recensioni </div>
+<div class="data">
+Ultima recensione 17 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d634943-Reviews-St_George_Roma-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_32' height='40' style='height: 40px; width: 40px;' alt='St. George Roma' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d634943-Reviews-St_George_Roma-Rome_Lazio.html">St. George Roma</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 322 recensioni </div>
+<div class="data">
+Ultima recensione 18 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d570618-Reviews-The_Center_of_Rome_B_B-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_33' height='40' style='height: 40px; width: 40px;' alt='The Center of Rome B&B' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d570618-Reviews-The_Center_of_Rome_B_B-Rome_Lazio.html">The Center of Rome B&B</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 29 recensioni </div>
+<div class="data">
+Ultima recensione 16 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d3167284-Reviews-B_B_G_G-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_34' height='40' style='height: 40px; width: 40px;' alt='B&B G & G' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d3167284-Reviews-B_B_G_G-Rome_Lazio.html">B&B G & G</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 2 recensioni </div>
+<div class="data">
+Ultima recensione 13 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<span class="taLnk caption hvrIE6" onClick="ta.util.Doer.tadoit('Hotel_Review', {g: '187791', d: '1945677'}, ['Reviews', 'Roma_Guest_House', 'Rome_Lazio'], '')">
+<div class="sizedThumb nppCont" style="height: 40px; width: 40px; ">
+<img class="npp" src="http://c1.tacdn.com/img2/icons/64/no_thumb.gif" style=" left: 0px; top: 9px; width:40px; " alt="Nessuna foto disponibile"/>
+</div>
+</span>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d1945677-Reviews-Roma_Guest_House-Rome_Lazio.html">Roma Guest House</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 3 recensioni </div>
+<div class="data">
+Ultima recensione 11 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d1628311-Reviews-I_Mulini_a_Vento_B_B-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_35' height='40' style='height: 40px; width: 40px;' alt='I Mulini a Vento B&B' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d1628311-Reviews-I_Mulini_a_Vento_B_B-Rome_Lazio.html">I Mulini a Vento B&B</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 55 recensioni </div>
+<div class="data">
+Ultima recensione 9 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 39px; width: 40px">
+<a href="/Hotel_Review-g187791-d232892-Reviews-Hotel_Arcangelo-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_36' height='39' style='height: 39px; width: 47px;' alt='Hotel Arcangelo' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d232892-Reviews-Hotel_Arcangelo-Rome_Lazio.html">Hotel Arcangelo</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 88 recensioni </div>
+<div class="data">
+Ultima recensione 8 set 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 39px; width: 40px">
+<a href="/Hotel_Review-g187791-d233417-Reviews-Residenza_dei_Quiriti-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_37' height='39' style='height: 39px; width: 53px;' alt='Residenza dei Quiriti' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d233417-Reviews-Residenza_dei_Quiriti-Rome_Lazio.html">Residenza dei Quiriti</a>
+</div>
+<div>
+<span>3.5 su 5, </span> 52 recensioni </div>
+<div class="data">
+Ultima recensione 15 ago 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d3210965-Reviews-Amica_Roma_B_B-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_38' height='40' style='height: 40px; width: 40px;' alt='Amica Roma B&B' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d3210965-Reviews-Amica_Roma_B_B-Rome_Lazio.html">Amica Roma B&B</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 10 recensioni </div>
+<div class="data">
+Ultima recensione 4 ago 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d2487649-Reviews-Roma_Dreaming-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_39' height='40' style='height: 40px; width: 40px;' alt='Roma Dreaming' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d2487649-Reviews-Roma_Dreaming-Rome_Lazio.html">Roma Dreaming</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 3 recensioni </div>
+<div class="data">
+Ultima recensione 17 lug 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d626434-Reviews-Best_Vatican_B_B-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_40' height='40' style='height: 40px; width: 40px;' alt='Best Vatican B&B' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d626434-Reviews-Best_Vatican_B_B-Rome_Lazio.html">Best Vatican B&B</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 117 recensioni </div>
+<div class="data">
+Ultima recensione 9 lug 2012
+</div>
+</div>
+</li>
+<li class="wrap greyText">
+<div class="fl">
+<div class="sizedThumb" style="height: 40px; width: 40px">
+<a href="/Hotel_Review-g187791-d2013981-Reviews-B_B_A_Casa_di_Nannali-Rome_Lazio.html" class="photo_link " onClick="">
+<img id='lazyload_-1402663501_41' height='40' style='height: 40px; width: 40px;' alt='B&B A Casa di Nannali' width='40' class='photo_image'/>
+</a>
+</div>
+</div>
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187791-d2013981-Reviews-B_B_A_Casa_di_Nannali-Rome_Lazio.html">B&B A Casa di Nannali</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 15 recensioni </div>
+<div class="data">
+Ultima recensione 25 giu 2012
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="bxDivider hotelsAround"></div>
+<div class="bx01 deals">
+<h2>Roma risorse</h2>
+<div class="lhnHigh"> <ul>
+<li class="deals_item">
+<a href="/LocalMaps-g187791-Rome-Area.html">Mappe: Roma</a>
+</li>
+</ul>
+</div> </div> <div class="bxDivider geoResources"></div>
+<div class="bx01 deals swirllinks">
+<div class=" title">Esplora il mondo</div>
+<div class="swirllinkset"> <div class=" header">Ristoranti</div>
+<ul>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Restaurant_Review-g662620-d2323373-Reviews-La_Luna-Mykonos_Town_Mykonos_Cyclades.html">La Luna</a>
+</div>
+<div>
+<span>5.0 su 5, </span> 1 recensione </div>
+<div class="data">
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Restaurant_Review-g194867-d1841344-Reviews-Locanda_Costa_Diva-Praiano_Amalfi_Coast_Campania.html">Locanda Costa Diva a Praiano</a>
+</div>
+<div>
+<span>4.5 su 5, </span> 139 recensioni </div>
+<div class="data">
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Restaurant_Review-g186338-d730297-Reviews-Blueprint_Cafe-London_England.html">Blueprint Cafe a Londra</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 68 recensioni </div>
+<div class="data">
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Restaurant_Review-g187852-d2021588-Reviews-La_Malaguena-Asti_Province_of_Asti_Piedmont.html">La Malaguena</a>
+</div>
+<div>
+<span>3.5 su 5, </span> 10 recensioni </div>
+<div class="data">
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Restaurant_Review-g194760-d2351728-Reviews-Agriturismo_La_Rocchetta-Ferrara_Province_of_Ferrara_Emilia_Romagna.html">Agriturismo La Rocchetta</a>
+</div>
+<div>
+<span>2.0 su 5, </span> 10 recensioni </div>
+<div class="data">
+</div>
+</div>
+</li>
+</ul>
+</div> <div class="swirllinkset"> <div class=" header">Hotel</div>
+<ul>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g190454-d1064067-Reviews-Hotel_Lenas_Donau-Vienna.html">Hotel Lenas Donau a Vienna</a>
+</div>
+<div>
+<span>3.0 su 5, </span> 86 recensioni </div>
+<div class="data">
+Ultima recensione 16 set 2012
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g194805-d1142292-Reviews-Hotel_Cristiania-Madonna_Di_Campiglio_Province_of_Trento_Trentino_Alto_Adige.html">Hotel Cristiania a Madonna di Campiglio</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 19 recensioni </div>
+<div class="data">
+Ultima recensione 21 ago 2012
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g187499-d592411-Reviews-Pension_Margarit-Girona_Province_of_Girona_Catalonia.html">Pension Margarit a Girona</a>
+</div>
+<div>
+<span>3.5 su 5, </span> 73 recensioni </div>
+<div class="data">
+Ultima recensione 17 set 2012
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g297941-d670066-Reviews-Les_Sirenes-Djerba_Island_Medenine_Governorate.html">Les Sirenes a Djerba</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 50 recensioni </div>
+<div class="data">
+Ultima recensione 16 set 2012
+</div>
+</div>
+</li>
+<li class=" wrap greyText">
+<div class="detail wrap">
+<div class="data">
+<a href="/Hotel_Review-g293974-d472398-Reviews-Legend_Hotel-Istanbul.html">Legend Hotel a Istanbul</a>
+</div>
+<div>
+<span>4.0 su 5, </span> 162 recensioni </div>
+<div class="data">
+Ultima recensione 15 set 2012
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div> </div>
+<script type='text/javascript'>
+ta.store('facebook.data.handlers.FRIEND_NAMES', function() {
+var content = ta.id('FRIEND_NAMES');
+if (content) {
+content.getElements('.mbrFriendName').each(function(elmt) {
+var userId = elmt.getProperty('class').match(/FRIEND_NAME_(\w+)/);
+if (!userId && !userId[1]) return;
+ta.id('MAIN').getElements('.mbrName_' + userId[1]).each(function(name) {
+name.set('html', elmt.get('text'));
+});
+});
+content.getElements('.mbrProfileCTA').each(function(elmt) {
+var userId = elmt.getProperty('class').match(/FRIEND_NAME_(\w+)/);
+ta.id('MAIN').getElements('.thanks_' + userId[1]).each(function(cta) {
+cta.set('html', elmt.get('text'));
+});
+});
+content.getElements('.mbrFriendAvatar').each(function(elmt) {
+var userId = elmt.getProperty('class').match(/FRIEND_NAME_(\w+)/);
+if (!userId && !userId[1]) return;
+var profileNodes  = ta.id('MAIN').getElements('.profile_' + userId[1]);
+profileNodes.each(function(profileNode) {
+profileNode.removeClass('avatar');
+profileNode.setProperty('class', profileNode.getProperty('class') + ' facebookFriend');
+// if there is no FB logo already, we will need to add one
+var convertToFBAvatar = profileNode.getElements('.sprite-facebookAvatarLogo').length == 0;
+profileNode.getElements('img.avatar').each(function (avatarImg)
+{
+// Check if markup has already assigned a size that cannot be overridden.
+// See bug 57545.
+var profileDiv = avatarImg.getParent().getParent();
+if (profileDiv.hasClass('noresize'))
+{
+return;
+}
+var src = elmt.getProperty('src');
+if (avatarImg.oSRC) {
+avatarImg.oSRC = src;
+} else {
+avatarImg.setProperty('src', src);
+}
+if (convertToFBAvatar) {
+var img = ta.id(document.createElement('img'));
+img.setProperty('class', 'sprite-facebookAvatarLogo facebookAvatarLogo');
+img.setProperty('src', 'http://c1.tacdn.com/img2/x.gif');
+var profileLink = avatarImg.getParent();
+profileLink.appendChild(img);
+var facebookAvatarDiv = ta.id(document.createElement('div'));
+facebookAvatarDiv.setProperty('class', 'facebookAvatar');
+facebookAvatarDiv.setProperty('style', 'width: 74px; height: 74px');
+profileLink.getParent().appendChild(facebookAvatarDiv);
+facebookAvatarDiv.appendChild(profileLink);
+}
+}); // avatarImg
+}); // profileNode
+}); // elmt
+} // content
+});
+ta.keep('facebook.data.onAvail.FRIEND_NAMES', ta.retrieve('facebook.data.handlers.FRIEND_NAMES'));
+</script>
+</div> </div> </div>
+<div id="FOOT_CONTAINER">
+<div id="FOOT">
+<div class="corporate wrap">
+<div class="col sidebar">
+<div class="block">
+<dl class="about">
+<dt>TripAdvisor chi siamo&#8482;</dt> <dd> TripAdvisor offre suggerimenti su hotel, villaggi turistici, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto ancora!</dd>
+</dl>
+</div> </div>
+<div class="col balance">
+<div class="block">
+<dl class="sep brand">
+<dt>
+<img class="sprite-identityFOOT" src="http://c1.tacdn.com/img2/x.gif" alt="TripAdvisor"/>
+</dt>
+<dd class="meta">
+Consigli su hotel, località turistiche, voli, pensioni, soggiorni, pacchetti turistici, guide di viaggio e molto altro ancora!
+</dd>
+</dl>
+<dl class="sep flags">
+<dt>Scegli un sito di TripAdvisor:</dt>
+<dd>
+<ul id="FLAGS">
+<li class="flag_item">
+<span id="flag_us" class="flag_link flag_us"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and vacations" title="Unbiased reviews of hotels, resorts and vacations"></span>
+</li>
+<li class="flag_item">
+<span id="flag_uk" class="flag_link flag_uk"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ca" class="flag_link flag_ca"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Unbiased reviews of hotels, resorts and holidays" title="Unbiased reviews of hotels, resorts and holidays"></span>
+</li>
+<li class="flag_item">
+<a id="flag_es" class="flag_link flag_es" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Fa-bio, Roma" href="http://www.tripadvisor.es/Restaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Roma"></a>
+</li>
+<li class="flag_item">
+<a id="flag_de" class="flag_link flag_de" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Fa-bio, Rom" href="http://www.tripadvisor.de/Restaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rom"></a>
+</li>
+<li class="flag_item">
+<a id="flag_fr" class="flag_link flag_fr" onclick="ta.call('ta.util.link.remTAPD', event, this);" title="Fa-bio, Rome" href="http://www.tripadvisor.fr/Restaurant_Review-g187791-d2328311-Reviews-Fa_bio-Rome_Lazio.html"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rome"></a>
+</li>
+<li class="flag_item">
+<span id="flag_ja" class="flag_link flag_ja"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio" title="Fa-bio"></span>
+</li>
+<li class="flag_item">
+<span id="flag_cn" class="flag_link flag_cn"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, 罗马" title="Fa-bio, 罗马"></span>
+</li>
+<li class="flag_item">
+<span id="flag_in" class="flag_link flag_in"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rome" title="Fa-bio, Rome"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sv" class="flag_link flag_sv"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rom" title="Fa-bio, Rom"></span>
+</li>
+<li class="flag_item">
+<span id="flag_nl" class="flag_link flag_nl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rome" title="Fa-bio, Rome"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pt" class="flag_link flag_pt"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Roma" title="Fa-bio, Roma"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tr" class="flag_link flag_tr"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Roma" title="Fa-bio, Roma"></span>
+</li>
+<li class="flag_item">
+<span id="flag_da" class="flag_link flag_da"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rom" title="Fa-bio, Rom"></span>
+</li>
+<li class="flag_item">
+<span id="flag_mx" class="flag_link flag_mx"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Roma" title="Fa-bio, Roma"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ie" class="flag_link flag_ie"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rome" title="Fa-bio, Rome"></span>
+</li>
+<li class="flag_item">
+<span id="flag_eg" class="flag_link flag_eg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="‫‫Fa-bio‬, روما‬" title="‫‫Fa-bio‬, روما‬"></span>
+</li>
+<li class="flag_item">
+<span id="flag_el" class="flag_link flag_el"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Ρώμη" title="Fa-bio, Ρώμη"></span>
+</li>
+<li class="flag_item">
+<span id="flag_au" class="flag_link flag_au"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rome" title="Fa-bio, Rome"></span>
+</li>
+<li class="flag_item">
+<span id="flag_my" class="flag_link flag_my"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rome" title="Fa-bio, Rome"></span>
+</li>
+<li class="flag_item">
+<span id="flag_sg" class="flag_link flag_sg"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rome" title="Fa-bio, Rome"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ar" class="flag_link flag_ar"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Roma" title="Fa-bio, Roma"></span>
+</li>
+<li class="flag_item">
+<span id="flag_id" class="flag_link flag_id"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Roma" title="Fa-bio, Roma"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ko" class="flag_link flag_ko"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, 로마" title="Fa-bio, 로마"></span>
+</li>
+<li class="flag_item">
+<span id="flag_no" class="flag_link flag_no"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Roma" title="Fa-bio, Roma"></span>
+</li>
+<li class="flag_item">
+<span id="flag_pl" class="flag_link flag_pl"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Rzym" title="Fa-bio, Rzym"></span>
+</li>
+<li class="flag_item">
+<span id="flag_ru" class="flag_link flag_ru"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, Рим" title="Fa-bio, Рим"></span>
+</li>
+<li class="flag_item">
+<span id="flag_th" class="flag_link flag_th"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, โรม" title="Fa-bio, โรม"></span>
+</li>
+<li class="flag_item">
+<span id="flag_tw" class="flag_link flag_tw"><img class="flag" src="http://c1.tacdn.com/img2/sprites/posFlags-V7.gif" alt="Fa-bio, 羅馬" title="Fa-bio, 羅馬"></span>
+</li>
+</ul>
+</dd>
+</dl>
+<div class="sep internal">
+<span class="taLnk hvrIE6" onClick="ta.util.ASDF.asdf('LzFLJHipIQptB')">Chi siamo</span> |
+<span class="taLnk hvrIE6" onClick="ta.util.ASDF.asdf('Lqd')">Scrivi una recensione</span>
+| <span class="taLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">Proprietari</span> | <span class="taLnk hvrIE6" onClick="ta.util.ASDF.asdf('Lqo')">Centro Assistenza</span>
+| <span class="taLnk hvrIE6" onClick="ta.util.ASDF.asdf('L7ptSCVttRStISCyt')">Profili Aziendali</span> | <span class="taLnk hvrIE6" onClick="ta.util.ASDF.asdf('LqN')">APT/Ufficio Informazioni Turistiche</span>
+</div>
+<div class="sep legal">
+<div class="copyright">
+© 2012 TripAdvisor LLC Tutti i diritti riservati. <span class="taLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFLIVEatB')"> Condizioni d'uso </span> e <span class="taLnk hvrIE6" onclick="ta.util.ASDF.asdf('LzFL2ESsJngB')"> Normativa sulla privacy</span> di TripAdvisor.</div>
+<div class="vfm_disclaimer">
+</div>
+<div class="disclaimer">
+* TripAdvisor LLC non si occupa di prenotazioni e non applica ai suoi utenti alcuna tariffa per il servizio offerto... (<span id="TERMS" class="taLnk hvrIE6" onclick="ta.util.ASDF.asdfPopupTerms('LzFL2ESnSCyQIVEatB')">leggi tutto</span>) </div>
+<div class="disclaimer">TripAdvisor LLC non è responsabile per il contenuto su altri siti web. Tasse e spese non incluse nelle offerte.</div>
+</div>
+</div> </div> </div>
+</div> </div>
+</div>
+<script type="text/javascript">
+try {
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-30198665-1']);
+_gaq.push(['_addIgnoredRef', 'tripadvisor']);
+_gaq.push(['_addIgnoredRef', 'daodao']);
+_gaq.push(['_setCustomVar', 2, 'Member', '-', 3]);
+_gaq.push(['_setCustomVar', 5, 'EntryServlet', 'Home', 3]);
+_gaq.push(['_setCustomVar', 6, 'Pool', 'T', 3]);
+_gaq.push(['_setCustomVar', 7, 'Slice', '0', 3]);
+_gaq.push(['_setCustomVar', 18, 'MCID', 'TripAdvisor-0', 3]);
+_gaq.push(['_setCustomVar', 21, 'PageType', 'Desktop Page', 3]);
+_gaq.push(['_setCustomVar', 22, 'DeviceType', 'Desktop', 3]);
+_gaq.push(['_setCustomVar', 23, 'IPGeo', 'Rome-187791', 3]);
+_gaq.push(['_setCustomVar', 24, 'ProductType', 'Browser', 3]);
+_gaq.push(['_setCustomVar', 48, 'WebServer', 'web103a', 3]);
+var pageData = ta.analytics._JSON_parse('{\"cv\":[[\"_setCustomVar\",11,\"Detail\",\"Fa-bio-2328311\",3],[\"_setCustomVar\",13,\"Geo\",\"Rome-187791\",3],[\"_setCustomVar\",12,\"Country\",\"Italy-187768\",3],[\"_setCustomVar\",10,\"PageAction\",\"MachineTranslated\",3],[\"_setCustomVar\",20,\"PP\",\"-6-279-276-216-251-209-189-213-217-172-\",3],[\"_deleteCustomVar\",8],[\"_deleteCustomVar\",14]],\"url\":\"/Restaurant_Review\"}');
+ta.analytics.pageData = pageData;
+for (var i = 0; i < pageData.cv.length; i++) {
+var cv = pageData.cv[i];
+_gaq.push(cv);
+}
+_gaq.push(['_set', 'page', pageData.url]);
+_gaq.push(['_trackPageview']);
+if (ta && ta.queueForLoad) {
+ta.queueForLoad(ta.analytics._insertGAScriptElement, 10, 'global_ga.vm_loadGA');
+}
+ta.analytics.google_analytics_onload = true;
+}
+catch (e) {
+if(ta && ta.util && ta.util.error && ta.util.error.record) {
+ta.util.error.record(e, 'global_ga.vm');
+}
+}
+</script>
+<script type="text/javascript">
+var lazyImgs = [
+{"id":"lazyload_-1402663501_7","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/ribbon.gif"}
+,   {"id":"lazyload_-1402663501_22","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-l/01/a9/19/19/taverna-dei-fori-imperiali.jpg"}
+,   {"id":"lazyload_-1402663501_9","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/star2.gif"}
+,   {"id":"lazyload_-1402663501_12","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/passport.gif"}
+,   {"id":"lazyload_-1402663501_14","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/star2.gif"}
+,   {"id":"lazyload_-1402663501_17","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/star2.gif"}
+,   {"id":"lazyload_-1402663501_41","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-t/01/c4/2a/c9/b-b-a-casa-di-nannali.jpg"}
+,   {"id":"lazyload_-1402663501_6","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/star4.gif"}
+,   {"id":"lazyload_-1402663501_3","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/star3.gif"}
+,   {"id":"lazyload_-1402663501_8","scroll":true,"priority":100,"data":"http://c1.tacdn.com/img/facebook/connect/fb_default_icon.gif"}
+,   {"id":"lazyload_-1402663501_25","scroll":false,"priority":500,"data":"http://dev.virtualearth.net/REST/v1/Imagery/Map/Road/41.909405,12.461853/14?mapSize=300,150&format=png&key=AsWv57kSL-_WRju8ExHCSvHiBmwU_ADtynp0fi2uml2LtbmYVMueyibM2XaN4JyQ&pp=41.909405,12.461853;59"}
+,   {"id":"lazyload_-1402663501_21","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-l/02/7f/ce/1d/pipero-al-rex.jpg"}
+,   {"id":"lazyload_-1402663501_40","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/49/09/4909fe506d7f498e606ff354c211f22c64.jpg"}
+,   {"id":"lazyload_-1402663501_38","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-t/02/82/69/4e/ingresso.jpg"}
+,   {"id":"lazyload_-1402663501_39","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/59/d0/59d0a66d2f33d614107c68bdb6357a171large.jpg"}
+,   {"id":"lazyload_-1402663501_13","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/ribbon.gif"}
+,   {"id":"lazyload_-1402663501_15","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/passport.gif"}
+,   {"id":"lazyload_-1402663501_10","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/passport.gif"}
+,   {"id":"lazyload_-1402663501_20","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-l/02/2e/55/13/selezione-di-formaggi.jpg"}
+,   {"id":"lazyload_-1402663501_23","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-l/02/65/9c/df/filename-trippa-jpg-thumbnail0.jpg"}
+,   {"id":"lazyload_-1402663501_5","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/ribbon.gif"}
+,   {"id":"lazyload_-1402663501_32","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-t/02/bd/7d/c3/st-george-roma.jpg"}
+,   {"id":"lazyload_-1402663501_11","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/star4.gif"}
+,   {"id":"lazyload_-1402663501_4","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/passport.gif"}
+,   {"id":"lazyload_-1402663501_19","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/ribbon.gif"}
+,   {"id":"lazyload_-1402663501_36","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/d8/10/d810ed012b814f012b4af6165416aeb24.jpg"}
+,   {"id":"lazyload_-1402663501_35","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-t/01/b9/07/f8/i-mulini-a-vento-b-b.jpg"}
+,   {"id":"lazyload_-1402663501_0","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/star4.gif"}
+,   {"id":"lazyload_-1402663501_30","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/07/cf/07cfe70c98959017fa740e0a69741f0c1large.jpg"}
+,   {"id":"lazyload_-1402663501_27","scroll":false,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-l/00/17/0f/61/temple-in-the-forum.jpg"}
+,   {"id":"HERO_PHOTO","scroll":false,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-s/02/62/fa/4b/fa-bio.jpg"}
+,   {"id":"lazyload_-1402663501_29","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/0c/e4/0ce4adda0229ab4a5beb55f679b8827d4.jpg"}
+,   {"id":"lazyload_-1402663501_2","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/ribbon.gif"}
+,   {"id":"lazyload_-1402663501_37","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/b0/d7/b0d791b15557f106b3629ccafd3c88472.jpg"}
+,   {"id":"lazyload_-1402663501_33","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/36/b4/36b463a5b266df4533f049aeab95c3231.jpg"}
+,   {"id":"lazyload_-1402663501_34","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-t/02/72/dc/9b/getlstd-property-photo.jpg"}
+,   {"id":"lazyload_-1402663501_31","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/photo-o/01/be/84/cf/hotel-san-pietrino-thumbnail.jpg"}
+,   {"id":"lazyload_-1402663501_28","scroll":true,"priority":100,"data":"http://media-cdn.tripadvisor.com/media/ProviderThumbnails/dirs/45/fd/45fdcf0c6c68bdc7b985bf11b175f1215.jpg"}
+,   {"id":"lazyload_-1402663501_16","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/ribbon.gif"}
+,   {"id":"lazyload_-1402663501_1","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/passport.gif"}
+,   {"id":"lazyload_-1402663501_18","scroll":false,"priority":100,"data":"http://c1.tacdn.com/img2/badges/passport.gif"}
+];
+var lazyHtml = [
+{ id: 'lazyload_-1402663501_24', data: '   <div id="history_carousel" class="wrap">     <h2 class="history_carousel_header">       Di recente hai visualizzato...     </h2>                                  <script type=\'text/javascript\'>ta.store(\'ta.p13n.RV.active\', 10022);</'+'script>      <div class="history_carousel_tabs_wrapper">     <ul class="wrap" id="history_carousel_tabs">               <li onmouseout="ta.call(\'ta.p13n.RV.onTabMouseout\', event, this)" onmouseover="ta.call(\'ta.p13n.RV.onTabMouseover\', event, this);"  onclick="ta.call(\'ta.p13n.RV.onTabClick\', event, this, 10023)">Hotel<br /></li>                           <li onmouseout="ta.call(\'ta.p13n.RV.onTabMouseout\', event, this)" onmouseover="ta.call(\'ta.p13n.RV.onTabMouseover\', event, this);" class="active" onclick="ta.call(\'ta.p13n.RV.onTabClick\', event, this, 10022)">Ristoranti<br /></li>                           <li onmouseout="ta.call(\'ta.p13n.RV.onTabMouseout\', event, this);" onmouseover="ta.call(\'ta.p13n.RV.onTabMouseover\', event, this);"  onclick="ta.call(\'ta.p13n.RV.onTabClick\', event, this, 10004)">Destinazioni<br /></li>           </ul>   </div>  <div id="history_carousel_content" class="history_carousel_content wrap">  <div class="hotel_list_wrapper"> <h3>         Ristoranti che hai visualizzato   </h3>   <ul>           <li class="lodging wrap">            <div class="thumbnail fl avthumb">     <a href="/Restaurant_Review-g187791-d1381800-Reviews-Ad_Hoc-Rome_Lazio.html"       onclick="ta.util.cookie.setPIDCookie(16216); ta.setEvtCookie(\'RecentlyViewed\', \'photoLink\', \'1381800\', 1, this.href);"               >                                                                                    <div class="sizedThumb" style="height: 60px; width: 60px">                                 <img src="http://media-cdn.tripadvisor.com/media/photo-l/02/2e/55/13/selezione-di-formaggi.jpg"  class="photo_image" style="height: 60px; width: 60px;" alt="Ad Hoc"  width="60" height="60">                     </div>               </a>   </div>         <div class="content">             <div class="propertyLink"><a href="/Restaurant_Review-g187791-d1381800-Reviews-Ad_Hoc-Rome_Lazio.html"     onclick="ta.util.cookie.setPIDCookie(16216); ta.setEvtCookie(\'RecentlyViewed\', \'textLink\', \'1381800\', 1, this.href);"   >Ad Hoc</a></div>                 <div class="location">     Roma, Lazio   </div>                 <div class="rating wrap">                                                                            <span class="rate rate_ss ss45" > 		<img class="sprite-ratings"  src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle" /> 	</span>         <div class="wsnw taLnk hvrIE6"    onclick="ta.util.cookie.setPIDCookie();ta.util.ASDF.asdf(\'LeVtIJpEJCIQeVsSVuWyUvkkAUWMUmvUvKKWxfWbMQ5inWeiaVQRJzCSiBxyezsqilzsxdh\')">                           1.089 recensioni                </div>     </div>           </div>       </li>           <li class="lodging wrap">            <div class="thumbnail fl avthumb">     <a href="/Restaurant_Review-g187791-d1951186-Reviews-Larys-Rome_Lazio.html"       onclick="ta.util.cookie.setPIDCookie(16216); ta.setEvtCookie(\'RecentlyViewed\', \'photoLink\', \'1951186\', 2, this.href);"               >                                                                                    <div class="sizedThumb" style="height: 60px; width: 60px">                                 <img src="http://media-cdn.tripadvisor.com/media/photo-l/01/c4/29/05/larys.jpg"  class="photo_image" style="height: 60px; width: 60px;" alt="Larys"  width="60" height="60">                     </div>               </a>   </div>         <div class="content">             <div class="propertyLink"><a href="/Restaurant_Review-g187791-d1951186-Reviews-Larys-Rome_Lazio.html"     onclick="ta.util.cookie.setPIDCookie(16216); ta.setEvtCookie(\'RecentlyViewed\', \'textLink\', \'1951186\', 2, this.href);"   >Larys</a></div>                 <div class="location">     Roma, Lazio   </div>                 <div class="rating wrap">                                                                            <span class="rate rate_ss ss45" > 		<img class="sprite-ratings"  src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle" /> 	</span>         <div class="wsnw taLnk hvrIE6"    onclick="ta.util.cookie.setPIDCookie();ta.util.ASDF.asdf(\'LeVtIJpEJCIQeVsSVuWyUvkkAUWMUAoUUv3WxfWRJEgtWeiaVQRJzCSiBxyezsqilzsxdh\')">                           38 recensioni                </div>     </div>           </div>       </li>           <li class="lodging wrap">            <div class="thumbnail fl avthumb">     <a href="/Restaurant_Review-g187791-d3138523-Reviews-Arian_Ristorante_Persiano-Rome_Lazio.html"       onclick="ta.util.cookie.setPIDCookie(16216); ta.setEvtCookie(\'RecentlyViewed\', \'photoLink\', \'3138523\', 3, this.href);"               >                                                                                    <div class="sizedThumb" style="height: 60px; width: 60px">                                 <img src="http://media-cdn.tripadvisor.com/media/photo-l/02/98/0c/49/getlstd-property-photo.jpg"  class="photo_image" style="height: 60px; width: 60px;" alt="Arian Ristorante Persiano"  width="60" height="60">                     </div>               </a>   </div>         <div class="content">             <div class="propertyLink"><a href="/Restaurant_Review-g187791-d3138523-Reviews-Arian_Ristorante_Persiano-Rome_Lazio.html"     onclick="ta.util.cookie.setPIDCookie(16216); ta.setEvtCookie(\'RecentlyViewed\', \'textLink\', \'3138523\', 3, this.href);"   >Arian Ristorante Persiano</a></div>                 <div class="location">     Roma, Lazio   </div>                 <div class="rating wrap">                                                                            <span class="rate rate_ss ss45" > 		<img class="sprite-ratings"  src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle" /> 	</span>         <div class="wsnw taLnk hvrIE6"    onclick="ta.util.cookie.setPIDCookie();ta.util.ASDF.asdf(\'LeVtIJpEJCIQeVsSVuWyUvkkAUWMmUmvoXmWxfWbESJCQeStIiEJCIVQwVEtSJCiWeiaVQRJzCSiBxyezsqilzsxdh\')">                           15 recensioni                </div>     </div>           </div>       </li>       </ul> </div>                         <div class="also_viewed_carousel_wrapper">   <h3>               I viaggiatori che hanno visualizzato questi ristoranti hanno visualizzato anche...       </h3>   <div id="also_viewed_carousel">     <div class="carousel_content">       <div class="carousel_items_wrapper">                   <div class="carousel_item">             <div class="sizedThumb">               <a class="photo_link " href="/Restaurant_Review-g187791-d1536097-Reviews-Ristorante_Eleonora_D_Arborea-Rome_Lazio.html"                 onclick="ta.util.cookie.setPIDCookie(16219); ta.setEvtCookie(\'RecentlyViewed\', \'recoPhotoLink\', \'1536097\', 1, this.href);"                 >                                                                                    <div class="sizedThumb" style="height: 110px; width: 115px">                                 <img src="http://media-cdn.tripadvisor.com/media/photo-l/02/40/9f/e3/ristorante-eleonora-d.jpg"  class="photo_image" style="height: 110px; width: 115px;" alt="Ristorante Eleonora D\'Arborea"  width="115" height="110">                     </div>                         </a>             </div>                         <div class="content">                 <div class="propertyLink"><a href="/Restaurant_Review-g187791-d1536097-Reviews-Ristorante_Eleonora_D_Arborea-Rome_Lazio.html"     onclick="ta.util.cookie.setPIDCookie(16218); ta.setEvtCookie(\'RecentlyViewed\', \'recoTextLink\', \'1536097\', 1, this.href);"   >Ristorante Eleonora D\'Arborea</a></div>                     <div class="location parent_name">     Roma, Lazio   </div>                     <div class="rating wrap">                                                                            <span class="rate rate_ss ss45" > 		<img class="sprite-ratings"  src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle" /> 	</span>         <div class="wsnw"><a href="/Restaurant_Review-g187791-d1536097-Reviews-Ristorante_Eleonora_D_Arborea-Rome_Lazio.html#REVIEWS"         onclick="ta.util.cookie.setPIDCookie(16218); ta.setEvtCookie(\'RecentlyViewed\', \'recoTextLink\', \'1536097\', 1, this.href);"                           >487 recensioni                </a></div>     </div>               </div>           </div>                   <div class="carousel_item">             <div class="sizedThumb">               <a class="photo_link " href="/Restaurant_Review-g187791-d1551448-Reviews-Taberna_Persiana-Rome_Lazio.html"                 onclick="ta.util.cookie.setPIDCookie(16219); ta.setEvtCookie(\'RecentlyViewed\', \'recoPhotoLink\', \'1551448\', 2, this.href);"                 >                                                                                    <div class="sizedThumb" style="height: 110px; width: 115px">                                 <img src="http://media-cdn.tripadvisor.com/media/photo-l/01/4b/72/98/taberna-persiana-the.jpg"  class="photo_image" style="height: 110px; width: 115px;" alt="Taberna Persiana"  width="115" height="110">                     </div>                         </a>             </div>                         <div class="content">                 <div class="propertyLink"><a href="/Restaurant_Review-g187791-d1551448-Reviews-Taberna_Persiana-Rome_Lazio.html"     onclick="ta.util.cookie.setPIDCookie(16218); ta.setEvtCookie(\'RecentlyViewed\', \'recoTextLink\', \'1551448\', 2, this.href);"   >Taberna Persiana</a></div>                     <div class="location parent_name">     Roma, Lazio   </div>                     <div class="rating wrap">                                                                            <span class="rate rate_ss ss30" > 		<img class="sprite-ratings"  src="http://c1.tacdn.com/img2/x.gif" alt="3 su 5 stelle" /> 	</span>         <div class="wsnw"><a href="/Restaurant_Review-g187791-d1551448-Reviews-Taberna_Persiana-Rome_Lazio.html#REVIEWS"         onclick="ta.util.cookie.setPIDCookie(16218); ta.setEvtCookie(\'RecentlyViewed\', \'recoTextLink\', \'1551448\', 2, this.href);"                           >13 recensioni                </a></div>     </div>               </div>           </div>                   <div class="carousel_item">             <div class="sizedThumb">               <a class="photo_link " href="/Restaurant_Review-g187791-d790167-Reviews-Life-Rome_Lazio.html"                 onclick="ta.util.cookie.setPIDCookie(16219); ta.setEvtCookie(\'RecentlyViewed\', \'recoPhotoLink\', \'790167\', 3, this.href);"                 >                                                                                    <div class="sizedThumb" style="height: 110px; width: 115px">                                 <img src="http://media-cdn.tripadvisor.com/media/photo-l/02/49/3b/be/life-prive.jpg"  class="photo_image" style="height: 110px; width: 115px;" alt="Life"  width="115" height="110">                     </div>                         </a>             </div>                         <div class="content">                 <div class="propertyLink"><a href="/Restaurant_Review-g187791-d790167-Reviews-Life-Rome_Lazio.html"     onclick="ta.util.cookie.setPIDCookie(16218); ta.setEvtCookie(\'RecentlyViewed\', \'recoTextLink\', \'790167\', 3, this.href);"   >Life</a></div>                     <div class="location parent_name">     Roma, Lazio   </div>                     <div class="rating wrap">                                                                            <span class="rate rate_ss ss45" > 		<img class="sprite-ratings"  src="http://c1.tacdn.com/img2/x.gif" alt="4,5 su 5 stelle" /> 	</span>         <div class="wsnw"><a href="/Restaurant_Review-g187791-d790167-Reviews-Life-Rome_Lazio.html#REVIEWS"         onclick="ta.util.cookie.setPIDCookie(16218); ta.setEvtCookie(\'RecentlyViewed\', \'recoTextLink\', \'790167\', 3, this.href);"                           >588 recensioni                </a></div>     </div>               </div>           </div>               </div>     </div>   </div> </div>          <div class="clearFix"></div> </div>     </div> ', scroll: false }
+,   { id: 'lazyload_-1402663501_26', data: '###Obf###<!-- maKR36nt --> <qwh wq="VGFFXJVX_FBW" pzmff="obj tkcrU pbaarepr h6" > <qwh pzmff="wntrewbe"> <v5 wq="VGFFXJVX_FBW_TBTEX"></v5> <qz> <qq> <gz> <zw qwe="zte"> <fcmn pzmff="mfqsKcmn"> <fcmn bnpzwpy="tm.pmzz(\'tm.gtwz.zwny.cbcgc\', rhrnt, tvwf, {\'rnfgerJrsreere\':tegr, \'mAers\':\'ElO7540ww2KVktNXkl4lllfNze3Cm5j2tXn46yhaDDS3Cm5j2lA4LhyySL3Cm5j2lr4rMtBCcXCVBIrMfKMg3Cm5j2lo4WzjF3Cm5j2dD4L3Cm5j2lE4q3Cm5j2wwt4q3Cm5j2VXCV24q\', \'wfSfqs\':tegr});" > <fcmn pzmff="znyKcmn"> <hme >Jbam: Jwfcmeawm r cernbtm bem!</hme><oe/> <fcmn pzmff="znyKcmn"><o>Ubbywnu.pba</o> Sacwm fprztm r cerllw omffw</fcmn> </fcmn> </fcmn> </fcmn> </zw> <zw qwe="zte"> <fcmn pzmff="mfqsKcmn"> <fcmn bnpzwpy="tm.pmzz(\'tm.gtwz.zwny.cbcgc\', rhrnt, tvwf, {\'rnfgerJrsreere\':tegr, \'mAers\':\'ElO754okwFClllfNze3Cm5j2tXn4qDhP66PD3Cm5j2lA4LhyySL3Cm5j2lr4rMtBCcXCVBIrMfKMg3Cm5j2lo4WzjF3Cm5j2dD4P3Cm5j2lE4q3Cm5j2wwt4q3Cm5j2VXCV24q\', \'wfSfqs\':tegr});" > <fcmn pzmff="znyKcmn"> <hme >Jbam: Kprztm frnlm zwawtw</hme><oe/> <fcmn pzmff="znyKcmn"><o>mubqm.wt</o> Kpbntw swnb mz 08%! Wm nbn creqrer! Gssretr, mffwftrnlm, erprnfwbnw.</fcmn> </fcmn> </fcmn> </fcmn> </zw> <zw qwe="zte"> <fcmn pzmff="mfqsKcmn"> <fcmn bnpzwpy="tm.pmzz(\'tm.gtwz.zwny.cbcgc\', rhrnt, tvwf, {\'rnfgerJrsreere\':tegr, \'mAers\':\'ElO754dRl4lllfN6ze3Cm5j2tXn4LyDPSSq3Cm5j2lA4LhyySL3Cm5j2lr4rMtBCcXCVBIrMfKMg3Cm5j2lo4WzjF3Cm5j2dD4a3Cm5j2lE4q3Cm5j2wwt4q3Cm5j2VXCV24q\', \'wfSfqs\':tegr});" > <fcmn pzmff="znyKcmn"> <hme >Jbam: Jwfcmeawm bem!</hme><oe/> <fcmn pzmff="znyKcmn"><o>Xjcrqwm.wt</o> Gssretr wacreqwowzw fg bzter 453.333 vbtrz wn tgttb wz abnqb.</fcmn> </fcmn> </fcmn> </fcmn> </zw> <zw qwe="zte"> <fcmn pzmff="mfqsKcmn"> <fcmn bnpzwpy="tm.pmzz(\'tm.gtwz.zwny.cbcgc\', rhrnt, tvwf, {\'rnfgerJrsreere\':tegr, \'mAers\':\'ElO754l4swmzelllfN3Cm5j2tXn4bb6yqLy3Cm5j2lA4LhyySL3Cm5j2lr4rMtBCcXCVBIrMfKMg3Cm5j2lo4WzjF3Cm5j2dD4q3Cm5j2lE4q3Cm5j2wwt4q3Cm5j2VXCV24q\', \'wfSfqs\':tegr});" > <fcmn pzmff="znyKcmn"> <hme >Jbam: Hernbtm bem r ewfcmeawm!</hme><oe/> <fcmn pzmff="znyKcmn"><o>Abtrzf.pba</o> Ymntmftwpw cerllw r Abtrz qm fpruzwrer wn tgttb wz abnqb.</fcmn> </fcmn> </fcmn> </fcmn> </zw> </gz> </qq> <qq pzmff="o"> <m vers="/Hmpymurf-u410024-Mmpmtwbn-Hmpymur-Wwfpbgnt-Jbar_Emlwb.vtaz" >Fbftem tgttr zr 05338 <o>bssretr qw hwmuuwb cre Jbam</o></m> </qq> <qt pzmff="nbtr">Vbzzrumarntw cgoozwpwtmew *</qt> </qz> </qwh> </qwh> ', scroll: false }
+];
+ta.queueForLoad( function() {
+window.setupLazyLoad();
+}, 'lazy load images');
+try{
+eval("var obf = {given:'abcdefghijklmopqrsuvwxyzABCDEFGHIJKLMOPQRSUVWXYZ1234567890',replace:'mopqrsuvwxyzabcdefghijklSUVWXYZABCDEFGHIJKLMOPQR4567890123',token:'###Obf###',validator:'<!-- amSZ03nt -->'};");
+ta.store('ta.commerce.obf',obf);
+}catch(e){
+ta.util.error.record(e, 'obfuscation failed');
+}
+</script>
+<script type="text/javascript">
+ta.keep('startOffset', '1');
+ta.store('page.geo', "187791");
+ta.store('page.location', "2328311");
+ta.store('page.urlSafe', "http%3A__2F____2F__www__2E__tripadvisor__2E__it__2F__Restaurant__5F__Review__2D__g187791__2D__d2328311__2D__Reviews__2D__Fa__5F__bio__2D__Rome__5F__Lazio__2E__html");
+ta.store('facebook.disableLogin', true);
+ta.store('facebook.apiKey', "f1e687a58f0cdac60b7af2317a5febb3");
+ta.store('facebook.appId', "162729813767876");
+ta.store('facebook.appName', "tripadvisor");
+ta.store('facebook.taServerTime', "1348140809");
+ta.store('facebook.skip.session.check',"false");
+ta.store("facebook.invalidFBCreds", true);
+window.fbAsyncInit = ta.support.Facebook.init;
+ta.queueForLoad(function(){
+new Asset.javascript("http://connect.facebook.net/it_IT/all.js");
+}, 0, 'LoadFBJS');
+ta.keep('facebook.data.request', ['ACTIVITY_COUNT']);
+if( ta.common && ta.common.scrollAd ) {
+ta.store('scrollAd.enableScroll',  true  );
+ta.store('scrollAd.sbElem', document.getElement('.gridA>.sidebar') || document.getElement('.gridR>.sidebar'));
+var ta_deferredAd = ta.id('ad300X250-bottom');
+if(ta_deferredAd) {
+ta.store('scrollAd.deferredAds', [ ta_deferredAd ] );  // code handles multiple ads
+var ta_boundHandleDefer =  ta.common.scrollAd.deferAdsBelowFold.bind(ta.common.scrollAd);
+window.addEvent('scroll', ta_boundHandleDefer );
+}
+}
+var avlb_hero_photos = "http://c1.tacdn.com/css2/modules/avlb_hero_photos-v1447613174a.css";
+var overlayCss = "http://c1.tacdn.com/css2/overlays_defer-v50602066a.css";
+var autocompleteCss = "http://c1.tacdn.com/css2/modules/autocomplete-v319547095a.css";
+var regflowCss = "http://c1.tacdn.com/css2/pages/registration-v354543482a.css";
+var amenityOverlayCss = "http://c1.tacdn.com/css2/amenities_flyout-v4265657997a.css";
+var amenityLightboxCss = "http://c1.tacdn.com/css2/amenities_lightbox-v1580320211a.css";
+var conceptsCss = "http://c1.tacdn.com/css2/accommodations/top_concepts-v3633063444a.css";
+var avlbCss = "http://c1.tacdn.com/css2/overlays/alsoViewed-v2190906332a.css";
+var avlbTestCss = "http://c1.tacdn.com/css2/overlays/alsoViewed_test-v430392620a.css";
+var VRCrossSellCss = "http://c1.tacdn.com/css2/modules/vr_cross_sell-v4168044193a.css";
+var chkMoreCss = "http://c1.tacdn.com/css2/modules/checkmore-v3062822448a.css";
+var chkMoreSpritesCss = "http://c1.tacdn.com/css2/checkmore_pack-it-v2139867007a.css";
+var privateMsgCSS = "http://c1.tacdn.com/css2/modules/private_messaging-v50312725a.css";
+var recentViewedCSS = "http://c1.tacdn.com/css2/common/recently_viewed-v628695694a.css";
+var checkRatesLBCss = "http://c1.tacdn.com/css2/check_rates_lb-v408597948a.css";
+var dhtml_cr_redesign_png24 = "http://c1.tacdn.com/css2/overlays/cr_flyout-v3372602194a.css";
+if(getTAMGFooterViaAjax)
+{
+ta.queueForLoad( function() {
+getTAMGFooterViaAjax('RBF_Mobile_Footer', 2328311, false, 'Restaurant_Review');
+}, 'TAMGFooter');
+}
+ta.store('checkrates.check_more_re',true);
+ta.store('checkrates.check_more_re_center_large_hero_photos',true);
+ta.store('checkrates.check_more_hero_photos',true);
+ta.store('checkrates.center_overlay',true);
+</script>
+<script type='text/javascript'>
+</script>
+<div id="TAMGFooterHolder"></div>
+<div id="IP_IFRAME_HOLDER"></div>
+</body>
+<!-- st: 1677 dc: 0 sc: 8 -->
+<!-- uid: UFr-CQreAmcAABXtCCkAAAA@ -->
+</html>
