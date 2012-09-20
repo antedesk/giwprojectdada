@@ -89,7 +89,7 @@ public class Main {
 		 else if(service.equals("6"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a quella data");
-        	 System.out.println("il formato della data richiesto Ë: dd/MM/yyyy");
+        	 System.out.println("il formato della data richiesto ÔøΩ: dd/MM/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -102,7 +102,7 @@ public class Main {
 		 else if(service.equals("7"))
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
-        	 System.out.println("il formato della data richiesto Ë: dd/MM/yyyy");
+        	 System.out.println("il formato della data richiesto ÔøΩ: dd/MM/yyyy");
         	 System.out.println("Inserisci la prima data");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
@@ -117,7 +117,7 @@ public class Main {
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
         	 System.out.println("Inserisci la prima data");
-        	 System.out.println("il formato della data richiesto Ë: dd/MM/yyyy");
+        	 System.out.println("il formato della data richiesto ÔøΩ: dd/MM/yyyy");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -130,7 +130,7 @@ public class Main {
 		 else if(service.equals("9"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a prima di quella data");
-        	 System.out.println("il formato della data richiesto Ë: dd/MM/yyyy");
+        	 System.out.println("il formato della data richiesto ÔøΩ: dd/MM/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -140,7 +140,7 @@ public class Main {
 		 else if(service.equals("10"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a dopo quella data");
-        	 System.out.println("il formato della data richiesto Ë: dd/MM/yyyy");
+        	 System.out.println("il formato della data richiesto ÔøΩ: dd/MM/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -167,14 +167,14 @@ public class Main {
 			 System.out.println("Tabelle del database cancellate con successo");
 		 }
 		 else if(service.equals("14")){
-			 System.out.println("Avviato WebCrawler, il processo di crawling è stoppabile e riprendibile in un secondo momento dallo stesso punto in cui si era fermato.");
+			 System.out.println("Avviato WebCrawler, il processo di crawling ÔøΩ stoppabile e riprendibile in un secondo momento dallo stesso punto in cui si era fermato.");
 			 System.out.println("Inserisci l'indirizzo del sito da cui far partire il crawler");
         	 String site = stdin.readLine();
         	 System.out.println("Inserisci il numero di Thread per l'elaborazione");
         	 int numberOfCrawlers = Integer.parseInt(stdin.readLine());
-        	 System.out.println("Inserisci il numero di Profondità massima per il crawler (-1 = nessuna limitazione di profondità)");
+        	 System.out.println("Inserisci il numero di ProfonditÔøΩ massima per il crawler (-1 = nessuna limitazione di profonditÔøΩ)");
         	 int depth = Integer.parseInt(stdin.readLine());
-        	 System.out.println("Inserisci il numero di Massimo di pagine da scaricare (-1 = nessuna limitazione di profondità)");
+        	 System.out.println("Inserisci il numero di Massimo di pagine da scaricare (-1 = nessuna limitazione di profonditÔøΩ)");
         	 int maxpage = Integer.parseInt(stdin.readLine());
         	 
              System.out.println("Partito Crawler sul sito "+site);
@@ -204,7 +204,7 @@ public class Main {
 			PageClassifier threadClassifier=null;
 			
 			if(type==0)
-				threadClassifier = new TripAdvisorClassifier(dao, allPages.subList(i*PagesPerThread, (i+1)*PagesPerThread));
+				threadClassifier = new TripAdvisorClassifier(dao, root,allPages.subList(i*PagesPerThread, (i+1)*PagesPerThread));
 			else
 				threadClassifier = new EpinionsClassifier(dao, root, allPages.subList(i*PagesPerThread, (i+1)*PagesPerThread));
 				

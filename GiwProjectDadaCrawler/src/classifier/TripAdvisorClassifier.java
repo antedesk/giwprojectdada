@@ -28,15 +28,18 @@ public class TripAdvisorClassifier extends PageClassifier{
 	private DAOServices dao;
 	List<String> keywords;
 	List<String> pagine;
-
+	private String rootFile;
+	
 	private final String SPAN = "span";
 
-	private final String ROOTSITE = "http://www.tripadvisor.it/";
+	private final String ROOTSITE = "http://www.tripadvisor.it";
+	
 	private final String FOLDER = "./TripAdvisorExamplePages/";
+	
 	private final String HREF = "a";
 	private final String ATTRHREF = "href";
 	private final String HAC_RESULTS = "HAC_RESULTS";
-	private final String LISTING = "listing";
+	private final String[] LISTING = new String[]{"listing first","listing"};
 	private final String RS_RATING = "rs rating";
 	private final String QUALITYWRAP = "quality wrap";
 	private final String MORE = "more";
@@ -44,9 +47,11 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 
 
-	public TripAdvisorClassifier(DAOServices dao, List<String> pagine){
+	public TripAdvisorClassifier(DAOServices dao, String rootFile, List<String> pagine){
 		this.pagine=pagine;
 		this.dao=dao;
+		this.rootFile = rootFile;
+		
 		this.keywords = new LinkedList<String>();
 		keywords.add("Attrazioni");
 		keywords.add("Vacanze");
@@ -216,16 +221,21 @@ public class TripAdvisorClassifier extends PageClassifier{
 		List<PageDetails> pageDetailsProducts = new ArrayList<PageDetails>();
 
 		//recupero tutti gli elementi presenti nella lista di risultati
-		//COSI non prendi il primo che ha class=listing first....
-		List<Element> products = source.getAllElementsByClass(LISTING);
+		//COSI non prendi il primo che ha class=listing first.... SE LO FACCIO GENERA I DUPLICATI DEL PRIMO ELEMENTO, PROVA TU STESSO DECOMMENTANDO IL CICLO
+		List<Element> products = source.getAllElementsByClass("listing");
 		//List<Element> products = el.getAllElementsByClass(LISTING);
-		for(Element productrow : products){
-			//recupera le informazioni presenti nella pagina dei risultati relative al prodotto
-			String cat = category.replace("Lista", "istanza di ");
-			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, cat);
-			pageDetailsProducts.add(pageDetails);
-		}
-
+		
+		//for(String idClass : LISTING){ // COSI GENERA DUPLICATI DEL PRIMO ELEMENTO DELLA LISTA
+					
+			//List<Element> products = source.getAllElementsByClass(idClass);
+			for(Element productrow : products){
+				//recupera le informazioni presenti nella pagina dei risultati relative al prodotto
+				String cat = category.replace("Lista", "istanza di ");
+				PageDetails pageDetails = this.getPageDetailsFromRow(productrow, cat);
+				pageDetailsProducts.add(pageDetails);
+			}
+		//}
+		
 		/*products = el.getAllElementsByClass(PRODUCTROW);
 		for(Element productrow : products){
 			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
@@ -240,7 +250,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 	// Recupera le informazioni dei singoli prodotti
 	public PageDetails getPageDetailsFromRow(Element productrow, String category){
 		int review = 0;
-		if(category.equals("Ristoranti"))
+		if(category.contains("ristoranti"))
 			review = this.getResturantReviewsNumberFromResultsList(productrow);
 		else
 			review = this.getReviewsNumberFromResultsList(productrow);
@@ -254,7 +264,14 @@ public class TripAdvisorClassifier extends PageClassifier{
 			Element info = infos.get(0);
 			List<Element> hrefs = info.getAllElements(HREF);
 			if(hrefs.size()>0){
-				Element e = hrefs.get(0);
+				Element e = null;
+				if(category.contains("ristoranti"))
+					// altrimenti restituisce l'url relativa ai members
+					e = hrefs.get(1);
+				else
+					//per gli hotel questa cosa non è vera
+					e = hrefs.get(0);
+				
 				url = e.getAttributeValue(ATTRHREF);
 				//ricostruzione dell'url unendo la root e il path
 				url= ROOTSITE+url;
@@ -282,6 +299,9 @@ public class TripAdvisorClassifier extends PageClassifier{
 				Element e = hrefs.get(0);
 				String rev = e.getContent().toString();
 				rev = rev.substring(0, rev.indexOf(" "));
+				if(rev.contains("."))
+					rev= rev.replace(".", "");
+				
 				review = Integer.parseInt(rev);
 			}
 		}
@@ -306,7 +326,9 @@ public class TripAdvisorClassifier extends PageClassifier{
 				//il substring parte da 1 perchè a o c'è uno spazio
 				rev = rev.substring(1, rev.indexOf(" "));
 				//System.out.println("**********************************************************\n\n"+rev+"\n\n**********************************************************");
-				rev=rev.replace(".", "");
+				if(rev.contains("."))
+					rev= rev.replace(".", "");
+				
 				review = Integer.parseInt(rev);
 			}							
 
@@ -374,10 +396,24 @@ public class TripAdvisorClassifier extends PageClassifier{
 		
 		return lastDate;
 	}
-	private String normalizeURL(String url){
-		url = url.replace(FOLDER, "http://www.tripadvisor.it/");
+	private String normalizeURL1(String url){
+		url = url.replace(FOLDER, "http://www.tripadvisor.it");
 		return url;
 	}
 
+	private String normalizeURL(String url){
+		url = url.replace("../", "");
+		url = url.replace(rootFile, "");
+		url = url.substring(1);
+		
+		if(!url.startsWith("http"))
+			url = ROOTSITE + "/"+url;
+		
+		url = url.replace("//", "/");
+		url = url.replace("http:/", "http://");
+		System.out.println("****************************||||||||"+url+"||||||*********************************");
+		
+		return url;
+	}
 }
 

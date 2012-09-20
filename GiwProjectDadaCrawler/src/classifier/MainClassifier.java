@@ -26,7 +26,7 @@ public class MainClassifier {
 		dbDataSource = new DBDatasource();
 		conn = dbDataSource.getConnection();
 		dao = new DAOServices(conn);
-		TripAdvisorClassifier t1=new TripAdvisorClassifier(dao,allPages);
+	/*	TripAdvisorClassifier t1=new TripAdvisorClassifier(dao,allPages);
 		
 
 		t1.start();
@@ -41,7 +41,7 @@ public class MainClassifier {
 			System.out.println(url);
 				System.out.println("********************************************************");
 				System.out.println("tot non categorizzate: "+notCat.size());
-
+*/
 	}
 	public static void main(String[] args) throws Exception{
 		DBDatasource dbDataSource;

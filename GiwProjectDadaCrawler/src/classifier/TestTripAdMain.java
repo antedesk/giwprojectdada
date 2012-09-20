@@ -9,7 +9,7 @@ public class TestTripAdMain {
 	
 	public static void main(String[] args) throws IOException, InterruptedException{
 		/*List<String> allPages = Utility.listFiles("./TripPageTest");
-		int numThread=4;
+		int numThread=1;
 		int PagePerThread=allPages.size()/numThread;
 		TripAdvisorClassifier t1=new TripAdvisorClassifier(allPages);
 		
@@ -26,6 +26,7 @@ public class TestTripAdMain {
 			System.out.println(url);
 				System.out.println("********************************************************");
 				System.out.println("tot non categorizzate: "+notCat.size());
-*/
+
+	*/
 	}
 }
