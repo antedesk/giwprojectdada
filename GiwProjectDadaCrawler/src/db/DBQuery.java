@@ -18,10 +18,10 @@ public class DBQuery {
 	public static final String SELECTPAGEDETAILSFROMDATE = "SELECT pagedetails.id, url, category, productName, numberOfReviews, numberOfReviewsList, lastDateReviews FROM pagedetails join page on page.iddetails=pagedetails.id WHERE lastDateReviews=?";
 	public static final String SELECTPAGEDETAILSFROMAFTERDATE = "SELECT pagedetails.id, url, category, productName, numberOfReviews, numberOfReviewsList, lastDateReviews FROM pagedetails join page on page.iddetails=pagedetails.id WHERE lastDateReviews>?";
 	public static final String SELECTPAGEDETAILSFROMBEFOREDATE = "SELECT pagedetails.id, url, category, productName, numberOfReviews, numberOfReviewsList, lastDateReviews FROM pagedetails join page on page.iddetails=pagedetails.id WHERE lastDateReviews<?";
-	public static final String SELECTPAGEDETAILSFROMBETWEENDATES = "SELECT pagedetails.id, url, category, productName, numberOfReviews, numberOfReviewsList, lastDateReviews FROM pagedetails join page on page.iddetails=pagedetails.id WHERE lastaDateReviews>=? AND lastDateReviews<=?";
+	public static final String SELECTPAGEDETAILSFROMBETWEENDATES = "SELECT pagedetails.id, url, category, productName, numberOfReviews, numberOfReviewsList, lastDateReviews FROM pagedetails join page on page.iddetails=pagedetails.id WHERE lastDateReviews>=? AND lastDateReviews<=?";
 	
 	public static final String SELECTPAGESFROMCATEGORY = "SELECT id,url,category FROM `GiwDB`.`page` WHERE category=?";
-	public static final String SELECTCATEGORYBETWEENDATES = "SELECT category FROM pagedetails join page on page.iddetails=pagedetails.id WHERE lastaDateReviews>=? AND lastDateReviews<=?";
+	public static final String SELECTCATEGORYBETWEENDATES = "SELECT category FROM pagedetails join page on page.iddetails=pagedetails.id WHERE lastDateReviews>=? AND lastDateReviews<=?";
 	
 	
 	public static final String URLTOCATEGORY = "SELECT category FROM page WHERE url=?";

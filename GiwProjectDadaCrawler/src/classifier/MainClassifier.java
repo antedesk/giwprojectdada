@@ -13,7 +13,7 @@ import db.DAOServices;
 import db.DBDatasource;
 
 public class MainClassifier {
-	public static void main(String[] args) throws Exception{
+	public static void mainT(String[] args) throws Exception{
 		List<String> allPages = Utility.listFiles("./TripAdvisorExamplePages");
 		//List<String> allPages = Utility.listFiles("/Volumes/LaCie/tripBackup");
 		//List<String> allPages = Utility.listFiles("/Users/Geppo/Desktop/tripadvisor");
@@ -43,7 +43,7 @@ public class MainClassifier {
 				System.out.println("tot non categorizzate: "+notCat.size());
 
 	}
-	public static void mainT(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception{
 		DBDatasource dbDataSource;
 		DAOServices dao;
 		Connection conn;
@@ -52,8 +52,9 @@ public class MainClassifier {
 		conn = dbDataSource.getConnection();
 		dao = new DAOServices(conn);
 		
-		//String rootFile = "./EpinionsTemp/";
-		String rootFile = "./epinionsExamplePages";
+		String rootFile = "./EpinionsTemp/";
+		//String rootFile = "./epinionsExamplePages";
+		//String rootFile = "/Users/dokkis/Downloads/www.epinions.com";
 		
 		List<String> allPages=Utility.listFiles(rootFile);
 		int numThread=1;

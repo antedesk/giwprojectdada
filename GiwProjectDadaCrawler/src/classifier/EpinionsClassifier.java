@@ -27,7 +27,6 @@ public class EpinionsClassifier extends PageClassifier{
 	
 	private List<String> pagine;
 	private String rootFile;
-	public List<String> uncategorized;
 	private final String ROOTSITE = "http://www.epinions.com";
 	private final String SPAN = "span";
 	private final String CLASS = "class";
@@ -49,6 +48,9 @@ public class EpinionsClassifier extends PageClassifier{
 		this.rootFile = rootFile;
 		this.pagine=pagine;
 	}
+	
+	
+	
 	public PageDetails createPageDetails(Source source,String category,String url) throws ParseException{
 
 		List<Element> elementsTitle = source.getAllElementsByClass("product_title");

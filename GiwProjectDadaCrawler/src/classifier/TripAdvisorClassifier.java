@@ -28,7 +28,6 @@ public class TripAdvisorClassifier extends PageClassifier{
 	private DAOServices dao;
 	List<String> keywords;
 	List<String> pagine;
-	List<String> uncategorized;
 
 	private final String SPAN = "span";
 
@@ -180,8 +179,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 						//return;
 					}
 				}
-
-				if(category.contains("istanza"))
+				else if(category.contains("istanza"))
 					try {
 						PageDetails pd = createPageDetails(source, category, url);
 						try {
@@ -219,10 +217,12 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 		//recupero tutti gli elementi presenti nella lista di risultati
 		//COSI non prendi il primo che ha class=listing first....
-		List<Element> products = source.getAllElementsByClass(LISTING);//el.getAllElementsByClass(LISTING);
+		List<Element> products = source.getAllElementsByClass(LISTING);
+		//List<Element> products = el.getAllElementsByClass(LISTING);
 		for(Element productrow : products){
 			//recupera le informazioni presenti nella pagina dei risultati relative al prodotto
-			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
+			String cat = category.replace("Lista", "istanza di ");
+			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, cat);
 			pageDetailsProducts.add(pageDetails);
 		}
 
