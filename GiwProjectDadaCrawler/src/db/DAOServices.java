@@ -269,7 +269,7 @@ public class DAOServices {
 			ps.setString(1, category);
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()){
+			while(rs.next()){
 				if(!rs.wasNull()){
 					Page pageCurr = new Page(rs.getInt(1),rs.getString(2), rs.getString(3));
 					pd.add(pageCurr);
@@ -449,7 +449,7 @@ public class DAOServices {
 
 			ps.setString(1, url);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next())					
+			while(rs.next())					
 				ids.add( rs.getInt(1));
 
 		}
@@ -488,7 +488,7 @@ public class DAOServices {
 			ps.setDate(1,new java.sql.Date(date.getTime()));
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()){
+			while(rs.next()){
 
 				PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),date);
 				pd.add(pageCurr);
@@ -520,7 +520,7 @@ public class DAOServices {
 
 
 			java.util.Date date=null;
-			if(rs.next()){
+			while(rs.next()){
 				java.sql.Date data = rs.getDate(7);
 
 				if(!rs.wasNull())
@@ -552,7 +552,7 @@ public class DAOServices {
 			ps.setDate(2,new java.sql.Date(date2.getTime()));
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()){
+			while(rs.next()){
 
 				String catCurr = rs.getString(1);
 				pd.add(catCurr);
