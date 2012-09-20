@@ -18,4 +18,8 @@ public class Page {
 		this.category=category;
 		this.url=url;
 	}
+	public String toString(){
+		return  "Page: URL="+url+ "  Category="
+	+this.category;
+	}
 }
