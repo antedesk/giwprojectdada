@@ -215,7 +215,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 		// recupero dalla pagina l'elemento passato per id, in questo caso i risultati della ricerca
 		//per i ristoranti non funziona basta levarlo
 		//Element el = source.getElementById(HAC_RESULTS);
-
+		url = normalizeURL(url);
 		List<PageDetails> pageDetailsProducts = new ArrayList<PageDetails>();
 
 		//recupero tutti gli elementi presenti nella lista di risultati
@@ -376,7 +376,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 		return lastDate;
 	}
 	private String normalizeURL(String url){
-		url = url.replace(FOLDER, "http://tripadvisor.it/");
+		url = url.replace(FOLDER, "http://www.tripadvisor.it/");
 		return url;
 	}
 
