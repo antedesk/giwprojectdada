@@ -34,6 +34,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 	private final String SPAN = "span";
 
 	private final String ROOTSITE = "http://www.tripadvisor.it/";
+	private final String FOLDER = "./TripAdvisorExamplePages/";
 	private final String HREF = "a";
 	private final String ATTRHREF = "href";
 	private final String HAC_RESULTS = "HAC_RESULTS";
@@ -169,7 +170,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 					System.out.println();
 					System.out.println(category);
 				}
-				if(category.contains("lista"))
+				if(category.contains("Lista"))
 				{
 					PageList pl = createPageList(source, url, category);
 					System.out.println(category);
@@ -212,12 +213,14 @@ public class TripAdvisorClassifier extends PageClassifier{
 	// Metodo per la creazione delle pagine di tipo lista
 	public PageList createPageList(Source source, String url, String category){
 		// recupero dalla pagina l'elemento passato per id, in questo caso i risultati della ricerca
-		Element el = source.getElementById(HAC_RESULTS);
+		//per i ristoranti non funziona basta levarlo
+		//Element el = source.getElementById(HAC_RESULTS);
 
 		List<PageDetails> pageDetailsProducts = new ArrayList<PageDetails>();
 
 		//recupero tutti gli elementi presenti nella lista di risultati
-		List<Element> products = el.getAllElementsByClass(LISTING);
+		//COSI non prendi il primo che ha class=listing first....
+		List<Element> products = source.getAllElementsByClass(LISTING);//el.getAllElementsByClass(LISTING);
 		for(Element productrow : products){
 			//recupera le informazioni presenti nella pagina dei risultati relative al prodotto
 			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
@@ -304,6 +307,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 				//il substring parte da 1 perchè a o c'è uno spazio
 				rev = rev.substring(1, rev.indexOf(" "));
 				//System.out.println("**********************************************************\n\n"+rev+"\n\n**********************************************************");
+				rev=rev.replace(".", "");
 				review = Integer.parseInt(rev);
 			}							
 
@@ -338,7 +342,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 		//ottengo la data dell'ultima recensione.
 		Date lastdate = this.getDateFromPageDetails(source);
-
+		url = normalizeURL(url);
 		PageDetails pageDatails=new PageDetails(url, category, productName, num_rev, 0, lastdate);
 
 		return pageDatails;
@@ -371,5 +375,10 @@ public class TripAdvisorClassifier extends PageClassifier{
 		
 		return lastDate;
 	}
+	private String normalizeURL(String url){
+		url = url.replace(FOLDER, "http://tripadvisor.it/");
+		return url;
+	}
+
 }
 
