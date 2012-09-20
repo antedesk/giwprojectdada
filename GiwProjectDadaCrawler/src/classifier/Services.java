@@ -6,7 +6,12 @@ import java.util.List;
 
 import model.Page;
 import model.PageDetails;
-
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public interface Services {
 
 	//Dato un URL di una pagina restituisce la sua categoria

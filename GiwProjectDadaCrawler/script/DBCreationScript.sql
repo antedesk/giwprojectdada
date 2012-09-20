@@ -53,17 +53,7 @@ CREATE  TABLE IF NOT EXISTS `GiwDB`.`pagelistaggregation` (
   `idPage` INT NOT NULL ,
   PRIMARY KEY (`idPageList`, `idPage`) ,
   INDEX `fk_idPageList` (`idPageList` ASC) ,
-  INDEX `fk_idPage` (`idPage` ASC) ,
-  CONSTRAINT `fk_idPageList`
-    FOREIGN KEY (`idPageList` )
-    REFERENCES `GiwDB`.`page` (`id` )
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_idPage`
-    FOREIGN KEY (`idPage` )
-    REFERENCES `GiwDB`.`page` (`id` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  INDEX `fk_idPage` (`idPage` ASC))
 ENGINE = InnoDB;
 
 

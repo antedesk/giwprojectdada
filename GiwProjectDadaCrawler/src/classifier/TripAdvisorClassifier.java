@@ -1,45 +1,41 @@
 package classifier;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URLConnection;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-
-import db.DAOServices;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import model.PageDetails;
 import model.PageList;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
+import db.DAOServices;
 
+/*
+ * @author Antonio Gallo
+ * @author Daniele D'Andrea
+ * @author Antonio Tedeschi
+ * @author Daniele Malta
+ */
 
 public class TripAdvisorClassifier extends PageClassifier{
 	private DAOServices dao;
 	List<String> keywords;
 	List<String> pagine;
 	private String rootFile;
-	
+
 	private final String SPAN = "span";
 
 	private final String ROOTSITE = "http://www.tripadvisor.it";
-	
-	private final String FOLDER = "./TripAdvisorExamplePages/";
-	
+
 	private final String HREF = "a";
 	private final String ATTRHREF = "href";
-	private final String HAC_RESULTS = "HAC_RESULTS";
-	private final String[] LISTING = new String[]{"listing first","listing"};
 	private final String RS_RATING = "rs rating";
 	private final String QUALITYWRAP = "quality wrap";
 	private final String MORE = "more";
@@ -51,7 +47,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 		this.pagine=pagine;
 		this.dao=dao;
 		this.rootFile = rootFile;
-		
+
 		this.keywords = new LinkedList<String>();
 		keywords.add("Attrazioni");
 		keywords.add("Vacanze");
@@ -68,7 +64,6 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 	public String classifyPage(Source source){
 
-		//System.out.println(html);
 		boolean isForumListPage=false;
 
 		if(source.toString().contains("<meta http-equiv=\"refresh\"")){
@@ -139,19 +134,15 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 
 	public void run(){
+		String toprint = "";
 
-		String toPrint="";
 		uncategorized = new ArrayList<String>();
-		//int i = 1;
-		//int size = this.pagine.size();
-		for (String url : this.pagine) {
+		for(String url : this.pagine){
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
-				//RICHIESTA HTTP PER LAST MODIFY
 				Source source= new Source(Utility.fileToString(url));
 
-				//toPrint+=(i+"/"+size+", uncategorized: "+uncategorized.size()+"\n");
-				System.out.println("********************************************************\n");
-				System.out.println("URL: "+url+"\n");
+				toprint+=("********************************************************\n");
+				toprint+=("URL: "+url+"\n");
 				String category;
 				if(url.contains("TravelersChoice"))
 					category ="TravelChoise";
@@ -170,47 +161,43 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 				else  {
 					category = this.classifyPage(source);
-					System.out.println();
-					System.out.println(category);
+					toprint+=("CATEGORIA: "+category+"\n");
 				}
 				if(category.contains("Lista"))
 				{
 					PageList pl = createPageList(source, url, category);
-					System.out.println(category);
+
+					toprint+="Tipo Pagina: Lista, Numero prodotti: "+pl.getProducts().size()+"\n";
 					try {
 						this.dao.saveOrUpdatePageList(pl);
 					} catch (SQLException e) {
 						e.printStackTrace();
-						//return;
 					}
 				}
-				else if(category.contains("istanza"))
+				else if(category.contains("istanza")){
 					try {
 						PageDetails pd = createPageDetails(source, category, url);
+						toprint+="Tipo Pagina: Istanza, Numero Voti: "+pd.getNumberOfReviews()+ ", Numero Review: "+pd.getNumberOfReviews()+"\n";
+						
 						try {
 							this.dao.saveOrUpdatePageDetails(pd, false);
 						} catch (SQLException e) {
 							e.printStackTrace();
-							//return;
 						}
 					} catch (ParseException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				
+				}
+
 
 				if(category.equals(""))
 					uncategorized.add(url);
-				//toPrint+=("Categoria (breadcrumb[1]) = " + category+"\n");
-				//else 
-				//	uncategorized.add(indirizzo);
-				//toPrint+=("********************************************************\n\n");
-
 			}
-			//i++;
+			toprint+=("********************************************************\n\n");
+			System.out.println(toprint);
 		}
-		//System.out.println(toPrint);
 	}
+
 
 	// Metodo per la creazione delle pagine di tipo lista
 	public PageList createPageList(Source source, String url, String category){
@@ -224,18 +211,18 @@ public class TripAdvisorClassifier extends PageClassifier{
 		//COSI non prendi il primo che ha class=listing first.... SE LO FACCIO GENERA I DUPLICATI DEL PRIMO ELEMENTO, PROVA TU STESSO DECOMMENTANDO IL CICLO
 		List<Element> products = source.getAllElementsByClass("listing");
 		//List<Element> products = el.getAllElementsByClass(LISTING);
-		
+
 		//for(String idClass : LISTING){ // COSI GENERA DUPLICATI DEL PRIMO ELEMENTO DELLA LISTA
-					
-			//List<Element> products = source.getAllElementsByClass(idClass);
-			for(Element productrow : products){
-				//recupera le informazioni presenti nella pagina dei risultati relative al prodotto
-				String cat = category.replace("Lista", "istanza di ");
-				PageDetails pageDetails = this.getPageDetailsFromRow(productrow, cat);
-				pageDetailsProducts.add(pageDetails);
-			}
+
+		//List<Element> products = source.getAllElementsByClass(idClass);
+		for(Element productrow : products){
+			//recupera le informazioni presenti nella pagina dei risultati relative al prodotto
+			String cat = category.replace("Lista", "istanza di ");
+			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, cat);
+			pageDetailsProducts.add(pageDetails);
+		}
 		//}
-		
+
 		/*products = el.getAllElementsByClass(PRODUCTROW);
 		for(Element productrow : products){
 			PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
@@ -271,15 +258,15 @@ public class TripAdvisorClassifier extends PageClassifier{
 				else
 					//per gli hotel questa cosa non è vera
 					e = hrefs.get(0);
-				
+
 				url = e.getAttributeValue(ATTRHREF);
 				//ricostruzione dell'url unendo la root e il path
 				url= ROOTSITE+url;
 				productName = e.getContent().toString();
+				if(productName.startsWith(" "))
+					productName = productName.substring(1);
 			}
 		}
-
-		System.out.println(productName +" - "+ url + " - "+ review);
 
 		// La data della lastReview non � ricavabile dalle pagine di dettaglio quindi viene settata a null
 		PageDetails pageDetails = new PageDetails(url, category, productName, 0, review, null);
@@ -301,8 +288,9 @@ public class TripAdvisorClassifier extends PageClassifier{
 				rev = rev.substring(0, rev.indexOf(" "));
 				if(rev.contains("."))
 					rev= rev.replace(".", "");
-				
-				review = Integer.parseInt(rev);
+				try{
+					review = Integer.parseInt(rev);
+				} catch(Exception ex){}
 			}
 		}
 		return review;
@@ -316,20 +304,19 @@ public class TripAdvisorClassifier extends PageClassifier{
 		{
 			Element el_reviews = more.get(0);
 			List<Element> reviews = el_reviews.getAllElements();
-			System.out.print("**********\n"+reviews.size()+"\n**********");			
 			if(reviews.size()>0)
 			{
 
 				Element e = reviews.get(1);
 				String rev = e.getContent().toString();
-				//System.out.println("**********************************************************\n\n"+rev+"\n\n**********************************************************");
 				//il substring parte da 1 perchè a o c'è uno spazio
 				rev = rev.substring(1, rev.indexOf(" "));
-				//System.out.println("**********************************************************\n\n"+rev+"\n\n**********************************************************");
 				if(rev.contains("."))
 					rev= rev.replace(".", "");
-				
-				review = Integer.parseInt(rev);
+
+				try{
+					review = Integer.parseInt(rev);
+				} catch(Exception ex){}
 			}							
 
 		}
@@ -349,7 +336,6 @@ public class TripAdvisorClassifier extends PageClassifier{
 		String productName="";
 		if(elementsTitle.size()>0){
 			productName = elementsTitle.get(1).getContent().toString().substring(1);
-			System.out.println("NOME: "+productName);
 		}
 
 		int num_rev=0;
@@ -357,9 +343,17 @@ public class TripAdvisorClassifier extends PageClassifier{
 		List<Element> ratingElements = source.getAllElementsByClass(RS_RATING).get(0).getAllElements(SPAN);
 		//mi faccio restituire il terzo elemento della lista che contiene il numero delle recensioni e ne prendo il contenuto
 		Element e = ratingElements.get(2);
+
 		String rev = e.getContent().toString();
-		num_rev = Integer.parseInt(rev);
-		System.out.println(rev);
+		try{
+			num_rev = Integer.parseInt(rev);
+		}catch(Exception ex){
+			Pattern pattern = Pattern.compile("[0-9]+");
+			Matcher matcher = pattern.matcher(rev);
+			if (matcher.find()) {
+				num_rev = Integer.parseInt(matcher.group());
+			}
+		}
 
 		//ottengo la data dell'ultima recensione.
 		Date lastdate = this.getDateFromPageDetails(source);
@@ -368,22 +362,20 @@ public class TripAdvisorClassifier extends PageClassifier{
 
 		return pageDatails;
 	}
-	
+
 	//recupero la data dell'ultima recensione presente nella pagina
 	public Date getDateFromPageDetails(Source source) throws ParseException
 	{
 		List<Element> allReviewsDate = source.getAllElementsByClass("ratingDate");
-		System.out.println(allReviewsDate.size()+"\t"+allReviewsDate.get(0).getContent().toString());
 		Element recentDate = allReviewsDate.get(0);
 		String stringDate = recentDate.getContent().toString();
 		int lung = stringDate.length();
 		stringDate= stringDate.substring(13, lung-1);
-		System.out.println(stringDate);
 
 		Date lastDate = null ;
 		DateFormat formatter = new SimpleDateFormat("dd.MMMMMMMMM.yyyy", Locale.ITALY);
 		stringDate=stringDate.replace(" ",".");
-		
+
 		//controllo per eliminare lo span inserito all'interno del numero di recensioni, non è presente in tutte le pagine.
 		if(stringDate.contains("<span.class=\"new\">"))
 		{
@@ -391,28 +383,22 @@ public class TripAdvisorClassifier extends PageClassifier{
 			int leng = array[0].length();
 			stringDate = array[0].substring(0,leng-1); //rimuovo lo \n che c'è
 		}
-		System.out.println(stringDate);
 		lastDate = (Date)formatter.parse(stringDate);
-		
+
 		return lastDate;
-	}
-	private String normalizeURL1(String url){
-		url = url.replace(FOLDER, "http://www.tripadvisor.it");
-		return url;
 	}
 
 	private String normalizeURL(String url){
 		url = url.replace("../", "");
 		url = url.replace(rootFile, "");
 		url = url.substring(1);
-		
+
 		if(!url.startsWith("http"))
 			url = ROOTSITE + "/"+url;
-		
+
 		url = url.replace("//", "/");
 		url = url.replace("http:/", "http://");
-		System.out.println("****************************||||||||"+url+"||||||*********************************");
-		
+
 		return url;
 	}
 }

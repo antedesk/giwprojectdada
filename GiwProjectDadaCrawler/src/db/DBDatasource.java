@@ -4,13 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-/** 
- *
- * @author Daniele D'Andrea
- * @author Antonio Gallo
- * @author Antonio Tedeschi
- * @author Daniele Malta
- */
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public class DBDatasource {
 
 	private String dbDriver; // La stringa contenente il nome del driver
