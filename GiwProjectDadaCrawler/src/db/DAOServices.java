@@ -42,8 +42,6 @@ public class DAOServices {
 					this.insertPageListAggregation(pageDetails, auto_id);
 			}
 
-			System.out.println("PAGELIST INSERTED! THE AUTO-ID IS: "+auto_id);
-
 		} catch (SQLException e) {
 			throw e;
 		} finally{
@@ -108,6 +106,8 @@ public class DAOServices {
 			}
 			if(pageDetails.getLastDateReview()!=null)
 				statement.setDate(3, new java.sql.Date(pageDetails.getLastDateReview().getTime()));
+			else if(dbPageDetails.getLastDateReview()!=null)
+				statement.setDate(3, new java.sql.Date(dbPageDetails.getLastDateReview().getTime()));
 			else
 				statement.setNull(3, java.sql.Types.DATE);
 
@@ -151,7 +151,10 @@ public class DAOServices {
 			ResultSet rs = statement.getGeneratedKeys();
 			rs.next();
 			int id_page_details = rs.getInt(1);
-
+			
+			// Serve per inserire il record nella tabella page
+			
+			deletePage(pageDetails.getUrl());
 			statement2 = connection.prepareStatement(DBQuery.INSERTPAGE, Statement.RETURN_GENERATED_KEYS);
 
 			statement2.setString(1, pageDetails.getUrl());
@@ -159,9 +162,8 @@ public class DAOServices {
 			statement2.setInt(3, id_page_details);
 
 			statement2.executeUpdate();
-
-			System.out.println("PAGELIST INSERTED! THE AUTO-ID IS: "+id_page_details);
-
+				
+			
 			return id_page_details;
 
 		} catch (SQLException e) {
@@ -383,13 +385,25 @@ public class DAOServices {
 
 
 
-	public void saveOrUpdatePageList(PageList pl) throws SQLException{
+	public void saveOrUpdatePageList(PageList pageList) throws SQLException{
 
+		int id = deletePage(pageList.getUrl());
+		if(id==-1)
+			insertPage(pageList);
+		else{
+			if(pageList.getProducts()!=null && pageList.getProducts().size()>0){
+				for(PageDetails pageDetails : pageList.getProducts())
+					this.insertPageListAggregation(pageDetails, id);
+			}
+		}
+	}
+
+	public int deletePage(String url) throws SQLException {
 		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGELIST);
 		//PreparedStatement psDeletePage=connection.prepareStatement(DBQuery.DELETEPAGE);
 		PreparedStatement psDeleteAggrPage=connection.prepareStatement(DBQuery.DELETEAGGRPAGE);
 		try{
-			ps.setString(1, pl.getUrl());
+			ps.setString(1, url);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next())
 			{
@@ -398,8 +412,10 @@ public class DAOServices {
 				psDeleteAggrPage.execute();
 				//psDeletePage.setInt(1, todel);
 				//psDeletePage.execute();
+				return todel;
 			}
-			insertPage(pl);
+			return -1;
+			
 		}catch (SQLException e) {
 			throw e;
 		} finally{
@@ -425,8 +441,7 @@ public class DAOServices {
 			ps.setString(1, url);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next())
-				cat = rs.getString(1);
-
+					cat = rs.getString(1);
 		}
 		catch (SQLException e) {
 			throw e;
@@ -450,8 +465,7 @@ public class DAOServices {
 			ps.setString(1, url);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next())					
-				ids.add( rs.getInt(1));
-
+					ids.add( rs.getInt(1));
 		}
 		catch (SQLException e) {
 			throw e;
@@ -471,7 +485,7 @@ public class DAOServices {
 		case '=':
 			query=DBQuery.SELECTPAGEDETAILSFROMDATE;
 			break;
-
+			
 		case '<':
 			query=DBQuery.SELECTPAGEDETAILSFROMBEFOREDATE;
 			break;
@@ -489,10 +503,10 @@ public class DAOServices {
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()){
-
-				PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),date);
-				pd.add(pageCurr);
-
+				
+					PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),date);
+					pd.add(pageCurr);
+		
 			}
 		}
 		catch (SQLException e) {
