@@ -361,7 +361,6 @@ public class DAOServices {
 			ResultSet rs = ps.executeQuery();
 			java.util.Date date = null;
 			if(rs.next()){
-				//INCOMPLETO VA MODIFICATO IL GET DELLA DATA!!!
 				java.sql.Date data = rs.getDate(7);
 				if(!rs.wasNull())
 					date=new java.util.Date(data.getTime());
@@ -425,11 +424,9 @@ public class DAOServices {
 
 			ps.setString(1, url);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()){
-				//java.sql.Date data = rs.getDate(7);
-				if(!rs.wasNull())
-					cat = rs.getString(1);
-			}
+			if(rs.next())
+				cat = rs.getString(1);
+
 		}
 		catch (SQLException e) {
 			throw e;
@@ -452,10 +449,9 @@ public class DAOServices {
 
 			ps.setString(1, url);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()){
-				if(!rs.wasNull())
-					ids.add( rs.getInt(1));
-			}
+			if(rs.next())					
+				ids.add( rs.getInt(1));
+
 		}
 		catch (SQLException e) {
 			throw e;
@@ -475,7 +471,7 @@ public class DAOServices {
 		case '=':
 			query=DBQuery.SELECTPAGEDETAILSFROMDATE;
 			break;
-			
+
 		case '<':
 			query=DBQuery.SELECTPAGEDETAILSFROMBEFOREDATE;
 			break;
@@ -493,10 +489,10 @@ public class DAOServices {
 			ResultSet rs = ps.executeQuery();
 
 			if(rs.next()){
-				if(!rs.wasNull()){
-					PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),date);
-					pd.add(pageCurr);
-				}			
+
+				PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),date);
+				pd.add(pageCurr);
+
 			}
 		}
 		catch (SQLException e) {
@@ -522,11 +518,16 @@ public class DAOServices {
 			ps.setDate(2,new java.sql.Date(date2.getTime()));
 			ResultSet rs = ps.executeQuery();
 
+
+			java.util.Date date=null;
 			if(rs.next()){
-				if(!rs.wasNull()){
-					PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),new java.util.Date(rs.getDate(7).getTime()));
-					pd.add(pageCurr);
-				}			
+				java.sql.Date data = rs.getDate(7);
+
+				if(!rs.wasNull())
+					date=new java.util.Date(data.getTime());
+				PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),new java.util.Date(rs.getDate(7).getTime()));
+				pd.add(pageCurr);
+
 			}
 		}
 		catch (SQLException e) {
@@ -552,10 +553,9 @@ public class DAOServices {
 			ResultSet rs = ps.executeQuery();
 
 			if(rs.next()){
-				if(!rs.wasNull()){
-					String catCurr = rs.getString(1);
-					pd.add(catCurr);
-				}			
+
+				String catCurr = rs.getString(1);
+				pd.add(catCurr);
 			}
 		}
 		catch (SQLException e) {
