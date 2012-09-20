@@ -1,7 +1,5 @@
 package classifier;
 
-import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,8 +17,13 @@ import model.PageList;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 import db.DAOServices;
-import db.DBDatasource;
 
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 
 public class EpinionsClassifier extends PageClassifier{
 	private DAOServices dao;
@@ -42,7 +45,7 @@ public class EpinionsClassifier extends PageClassifier{
 	private final String PRODUCTREVIEWS = "productReviews";
 	private final String PRODUCTINFOLEFT = "productInfo left";
 	private final String LISTOF = "Lista di ";
-	private final String INSTANCEOF = "istanza di ";
+	private final String INSTANCEOF = "Istanza di ";
 	private final String MEDIA = "Media";
 
 
@@ -60,7 +63,6 @@ public class EpinionsClassifier extends PageClassifier{
 		String productName="";
 		if(elementsTitle.size()>0){
 			 productName=elementsTitle.get(0).getContent().toString();
-			System.out.println("NOME: "+productName);
 		}
 		int numberOfReviews=0;
 		List<Element> elementsReviewNumber = source.getAllElementsByClass("rkr reviewLinks");
@@ -76,10 +78,8 @@ public class EpinionsClassifier extends PageClassifier{
 				//throw new NumberFormatException("Errore durante il parse in numero di "+numReview.split(" ")[0]+" da "+numReview);
 			}
 		}
-		System.out.println(numberOfReviews);
 
 		List<Element> e = source.getAllElementsByClass("review_info");
-		//System.out.println(e.size());
 
 		Date lastDateReview = null;
 		List<Date> listaDate=new LinkedList<Date>();
@@ -93,7 +93,6 @@ public class EpinionsClassifier extends PageClassifier{
 				DateFormat formatter = new SimpleDateFormat("MMM.dd.yy", Locale.US);
 				stringDate=stringDate.replace(" ",".");
 				stringDate=stringDate.replace("'","");
-				//System.out.println(stringDate);
 				dateGMT = (Date)formatter.parse(stringDate);
 
 				listaDate.add(dateGMT);
@@ -103,7 +102,6 @@ public class EpinionsClassifier extends PageClassifier{
 		Object[] arrayDate = listaDate.toArray();
 		Arrays.sort(arrayDate);
 		lastDateReview=(Date) arrayDate[arrayDate.length-1];
-		System.out.println(lastDateReview.toString());
 		}
 		PageDetails pageD=new PageDetails(url, category, productName, numberOfReviews, 0, lastDateReview);
 		
@@ -117,56 +115,29 @@ public class EpinionsClassifier extends PageClassifier{
 			return "REFRESH_RELOCATE";
 		}
 
-		//System.out.println(source.getElementById("product_top_box").toString());
-
-
-
-
 		List<Element> elements = source.getAllElementsByClass(BREADCRUMB);
 		List<String> breadcrumbCategory = new ArrayList<String>();
 		if(elements.size()>0){
 			Element breadcrumb = elements.get(0);
 			if(breadcrumb!=null){
-				//System.out.println("BREADCRUMB" + breadcrumb.toString());
-
 				elements = breadcrumb.getAllElements(SPAN);
 				for(Element el : elements){
 					String span = el.getAttributeValue(CLASS);
 
 					if(RKR.equals(span) || RGR.equals(span)){
-						//System.out.println("EL: "+el.toString()+", class = "+span);
 						List<Element> links = el.getAllElements(HREF);
 						if(links.size()>0){
 							Element category = links.get(0);
 							if(!MAGGIORE.equals(category.getContent())){
 								breadcrumbCategory.add(category.getContent().toString());
-								//System.out.println("IF: "+category.getContent());
 							}
 						} else{
 							if(!MAGGIORE.equals(el.getContent().toString())){
 								breadcrumbCategory.add(el.getContent().toString());
-								//System.out.println("ELSE: "+el.getContent());
 							}
 						}
 					}
 				}
-
-				//elements = breadcrumb.getAllElementsByClass(RKR);
-				//for(Element el : elements){
-				//List<Element> links = el.getAllElements(HREF);
-				//if(links.size()>0){
-				//Element category = links.get(0);
-				//	breadcrumbCategory.add(category.getContent().toString());
-				//	} else{
-				// E' utile? forse c'è sempre solo  '&gt;&nbsp;'
-				////System.out.println(el.getContent());
-				//}
-				//}
-
-				//elements = breadcrumb.getAllElementsByClass(RGR);
-				//for(Element category : elements){
-				//breadcrumbCategory.add(category.getContent().toString());
-				//}
 			} 
 		} else {
 			elements = source.getAllElements(SPAN);
@@ -175,22 +146,16 @@ public class EpinionsClassifier extends PageClassifier{
 				String span = el.getAttributeValue(CLASS);
 
 				if(RKR.equals(span) || RGR.equals(span)){
-
-					//if(el.getParentElement().equals(parentHome)){
-					//System.out.println("EL: "+el.toString()+", class = "+span);
 					List<Element> links = el.getAllElements(HREF);
 					if(links.size()>0){
 						Element category = links.get(0);
 						if(!MAGGIORE.equals(category.getContent())){
 							if(el.getParentElement()!=null && el.getParentElement().equals(parentHome) || category.getContent().toString().equalsIgnoreCase(HOME)){
 								if(parentHome==null){
-									//System.out.println("HOME: "+category.getContent());
 									parentHome = el.getParentElement();
-									//System.out.println("PARENT: "+parentHome);
 								}
 
 								breadcrumbCategory.add(category.getContent().toString());
-								//System.out.println("IF: "+category.getContent());
 							}
 						}
 					} else{
@@ -198,20 +163,14 @@ public class EpinionsClassifier extends PageClassifier{
 							if(el.getParentElement()!=null && el.getParentElement().equals(parentHome) || el.getContent().toString().equalsIgnoreCase(HOME)){
 								if(parentHome==null){
 									parentHome = el.getParentElement();
-									//System.out.println("PARENT: "+parentHome);
 								}
 								breadcrumbCategory.add(el.getContent().toString());
-								//System.out.println("ELSE: "+el.getContent());
 							}
 						}
 					}
-					//}
 				}
 			}
 		}
-
-		//System.out.print("Breadcrumb: " + Utility.listToBreadcrumb(breadcrumbCategory));
-		//System.out.println();
 
 		String category = "";
 		if(breadcrumbCategory.size()>=2){
@@ -281,13 +240,11 @@ public class EpinionsClassifier extends PageClassifier{
 			if(hrefs.size()>0){
 				Element e = hrefs.get(0);
 				url = e.getAttributeValue(ATTRHREF);
-				url = url.replace("../prices/", "../reviews/");
+				//url = url.replace("../prices/", "../reviews/");
 				url = normalizeURL(url);
 				productName = e.getContent().toString();
 			}
 		}
-
-		System.out.println(productName +" - "+ url + " - "+ review);
 
 		// La data della lastReview non è ricavabile dalle pagine di dettaglio quindi viene settata a null
 		PageDetails pageDetails = new PageDetails(url, category, productName, 0, review, null);
@@ -307,7 +264,7 @@ public class EpinionsClassifier extends PageClassifier{
 	}
 
 	public void run(){
-		
+		String toprint = "";
 		uncategorized = new ArrayList<String>();
 		
 		HashMap<String, Integer> frequencyCategory = new HashMap<String, Integer>();
@@ -316,9 +273,8 @@ public class EpinionsClassifier extends PageClassifier{
 		//int size = this.pagine.size();
 		for (String url : this.pagine) {
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
-				//System.out.println(i+"/"+size+", uncategorized: "+uncategorized.size());
-				System.out.println("********************************************************");
-				System.out.println("URL: "+url);
+				toprint+=("********************************************************\n");
+				toprint+=("URL: "+url+"\n");
 
 				String html = Utility.fileToString(url);
 				Source source = new Source(html);
@@ -327,39 +283,36 @@ public class EpinionsClassifier extends PageClassifier{
 				url = normalizeURL(url);
 
 				String category = classifyPage(source);
-				System.out.println("CATEGORIA: "+category);
 				PageDetails pd=null;
 				if(source.getElementById("product_top_box")!=null && source.getElementById("product_area")!=null){
 					category = INSTANCEOF + category;
+					toprint+=("CATEGORIA: "+category+"\n");
+					
 					try {
 						pd = createPageDetails(source,category,url);
+						toprint+="Tipo Pagina: Istanza, Numero Voti: "+pd.getNumberOfReviews()+ ", Numero Review: "+pd.getNumberOfReviews()+"\n";
 						try {
 							this.dao.saveOrUpdatePageDetails(pd, false);
 						} catch (SQLException e) {
 							e.printStackTrace();
-							//return;
 						}
 					} catch (ParseException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					System.out.println("DetailsPage created: ");
-					System.out.println(pd.toString());
 				} else if(source.getElementById(TABLERESULT) != null){
 					category = LISTOF + category;
+					toprint+=("CATEGORIA: "+category+"\n");
 					PageList pageList = createPageList(source, url, category);
+					toprint+="Tipo Pagina: Lista, Numero prodotti: "+pageList.getProducts().size()+"\n";
+					
 					try {
 						this.dao.saveOrUpdatePageList(pageList);
 					} catch (SQLException e) {
 						e.printStackTrace();
-						//return;
 					}
-					System.out.println(url + " PAGINA DI ELENCO");
 				}
 
 				if(!category.equals("")){
-					System.out.println("Categoria (breadcrumb[1]) = " + category);
-
 					if(frequencyCategory.containsKey(category)){
 						frequencyCategory.put(category, frequencyCategory.get(category)+1);
 					} else{
@@ -368,23 +321,11 @@ public class EpinionsClassifier extends PageClassifier{
 				}
 				else
 					uncategorized.add(url);
-
-
-				
-
-				System.out.println("********************************************************\n");
 			}
-			//i++;
+			
+			toprint+=("********************************************************\n\n");
+			System.out.println(toprint);
 		}
-		/*
-		System.out.println("\n*************** Pagine non categorizzate ***************");
-		for(String url : uncategorized)
-			System.out.println(url);
-		System.out.println("********************************************************");
 
-		System.out.println("\n*************** Frequenza Categorie ***************");
-		for(String category : frequencyCategory.keySet())
-			System.out.println("Category: "+category+": "+frequencyCategory.get(category));
-		System.out.println("********************************************************");
-		 */}
+	}
 }

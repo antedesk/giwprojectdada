@@ -6,13 +6,22 @@ import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
 import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
-
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public class BasicCrawlController {
 	
 		public static String site = "";
 
 		public void startCrawler(String site, int numberOfCrawlers, int depth, int maxPages) throws Exception {
-			BasicCrawlController.site = site;
+			String tsite = site;
+			if(site.indexOf("/")!=-1){
+				tsite = site.substring(0,site.indexOf("/"));
+			}
+			BasicCrawlController.site = tsite;
 			String crawlStorageFolder = site;
 
 			CrawlConfig config = new CrawlConfig();

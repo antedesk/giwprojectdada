@@ -7,7 +7,12 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public class Utility {
 	public static String fileToString(String filePath) {
 		BufferedReader reader = null;
@@ -38,14 +43,10 @@ public class Utility {
 			Arrays.sort(filesInDir);
 			for(File f : filesInDir)
 			{
-				String prefix = "";
-
 				if(f.isFile()){
-					prefix = "[f] ";
 					listaFile.add(f.toString());
 				}
 				else if(f.isDirectory()){
-					prefix = "[d] ";
 					listaFile.addAll(listFiles(f.toString()));
 				}
 			}

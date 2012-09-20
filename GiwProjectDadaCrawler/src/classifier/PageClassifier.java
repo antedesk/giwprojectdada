@@ -6,7 +6,12 @@ import java.util.List;
 import model.PageDetails;
 import model.PageList;
 import net.htmlparser.jericho.Source;
-
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public abstract class PageClassifier extends Thread{
 	
 	protected List<String> uncategorized;

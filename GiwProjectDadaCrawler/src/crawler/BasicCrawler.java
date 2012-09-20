@@ -1,16 +1,21 @@
 package crawler;
 
-import edu.uci.ics.crawler4j.crawler.Page;
-import edu.uci.ics.crawler4j.crawler.WebCrawler;
-import edu.uci.ics.crawler4j.parser.HtmlParseData;
-import edu.uci.ics.crawler4j.url.WebURL;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import edu.uci.ics.crawler4j.crawler.Page;
+import edu.uci.ics.crawler4j.crawler.WebCrawler;
+import edu.uci.ics.crawler4j.parser.HtmlParseData;
+import edu.uci.ics.crawler4j.url.WebURL;
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public class BasicCrawler extends WebCrawler {
 
 	private final static Pattern FILTERS = Pattern.compile(".*(\\.(css|js|bmp|gif|jpe?g" + "|png|tiff?|mid|mp2|mp3|mp4"
@@ -59,11 +64,7 @@ public class BasicCrawler extends WebCrawler {
 
 						if (!theDir.exists())
 						{
-							//System.out.println("creating directory: " + dirtocreate);
-							boolean result = theDir.mkdir();  
-							//if(result){    
-							//	System.out.println("DIR created");  
-							//}
+							theDir.mkdir();  
 						}
 						before += p+"/";
 					}

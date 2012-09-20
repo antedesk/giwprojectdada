@@ -1,19 +1,23 @@
 package db;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import model.Page;
-import model.PageDetails;
-import model.PageList;
-
-import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.Page;
+import model.PageDetails;
+import model.PageList;
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public class DAOServices {
 
 	private Connection connection;
@@ -432,7 +436,6 @@ public class DAOServices {
 
 	public String getCategoryByURL(String url) throws SQLException{
 		PreparedStatement ps=connection.prepareStatement(DBQuery.URLTOCATEGORY);
-		PageDetails pd=null;
 		String cat = null;
 		try{
 
@@ -537,7 +540,7 @@ public class DAOServices {
 
 				if(!rs.wasNull())
 					date=new java.util.Date(data.getTime());
-				PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),new java.util.Date(rs.getDate(7).getTime()));
+				PageDetails pageCurr = new PageDetails(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getInt(5),rs.getInt(6),date);
 				pd.add(pageCurr);
 
 			}

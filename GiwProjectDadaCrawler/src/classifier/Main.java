@@ -6,31 +6,39 @@ import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
-
-import crawler.BasicCrawlController;
-import crawler.BasicCrawler;
-
-import db.DAOServices;
-import db.DBDatasource;
-import edu.uci.ics.crawler4j.crawler.CrawlConfig;
-import edu.uci.ics.crawler4j.crawler.CrawlController;
-import edu.uci.ics.crawler4j.fetcher.PageFetcher;
-import edu.uci.ics.crawler4j.robotstxt.RobotstxtConfig;
-import edu.uci.ics.crawler4j.robotstxt.RobotstxtServer;
 
 import model.Page;
 import model.PageDetails;
-import model.PageList;
-
+import crawler.BasicCrawlController;
+import db.DAOServices;
+import db.DBDatasource;
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public class Main {
 	
 	public static void main(String[] args) throws Exception{
+		while(true){
+			try{
+				runCommand();
+			} catch(Exception ex){ ex.printStackTrace(); }
+			
+			System.out.println();
+			Thread.sleep(2000);
+		}
+	}
+
+	public static void runCommand() throws IOException, Exception,
+			SQLException, ParseException {
 		System.out.println("I servizi a disposizione sono:"
 								+"\n1) URL To Category"
 								+"\n2) URL To Products"
@@ -46,7 +54,7 @@ public class Main {
 								+"\n12) Processa Epinions directory"
 								+"\n13) Clear Database Tables"
 								+"\n14) Lancia WebCrawler"
-								+"\n");
+								+"\n15) Per terminare il programma");
 		 BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
          String service = stdin.readLine();
          ServicesImpl serv = new ServicesImpl(); 
@@ -183,6 +191,9 @@ public class Main {
              basicCrawlController.startCrawler(site, numberOfCrawlers, depth, maxpage);
              
              System.out.println("WebCrawler Terminato");
+		 }
+		 else if(service.equals("15")){
+			 System.exit(0);
 		 }
 	}
 	

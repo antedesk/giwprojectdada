@@ -1,5 +1,10 @@
 package model;
-
+/*
+* @author Antonio Gallo
+* @author Daniele D'Andrea
+* @author Antonio Tedeschi
+* @author Daniele Malta
+*/
 public class Page {
 
 	protected int id;
