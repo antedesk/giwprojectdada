@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import model.Page;
 import model.PageDetails;
 import model.PageList;
 
@@ -61,8 +62,11 @@ public class Main {
          {
         	 System.out.println("Inserisci la categoria di prodotti di cui si vuole conoscere i prodotti in essa racchiusa");
         	 String category  = stdin.readLine();
-        	 System.out.println(serv.CategoryToPages(category));
+        	 for (Page p : serv.CategoryToPages(category)) {
+ 				System.out.println(p.toString());
+        	 }
          }
+         //CONTROLLARE
 		 else if(service.equals("6"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a quella data");
@@ -70,8 +74,11 @@ public class Main {
         	 String stringDate = stdin.readLine();
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
-     		 date = (Date)formatter.parse(stringDate);
+     		 date = formatter.parse(stringDate);
      		System.out.println(serv.DateToPages(date));
+     		for (PageDetails p : serv.DateToPages(date)) {
+ 				System.out.println(p.getProductName());
+        	 }
          }
 		 else if(service.equals("7"))
          {
