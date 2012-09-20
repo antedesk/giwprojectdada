@@ -3,12 +3,18 @@ package classifier;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+
+import db.DAOServices;
+import db.DBDatasource;
 
 import model.Page;
 import model.PageDetails;
@@ -27,7 +33,10 @@ public class Main {
 								+"\n7) Ranges Date To Pages"
 								+"\n8) Ranges Date To Categories"
 								+"\n9) Date To Back Pages"
-								+"\n10) Date To Future Pages");
+								+"\n10) Date To Future Pages"
+								+"\n11) Processa TripAdvisor directory"
+								+"\n12) Processa Epinions directory"
+								+"\n13) Clear Database Tables");
 		 BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
          String service = stdin.readLine();
          ServicesImpl serv = new ServicesImpl(); 
@@ -70,11 +79,12 @@ public class Main {
 		 else if(service.equals("6"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a quella data");
-        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/MM/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
-        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+        	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
      		 date = formatter.parse(stringDate);
+     		System.out.println("Size: "+serv.DateToPages(date).size());
      		for (PageDetails p : serv.DateToPages(date)) {
  				System.out.println(p.getProductName());
         	 }
@@ -82,11 +92,11 @@ public class Main {
 		 else if(service.equals("7"))
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
-        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/MM/yyyy");
         	 System.out.println("Inserisci la prima data");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
-        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+        	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
      		 date1 = (Date)formatter.parse(stringDate1);
         	 System.out.println("Inserisci la seconda data");
         	 String stringDate2 = stdin.readLine();
@@ -97,10 +107,10 @@ public class Main {
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
         	 System.out.println("Inserisci la prima data");
-        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/MM/yyyy");
         	 String stringDate1 = stdin.readLine();
         	 Date date1 = null;
-        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+        	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
      		 date1 = (Date)formatter.parse(stringDate1);
         	 System.out.println("Inserisci la seconda data");
         	 String stringDate2 = stdin.readLine();
@@ -110,23 +120,85 @@ public class Main {
 		 else if(service.equals("9"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a prima di quella data");
-        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/MM/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
-        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+        	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
      		 date = (Date)formatter.parse(stringDate);
         	 System.out.println(serv.DateToBackPages(date));
          }
 		 else if(service.equals("10"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a dopo quella data");
-        	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
+        	 System.out.println("il formato della data richiesto è: dd/MM/yyyy");
         	 String stringDate = stdin.readLine();
         	 Date date = null;
-        	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
+        	 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
      		 date = (Date)formatter.parse(stringDate);
         	 System.out.println(serv.DateToFuturePages(date));
          }
-        		
+		 else if(service.equals("11")){
+			 System.out.println("Inserisci la ROOT directory delle pagine scaricate di TripAdvisor");
+        	 String dir = stdin.readLine();
+        	 System.out.println("Inserisci il numero di Thread per l'elaborazione");
+        	 int thread = Integer.parseInt(stdin.readLine());
+        	 Main.LaunchClassifier(dir, thread, 0);
+        	 
+		 }
+		 else if(service.equals("12")){
+			 System.out.println("Inserisci la ROOT directory delle pagine scaricate di Epinions");
+        	 String dir = stdin.readLine();
+        	 System.out.println("Inserisci il numero di Thread per l'elaborazione");
+        	 int thread = Integer.parseInt(stdin.readLine());
+        	 Main.LaunchClassifier(dir, thread, 1);
+		 }
+		 else if(service.equals("13")){
+			 serv.ClearDatabase();
+			 System.out.println("Tabelle del database cancellate con successo");
+		 }
+	}
+	
+	// type = 0 TripAdvisor, type = 1 Epinions
+	public static void LaunchClassifier(String root, int numThread, int type) throws Exception{
+		DBDatasource dbDataSource;
+		DAOServices dao;
+		Connection conn;
+
+		dbDataSource = new DBDatasource();
+		conn = dbDataSource.getConnection();
+		dao = new DAOServices(conn);
+		
+		List<String> allPages=Utility.listFiles(root);
+
+		int PagesPerThread=allPages.size()/numThread;
+		List<PageClassifier> classifiers = new ArrayList<PageClassifier>();
+		for(int i = 0; i<numThread; i++){
+			PageClassifier threadClassifier=null;
+			
+			if(type==0)
+				threadClassifier = new TripAdvisorClassifier(dao, allPages.subList(i*PagesPerThread, (i+1)*PagesPerThread));
+			else
+				threadClassifier = new EpinionsClassifier(dao, root, allPages.subList(i*PagesPerThread, (i+1)*PagesPerThread));
+				
+			threadClassifier.start();
+			classifiers.add(threadClassifier);
+		}
+
+		for(PageClassifier threadClassifier : classifiers){
+			threadClassifier.join();
+		}
+		
+		dbDataSource.closeConnection(conn);
+
+		List<String> notCat = new LinkedList<String>();
+		for(PageClassifier threadClassifier : classifiers){
+			notCat.addAll(threadClassifier.getUncategorizedLink());
+		}
+
+		System.out.println("\n*************** Pagine non categorizzate ***************");
+		for(String url : notCat)
+			System.out.println(url);
+				System.out.println("********************************************************");
+				System.out.println("tot non categorizzate: "+notCat.size());
 	}
 }
