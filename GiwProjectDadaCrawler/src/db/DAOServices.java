@@ -350,7 +350,6 @@ public class DAOServices {
 
 	}
 
-	//NON FA QUELLO CHE DEVE FARE!!! OCCHIO!!!!
 	public PageDetails getPageDetailsFromBetweenDate(Date before_date, Date after_date) throws SQLException{
 
 		PreparedStatement ps=connection.prepareStatement(DBQuery.SELECTPAGEDETAILSFROMBETWEENDATES);
