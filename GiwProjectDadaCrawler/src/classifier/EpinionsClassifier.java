@@ -41,6 +41,9 @@ public class EpinionsClassifier extends PageClassifier{
 	private final String[] PRODUCTROWS = new String[]{"productRow", "productRow ", "productRow firstRow", "productRow no_border"};
 	private final String PRODUCTREVIEWS = "productReviews";
 	private final String PRODUCTINFOLEFT = "productInfo left";
+	private final String LISTOF = "Lista di ";
+	private final String INSTANCEOF = "istanza di ";
+	private final String MEDIA = "Media";
 
 
 	public EpinionsClassifier(DAOServices dao, String rootFile, List<String> pagine){ 
@@ -213,6 +216,9 @@ public class EpinionsClassifier extends PageClassifier{
 		String category = "";
 		if(breadcrumbCategory.size()>=2){
 			category = breadcrumbCategory.get(1);
+			if(category.equals(MEDIA) && breadcrumbCategory.size()>=3){
+				category = breadcrumbCategory.get(2);
+			}
 		}
 
 		return category;
@@ -226,7 +232,8 @@ public class EpinionsClassifier extends PageClassifier{
 			
 			List<Element> products = el.getAllElementsByClass(rowClass);
 			for(Element productrow : products){
-				PageDetails pageDetails = this.getPageDetailsFromRow(productrow, category);
+				String cat = category.replace(LISTOF, INSTANCEOF);
+				PageDetails pageDetails = this.getPageDetailsFromRow(productrow, cat);
 				if(pageDetails.getUrl().contains(ROOTSITE))
 					pageDetailsProducts.add(pageDetails);
 			}
@@ -323,6 +330,7 @@ public class EpinionsClassifier extends PageClassifier{
 				System.out.println("CATEGORIA: "+category);
 				PageDetails pd=null;
 				if(source.getElementById("product_top_box")!=null && source.getElementById("product_area")!=null){
+					category = INSTANCEOF + category;
 					try {
 						pd = createPageDetails(source,category,url);
 						try {
@@ -337,6 +345,16 @@ public class EpinionsClassifier extends PageClassifier{
 					}
 					System.out.println("DetailsPage created: ");
 					System.out.println(pd.toString());
+				} else if(source.getElementById(TABLERESULT) != null){
+					category = LISTOF + category;
+					PageList pageList = createPageList(source, url, category);
+					try {
+						this.dao.saveOrUpdatePageList(pageList);
+					} catch (SQLException e) {
+						e.printStackTrace();
+						//return;
+					}
+					System.out.println(url + " PAGINA DI ELENCO");
 				}
 
 				if(!category.equals("")){
@@ -352,16 +370,7 @@ public class EpinionsClassifier extends PageClassifier{
 					uncategorized.add(url);
 
 
-				if(source.getElementById(TABLERESULT) != null){
-					PageList pageList = createPageList(source, url, category);
-					try {
-						this.dao.saveOrUpdatePageList(pageList);
-					} catch (SQLException e) {
-						e.printStackTrace();
-						//return;
-					}
-					System.out.println(url + " PAGINA DI ELENCO");
-				}
+				
 
 				System.out.println("********************************************************\n");
 			}
