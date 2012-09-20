@@ -11,56 +11,59 @@ import java.util.List;
 import java.util.Locale;
 
 import model.PageDetails;
+import model.PageList;
 
 public class Main {
 	
-	public static void mainTak(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception{
 		System.out.println("I servizi a disposizione sono:"
-								+"\nURL To Category"
-								+"\nURL To Products"
-								+"\nURL To NumReviews"
-								+"\nURL To LastDateReview"
-								+"\nCategory To Pages"
-								+"\nDate To Pages"
-								+"\nRanges Date To Pages"
-								+"\nRanges Date To Categories"
-								+"\nDate To Back Pages"
-								+"\nDate To Future Pages");
+								+"\n1) URL To Category"
+								+"\n2) URL To Products"
+								+"\n3) URL To NumReviews"
+								+"\n4) URL To LastDateReview"
+								+"\n5) Category To Pages"
+								+"\n6) Date To Pages"
+								+"\n7) Ranges Date To Pages"
+								+"\n8) Ranges Date To Categories"
+								+"\n9) Date To Back Pages"
+								+"\n10) Date To Future Pages");
 		 BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
          String service = stdin.readLine();
          ServicesImpl serv = new ServicesImpl(); 
         
-         if(service.equals("URL To Category"))
+         if(service.equals("1"))
          {
         	 System.out.println("Inserisci l'url della pagina di cui si vuole conoscere la categoria");
         	 String url = stdin.readLine();
-        	 serv.URLToCategory(url);
+        	 System.out.println(serv.URLToCategory(url));
          }
-         else if(service.equals("URL To Products"))
+         else if(service.equals("2"))
          {
-        	 System.out.println("Inserisci l'url della pagina di cui si vuole conoscere il prodotto");
+        	 System.out.println("Inserisci l'url della page List di cui si vogliono conoscere i prodotti");
         	 String url = stdin.readLine();
-        	 serv.URLToProducts(url);
+        	 for (PageDetails pl : serv.URLToProducts(url)) {
+				System.out.println(pl.getProductName());
+			}
          }
-         else if(service.equals("URL To NumReviews"))
+         else if(service.equals("3"))
          {
         	 System.out.println("Inserisci l'url della pagina di cui si vuole conoscere il numero di review");
         	 String url = stdin.readLine();
-        	 serv.URLToNumReviews(url);
+        	 System.out.println(serv.URLToNumReviews(url));
          }
-		 else if(service.equals("URL To LastDateReview"))
+		 else if(service.equals("4"))
          {
         	 System.out.println("Inserisci l'url della pagina di cui si vuole conoscere l'ultima data di aggiornamento");
         	 String url = stdin.readLine();
-        	 serv.URLToLastDateReview(url);
+        	 System.out.println(serv.URLToLastDateReview(url));
          }
-		 else if(service.equals("Category To Pages"))
+		 else if(service.equals("5"))
          {
         	 System.out.println("Inserisci la categoria di prodotti di cui si vuole conoscere i prodotti in essa racchiusa");
         	 String category  = stdin.readLine();
-        	 serv.CategoryToPages(category);
+        	 System.out.println(serv.CategoryToPages(category));
          }
-		 else if(service.equals("Date To Pages"))
+		 else if(service.equals("6"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a quella data");
         	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
@@ -68,9 +71,9 @@ public class Main {
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
      		 date = (Date)formatter.parse(stringDate);
-        	 serv.DateToPages(date);
+     		System.out.println(serv.DateToPages(date));
          }
-		 else if(service.equals("Ranges Date To Pages"))
+		 else if(service.equals("7"))
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
         	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
@@ -82,9 +85,9 @@ public class Main {
         	 System.out.println("Inserisci la seconda data");
         	 String stringDate2 = stdin.readLine();
         	 Date date2 = (Date)formatter.parse(stringDate2);
-        	 serv.RangesDateToPages(date1, date2);
+        	 System.out.println(serv.RangesDateToPages(date1, date2));
          }
-		 else if(service.equals("Ranges Date To Categories"))
+		 else if(service.equals("8"))
          {
         	 System.out.println("Inserisci due date di interesse da cui otterene tutte le pagine risalenti a quel dato range");
         	 System.out.println("Inserisci la prima data");
@@ -96,9 +99,9 @@ public class Main {
         	 System.out.println("Inserisci la seconda data");
         	 String stringDate2 = stdin.readLine();
         	 Date date2 = (Date)formatter.parse(stringDate2);
-        	 serv.RangesDateToCategories(date1, date2);
+        	 System.out.println(serv.RangesDateToCategories(date1, date2));
          }
-		 else if(service.equals("Date To Back Pages"))
+		 else if(service.equals("9"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a prima di quella data");
         	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
@@ -106,9 +109,9 @@ public class Main {
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
      		 date = (Date)formatter.parse(stringDate);
-        	 serv.DateToBackPages(date);
+        	 System.out.println(serv.DateToBackPages(date));
          }
-		 else if(service.equals("Date To Future Pages"))
+		 else if(service.equals("10"))
          {
         	 System.out.println("Inserisci la data di interesse da cui otterene tutte le pagine risalenti a dopo quella data");
         	 System.out.println("il formato della data richiesto è: dd/mm/yyyy");
@@ -116,7 +119,7 @@ public class Main {
         	 Date date = null;
         	 DateFormat formatter = new SimpleDateFormat("dd/mm/yyyy", Locale.ITALY);
      		 date = (Date)formatter.parse(stringDate);
-        	 serv.DateToFuturePages(date);
+        	 System.out.println(serv.DateToFuturePages(date));
          }
         		
 	}
