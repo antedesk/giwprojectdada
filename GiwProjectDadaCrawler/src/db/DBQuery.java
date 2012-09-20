@@ -25,5 +25,5 @@ public class DBQuery {
 	
 	
 	public static final String URLTOCATEGORY = "SELECT category FROM page WHERE url=?";
-	public static final String URLTTOPRODUCTSID = "SELECT idpage FROM pagelistaggregation join page on pagelistaggregation.idpagelist=page.id WHERE page.url=?";
+	public static final String URLTTOPRODUCTSID = "SELECT DISTINCT idpage FROM pagelistaggregation join page on pagelistaggregation.idpagelist=page.id WHERE page.url=?";
 }
