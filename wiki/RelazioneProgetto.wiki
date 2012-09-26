@@ -1,6 +1,3 @@
-= Crawler Incrementale =
-
-
 = Indice =
  * Scopo del progetto e siti analizzati
  * Organizzazione del progetto
