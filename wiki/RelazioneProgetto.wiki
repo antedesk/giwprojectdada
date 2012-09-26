@@ -10,8 +10,8 @@
 Lo scopo del progetto è stato quello di poter creare un database popolato con le informazioni estratte da un crawler proprietario fatto girare su uno o più siti, in modo da poterli interrogare e ottenere quelle informazioni relative lo stato del sito in un determinato istante o periodo di tempo.
 Questa operazione ci permette di poter fare delle verifiche utili dal punto di vista analitico, progettuale e di sviluppo di un crawler incrementale in grado di scartare dalla propria attività quelle pagine che risultano immutate.
 Oggetto di analisi e progettazione del nostro progetto è stata l’analisi dei siti: 
- * TripAdvisor (www.tripadvisor.it)
- * Epinions (www.epinions.com)
+ * Tripadvisor (http://www.tripadvisor.it)
+ * Epinions (http://www.epinions.com)
 
 
 Entrambi i siti sono dei portali web che permettono di recensire rispettivamente:
