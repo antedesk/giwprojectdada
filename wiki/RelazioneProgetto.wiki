@@ -2,6 +2,7 @@
  * Scopo del progetto e siti analizzati
  * Organizzazione del progetto
  * Documentazione delle classi
+ * Guida all'uso
 
 
 = Scopo del progetto e siti analizzati =
@@ -97,3 +98,12 @@ Sono inoltre presenti:
  * una classe per la gestione dei file scaricati mediante l’utilizzo del crawler;
  * l’interfaccia dei servizi di cui si è già parlato nella sezione precedente;
  * il main principale del progetto che permette di effettuare la classificazione, l’estrazione dei dati e il relativo store nel DB, permette infine all’utente di scegliere quale servizio usare e di conseguenza di immettere i dati richiesti.
+
+= Guida all'uso =
+Installare e configurare un'istanza di server MySql (http://www.mysql.it).
+Lanciare lo script DBCreationScript.sql presente nella sezione Downloads per creare le tabelle.
+Scaricare, sempre dalla sezione Downloads il programma DadaGiw.jar.
+Avviare DadaGiw.jar tramite la linea di comando java -jar DadaGiw.jar.
+Ci sono diverse operazioni avviabili usando lo standard input, seguire le indicazioni. Un possibile scenario potrebbe essere quello di avviare una prima volta il crawler DadaGiw.jar su www.epinions.com, successivamente avviare il classificatore di Epinions e infine utilizzare i servizi messi a disposizione dal programma per interrogare il database.
+Alternativamente è possibile utilizzarlo come una libreria esterna. In particolare bisogna accedere alla classe Service instanziando l'oggetto ServiceImpl ed utilizzare i metodi esposti dall'interfaccia.
+La configurazione del database avviene modificando il file all'interno del jar db/config/settings.properties.
