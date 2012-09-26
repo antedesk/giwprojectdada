@@ -1,0 +1,102 @@
+= Crawler Incrementale =
+
+
+= Indice =
+ * Scopo del progetto e siti analizzati
+ * Organizzazione del progetto
+ * Documentazione delle classi
+
+
+= Scopo del progetto e siti analizzati =
+
+
+Lo scopo del progetto è stato quello di poter creare un database popolato con le informazioni estratte da un crawler proprietario fatto girare su uno o più siti, in modo da poterli interrogare e ottenere quelle informazioni relative lo stato del sito in un determinato istante o periodo di tempo.
+Questa operazione ci permette di poter fare delle verifiche utili dal punto di vista analitico, progettuale e di sviluppo di un crawler incrementale in grado di scartare dalla propria attività quelle pagine che risultano immutate.
+Oggetto di analisi e progettazione del nostro progetto è stata l’analisi dei siti: 
+ * TripAdvisor
+ * Epinions
+
+
+Entrambi i siti sono dei portali web che permettono di recensire rispettivamente:
+ * Hotel, Ristoranti, Attrazioni e molte altre argomentazioni
+ * Prodotti di elettronica, multimediali, per la casa ecc.
+La struttura delle pagine dei siti è molto simile e sono state individuate diverse tipologie di pagina. Di seguito sono riportate le principali:
+ * Pagina relativa la lista dei risultati cercati, che coincide con l’elenco dei prodotti presenti in una pagina
+ * Pagina relativa al dettaglio del prodotto, in cui sono presenti informazioni relative al nome del prodotto, la sua votazione, le reviews degli utenti (con relativa data) e il suo totale, i costi e altre dettagli di diversa natura.
+ * Pagine intermedie, come elenco categorie e sottocategorie, pagine del forum o relative al profilo degli utenti ecc.
+
+
+Questa prima classificazione delle pagine , effettuata su entrambi i siti , ha reso il progetto maggiormente organizzato. Infatti, ci ha permesso, sia di fornire un servizio di classificazione con la  relativa estrazione dei dati, che la popolazione di un database in modo da poterlo interrogare, ottenendo le pagine di interesse in base alla query sottomessa.
+
+
+= Organizzazione del progetto =
+Come prima cosa, il progetto ha previsto una prima fase di analisi della struttura delle pagine, ricavata da una prima interazione tra il sito e l’utente intenzionato ad usufruire dei suoi servizi.
+Per ognuna delle tipologie di pagina individuate, di cui si è accennato nella sezione precedente, si è analizzato quali fossero le pagine da cui estrarre i dati rilevanti per popolare il database e quali invece classificare in quanto prive di informazioni utili.
+Per poter scaricare le pagine dei siti di interesse, è stata utilizzata la libreria Crawler4j, un crawler multithread in grado di scaricare efficientemente un elevato numero di pagine del sito.
+Grazie al crawler è stato possibile lavorare su una buona porzione per entrambi i siti (circa 200.000 pagine per sito), ma non su tutte a causa della vastità dei portali.
+
+
+Una volta ottenute le pagine, si è scelto quali fossero solamente da classificare e quali invece, oltre alla classificazione, prevedevano lo store all’interno del database.
+Le pagine sulle quali è stata effettuata la classificazione, l’estrazione dei dati e il relativo store nel database sono state:
+ * Pagine dei risultati e dell’elenco dei prodotti di una determinata categoria (aventi entrambe la medesima struttura);
+ * Pagine del dettaglio del prodotto, raggiungibile attraverso il tipo di pagina precedente;
+Tutte le altre restanti pagine sono state solo classificate in modo opportuno. 
+
+
+Le informazioni di interesse per quanto riguarda le pagine dei risultati sono: 
+ * URL della pagina
+ * categoria
+ * lista dei prodotti presenti nelle pagina ,dove per ogni prodotto è stato memorizzato il numero di review presente in questo tipo di pagina, (che non sempre coincide con quello della pagina di dettaglio del medesimo prodotto)
+
+
+Le informazioni di interesse per le pagine di dettaglio dei prodotti sono:
+ * URL della pagina
+ * categoria
+ * nome del prodotto
+ * numero di review della pagina
+ * data dell’ultimo commento (il più recente) inserito dagli utenti.
+
+
+La liberia jericho - HTML ci ha permesso di esaminare le pagine di interesse al fine di classificare ed estrapolare le informazioni e salvarle nelle rispettive tabelle del DB.
+Per quanto simili le strutture dei siti, non è stato possibile fare un classificatore molto generico ed è stato necessario creare dei classificatori ad hoc per ogni sito.
+Per la classificazione delle pagine di Epinions è stato analizzato il breadcrumb, estraendo da questo la categoria della pagina.
+Per la classificazione delle pagine di TripAdvisor è stato possibile utilizzare l’indirizzo stesso della pagina in esame, senza considerare la root del sito ( http://www.tripadvisor.it/ ) e verificando la presenza di parole chiavi che permettessero la classificazione.
+
+
+Esempio: se la pagina corrente è Hotels-g187791-Rome_Lazio-Hotels.html, si verifica se inizia per la parola Hotels. Se ciò è vero allora la pagina viene classificata come Lista di Hotel.
+In modo analogo si è ragionato per i ristoranti, ecc.
+Per effettuare lo store dei dati  è stato creato, mediante l’utilizzo di MySQL, un database costituito da tre tabelle:
+ * Pagine: dove ogni pagina contiene un ID, un URL, una Categoria e una Foreign Key su una tabella di dettaglio (se la pagina è una pagina di dettaglio)
+ * Dettaglio: dove ogni pagine di dettaglio del prodotto contiene un ID, Nome del Prodotto, Numero Review Pagina, Numero Review Pagina della Lista dei risultati, Data Review Pagina
+ * Aggregante: contiene la relazione di aggregazione tra le pagine di elenco e le pagine di dettaglio del prodotto
+
+
+Infine si è pensato di definire un interfaccia di servizi per poter interrogare il database una volta popolato. I servizi definiti sono:
+ * Dato un URL di una pagina restituisce la sua categoria        
+ * Dato un URL di una pagina di lista di prodotti restituisce una lista di pagine di dettaglio        
+ * Dato un URL di una pagina di dettaglio restituisce il numero di Recensioni        
+ * Dato un URL di una pagina di dettaglio restituisce la data dell'ultima recensione 
+ * Fornita una categoria restituisce tutte la pagine appartenenti ad essa        
+ * Fornita una data restituisce tutte le pagine con quella data        
+ * Fornite due date restituisce tutte le pagine relative a quel periodo, estremi inclusi
+ * Fornite due date restituisce tutte le categorie delle pagine relative a quel periodo, estremi inclusi
+ * Fornita una data restituisce tutte le pagine prima di quella data
+ * Fornita una data restituisce tutte le pagine successive a quella data
+
+
+= Documentazione =
+Il progetto si compone di ben quattro package:
+ * crawler: sono presenti le classi relative al crawler e al main da eseguire.
+ * model: al suo interno sono contenute le classi Page, PageDetails e PageList che estendono la classe Page. Tramite queste è possibile rappresentare correttamente le pagine che devono essere acquisite, memorizzate o aggiornate, e restituite a seguito di un’interrogazione.
+ * db: contiene le classi relative alla gestione del database, ossia la connessione a MySQL e i servizi di CRUD, realizzati medianti classi DAO, per inserire o aggiornare le pagine di dettaglio di un prodotto, quelle di tipo lista e il relativo inserimento degli aggregati. Inoltre sono presenti ulteriori metodi necessari per il funzionamento dei servizi, come: 
+  # retrieve di tutte le pagine precedenti o successive ad una certa data, oppure in un certo range temporale
+  # retrieve delle pagine appartenenti ad un determinata categoria o aventi un nome specifico
+ * classifier: contiene i classificatori costruiti ad hoc per Epinions e TripAdvisor che estendono PageClassifier avente il metodo classifyPage. 
+Tale metodo prende in ingresso il sorgente della pagine e ne verifica la categoria di appartenenza. Se questa appartiene ad una delle due tipologie di pagina che devono essere inserite nel DB verrà eseguito un ulteriore metodo per l’estrazione delle informazioni. Per l’esattezza abbiamo:
+  #  createPageList(...) che permette di creare un oggetto PageList che rappresenta una pagina di elenco prodotti.
+  # createPageDetails(...) per la creazione di pagine di dettaglio prodotto che, in modo analogo, rappresentano uno specifico prodotto.
+ Per velocizzare il processo di classificazione ed estrazione dei dati si è ritenuto conveniente realizzare un’architettura multi-thread. A questo scopo, PageClassifier implementa l’interfaccia Runnable e per ciascun classificatore è stato definito il metodo run() che esegue la classificazione di una porzione delle pagine in ingresso.
+Sono inoltre presenti: 
+ * una classe per la gestione dei file scaricati mediante l’utilizzo del crawler;
+ * l’interfaccia dei servizi di cui si è già parlato nella sezione precedente;
+ * il main principale del progetto che permette di effettuare la classificazione, l’estrazione dei dati e il relativo store nel DB, permette infine all’utente di scegliere quale servizio usare e di conseguenza di immettere i dati richiesti.
