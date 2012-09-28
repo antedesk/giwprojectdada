@@ -77,6 +77,7 @@ Infine si è pensato di definire un interfaccia di servizi per poter interrogare
  * Fornite due date restituisce tutte le categorie delle pagine relative a quel periodo, estremi inclusi
  * Fornita una data restituisce tutte le pagine prima di quella data
  * Fornita una data restituisce tutte le pagine successive a quella data
+ * Cancellazione dei dati dalle tabelle
 
 
 = Documentazione =
