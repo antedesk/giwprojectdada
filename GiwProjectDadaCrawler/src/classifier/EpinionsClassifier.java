@@ -313,6 +313,7 @@ public class EpinionsClassifier extends PageClassifier{
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
+					toprint+=("CATEGORIA: "+category+"\n");
 				}
 
 				if(category.equals("")){
