@@ -82,9 +82,9 @@ Infine si è pensato di definire un interfaccia di servizi per poter interrogare
 
 = Documentazione =
 Il progetto si compone di ben quattro package:
- * crawler: sono presenti le classi relative al crawler e al main da eseguire.
+ * crawler: sono presenti le classi relative al crawler.
  * model: al suo interno sono contenute le classi Page, PageDetails e PageList che estendono la classe Page. Tramite queste è possibile rappresentare correttamente le pagine che devono essere acquisite, memorizzate o aggiornate, e restituite a seguito di un’interrogazione.
- * db: contiene le classi relative alla gestione del database, ossia la connessione a MySQL e i servizi di CRUD, realizzati medianti classi DAO, per inserire o aggiornare le pagine di dettaglio di un prodotto, quelle di tipo lista e il relativo inserimento degli aggregati. Inoltre sono presenti ulteriori metodi necessari per il funzionamento dei servizi, come: 
+ * db: contiene le classi relative alla gestione del database, ossia una classe per la connessione al database e una che implementa i servizi di CRUD, realizzati medianti classi DAO, per inserire o aggiornare le pagine di dettaglio di un prodotto, quelle di tipo lista e il relativo inserimento degli aggregati. Inoltre sono presenti ulteriori metodi necessari per il funzionamento dei servizi, come: 
   # retrieve di tutte le pagine precedenti o successive ad una certa data, oppure in un certo range temporale
   # retrieve delle pagine appartenenti ad un determinata categoria o aventi un nome specifico
  * classifier: contiene i classificatori costruiti ad hoc per Epinions e TripAdvisor che estendono PageClassifier avente il metodo classifyPage. 
