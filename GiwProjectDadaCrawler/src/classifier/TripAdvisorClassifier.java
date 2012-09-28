@@ -179,6 +179,14 @@ public class TripAdvisorClassifier extends PageClassifier{
 					} catch (ParseException e) {
 						e.printStackTrace();
 					}
+				} else {
+					PageList otherPage = new PageList(url, category, null);
+					try {
+						this.dao.saveOrUpdatePageList(otherPage);
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					toprint+=("CATEGORIA: "+category+"\n");
 				}
 
 
