@@ -45,4 +45,15 @@ public class PageList extends Page{
 	public void setProducts(List<PageDetails> products) {
 		this.products = products;
 	}
+
+	@Override
+	public String toString() {
+		String toString = "URL="+url+ "  Category="+this.category+"\n";
+		toString += "Products: ";
+		for(PageDetails pd : products)
+			toString += pd.toString() + " | ";
+		return toString;
+	}
+	
+	
 }

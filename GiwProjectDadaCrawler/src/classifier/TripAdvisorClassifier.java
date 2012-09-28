@@ -31,17 +31,13 @@ public class TripAdvisorClassifier extends PageClassifier{
 	private String rootFile;
 
 	private final String SPAN = "span";
-
 	private final String ROOTSITE = "http://www.tripadvisor.it";
-
 	private final String HREF = "a";
 	private final String ATTRHREF = "href";
 	private final String RS_RATING = "rs rating";
 	private final String QUALITYWRAP = "quality wrap";
 	private final String MORE = "more";
 	private final String H1 = "h1";
-
-
 
 	public TripAdvisorClassifier(DAOServices dao, String rootFile, List<String> pagine){
 		this.pagine=pagine;
@@ -57,7 +53,6 @@ public class TripAdvisorClassifier extends PageClassifier{
 		keywords.add("Bed & breakfast e pensioni");
 		//OFFERTE NON HA ISTANZA
 		keywords.add("Offerte");
-
 	}
 
 
@@ -96,10 +91,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 						}
 					}
 				}
-
 			}
-
-
 		}
 		if(descrizioneList.size()==0)
 			return "";
@@ -324,10 +316,7 @@ public class TripAdvisorClassifier extends PageClassifier{
 		return review;
 	}
 
-
-
 	public PageDetails createPageDetails(Source source, String category, String url) throws ParseException{
-
 		/* 
 		 * il nome dell'albergo/prodotto è contenuto in <h1></h1> è sempre il secondo elemento della lista, 
 		 * il primo è compreso di località e si trova in altro sotto il logo tripadvisor.
