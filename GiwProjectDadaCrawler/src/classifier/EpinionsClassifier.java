@@ -267,10 +267,6 @@ public class EpinionsClassifier extends PageClassifier{
 		String toprint = "";
 		uncategorized = new ArrayList<String>();
 		
-		HashMap<String, Integer> frequencyCategory = new HashMap<String, Integer>();
-
-		//int i = 1;
-		//int size = this.pagine.size();
 		for (String url : this.pagine) {
 			if(!url.contains("/.svn/") && !url.contains("/.DS_Store")){
 				toprint+=("********************************************************\n");
@@ -310,17 +306,18 @@ public class EpinionsClassifier extends PageClassifier{
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
-				}
-
-				if(!category.equals("")){
-					if(frequencyCategory.containsKey(category)){
-						frequencyCategory.put(category, frequencyCategory.get(category)+1);
-					} else{
-						frequencyCategory.put(category, 1);
+				} else {
+					PageList otherPage = new PageList(url, category, null);
+					try {
+						this.dao.saveOrUpdatePageList(otherPage);
+					} catch (SQLException e) {
+						e.printStackTrace();
 					}
 				}
-				else
+
+				if(category.equals("")){
 					uncategorized.add(url);
+				}
 			}
 			
 			toprint+=("********************************************************\n\n");
