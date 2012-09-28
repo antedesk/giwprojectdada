@@ -87,7 +87,7 @@ Il progetto si compone di ben quattro package:
  * db: contiene le classi relative alla gestione del database, ossia una classe per la connessione al database e una che implementa i servizi di CRUD, realizzati medianti classi DAO, per inserire o aggiornare le pagine di dettaglio di un prodotto, quelle di tipo lista e il relativo inserimento degli aggregati. Inoltre sono presenti ulteriori metodi necessari per il funzionamento dei servizi, come: 
   # retrieve di tutte le pagine precedenti o successive ad una certa data, oppure in un certo range temporale
   # retrieve delle pagine appartenenti ad un determinata categoria o aventi un nome specifico
- * classifier: contiene i classificatori costruiti ad hoc per Epinions e TripAdvisor che estendono PageClassifier avente il metodo classifyPage. 
+ * classifier: contiene i classificatori costruiti ad hoc per Epinions e TripAdvisor che estendono PageClassifier avente il metodo classifyPage, createPageList e createPageDetails. 
 Tale metodo prende in ingresso il sorgente della pagine e ne verifica la categoria di appartenenza. Se questa appartiene ad una delle due tipologie di pagina che devono essere inserite nel DB verrà eseguito un ulteriore metodo per l’estrazione delle informazioni. Per l’esattezza abbiamo:
   #  createPageList(...) che permette di creare un oggetto PageList che rappresenta una pagina di elenco prodotti.
   # createPageDetails(...) per la creazione di pagine di dettaglio prodotto che, in modo analogo, rappresentano uno specifico prodotto.
